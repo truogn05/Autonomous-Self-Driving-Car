@@ -24,23 +24,14 @@ ROAD_LINES = '''[
   RoadLine { type "double" color .85 .75 .3 width .025 }
   RoadLine { type "dashed" color 1 1 1 width .025 }
 ]'''
-ROAD_NAMES = {
-    'OUTER_NW':'Duong bao Tay Bac', 'OUTER_NE':'Duong bao Dong Bac',
-    'OUTER_SE':'Duong bao Dong Nam', 'OUTER_SW':'Duong bao Tay Nam',
-    'NORTH_TRAINING':'Dai lo Bac - doan thu nghiem', 'NORTH_LINK':'Dai lo Bac - doan Dong',
-    'S_CURVES':'Duong cong chu S phia Nam', 'Y_STEM':'Nhanh Bac nga ba Y',
-    'WEST_1':'Duong bao Tay - doan Bac', 'WEST_2':'Duong bao Tay - doan Nam',
-    'BLOCK_TOP_W':'Pho Bac - doan Tay', 'BLOCK_TOP_E':'Pho Bac - doan Dong',
-    'BLOCK_MID_W':'Pho Trung tam - doan Tay', 'BLOCK_MID_E':'Pho Trung tam - doan Dong',
-    'BLOCK_BOTTOM_W':'Pho Nam - doan Tay', 'BLOCK_BOTTOM_E':'Pho Nam - doan Dong',
-    'RECONNECTED_NORTH':'Pho doc khu Tay - doan Bac', 'RECONNECTED_SOUTH':'Pho doc khu Tay - doan Nam',
-    'INNER_1':'Truc noi bo - doan Bac', 'INNER_2':'Truc noi bo - doan giua',
-    'INNER_3':'Truc noi bo - doan Nam', 'CENTRAL_1':'Dai lo Trung tam - doan Tay',
-    'CENTRAL_2':'Dai lo Trung tam - doan giua', 'CENTRAL_3':'Dai lo Trung tam - cua vong xuyen',
-    'CENTRAL_AXIS':'Truc doc Trung tam', 'ROUNDABOUT_NORTH':'Duong vao vong xuyen - Bac',
-    'ROUNDABOUT_EAST':'Duong vao vong xuyen - Dong', 'ROUNDABOUT_SOUTH':'Duong vao vong xuyen - Nam',
-    'INNER_CURVE':'Duong cong noi bo khu Bac',
-}
+NAME_COUNTS = {}
+
+
+def next_name(kind):
+    NAME_COUNTS[kind] = NAME_COUNTS.get(kind, 0) + 1
+    return f'{kind}-{NAME_COUNTS[kind]}'
+
+
 chunks, edges, junctions, lane_graph = [], [], {}, {}
 
 
@@ -193,8 +184,8 @@ def make_network():
 
 def crossroad(name, polygon):
     # Upstream Crossroad uses a legacy internal rotation: (x,y,z) -> (-y,-x,-z).
-    kind = 'Nga ba Y' if 'Y_SOUTH' in name else ('Nga tu' if junctions[name[2:]]['kind']=='X' else 'Nga ba T')
-    label = kind + ' - ' + name[2:].replace('_',' ').title()
+    kind = 'YJunction' if 'Y_SOUTH' in name else ('Crossroad' if junctions[name[2:]]['kind']=='X' else 'TJunction')
+    label = next_name(kind)
     emit(f'''Crossroad {{ name "{label}" id "{name}"
         translation 0 0 {Z} shape [ {' '.join(vec((-y,-x,0)) for x,y in polygon)} ]
         appearance {ASPHALT} boundingObject FALSE }}''')
@@ -212,7 +203,7 @@ def scale_network():
         e['width'] = ROAD_WIDTH
         e['number_of_lanes'] = 4
         e['forward_lanes'] = 2
-        e['name'] = ROAD_NAMES[e['id']]
+        e['name'] = next_name('StraightRoad' if len(e['points']) == 2 else 'Road')
 
 
 def end_markings(nid, start):
@@ -237,7 +228,7 @@ def end_markings(nid, start):
 
 def draw_edge(e):
     pts, name = e['points'], e['id']
-    common=f'''name "{ROAD_NAMES[name]}" id "{name}" width {ROAD_WIDTH}
+    common=f'''name "{e['name']}" id "{name}" width {ROAD_WIDTH}
       numberOfLanes 4 numberOfForwardLanes 2 lines {ROAD_LINES}
       startLine {end_markings(e['from'], True)} endLine {end_markings(e['to'], False)}
       appearance {ASPHALT} pavementAppearance {PAVEMENT}
@@ -283,13 +274,13 @@ def draw_junctions():
         # default sockets are diagonal; rotating 45 degrees aligns them.
         if name=='SIGNAL_CROSS':
             emit(f'''RoadIntersection {{ translation {vec((*n['position'],Z))} rotation 0 0 1 {math.pi/4}
-               name "Nga tu Trung tam - den tin hieu" id "{name}" roadNumber 4 roadsWidth 2.4 startRoads TRUE
+               name "RoadIntersection-1" id "{name}" roadNumber 4 roadsWidth 2.4 startRoads TRUE
                startRoadsLength [ .4 ] startRoadBorder FALSE startRoadsNumberOfLanes 4 startRoadsLine {ROAD_LINES}
                startRoadsStartLine [] startRoadsEndLine [] appearance {ASPHALT} }}''')
         else:
             crossroad('J_'+name,polygon)
     emit(f'''Roundabout {{ translation 12 0 {Z} rotation 0 0 1 {-math.pi/4}
-      name "Vong xuyen Dong - 4 cua" id "ROUNDABOUT" innerRadius 2.4 outerRadius 4 roadNumber 4
+      name "Roundabout-1" id "ROUNDABOUT" innerRadius 2.4 outerRadius 4 roadNumber 4
       subdivision 32 startRoadsLength [ 1.2 ] startRoadsWidth 2.4 startRoadsNumberOfLanes 4
       startRoadsLine {ROAD_LINES}
       startRoadsStartLine [] startRoadsEndLine [] borderWidth .10 borderHeight .04
@@ -305,13 +296,14 @@ def draw_junctions():
 def sign(name,p,facing,kind):
     # Miniature boards keep the pole and collider at the same physical scale.
     theta=math.atan2(facing[1],facing[0])
-    emit(f'''DEF {name} Solid {{ translation {vec((*p,0))} rotation 0 0 1 {theta} name "{name}"
+    label = next_name({'stop':'StopSign','yield':'YieldSign','roundabout':'RoundaboutSign','speed':'SpeedLimitSign'}[kind])
+    emit(f'''Solid {{ translation {vec((*p,0))} rotation 0 0 1 {theta} name "{label}" description "{name}"
        children [ Pose {{ translation 0 0 .28 children [ Shape {{ appearance PBRAppearance {{ baseColor .55 .58 .60 metalness .5 roughness .5 }}
           geometry Cylinder {{ radius .012 height .56 }} }} ] }}
        Pose {{ translation .016 0 .51 children [ Shape {{ appearance PBRAppearance {{
           baseColorMap ImageTexture {{ url [ "textures/{kind}.png" ] }} roughness 1 metalness 0 }}
           geometry IndexedFaceSet {{ coord Coordinate {{ point [ 0 -.13 -.13, 0 .13 -.13, 0 .13 .13, 0 -.13 .13 ] }}
-          texCoord TextureCoordinate {{ point [0 0,1 0,1 1,0 1] }} coordIndex [0 1 2 3 -1] solid FALSE }} }} ] }} ]
+          texCoord TextureCoordinate {{ point [0 0,1 0,1 1,0 1] }} coordIndex [0 1 2 3 -1] }} }} ] }} ]
        boundingObject Pose {{ translation 0 0 .28 children [ Cylinder {{ radius .015 height .56 }} ] }} }}''')
 
 
@@ -333,8 +325,8 @@ def furniture():
         pos=add(p,add(mul(u,.05),mul(n,1.42)))
         group='EW' if abs(u[0])>.5 else 'NS'
         emit(f'Pose {{ translation {vec((*pos,0))} rotation 0 0 1 {math.atan2(u[1],u[0])} children [')
-        emit('Solid { translation 0 0 .40 children [ Shape { appearance PBRAppearance { baseColor .3 .33 .35 metalness .5 roughness .5 } geometry Cylinder { radius .015 height .8 } } ] boundingObject Cylinder { radius .015 height .8 } }')
-        emit('Solid { translation 0 0 .78 children [ Shape { appearance PBRAppearance { baseColor .035 .04 .045 roughness 1 metalness 0 } geometry Box { size .10 .15 .34 } } ] boundingObject Box { size .10 .15 .34 } }')
+        emit('Solid { name "TrafficLightPole-%d" translation 0 0 .40 children [ Shape { appearance PBRAppearance { baseColor .3 .33 .35 metalness .5 roughness .5 } geometry Cylinder { radius .015 height .8 } } ] boundingObject Cylinder { radius .015 height .8 } }' % (i+1))
+        emit('Solid { name "TrafficLightHousing-%d" translation 0 0 .78 children [ Shape { appearance PBRAppearance { baseColor .035 .04 .045 roughness 1 metalness 0 } geometry Box { size .10 .15 .34 } } ] boundingObject Box { size .10 .15 .34 } }' % (i+1))
         for j,(color,rgb) in enumerate([('red','1 0 0'),('amber','1 .55 0'),('green','0 1 .18')]):
             emit(f'''LED {{ translation .062 0 {fmt(.88-j*.1)} name "{group}_{i}_{color}" color [ {rgb} ]
               children [ Shape {{ appearance PBRAppearance {{ baseColor .08 .08 .08 roughness .5 metalness 0 emissiveIntensity 3 }}

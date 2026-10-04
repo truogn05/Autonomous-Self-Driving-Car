@@ -10,6 +10,18 @@ from shapely.ops import unary_union
 root=Path(__file__).resolve().parents[1]
 data=json.loads((root/'map.json').read_text(encoding='utf-8'))
 world=(root/'worlds/my_world.wbt').read_text(encoding='utf-8')
+assert not re.search(r'\bsolid\s+(?:TRUE|FALSE)',world), 'IndexedFaceSet does not support solid in Webots R2025a'
+solid_headers=re.findall(r'\bSolid\s*\{([^{}]*)',world)
+solid_names=[]
+for header in solid_headers:
+    match=re.search(r'\bname\s+"([^"]+)"',header)
+    assert match, 'Unnamed Solid would default to solid and collide with siblings'
+    solid_names.append(match.group(1))
+assert len(solid_names)==len(set(solid_names)), 'Duplicate Solid names'
+assert sum(name.startswith('StopSign-') for name in solid_names)==5
+assert sum(name.startswith('TrafficLightPole-') for name in solid_names)==4
+assert sum(name.startswith('TrafficLightHousing-') for name in solid_names)==4
+assert not re.search(r'DEF\s+(?:SIGN_|YIELD_|DIRECTION_|SPEED_LIMIT)',world), 'Signs should display their name, not DEF'
 assert not re.search(r'^Shape\s*\{',world,re.M), 'Manual road-paint Shapes remain'
 assert not re.search(r'DEF\s+\w+\s+(?:Road|StraightRoadSegment|Crossroad|RoadIntersection|Roundabout)\s*\{',world), 'Road DEF names remain'
 assert len(re.findall(r'numberOfLanes 4 numberOfForwardLanes 2',world)) == len(data['roads'])

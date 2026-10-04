@@ -61,7 +61,9 @@ else:
                 robot.step(dt)
             camera.saveImage(str(root/'validation'/'town-overview.png'),100)
             camera_node=robot.getFromDef('SURVEY_CAMERA')
-            sign=robot.getFromDef('SIGN_BLOCK_NORTH')
+            sign=next(children.getMFNode(i) for i in range(children.getCount())
+                      if children.getMFNode(i).getField('description') is not None
+                      and children.getMFNode(i).getField('description').getSFString()=='SIGN_BLOCK_NORTH')
             sx,sy,_=sign.getPosition()
             theta=sign.getField('rotation').getSFRotation()[3]
             camera_node.getField('translation').setSFVec3f([sx+1.2*math.cos(theta),sy+1.2*math.sin(theta),.15])

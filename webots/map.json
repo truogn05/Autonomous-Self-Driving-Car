@@ -1579,7 +1579,7 @@
       "training": false,
       "number_of_lanes": 4,
       "forward_lanes": 2,
-      "name": "Duong bao Tay Bac"
+      "name": "Road-1"
     },
     {
       "id": "NORTH_TRAINING",
@@ -1609,7 +1609,7 @@
       "training": true,
       "number_of_lanes": 4,
       "forward_lanes": 2,
-      "name": "Dai lo Bac - doan thu nghiem"
+      "name": "StraightRoad-1"
     },
     {
       "id": "NORTH_LINK",
@@ -1639,7 +1639,7 @@
       "training": false,
       "number_of_lanes": 4,
       "forward_lanes": 2,
-      "name": "Dai lo Bac - doan Dong"
+      "name": "StraightRoad-2"
     },
     {
       "id": "OUTER_NE",
@@ -1869,7 +1869,7 @@
       "training": false,
       "number_of_lanes": 4,
       "forward_lanes": 2,
-      "name": "Duong bao Dong Bac"
+      "name": "Road-2"
     },
     {
       "id": "OUTER_SE",
@@ -2319,7 +2319,7 @@
       "training": false,
       "number_of_lanes": 4,
       "forward_lanes": 2,
-      "name": "Duong bao Dong Nam"
+      "name": "Road-3"
     },
     {
       "id": "S_CURVES",
@@ -2821,7 +2821,7 @@
       "training": false,
       "number_of_lanes": 4,
       "forward_lanes": 2,
-      "name": "Duong cong chu S phia Nam"
+      "name": "Road-4"
     },
     {
       "id": "OUTER_SW",
@@ -3287,7 +3287,7 @@
       "training": false,
       "number_of_lanes": 4,
       "forward_lanes": 2,
-      "name": "Duong bao Tay Nam"
+      "name": "Road-5"
     },
     {
       "id": "WEST_1",
@@ -3317,7 +3317,7 @@
       "training": false,
       "number_of_lanes": 4,
       "forward_lanes": 2,
-      "name": "Duong bao Tay - doan Bac"
+      "name": "StraightRoad-3"
     },
     {
       "id": "WEST_2",
@@ -3347,7 +3347,7 @@
       "training": false,
       "number_of_lanes": 4,
       "forward_lanes": 2,
-      "name": "Duong bao Tay - doan Nam"
+      "name": "StraightRoad-4"
     },
     {
       "id": "BLOCK_TOP_W",
@@ -3377,7 +3377,7 @@
       "training": false,
       "number_of_lanes": 4,
       "forward_lanes": 2,
-      "name": "Pho Bac - doan Tay"
+      "name": "StraightRoad-5"
     },
     {
       "id": "BLOCK_TOP_E",
@@ -3407,7 +3407,7 @@
       "training": false,
       "number_of_lanes": 4,
       "forward_lanes": 2,
-      "name": "Pho Bac - doan Dong"
+      "name": "StraightRoad-6"
     },
     {
       "id": "BLOCK_MID_W",
@@ -3437,7 +3437,7 @@
       "training": false,
       "number_of_lanes": 4,
       "forward_lanes": 2,
-      "name": "Pho Trung tam - doan Tay"
+      "name": "StraightRoad-7"
     },
     {
       "id": "BLOCK_MID_E",
@@ -3467,7 +3467,7 @@
       "training": false,
       "number_of_lanes": 4,
       "forward_lanes": 2,
-      "name": "Pho Trung tam - doan Dong"
+      "name": "StraightRoad-8"
     },
     {
       "id": "BLOCK_BOTTOM_W",
@@ -3497,7 +3497,7 @@
       "training": false,
       "number_of_lanes": 4,
       "forward_lanes": 2,
-      "name": "Pho Nam - doan Tay"
+      "name": "StraightRoad-9"
     },
     {
       "id": "BLOCK_BOTTOM_E",
@@ -3527,7 +3527,7 @@
       "training": false,
       "number_of_lanes": 4,
       "forward_lanes": 2,
-      "name": "Pho Nam - doan Dong"
+      "name": "StraightRoad-10"
     },
     {
       "id": "RECONNECTED_NORTH",
@@ -3557,7 +3557,7 @@
       "training": false,
       "number_of_lanes": 4,
       "forward_lanes": 2,
-      "name": "Pho doc khu Tay - doan Bac"
+      "name": "StraightRoad-11"
     },
     {
       "id": "RECONNECTED_SOUTH",
@@ -3587,7 +3587,7 @@
       "training": false,
       "number_of_lanes": 4,
       "forward_lanes": 2,
-      "name": "Pho doc khu Tay - doan Nam"
+      "name": "StraightRoad-12"
     },
     {
       "id": "INNER_1",
@@ -3617,7 +3617,7 @@
       "training": false,
       "number_of_lanes": 4,
       "forward_lanes": 2,
-      "name": "Truc noi bo - doan Bac"
+      "name": "StraightRoad-13"
     },
     {
       "id": "INNER_2",
@@ -3647,7 +3647,7 @@
       "training": false,
       "number_of_lanes": 4,
       "forward_lanes": 2,
-      "name": "Truc noi bo - doan giua"
+      "name": "StraightRoad-14"
     },
     {
       "id": "INNER_3",
@@ -3677,7 +3677,7 @@
       "training": false,
       "number_of_lanes": 4,
       "forward_lanes": 2,
-      "name": "Truc noi bo - doan Nam"
+      "name": "StraightRoad-15"
     },
     {
       "id": "CENTRAL_1",
@@ -3707,7 +3707,7 @@
       "training": false,
       "number_of_lanes": 4,
       "forward_lanes": 2,
-      "name": "Dai lo Trung tam - doan Tay"
+      "name": "StraightRoad-16"
     },
     {
       "id": "CENTRAL_2",
@@ -3737,7 +3737,7 @@
       "training": false,
       "number_of_lanes": 4,
       "forward_lanes": 2,
-      "name": "Dai lo Trung tam - doan giua"
+      "name": "StraightRoad-17"
     },
     {
       "id": "CENTRAL_3",
@@ -3767,7 +3767,7 @@
       "training": false,
       "number_of_lanes": 4,
       "forward_lanes": 2,
-      "name": "Dai lo Trung tam - cua vong xuyen"
+      "name": "StraightRoad-18"
     },
     {
       "id": "CENTRAL_AXIS",
@@ -3797,7 +3797,7 @@
       "training": false,
       "number_of_lanes": 4,
       "forward_lanes": 2,
-      "name": "Truc doc Trung tam"
+      "name": "StraightRoad-19"
     },
     {
       "id": "ROUNDABOUT_NORTH",
@@ -3827,7 +3827,7 @@
       "training": false,
       "number_of_lanes": 4,
       "forward_lanes": 2,
-      "name": "Duong vao vong xuyen - Bac"
+      "name": "StraightRoad-20"
     },
     {
       "id": "ROUNDABOUT_EAST",
@@ -3857,7 +3857,7 @@
       "training": false,
       "number_of_lanes": 4,
       "forward_lanes": 2,
-      "name": "Duong vao vong xuyen - Dong"
+      "name": "StraightRoad-21"
     },
     {
       "id": "ROUNDABOUT_SOUTH",
@@ -3887,7 +3887,7 @@
       "training": false,
       "number_of_lanes": 4,
       "forward_lanes": 2,
-      "name": "Duong vao vong xuyen - Nam"
+      "name": "StraightRoad-22"
     },
     {
       "id": "Y_STEM",
@@ -3925,7 +3925,7 @@
       "training": false,
       "number_of_lanes": 4,
       "forward_lanes": 2,
-      "name": "Nhanh Bac nga ba Y"
+      "name": "Road-6"
     },
     {
       "id": "INNER_CURVE",
@@ -4155,7 +4155,7 @@
       "training": false,
       "number_of_lanes": 4,
       "forward_lanes": 2,
-      "name": "Duong cong noi bo khu Bac"
+      "name": "Road-7"
     }
   ],
   "lanes": {

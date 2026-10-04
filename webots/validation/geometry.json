@@ -2,7 +2,7 @@
   "footprint_radius_m": 0.186,
   "lanes_checked": 694,
   "outside_road": [],
-  "world_sha256": "1197bf0cb8c08edc7276c7a806793546790a0274f63605ee678096c280d9ca63",
-  "map_sha256": "f81894e38f4da8dd1513a07eabdf5b6bb2e1b48cca38c770b6f5a4aa22add7e4",
+  "world_sha256": "ce377b57aebd941014a4ded39ff4bd876014fa60ad57d38fa8c8dbd0a8229c33",
+  "map_sha256": "268fbc9c34450b2f3d43f71171c356cc136a8f9d34e6cd788e06c35f693dcdda",
   "note": "Geometry QA, not a vehicle dynamics or localization test. Stationary training obstacle is intentional."
 }
