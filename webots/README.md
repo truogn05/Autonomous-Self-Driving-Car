@@ -67,6 +67,40 @@ nhóm texture `startLine`/`endLine` theo đúng làn hiện tại, và cho vạc
 độ rộng của vạch đã cấu hình khi tăng `numberOfLanes`. Giữ các sửa này khi tải lại asset.
 Nguồn: https://github.com/cyberbotics/webots/tree/R2025a/projects/objects/road/protos
 
+### Tải danh sách PROTO road, traffic, cây và xe
+
+Chạy từ gốc repository (chỉ cần Python, không cần cài thêm thư viện):
+
+```powershell
+python webots/tools/download_protos.py
+```
+
+Script tải 73 PROTO R2025a: 13 road, 29 traffic, 9 cây và 22 xe. File đã có được bỏ qua
+để giữ các chỉnh sửa cục bộ; nếu tải bị lỗi, chạy lại để tiếp tục.
+Thư mục đích giữ nguyên cấu trúc upstream:
+
+```text
+webots/protos/vendor/projects/
+├── objects/
+│   ├── road/protos/*.proto
+│   ├── traffic/protos/*.proto
+│   └── trees/protos/*.proto
+└── vehicles/protos/
+    ├── abstract/*.proto
+    ├── bmw/*.proto
+    ├── citroen/*.proto
+    ├── generic/*.proto
+    ├── lincoln/*.proto
+    ├── mercedes_benz/*.proto
+    ├── range_rover/*.proto
+    ├── tesla/*.proto
+    └── toyota/*.proto
+```
+
+Script này chỉ tải các file `.proto` trong danh sách, giữ nguyên nội dung và license
+upstream; không tải texture, mesh hay PROTO phụ thuộc. Các model có tham chiếu tương đối
+đến tài nguyên chưa tải cần bổ sung các tài nguyên đó trước khi dùng trong world.
+
 ## Đèn và làn
 
 Chu kỳ 26 s: Đông–Tây xanh 10 s → vàng 2 s → tất cả đỏ 1 s →
