@@ -18,6 +18,9 @@ như BMW X5 không vừa làn 0,60 m này.
   Hộp `TRAINING_OBSTACLE` vẫn có thể di chuyển để thử đổi làn/đổi tuyến; không còn hình học mở rộng bất đối xứng.
 - Vạch dừng và vạch sang đường dùng texture qua `startLine`/`endLine`, không có `Shape` vẽ vạch ở world.
   Hình học nội bộ của PROTO Webots vẫn dùng Shape theo thiết kế upstream.
+- Vạch dừng phủ hai làn đi vào tất cả giao lộ T/X/Y; cửa vòng xuyến không có vạch dừng.
+- `OuterBarrier-1` dùng `CrashBarrier` chạy kín theo mép ngoài sa bàn, chừa thông các nhánh giao lộ.
+  Thanh chắn được hạ xuống: collider cao 0,02–0,42 m, khoảng cách cột 0,6 m, phù hợp robot nhỏ.
 - Bố cục được giãn 2 lần để thêm làn mà vẫn giữ bề rộng làn, bán kính cua và khoảng cách giữa đường.
   Biển và đèn chỉ được dời theo lề mới; logic điều khiển không đổi.
 - `Roundabout` R2025a giữ một làn vòng; bốn đường tiếp cận đều có bốn làn (2+2).
@@ -54,11 +57,14 @@ và bỏ các nhánh thừa nhô ra mép trên/trái của ảnh tham khảo. Kh
 Chạy `python webots/tools/build_world.py` từ gốc repository để sinh lại world/map.
 Lệnh này **ghi đè world chính**; nếu đã sửa trong GUI, Save As sang file khác trước.
 Không cần sinh lại để mở world. `make_signs.py` chỉ cần khi muốn tạo lại texture biển,
-dùng Pillow và font Arial của Windows. Dữ liệu hình học sinh bằng thư viện chuẩn Python.
+dùng Pillow và font Arial của Windows. Generator dùng thêm Shapely (đã dùng trong kiểm tra hình học)
+để offset biên barrier và loại bỏ chỗ tự cắt tại đoạn cong/giao lộ.
 
 Để mở offline, world chính tham chiếu các PROTO local trong `protos/vendor`.
 `tools/fetch_assets.py` dùng khi cần lấy lại asset, không cần chạy mỗi lần mở world.
-Các PROTO giữ nguyên thuật toán upstream, chỉ đổi tham chiếu tài nguyên thành đường dẫn local.
+Các PROTO dùng tham chiếu tài nguyên local. Riêng `Road.proto` có hai sửa lỗi cục bộ:
+nhóm texture `startLine`/`endLine` theo đúng làn hiện tại, và cho vạch bổ sung kế thừa
+độ rộng của vạch đã cấu hình khi tăng `numberOfLanes`. Giữ các sửa này khi tải lại asset.
 Nguồn: https://github.com/cyberbotics/webots/tree/R2025a/projects/objects/road/protos
 
 ## Đèn và làn
@@ -86,13 +92,20 @@ chồng nhau gây rung bánh. Chưa có NPC, người đi bộ động, nhà ho�
 ```powershell
 python webots/tools/build_world.py
 python webots/tools/check_geometry.py
+node webots/tools/check_road_template.cjs
 python webots/tools/verify_world.py --webots E:/ProgramE/Webots/msys64/mingw64/bin/webots.exe
 ```
 
 - Generator kiểm tra làn nối đúng đầu mút, toàn bộ mạng có hướng liên thông hai chiều
   về khả năng đi đến nhau, không có nhánh cụt, tọa độ trong nền.
-- `check_geometry.py` dùng Shapely (chỉ cho QA) kiểm tra vùng quét hình tròn bán kính
+- `check_geometry.py` dùng Shapely kiểm tra vùng quét hình tròn bán kính
   0,186 m của 694 đoạn làn/đường nối nằm trong mặt đường. Không kiểm điều khiển động học.
+- Kiểm tra thêm vạch dừng trên từng hướng vào, không có vạch dừng ở vòng xuyến,
+  barrier khép kín, không tự cắt và không lấn mặt đường/giao lộ.
+- `check_road_template.cjs` thực thi JavaScript thực tế trong `Road.proto`, kiểm tra
+  độ rộng vạch khi đổi 4/5/6/7 làn trên đường thẳng/cong và bề rộng texture đầu/cuối đường.
+  Chỉnh số làn trong GUI không tự cập nhật `map.json` hay vị trí vạch vàng;
+  mạng đường dùng cho điều hướng vẫn là cấu hình 4 làn (2+2).
 - `verify_world.py` chạy world kiểm tra riêng ở cửa sổ thu nhỏ. Supervisor kiểm
   chạm nền/lề/đảo/vật cản, toàn bộ pha đèn, xuất ảnh rồi thoát. Nó không đóng cửa sổ
   Webots đang dùng. `my_world_check.wbt` là bản thử tự thoát, không dùng làm world chính.
@@ -104,6 +117,8 @@ python webots/tools/verify_world.py --webots E:/ProgramE/Webots/msys64/mingw64/b
 
 ## Trạng thái bản bốn làn
 
-Đã kiểm tra bằng generator và kiểm tra hình học footprint; chưa chạy lại Webots cho bản này.
+Đã kiểm tra generator, template vạch và hình học footprint/barrier cho bản sửa vạch dừng + barrier.
+Chạy Webots tự động chưa thành công: launcher hết thời gian chờ 240 giây, chạy trực tiếp
+`webots-bin.exe` thoát mã 1; cả hai không xuất log. Chưa xác minh hiển thị/va chạm trong simulator.
 Báo cáo runtime/ảnh cũ thuộc bản hai làn, không chứng minh bản bốn làn đã qua kiểm tra runtime.
 Mở `worlds/my_world.wbt` để kiểm tra hiển thị. Chưa thay controller tự lái hay thêm robot.

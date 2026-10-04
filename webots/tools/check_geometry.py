@@ -29,8 +29,27 @@ assert all(r['number_of_lanes']==4 and r['forward_lanes']==2 for r in data['road
 assert all(r['width']==2.4 and r['name']!=r['id'] for r in data['roads'])
 proto_dir=root/'protos/vendor/projects/objects/road/protos'
 for field in re.findall(r'(?:startLine|endLine)\s*\[([^]]*)\]',world):
-    for url in re.findall(r'"([^"]+)"',field):
-        assert (proto_dir/url).resolve().is_file(), url
+    for url in re.findall(r'"([^"]*)"',field):
+        assert not url or (proto_dir/url).resolve().is_file(), url
+# Check every approach, not only whether its texture files exist.
+for road in data['roads']:
+    block = world[world.index('id "'+road['id']+'"'):]
+    for field, nid, incoming in [('startLine',road['from'],[2,3]), ('endLine',road['to'],[0,1])]:
+        slots = re.findall(r'"([^"]*)"', re.search(field+r'\s*\[([^]]*)\]',block)[1])
+        if data['junctions'][nid]['kind'] == 'roundabout_port':
+            assert not slots, (road['id'],field,'roundabout stop paint')
+        else:
+            assert len(slots)==4 and [i for i,url in enumerate(slots) if 'stop_' in url]==incoming, (road['id'],field)
+
+barrier_block=re.search(r'CrashBarrier \{ name "OuterBarrier-1"([\s\S]*?)\n[^\n]*path \[([^]]*)\]',world)
+assert barrier_block and 'enableBoundingObject TRUE' in barrier_block[1]
+coords=list(map(float,barrier_block[2].split()))
+barrier=LineString([(coords[i],coords[i+1]) for i in range(0,len(coords),3)])
+assert barrier.is_ring, 'Outer barrier must close without crossing itself'
+assert all(-24<x<24 and -18<y<18 for x,y in barrier.coords)
+# Even the near side of the .17 m profile must stay outside the carriageway.
+for road in data['roads']:
+    assert barrier.distance(LineString(road['points'])) > road['width']/2+.17, road['id']
 scale=data.get('road_scale',1)
 surfaces=[]
 for road in data['roads']:
@@ -55,6 +74,7 @@ for angle in [0,math.pi/2,math.pi,3*math.pi/2]:
         curve=[(6+2*math.cos(angle+side*j*math.tau/128),2*math.sin(angle+side*j*math.tau/128)) for j in range(steps+1)]
         surfaces.append(Polygon([(x*scale,y*scale) for x,y in [mouth]+curve]))
 surface=unary_union(surfaces).buffer(.003)
+assert barrier.distance(surface) > .17, 'Barrier profile intrudes into a road or junction'
 failures=[]
 for lid,lane in data['lanes'].items():
     route=LineString(lane['points'])

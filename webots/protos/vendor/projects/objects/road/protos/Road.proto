@@ -96,7 +96,10 @@ PROTO Road [
     }
 
     let textureCoordinateRatio = 0.2;
-    let defaultLineWidth = 0.075;
+    // Local: added lanes inherit the configured marking scale, not the
+    // full-size road default (0.15 m). This also keeps dash lengths consistent.
+    const configuredLine = roadLines.find(line => line && line.fields.width.value > 0);
+    let defaultLineWidth = configuredLine ? configuredLine.fields.width.value * 0.5 : 0.075;
     let heightOffset  = 0.01;
     const rightBorder   = fields.rightBorder.value;
     const leftBorder    = fields.leftBorder.value;
@@ -266,10 +269,11 @@ PROTO Road [
         # road signs (start)
         %<
           for (let i = 0; i <= nbStartLine - 1; ++i) {
-            if (startLine[i+1] !== startLine[i] && startLine[i+1] !== '') {
+            // Local: group the current texture, skipping empty lanes.
+            if (startLine[i] !== '' && (i === 0 || startLine[i-1] !== startLine[i])) {
               let size = 1;
               for (let j = i + 1; j <= nbStartLine - 1; ++j) {
-                if (startLine[i+1] === startLine[j+1])
+                if (startLine[i] === startLine[j])
                   size = size + 1;
                 else
                   break;
@@ -329,10 +333,10 @@ PROTO Road [
         # road signs (end)
         %<
           for (let i = 0; i <= nbEndLine - 1; ++i) {
-            if (endLine[i+1] !== endLine[i] && endLine[i+1] !== '') {
+            if (endLine[i] !== '' && (i === 0 || endLine[i-1] !== endLine[i])) {
               let size = 1;
               for (let j = i + 1; j <= nbEndLine - 1; ++j) {
-                if (endLine[i+1] === endLine[j+1])
+                if (endLine[i] === endLine[j])
                   size = size + 1;
                 else
                   break;

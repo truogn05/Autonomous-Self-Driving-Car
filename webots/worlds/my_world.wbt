@@ -13,6 +13,8 @@ EXTERNPROTO "../protos/vendor/projects/objects/road/protos/RoadIntersection.prot
 
 EXTERNPROTO "../protos/vendor/projects/objects/road/protos/Roundabout.proto"
 
+EXTERNPROTO "../protos/vendor/projects/objects/road/protos/CrashBarrier.proto"
+
 WorldInfo { title "My World - connected traffic practice town" basicTimeStep 32 coordinateSystem "ENU" randomSeed 7 }
     DEF OVERVIEW Viewpoint { orientation -.577350269 .577350269 .577350269 2.094395102 position 0 0 86 fieldOfView 0.85 description "Town overview - north up" }
     Background { skyColor [ .72 .82 .90 ] }
@@ -30,7 +32,7 @@ Road { translation 0 0 0.008 wayPoints [ -21 8.6 0 -21 12 0 -20.993577 12.196209
   RoadLine { type "double" color .85 .75 .3 width .025 }
   RoadLine { type "dashed" color 1 1 1 width .025 }
 ]
-      startLine [ "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/./transparent.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/./transparent.png" "../../../../../../worlds/textures/./transparent.png" ]
+      startLine [ "" "" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" "" "" ]
       appearance PBRAppearance { baseColor 0.12 0.14 0.16 roughness 1 metalness 0 } pavementAppearance PBRAppearance { baseColor 0.65 0.67 0.62 roughness 1 metalness 0 }
       roadBorderHeight 0.035 roadBoundingObject FALSE
       rightBorderBoundingObject TRUE leftBorderBoundingObject TRUE }
@@ -42,7 +44,7 @@ StraightRoadSegment { translation -6.4 15 0.008
   RoadLine { type "double" color .85 .75 .3 width .025 }
   RoadLine { type "dashed" color 1 1 1 width .025 }
 ]
-      startLine [ "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/./transparent.png" ] endLine [ "../../../../../../worlds/textures/stop_crossing.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/crossing.png" "../../../../../../worlds/textures/./transparent.png" ]
+      startLine [ "" "" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" ] endLine [ "../../../../../../worlds/textures/stop_crossing.png" "../../../../../../worlds/textures/stop_crossing.png" "../../../../../../worlds/textures/crossing.png" "../../../../../../worlds/textures/crossing.png" ]
       appearance PBRAppearance { baseColor 0.12 0.14 0.16 roughness 1 metalness 0 } pavementAppearance PBRAppearance { baseColor 0.65 0.67 0.62 roughness 1 metalness 0 }
       roadBorderHeight 0.035 roadBoundingObject FALSE
       rightBorderBoundingObject TRUE leftBorderBoundingObject TRUE }
@@ -54,7 +56,7 @@ StraightRoadSegment { translation 4.6 15 0.008
   RoadLine { type "double" color .85 .75 .3 width .025 }
   RoadLine { type "dashed" color 1 1 1 width .025 }
 ]
-      startLine [ "../../../../../../worlds/textures/crossing.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/stop_crossing.png" "../../../../../../worlds/textures/./transparent.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/./transparent.png" "../../../../../../worlds/textures/./transparent.png" ]
+      startLine [ "../../../../../../worlds/textures/crossing.png" "../../../../../../worlds/textures/crossing.png" "../../../../../../worlds/textures/stop_crossing.png" "../../../../../../worlds/textures/stop_crossing.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" "" "" ]
       appearance PBRAppearance { baseColor 0.12 0.14 0.16 roughness 1 metalness 0 } pavementAppearance PBRAppearance { baseColor 0.65 0.67 0.62 roughness 1 metalness 0 }
       roadBorderHeight 0.035 roadBoundingObject FALSE
       rightBorderBoundingObject TRUE leftBorderBoundingObject TRUE }
@@ -66,7 +68,7 @@ Road { translation 0 0 0.008 wayPoints [ 13.6 15 0 18 15 0 18.196209 14.993577 0
   RoadLine { type "double" color .85 .75 .3 width .025 }
   RoadLine { type "dashed" color 1 1 1 width .025 }
 ]
-      startLine [ "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/./transparent.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/./transparent.png" "../../../../../../worlds/textures/./transparent.png" ]
+      startLine [ "" "" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" "" "" ]
       appearance PBRAppearance { baseColor 0.12 0.14 0.16 roughness 1 metalness 0 } pavementAppearance PBRAppearance { baseColor 0.65 0.67 0.62 roughness 1 metalness 0 }
       roadBorderHeight 0.035 roadBoundingObject FALSE
       rightBorderBoundingObject TRUE leftBorderBoundingObject TRUE }
@@ -78,7 +80,7 @@ Road { translation 0 0 0.008 wayPoints [ 21 -1.6 0 21 -12 0 20.993577 -12.196209
   RoadLine { type "double" color .85 .75 .3 width .025 }
   RoadLine { type "dashed" color 1 1 1 width .025 }
 ]
-      startLine [ "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/./transparent.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/./transparent.png" "../../../../../../worlds/textures/./transparent.png" ]
+      startLine [ "" "" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" "" "" ]
       appearance PBRAppearance { baseColor 0.12 0.14 0.16 roughness 1 metalness 0 } pavementAppearance PBRAppearance { baseColor 0.65 0.67 0.62 roughness 1 metalness 0 }
       roadBorderHeight 0.035 roadBoundingObject FALSE
       rightBorderBoundingObject TRUE leftBorderBoundingObject TRUE }
@@ -90,7 +92,7 @@ Road { translation 0 0 0.008 wayPoints [ -5.402491 -11.522387 0 -5.220306 -11.50
   RoadLine { type "double" color .85 .75 .3 width .025 }
   RoadLine { type "dashed" color 1 1 1 width .025 }
 ]
-      startLine [ "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/./transparent.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/./transparent.png" "../../../../../../worlds/textures/./transparent.png" ]
+      startLine [ "" "" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" "" "" ]
       appearance PBRAppearance { baseColor 0.12 0.14 0.16 roughness 1 metalness 0 } pavementAppearance PBRAppearance { baseColor 0.65 0.67 0.62 roughness 1 metalness 0 }
       roadBorderHeight 0.035 roadBoundingObject FALSE
       rightBorderBoundingObject TRUE leftBorderBoundingObject TRUE }
@@ -102,7 +104,7 @@ Road { translation 0 0 0.008 wayPoints [ -21 -8.2 0 -21 -12 0 -20.993577 -12.196
   RoadLine { type "double" color .85 .75 .3 width .025 }
   RoadLine { type "dashed" color 1 1 1 width .025 }
 ]
-      startLine [ "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/./transparent.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/./transparent.png" "../../../../../../worlds/textures/./transparent.png" ]
+      startLine [ "" "" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" "" "" ]
       appearance PBRAppearance { baseColor 0.12 0.14 0.16 roughness 1 metalness 0 } pavementAppearance PBRAppearance { baseColor 0.65 0.67 0.62 roughness 1 metalness 0 }
       roadBorderHeight 0.035 roadBoundingObject FALSE
       rightBorderBoundingObject TRUE leftBorderBoundingObject TRUE }
@@ -114,7 +116,7 @@ StraightRoadSegment { translation -21 5.4 0.008
   RoadLine { type "double" color .85 .75 .3 width .025 }
   RoadLine { type "dashed" color 1 1 1 width .025 }
 ]
-      startLine [ "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/./transparent.png" ] endLine [ "../../../../../../worlds/textures/stop_crossing.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/crossing.png" "../../../../../../worlds/textures/./transparent.png" ]
+      startLine [ "" "" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" ] endLine [ "../../../../../../worlds/textures/stop_crossing.png" "../../../../../../worlds/textures/stop_crossing.png" "../../../../../../worlds/textures/crossing.png" "../../../../../../worlds/textures/crossing.png" ]
       appearance PBRAppearance { baseColor 0.12 0.14 0.16 roughness 1 metalness 0 } pavementAppearance PBRAppearance { baseColor 0.65 0.67 0.62 roughness 1 metalness 0 }
       roadBorderHeight 0.035 roadBoundingObject FALSE
       rightBorderBoundingObject TRUE leftBorderBoundingObject TRUE }
@@ -126,7 +128,7 @@ StraightRoadSegment { translation -21 -1.6 0.008
   RoadLine { type "double" color .85 .75 .3 width .025 }
   RoadLine { type "dashed" color 1 1 1 width .025 }
 ]
-      startLine [ "../../../../../../worlds/textures/crossing.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/stop_crossing.png" "../../../../../../worlds/textures/./transparent.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/./transparent.png" "../../../../../../worlds/textures/./transparent.png" ]
+      startLine [ "../../../../../../worlds/textures/crossing.png" "../../../../../../worlds/textures/crossing.png" "../../../../../../worlds/textures/stop_crossing.png" "../../../../../../worlds/textures/stop_crossing.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" "" "" ]
       appearance PBRAppearance { baseColor 0.12 0.14 0.16 roughness 1 metalness 0 } pavementAppearance PBRAppearance { baseColor 0.65 0.67 0.62 roughness 1 metalness 0 }
       roadBorderHeight 0.035 roadBoundingObject FALSE
       rightBorderBoundingObject TRUE leftBorderBoundingObject TRUE }
@@ -138,7 +140,7 @@ StraightRoadSegment { translation -19.4 7 0.008
   RoadLine { type "double" color .85 .75 .3 width .025 }
   RoadLine { type "dashed" color 1 1 1 width .025 }
 ]
-      startLine [ "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/./transparent.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/./transparent.png" "../../../../../../worlds/textures/./transparent.png" ]
+      startLine [ "" "" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" "" "" ]
       appearance PBRAppearance { baseColor 0.12 0.14 0.16 roughness 1 metalness 0 } pavementAppearance PBRAppearance { baseColor 0.65 0.67 0.62 roughness 1 metalness 0 }
       roadBorderHeight 0.035 roadBoundingObject FALSE
       rightBorderBoundingObject TRUE leftBorderBoundingObject TRUE }
@@ -150,7 +152,7 @@ StraightRoadSegment { translation -12.4 7 0.008
   RoadLine { type "double" color .85 .75 .3 width .025 }
   RoadLine { type "dashed" color 1 1 1 width .025 }
 ]
-      startLine [ "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/./transparent.png" ] endLine []
+      startLine [ "" "" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" "" "" ]
       appearance PBRAppearance { baseColor 0.12 0.14 0.16 roughness 1 metalness 0 } pavementAppearance PBRAppearance { baseColor 0.65 0.67 0.62 roughness 1 metalness 0 }
       roadBorderHeight 0.035 roadBoundingObject FALSE
       rightBorderBoundingObject TRUE leftBorderBoundingObject TRUE }
@@ -162,7 +164,7 @@ StraightRoadSegment { translation -19.4 0 0.008
   RoadLine { type "double" color .85 .75 .3 width .025 }
   RoadLine { type "dashed" color 1 1 1 width .025 }
 ]
-      startLine [ "../../../../../../worlds/textures/crossing.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/stop_crossing.png" "../../../../../../worlds/textures/./transparent.png" ] endLine []
+      startLine [ "../../../../../../worlds/textures/crossing.png" "../../../../../../worlds/textures/crossing.png" "../../../../../../worlds/textures/stop_crossing.png" "../../../../../../worlds/textures/stop_crossing.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" "" "" ]
       appearance PBRAppearance { baseColor 0.12 0.14 0.16 roughness 1 metalness 0 } pavementAppearance PBRAppearance { baseColor 0.65 0.67 0.62 roughness 1 metalness 0 }
       roadBorderHeight 0.035 roadBoundingObject FALSE
       rightBorderBoundingObject TRUE leftBorderBoundingObject TRUE }
@@ -174,7 +176,7 @@ StraightRoadSegment { translation -12.4 0 0.008
   RoadLine { type "double" color .85 .75 .3 width .025 }
   RoadLine { type "dashed" color 1 1 1 width .025 }
 ]
-      startLine [] endLine [ "../../../../../../worlds/textures/stop_crossing.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/crossing.png" "../../../../../../worlds/textures/./transparent.png" ]
+      startLine [ "" "" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" ] endLine [ "../../../../../../worlds/textures/stop_crossing.png" "../../../../../../worlds/textures/stop_crossing.png" "../../../../../../worlds/textures/crossing.png" "../../../../../../worlds/textures/crossing.png" ]
       appearance PBRAppearance { baseColor 0.12 0.14 0.16 roughness 1 metalness 0 } pavementAppearance PBRAppearance { baseColor 0.65 0.67 0.62 roughness 1 metalness 0 }
       roadBorderHeight 0.035 roadBoundingObject FALSE
       rightBorderBoundingObject TRUE leftBorderBoundingObject TRUE }
@@ -186,7 +188,7 @@ StraightRoadSegment { translation -19.4 -6.6 0.008
   RoadLine { type "double" color .85 .75 .3 width .025 }
   RoadLine { type "dashed" color 1 1 1 width .025 }
 ]
-      startLine [ "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/./transparent.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/./transparent.png" "../../../../../../worlds/textures/./transparent.png" ]
+      startLine [ "" "" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" "" "" ]
       appearance PBRAppearance { baseColor 0.12 0.14 0.16 roughness 1 metalness 0 } pavementAppearance PBRAppearance { baseColor 0.65 0.67 0.62 roughness 1 metalness 0 }
       roadBorderHeight 0.035 roadBoundingObject FALSE
       rightBorderBoundingObject TRUE leftBorderBoundingObject TRUE }
@@ -198,7 +200,7 @@ StraightRoadSegment { translation -12.4 -6.6 0.008
   RoadLine { type "double" color .85 .75 .3 width .025 }
   RoadLine { type "dashed" color 1 1 1 width .025 }
 ]
-      startLine [ "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/./transparent.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/./transparent.png" "../../../../../../worlds/textures/./transparent.png" ]
+      startLine [ "" "" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" "" "" ]
       appearance PBRAppearance { baseColor 0.12 0.14 0.16 roughness 1 metalness 0 } pavementAppearance PBRAppearance { baseColor 0.65 0.67 0.62 roughness 1 metalness 0 }
       roadBorderHeight 0.035 roadBoundingObject FALSE
       rightBorderBoundingObject TRUE leftBorderBoundingObject TRUE }
@@ -210,7 +212,7 @@ StraightRoadSegment { translation -14 5.4 0.008
   RoadLine { type "double" color .85 .75 .3 width .025 }
   RoadLine { type "dashed" color 1 1 1 width .025 }
 ]
-      startLine [ "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/./transparent.png" ] endLine []
+      startLine [ "" "" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" "" "" ]
       appearance PBRAppearance { baseColor 0.12 0.14 0.16 roughness 1 metalness 0 } pavementAppearance PBRAppearance { baseColor 0.65 0.67 0.62 roughness 1 metalness 0 }
       roadBorderHeight 0.035 roadBoundingObject FALSE
       rightBorderBoundingObject TRUE leftBorderBoundingObject TRUE }
@@ -222,7 +224,7 @@ StraightRoadSegment { translation -14 -1.6 0.008
   RoadLine { type "double" color .85 .75 .3 width .025 }
   RoadLine { type "dashed" color 1 1 1 width .025 }
 ]
-      startLine [] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/./transparent.png" "../../../../../../worlds/textures/./transparent.png" ]
+      startLine [ "" "" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" "" "" ]
       appearance PBRAppearance { baseColor 0.12 0.14 0.16 roughness 1 metalness 0 } pavementAppearance PBRAppearance { baseColor 0.65 0.67 0.62 roughness 1 metalness 0 }
       roadBorderHeight 0.035 roadBoundingObject FALSE
       rightBorderBoundingObject TRUE leftBorderBoundingObject TRUE }
@@ -234,7 +236,7 @@ StraightRoadSegment { translation -8 13.4 0.008
   RoadLine { type "double" color .85 .75 .3 width .025 }
   RoadLine { type "dashed" color 1 1 1 width .025 }
 ]
-      startLine [ "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/./transparent.png" ] endLine []
+      startLine [ "" "" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" "" "" ]
       appearance PBRAppearance { baseColor 0.12 0.14 0.16 roughness 1 metalness 0 } pavementAppearance PBRAppearance { baseColor 0.65 0.67 0.62 roughness 1 metalness 0 }
       roadBorderHeight 0.035 roadBoundingObject FALSE
       rightBorderBoundingObject TRUE leftBorderBoundingObject TRUE }
@@ -246,7 +248,7 @@ StraightRoadSegment { translation -8 5.4 0.008
   RoadLine { type "double" color .85 .75 .3 width .025 }
   RoadLine { type "dashed" color 1 1 1 width .025 }
 ]
-      startLine [] endLine [ "../../../../../../worlds/textures/stop_crossing.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/crossing.png" "../../../../../../worlds/textures/./transparent.png" ]
+      startLine [ "" "" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" ] endLine [ "../../../../../../worlds/textures/stop_crossing.png" "../../../../../../worlds/textures/stop_crossing.png" "../../../../../../worlds/textures/crossing.png" "../../../../../../worlds/textures/crossing.png" ]
       appearance PBRAppearance { baseColor 0.12 0.14 0.16 roughness 1 metalness 0 } pavementAppearance PBRAppearance { baseColor 0.65 0.67 0.62 roughness 1 metalness 0 }
       roadBorderHeight 0.035 roadBoundingObject FALSE
       rightBorderBoundingObject TRUE leftBorderBoundingObject TRUE }
@@ -258,7 +260,7 @@ StraightRoadSegment { translation -8 -1.6 0.008
   RoadLine { type "double" color .85 .75 .3 width .025 }
   RoadLine { type "dashed" color 1 1 1 width .025 }
 ]
-      startLine [ "../../../../../../worlds/textures/crossing.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/stop_crossing.png" "../../../../../../worlds/textures/./transparent.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/./transparent.png" "../../../../../../worlds/textures/./transparent.png" ]
+      startLine [ "../../../../../../worlds/textures/crossing.png" "../../../../../../worlds/textures/crossing.png" "../../../../../../worlds/textures/stop_crossing.png" "../../../../../../worlds/textures/stop_crossing.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" "" "" ]
       appearance PBRAppearance { baseColor 0.12 0.14 0.16 roughness 1 metalness 0 } pavementAppearance PBRAppearance { baseColor 0.65 0.67 0.62 roughness 1 metalness 0 }
       roadBorderHeight 0.035 roadBoundingObject FALSE
       rightBorderBoundingObject TRUE leftBorderBoundingObject TRUE }
@@ -270,7 +272,7 @@ StraightRoadSegment { translation -6.4 0 0.008
   RoadLine { type "double" color .85 .75 .3 width .025 }
   RoadLine { type "dashed" color 1 1 1 width .025 }
 ]
-      startLine [ "../../../../../../worlds/textures/crossing.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/stop_crossing.png" "../../../../../../worlds/textures/./transparent.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/./transparent.png" "../../../../../../worlds/textures/./transparent.png" ]
+      startLine [ "../../../../../../worlds/textures/crossing.png" "../../../../../../worlds/textures/crossing.png" "../../../../../../worlds/textures/stop_crossing.png" "../../../../../../worlds/textures/stop_crossing.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" "" "" ]
       appearance PBRAppearance { baseColor 0.12 0.14 0.16 roughness 1 metalness 0 } pavementAppearance PBRAppearance { baseColor 0.65 0.67 0.62 roughness 1 metalness 0 }
       roadBorderHeight 0.035 roadBoundingObject FALSE
       rightBorderBoundingObject TRUE leftBorderBoundingObject TRUE }
@@ -282,7 +284,7 @@ StraightRoadSegment { translation 0.6 0 0.008
   RoadLine { type "double" color .85 .75 .3 width .025 }
   RoadLine { type "dashed" color 1 1 1 width .025 }
 ]
-      startLine [ "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/./transparent.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/./transparent.png" "../../../../../../worlds/textures/./transparent.png" ]
+      startLine [ "" "" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" "" "" ]
       appearance PBRAppearance { baseColor 0.12 0.14 0.16 roughness 1 metalness 0 } pavementAppearance PBRAppearance { baseColor 0.65 0.67 0.62 roughness 1 metalness 0 }
       roadBorderHeight 0.035 roadBoundingObject FALSE
       rightBorderBoundingObject TRUE leftBorderBoundingObject TRUE }
@@ -294,7 +296,7 @@ StraightRoadSegment { translation 4.6 0 0.008
   RoadLine { type "double" color .85 .75 .3 width .025 }
   RoadLine { type "dashed" color 1 1 1 width .025 }
 ]
-      startLine [ "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/./transparent.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/./transparent.png" "../../../../../../worlds/textures/./transparent.png" ]
+      startLine [ "" "" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" ] endLine []
       appearance PBRAppearance { baseColor 0.12 0.14 0.16 roughness 1 metalness 0 } pavementAppearance PBRAppearance { baseColor 0.65 0.67 0.62 roughness 1 metalness 0 }
       roadBorderHeight 0.035 roadBoundingObject FALSE
       rightBorderBoundingObject TRUE leftBorderBoundingObject TRUE }
@@ -306,7 +308,7 @@ StraightRoadSegment { translation 3 1.6 0.008
   RoadLine { type "double" color .85 .75 .3 width .025 }
   RoadLine { type "dashed" color 1 1 1 width .025 }
 ]
-      startLine [ "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/./transparent.png" ] endLine [ "../../../../../../worlds/textures/stop_crossing.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/crossing.png" "../../../../../../worlds/textures/./transparent.png" ]
+      startLine [ "" "" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" ] endLine [ "../../../../../../worlds/textures/stop_crossing.png" "../../../../../../worlds/textures/stop_crossing.png" "../../../../../../worlds/textures/crossing.png" "../../../../../../worlds/textures/crossing.png" ]
       appearance PBRAppearance { baseColor 0.12 0.14 0.16 roughness 1 metalness 0 } pavementAppearance PBRAppearance { baseColor 0.65 0.67 0.62 roughness 1 metalness 0 }
       roadBorderHeight 0.035 roadBoundingObject FALSE
       rightBorderBoundingObject TRUE leftBorderBoundingObject TRUE }
@@ -318,7 +320,7 @@ StraightRoadSegment { translation 12 5.2 0.008
   RoadLine { type "double" color .85 .75 .3 width .025 }
   RoadLine { type "dashed" color 1 1 1 width .025 }
 ]
-      startLine [ "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/./transparent.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/./transparent.png" "../../../../../../worlds/textures/./transparent.png" ]
+      startLine [] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" "" "" ]
       appearance PBRAppearance { baseColor 0.12 0.14 0.16 roughness 1 metalness 0 } pavementAppearance PBRAppearance { baseColor 0.65 0.67 0.62 roughness 1 metalness 0 }
       roadBorderHeight 0.035 roadBoundingObject FALSE
       rightBorderBoundingObject TRUE leftBorderBoundingObject TRUE }
@@ -330,7 +332,7 @@ StraightRoadSegment { translation 17.2 0 0.008
   RoadLine { type "double" color .85 .75 .3 width .025 }
   RoadLine { type "dashed" color 1 1 1 width .025 }
 ]
-      startLine [ "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/./transparent.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/./transparent.png" "../../../../../../worlds/textures/./transparent.png" ]
+      startLine [] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" "" "" ]
       appearance PBRAppearance { baseColor 0.12 0.14 0.16 roughness 1 metalness 0 } pavementAppearance PBRAppearance { baseColor 0.65 0.67 0.62 roughness 1 metalness 0 }
       roadBorderHeight 0.035 roadBoundingObject FALSE
       rightBorderBoundingObject TRUE leftBorderBoundingObject TRUE }
@@ -342,7 +344,7 @@ StraightRoadSegment { translation 12 -5.2 0.008
   RoadLine { type "double" color .85 .75 .3 width .025 }
   RoadLine { type "dashed" color 1 1 1 width .025 }
 ]
-      startLine [ "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/./transparent.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/./transparent.png" "../../../../../../worlds/textures/./transparent.png" ]
+      startLine [] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" "" "" ]
       appearance PBRAppearance { baseColor 0.12 0.14 0.16 roughness 1 metalness 0 } pavementAppearance PBRAppearance { baseColor 0.65 0.67 0.62 roughness 1 metalness 0 }
       roadBorderHeight 0.035 roadBoundingObject FALSE
       rightBorderBoundingObject TRUE leftBorderBoundingObject TRUE }
@@ -354,7 +356,7 @@ Road { translation 0 0 0.008 wayPoints [ -8 -8.2 0 -8 -8.6 0 -7.505964 -10.08210
   RoadLine { type "double" color .85 .75 .3 width .025 }
   RoadLine { type "dashed" color 1 1 1 width .025 }
 ]
-      startLine [ "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/./transparent.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/./transparent.png" "../../../../../../worlds/textures/./transparent.png" ]
+      startLine [ "" "" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" "" "" ]
       appearance PBRAppearance { baseColor 0.12 0.14 0.16 roughness 1 metalness 0 } pavementAppearance PBRAppearance { baseColor 0.65 0.67 0.62 roughness 1 metalness 0 }
       roadBorderHeight 0.035 roadBoundingObject FALSE
       rightBorderBoundingObject TRUE leftBorderBoundingObject TRUE }
@@ -366,7 +368,7 @@ Road { translation 0 0 0.008 wayPoints [ -6.4 7 0 -4 7 0 -3.803791 6.993577 0 -3
   RoadLine { type "double" color .85 .75 .3 width .025 }
   RoadLine { type "dashed" color 1 1 1 width .025 }
 ]
-      startLine [] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/transparent.png" "../../../../../../worlds/textures/./transparent.png" "../../../../../../worlds/textures/./transparent.png" ]
+      startLine [ "" "" "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" ] endLine [ "../../../../../../worlds/textures/stop_line.png" "../../../../../../worlds/textures/stop_line.png" "" "" ]
       appearance PBRAppearance { baseColor 0.12 0.14 0.16 roughness 1 metalness 0 } pavementAppearance PBRAppearance { baseColor 0.65 0.67 0.62 roughness 1 metalness 0 }
       roadBorderHeight 0.035 roadBoundingObject FALSE
       rightBorderBoundingObject TRUE leftBorderBoundingObject TRUE }
@@ -454,6 +456,10 @@ Roundabout { translation 12 0 0.008 rotation 0 0 1 -0.7853981633974483
 ]
       startRoadsStartLine [] startRoadsEndLine [] borderWidth .10 borderHeight .04
       roadBoundingObject FALSE borderBoundingObject TRUE centerBoundingObject TRUE appearance PBRAppearance { baseColor 0.12 0.14 0.16 roughness 1 metalness 0 } }
+
+CrashBarrier { name "OuterBarrier-1" translation 0 0 -.38
+      poleGap .6 barrierOnRightSide FALSE enableBoundingObject TRUE subdivision -1
+      path [ -22.45 12.023728 0 -22.441247 12.291095 0 -22.4127 12.580943 0 -22.365256 12.868303 0 -22.29912 13.151946 0 -22.214575 13.430655 0 -22.111982 13.703239 0 -21.99178 13.968528 0 -21.854486 14.225388 0 -21.700686 14.472719 0 -21.531039 14.709461 0 -21.346271 14.934601 0 -21.147174 15.147174 0 -20.934601 15.346271 0 -20.709461 15.531039 0 -20.472719 15.700686 0 -20.225388 15.854486 0 -19.968528 15.99178 0 -19.703239 16.111982 0 -19.430655 16.214575 0 -19.151946 16.29912 0 -18.868303 16.365256 0 -18.580943 16.4127 0 -18.291095 16.441247 0 -18.023728 16.45 0 18.023728 16.45 0 18.291095 16.441247 0 18.580943 16.4127 0 18.868303 16.365256 0 19.151946 16.29912 0 19.430655 16.214575 0 19.703239 16.111982 0 19.968528 15.99178 0 20.225388 15.854486 0 20.472719 15.700686 0 20.709461 15.531039 0 20.934601 15.346271 0 21.147174 15.147174 0 21.346271 14.934601 0 21.531039 14.709461 0 21.700686 14.472719 0 21.854486 14.225388 0 21.99178 13.968528 0 22.111982 13.703239 0 22.214575 13.430655 0 22.29912 13.151946 0 22.365256 12.868303 0 22.4127 12.580943 0 22.441247 12.291095 0 22.45 12.023728 0 22.45 -12.023728 0 22.441247 -12.291095 0 22.4127 -12.580943 0 22.365256 -12.868303 0 22.29912 -13.151946 0 22.214575 -13.430655 0 22.111982 -13.703239 0 21.99178 -13.968528 0 21.854486 -14.225388 0 21.700686 -14.472719 0 21.531039 -14.709461 0 21.346271 -14.934601 0 21.147174 -15.147174 0 20.934601 -15.346271 0 20.709461 -15.531039 0 20.472719 -15.700686 0 20.225388 -15.854486 0 19.968528 -15.99178 0 19.703239 -16.111982 0 19.430655 -16.214575 0 19.151946 -16.29912 0 18.868303 -16.365256 0 18.580943 -16.4127 0 18.291095 -16.441247 0 18.004958 -16.450614 0 17.703392 -16.442805 0 17.414254 -16.420311 0 17.1334 -16.384027 0 16.861379 -16.335142 0 16.598619 -16.274989 0 16.345395 -16.204996 0 16.10181 -16.126639 0 15.867802 -16.041396 0 15.643158 -15.950709 0 15.427542 -15.855954 0 15.220526 -15.758424 0 15.021622 -15.659322 0 14.830311 -15.559758 0 14.646068 -15.46075 0 14.468379 -15.363229 0 14.130732 -15.175973 0 13.969897 -15.087703 0 13.813856 -15.00385 0 13.662247 -14.924947 0 13.514715 -14.851441 0 13.370901 -14.783688 0 13.24862 -14.72995 0 10.487723 -14.582413 0 10.316328 -14.610929 0 9.990399 -14.674425 0 9.665912 -14.745602 0 9.342076 -14.823206 0 9.018124 -14.905917 0 8.693287 -14.992342 0 8.366821 -15.080989 0 8.037764 -15.170317 0 7.705384 -15.258595 0 7.368721 -15.344009 0 7.026831 -15.424572 0 6.678767 -15.498112 0 6.323631 -15.562242 0 5.960648 -15.614344 0 5.589269 -15.651568 0 5.209286 -15.670871 0 4.820949 -15.669101 0 4.425052 -15.64314 0 4.022947 -15.590086 0 3.616456 -15.507458 0 3.207679 -15.393343 0 2.798716 -15.246464 0 2.391391 -15.066119 0 1.987026 -14.852015 0 1.586326 -14.604058 0 1.18938 -14.322137 0 0.795748 -14.005964 0 0.432021 -13.679591 0 0.194738 -13.467002 0 -0.011049 -13.296471 0 -0.203964 -13.149994 0 -0.384416 -13.025799 0 -0.553066 -12.921891 0 -0.710927 -12.836081 0 -0.85947 -12.766066 0 -1.000669 -12.709562 0 -1.136976 -12.664466 0 -1.271217 -12.629007 0 -1.40639 -12.601861 0 -1.545446 -12.582174 0 -1.691072 -12.569504 0 -1.845543 -12.563695 0 -2.010662 -12.564723 0 -2.187768 -12.572559 0 -2.377803 -12.587061 0 -2.581408 -12.607916 0 -2.799006 -12.634618 0 -3.030889 -12.66647 0 -3.27727 -12.702607 0 -3.538146 -12.741999 0 -3.814236 -12.783616 0 -4.10517 -12.826185 0 -4.411322 -12.86849 0 -4.732899 -12.909254 0 -5.070127 -12.947189 0 -5.086407 -12.948749 0 -7.626844 -13.849305 0 -7.739356 -13.92642 0 -8.122906 -14.178283 0 -8.499369 -14.41408 0 -8.869726 -14.634284 0 -9.234913 -14.839329 0 -9.595804 -15.029614 0 -9.953197 -15.205501 0 -10.307806 -15.367332 0 -10.660254 -15.515439 0 -11.011069 -15.650163 0 -11.360698 -15.77187 0 -11.709518 -15.880969 0 -12.057858 -15.97793 0 -12.406032 -16.063294 0 -12.754366 -16.13767 0 -13.103225 -16.201737 0 -13.453044 -16.256232 0 -13.80434 -16.301934 0 -14.157726 -16.33965 0 -14.513909 -16.370197 0 -14.873692 -16.394388 0 -15.237959 -16.413022 0 -15.607668 -16.426878 0 -15.983834 -16.436708 0 -16.36752 -16.443236 0 -16.75982 -16.447162 0 -17.161853 -16.449164 0 -17.574751 -16.449896 0 -18.02355 -16.450006 0 -18.291095 -16.441247 0 -18.580943 -16.4127 0 -18.868303 -16.365256 0 -19.151946 -16.29912 0 -19.430655 -16.214575 0 -19.703239 -16.111982 0 -19.968528 -15.99178 0 -20.225388 -15.854486 0 -20.472719 -15.700686 0 -20.709461 -15.531039 0 -20.934601 -15.346271 0 -21.147174 -15.147174 0 -21.346271 -14.934601 0 -21.531039 -14.709461 0 -21.700686 -14.472719 0 -21.854486 -14.225388 0 -21.99178 -13.968528 0 -22.111982 -13.703239 0 -22.214575 -13.430655 0 -22.29912 -13.151946 0 -22.365256 -12.868303 0 -22.4127 -12.580943 0 -22.441247 -12.291095 0 -22.45 -12.023728 0 -22.45 12.023728 0 ] }
 
 Solid { translation -18.92 8.39 0 rotation 0 0 1 0.0 name "StopSign-1" description "SIGN_WEST_UPPER"
        children [ Pose { translation 0 0 .28 children [ Shape { appearance PBRAppearance { baseColor .55 .58 .60 metalness .5 roughness .5 }
