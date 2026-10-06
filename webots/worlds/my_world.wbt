@@ -15,7 +15,7 @@ WorldInfo {
 DEF OVERVIEW Viewpoint {
   fieldOfView 0.85
   orientation -0.5773502691896258 0.5773502691896258 0.5773502691896258 2.0944
-  position -0.0001485189927682312 -0.00014851941274540142 59.57308538971637
+  position -3 0 76
   description "Town overview - north up"
 }
 Background {
@@ -30,7 +30,7 @@ DirectionalLight {
   castShadows TRUE
 }
 DEF GROUND-North Solid {
-  translation 0 9.725 -0.06
+  translation -3 9.725 -0.06
   children [
     Shape {
       appearance DEF GROUND_APP PBRAppearance {
@@ -39,64 +39,66 @@ DEF GROUND-North Solid {
         metalness 0
       }
       geometry Box {
-        size 48 16.55 0.12
+        size 54 16.55 0.12
       }
     }
   ]
   name "GROUND-North"
   boundingObject Box {
-    size 48 16.55 0.12
+    size 54 16.55 0.12
   }
 }
 DEF GROUND-South Solid {
-  translation 0 -9.725 -0.06
+  translation -3 -9.725 -0.06
   children [
     Shape {
       appearance USE GROUND_APP
       geometry Box {
-        size 48 16.55 0.12
+        size 54 16.55 0.12
       }
     }
   ]
   name "GROUND-South"
   boundingObject Box {
-    size 48 16.55 0.12
+    size 54 16.55 0.12
   }
 }
 DEF GROUND-West Solid {
-  translation -21.7 0 -0.06
+  translation -26.2 0 -0.06
   children [
     Shape {
       appearance USE GROUND_APP
       geometry Box {
-        size 4.6 2.9 0.12
+        size 7.6 2.9 0.12
       }
     }
   ]
   name "GROUND-West"
   boundingObject Box {
-    size 4.6 2.9 0.12
+    size 7.6 2.9 0.12
   }
 }
 DEF GROUND-East Solid {
-  translation 7.2 0 -0.06
+  translation 5.7 0 -0.06
   children [
     Shape {
       appearance USE GROUND_APP
       geometry Box {
-        size 33.6 2.9 0.12
+        size 36.6 2.9 0.12
       }
     }
   ]
   name "GROUND-East"
   boundingObject Box {
-    size 33.6 2.9 0.12
+    size 36.6 2.9 0.12
   }
 }
 Road {
   translation 0 0 0.008
   name "Road-1"
   id "OUTER_NW"
+  startJunction "J_WEST_UPPER"
+  endJunction "J_NORTH_WEST"
   width 2.4
   numberOfLanes 4
   numberOfForwardLanes 2
@@ -118,7 +120,7 @@ Road {
     0.14
   ]
   wayPoints [
-    -21 10.2 0, -21 12 0, -20.993577 12.196209 0, -20.974335 12.391579 0, -20.942356 12.585271 0, -20.897777 12.776457 0, -20.84079 12.964318 0, -20.771639 13.14805 0, -20.690618 13.326866 0, -20.598076 13.5 0, -20.494409 13.666711 0, -20.38006 13.826284 0, -20.255519 13.978037 0, -20.12132 14.12132 0, -19.978037 14.255519 0, -19.826284 14.38006 0, -19.666711 14.494409 0, -19.5 14.598076 0, -19.326866 14.690618 0, -19.14805 14.771639 0, -18.964318 14.84079 0, -18.776457 14.897777 0, -18.585271 14.942356 0, -18.391579 14.974335 0, -18.196209 14.993577 0, -18 15 0, -9.6 15 0
+    -27 10.2 0, -27 12 0, -26.993577 12.196209 0, -26.974335 12.391579 0, -26.942356 12.585271 0, -26.897777 12.776457 0, -26.84079 12.964318 0, -26.771639 13.14805 0, -26.690618 13.326866 0, -26.598076 13.5 0, -26.494409 13.666711 0, -26.38006 13.826284 0, -26.255519 13.978037 0, -26.12132 14.12132 0, -25.978037 14.255519 0, -25.826284 14.38006 0, -25.666711 14.494409 0, -25.5 14.598076 0, -25.326866 14.690618 0, -25.14805 14.771639 0, -24.964318 14.84079 0, -24.776457 14.897777 0, -24.585271 14.942356 0, -24.391579 14.974335 0, -24.196209 14.993577 0, -24 15 0, -9.6 15 0
   ]
   startLine [
     ""
@@ -150,6 +152,8 @@ StraightRoadSegment {
   translation -6.4 15 0.008
   name "StraightRoad-1"
   id "NORTH_TRAINING"
+  startJunction "J_NORTH_WEST"
+  endJunction "J_NORTH_MIDDLE"
   width 2.4
   numberOfLanes 4
   numberOfForwardLanes 2
@@ -199,6 +203,8 @@ StraightRoadSegment {
   translation 4.6 15 0.008
   name "StraightRoad-2"
   id "NORTH_LINK"
+  startJunction "J_NORTH_MIDDLE"
+  endJunction "J_NORTH_EAST"
   width 2.4
   numberOfLanes 4
   numberOfForwardLanes 2
@@ -248,6 +254,8 @@ Road {
   translation 0 0 0.008
   name "Road-2"
   id "OUTER_NE"
+  startJunction "J_NORTH_EAST"
+  endJunction "J_EAST"
   width 2.4
   numberOfLanes 4
   numberOfForwardLanes 2
@@ -301,6 +309,8 @@ Road {
   translation 0 0 0.008
   name "Road-3"
   id "OUTER_SE"
+  startJunction "J_EAST"
+  endJunction "J_LOWER_EAST"
   width 2.4
   numberOfLanes 4
   numberOfForwardLanes 2
@@ -354,6 +364,8 @@ Road {
   translation 0 0 0.008
   name "Road-4"
   id "S_CURVES"
+  startJunction "J_Y_SOUTH"
+  endJunction "J_LOWER_EAST"
   width 2.4
   numberOfLanes 4
   numberOfForwardLanes 2
@@ -407,6 +419,8 @@ Road {
   translation 0 0 0.008
   name "Road-5"
   id "OUTER_SW"
+  startJunction "J_WEST_LOWER"
+  endJunction "J_Y_SOUTH"
   width 2.4
   numberOfLanes 4
   numberOfForwardLanes 2
@@ -428,7 +442,7 @@ Road {
     0.14
   ]
   wayPoints [
-    -21 -9.2 0, -21 -12 0, -20.993577 -12.196209 0, -20.974335 -12.391579 0, -20.942356 -12.585271 0, -20.897777 -12.776457 0, -20.84079 -12.964318 0, -20.771639 -13.14805 0, -20.690618 -13.326866 0, -20.598076 -13.5 0, -20.494409 -13.666711 0, -20.38006 -13.826284 0, -20.255519 -13.978037 0, -20.12132 -14.12132 0, -19.978037 -14.255519 0, -19.826284 -14.38006 0, -19.666711 -14.494409 0, -19.5 -14.598076 0, -19.326866 -14.690618 0, -19.14805 -14.771639 0, -18.964318 -14.84079 0, -18.776457 -14.897777 0, -18.585271 -14.942356 0, -18.391579 -14.974335 0, -18.196209 -14.993577 0, -18 -15 0, -17.576215 -14.999896 0, -17.166748 -14.99917 0, -16.770685 -14.997198 0, -16.387109 -14.993359 0, -16.015106 -14.98703 0, -15.65376 -14.977588 0, -15.302155 -14.96441 0, -14.959375 -14.946875 0, -14.624506 -14.924359 0, -14.296631 -14.89624 0, -13.974835 -14.861896 0, -13.658203 -14.820703 0, -13.345819 -14.77204 0, -13.036768 -14.715283 0, -12.730133 -14.649811 0, -12.425 -14.575 0, -12.120453 -14.490228 0, -11.815576 -14.394873 0, -11.509454 -14.288312 0, -11.201172 -14.169922 0, -10.889813 -14.039081 0, -10.574463 -13.895166 0, -10.254205 -13.737555 0, -9.928125 -13.565625 0, -9.595306 -13.378754 0, -9.254834 -13.176318 0, -8.905792 -12.957697 0, -8.547266 -12.722266 0, -8.290122 -12.546019 0
+    -27 -9.2 0, -27 -12 0, -26.993577 -12.196209 0, -26.974335 -12.391579 0, -26.942356 -12.585271 0, -26.897777 -12.776457 0, -26.84079 -12.964318 0, -26.771639 -13.14805 0, -26.690618 -13.326866 0, -26.598076 -13.5 0, -26.494409 -13.666711 0, -26.38006 -13.826284 0, -26.255519 -13.978037 0, -26.12132 -14.12132 0, -25.978037 -14.255519 0, -25.826284 -14.38006 0, -25.666711 -14.494409 0, -25.5 -14.598076 0, -25.326866 -14.690618 0, -25.14805 -14.771639 0, -24.964318 -14.84079 0, -24.776457 -14.897777 0, -24.585271 -14.942356 0, -24.391579 -14.974335 0, -24.196209 -14.993577 0, -24 -15 0, -23.559003 -14.999896 0, -23.099365 -14.99917 0, -22.622369 -14.997198 0, -22.129297 -14.993359 0, -21.621429 -14.98703 0, -21.100049 -14.977588 0, -20.566437 -14.96441 0, -20.021875 -14.946875 0, -19.467645 -14.924359 0, -18.905029 -14.89624 0, -18.335309 -14.861896 0, -17.759766 -14.820703 0, -17.179681 -14.77204 0, -16.596338 -14.715283 0, -16.011017 -14.649811 0, -15.425 -14.575 0, -14.839569 -14.490228 0, -14.256006 -14.394873 0, -13.675592 -14.288312 0, -13.099609 -14.169922 0, -12.52934 -14.039081 0, -11.966064 -13.895166 0, -11.411066 -13.737555 0, -10.865625 -13.565625 0, -10.331024 -13.378754 0, -9.808545 -13.176318 0, -9.299469 -12.957697 0, -8.805078 -12.722266 0, -8.337734 -12.475259 0
   ]
   startLine [
     ""
@@ -457,10 +471,12 @@ Road {
   leftBorderBoundingObject TRUE
 }
 StraightRoadSegment {
-  translation -21 7 0.008
+  translation -27 7 0.008
   rotation 0 0 1 -1.5707963267948966
   name "StraightRoad-3"
   id "WEST_1"
+  startJunction "J_WEST_UPPER"
+  endJunction "J_WEST_MIDDLE"
   width 2.4
   numberOfLanes 4
   numberOfForwardLanes 2
@@ -507,10 +523,12 @@ StraightRoadSegment {
   leftBorderBoundingObject TRUE
 }
 StraightRoadSegment {
-  translation -21 -1.6 0.008
+  translation -27 -1.6 0.008
   rotation 0 0 1 -1.5707963267948966
   name "StraightRoad-4"
   id "WEST_2"
+  startJunction "J_WEST_MIDDLE"
+  endJunction "J_WEST_LOWER"
   width 2.4
   numberOfLanes 4
   numberOfForwardLanes 2
@@ -557,9 +575,11 @@ StraightRoadSegment {
   leftBorderBoundingObject TRUE
 }
 StraightRoadSegment {
-  translation -19.4 8.6 0.008
+  translation -25.4 8.6 0.008
   name "StraightRoad-5"
   id "BLOCK_TOP_W"
+  startJunction "J_WEST_UPPER"
+  endJunction "J_BLOCK_NORTH"
   width 2.4
   numberOfLanes 4
   numberOfForwardLanes 2
@@ -579,7 +599,7 @@ StraightRoadSegment {
   roadBorderHeight 0.035
   startingRoadBorderWidth 0.14
   endingRoadBorderWidth 0.14
-  length 3.799999999999999
+  length 6.8
   startLine [
     ""
     ""
@@ -606,9 +626,11 @@ StraightRoadSegment {
   leftBorderBoundingObject TRUE
 }
 StraightRoadSegment {
-  translation -12.4 8.6 0.008
+  translation -15.4 8.6 0.008
   name "StraightRoad-6"
   id "BLOCK_TOP_E"
+  startJunction "J_BLOCK_NORTH"
+  endJunction "J_INNER_NORTH"
   width 2.4
   numberOfLanes 4
   numberOfForwardLanes 2
@@ -628,7 +650,7 @@ StraightRoadSegment {
   roadBorderHeight 0.035
   startingRoadBorderWidth 0.14
   endingRoadBorderWidth 0.14
-  length 2.8000000000000007
+  length 5.8
   startLine [
     ""
     ""
@@ -657,6 +679,8 @@ StraightRoadSegment {
 Road {
   name "Road-BLOCK_MID_TUNNEL"
   id "BLOCK_MID_TUNNEL"
+  startJunction "J_WEST_MIDDLE"
+  endJunction "SIGNAL_CROSS"
   width 2.4
   numberOfLanes 4
   numberOfForwardLanes 2
@@ -678,21 +702,23 @@ Road {
     0.14
   ]
   wayPoints [
-    -19.4 0 0.008
-    -18.6 0 0.006
-    -17.8 0 -0.06
-    -17 0 -0.2
-    -16.2 0 -0.38
+    -25.4 0 0.008
+    -22.4 0 0.008
+    -21.6 0 0.006
+    -20.8 0 -0.06
+    -20 0 -0.2
+    -19.2 0 -0.38
+    -18.5 0 -0.52
+    -18 0 -0.55
+    -17.4 0 -0.55
+    -17 0 -0.55
+    -16.6 0 -0.55
+    -16 0 -0.55
     -15.5 0 -0.52
-    -15 0 -0.55
-    -14.4 0 -0.55
-    -14 0 -0.55
-    -13.6 0 -0.55
-    -13 0 -0.55
-    -12.5 0 -0.52
-    -11.8 0 -0.38
-    -11 0 -0.2
-    -10.2 0 -0.06
+    -14.8 0 -0.38
+    -14 0 -0.2
+    -13.2 0 -0.06
+    -12.6 0 0.008
     -9.6 0 0.008
   ]
   startLine [
@@ -723,10 +749,12 @@ Road {
   leftBorderBoundingObject TRUE
 }
 StraightRoadSegment {
-  translation -14 1.6 0.008
+  translation -17 1.6 0.008
   rotation 0 0 1 -1.5707963267948966
   name "StraightRoad-RECONNECTED_BRIDGE"
   id "RECONNECTED_BRIDGE"
+  startJunction "J_BRIDGE_N"
+  endJunction "J_BRIDGE_S"
   width 2.4
   numberOfLanes 4
   numberOfForwardLanes 2
@@ -764,7 +792,7 @@ StraightRoadSegment {
 Solid {
   children [
     Pose {
-      translation -14 0 -0.02
+      translation -17 0 -0.02
       children [
         Shape {
           appearance DEF CONCRETE PBRAppearance {
@@ -779,7 +807,7 @@ Solid {
       ]
     }
     Pose {
-      translation -14 1.34 -0.275
+      translation -17 1.34 -0.275
       children [
         Shape {
           appearance USE CONCRETE
@@ -790,7 +818,7 @@ Solid {
       ]
     }
     Pose {
-      translation -14 -1.34 -0.275
+      translation -17 -1.34 -0.275
       children [
         Shape {
           appearance USE CONCRETE
@@ -799,7 +827,7 @@ Solid {
       ]
     }
     Pose {
-      translation -15.55 1.42 -0.275
+      translation -18.55 1.42 -0.275
       children [
         Shape {
           appearance USE CONCRETE
@@ -810,7 +838,7 @@ Solid {
       ]
     }
     Pose {
-      translation -15.55 -1.42 -0.275
+      translation -18.55 -1.42 -0.275
       children [
         Shape {
           appearance USE CONCRETE
@@ -821,7 +849,7 @@ Solid {
       ]
     }
     Pose {
-      translation -15.55 0 0.045
+      translation -18.55 0 0.045
       children [
         Shape {
           appearance USE CONCRETE
@@ -832,7 +860,7 @@ Solid {
       ]
     }
     Pose {
-      translation -12.45 1.42 -0.275
+      translation -15.45 1.42 -0.275
       children [
         Shape {
           appearance USE CONCRETE
@@ -843,7 +871,7 @@ Solid {
       ]
     }
     Pose {
-      translation -12.45 -1.42 -0.275
+      translation -15.45 -1.42 -0.275
       children [
         Shape {
           appearance USE CONCRETE
@@ -854,7 +882,7 @@ Solid {
       ]
     }
     Pose {
-      translation -12.45 0 0.045
+      translation -15.45 0 0.045
       children [
         Shape {
           appearance USE CONCRETE
@@ -865,7 +893,7 @@ Solid {
       ]
     }
     Pose {
-      translation -17.2 1.34 -0.15
+      translation -20.2 1.34 -0.15
       children [
         Shape {
           appearance USE CONCRETE
@@ -876,7 +904,7 @@ Solid {
       ]
     }
     Pose {
-      translation -17.2 -1.34 -0.15
+      translation -20.2 -1.34 -0.15
       children [
         Shape {
           appearance USE CONCRETE
@@ -887,7 +915,7 @@ Solid {
       ]
     }
     Pose {
-      translation -11 1.34 -0.15
+      translation -14 1.34 -0.15
       children [
         Shape {
           appearance USE CONCRETE
@@ -898,7 +926,7 @@ Solid {
       ]
     }
     Pose {
-      translation -11 -1.34 -0.15
+      translation -14 -1.34 -0.15
       children [
         Shape {
           appearance USE CONCRETE
@@ -909,7 +937,7 @@ Solid {
       ]
     }
     Pose {
-      translation -15.35 0 0.14
+      translation -18.35 0 0.14
       children [
         Shape {
           appearance USE CONCRETE
@@ -920,7 +948,7 @@ Solid {
       ]
     }
     Pose {
-      translation -12.65 0 0.14
+      translation -15.65 0 0.14
       children [
         Shape {
           appearance USE CONCRETE
@@ -941,7 +969,7 @@ Solid {
   boundingObject Group {
     children [
       Pose {
-        translation -14 1.34 -0.275
+        translation -17 1.34 -0.275
         children [
           Box {
             size 3 0.14 0.55
@@ -949,7 +977,7 @@ Solid {
         ]
       }
       Pose {
-        translation -14 -1.34 -0.275
+        translation -17 -1.34 -0.275
         children [
           Box {
             size 3 0.14 0.55
@@ -957,7 +985,7 @@ Solid {
         ]
       }
       Pose {
-        translation -15.55 1.42 -0.275
+        translation -18.55 1.42 -0.275
         children [
           Box {
             size 0.3 0.3 0.55
@@ -965,7 +993,7 @@ Solid {
         ]
       }
       Pose {
-        translation -15.55 -1.42 -0.275
+        translation -18.55 -1.42 -0.275
         children [
           Box {
             size 0.3 0.3 0.55
@@ -973,7 +1001,7 @@ Solid {
         ]
       }
       Pose {
-        translation -12.45 1.42 -0.275
+        translation -15.45 1.42 -0.275
         children [
           Box {
             size 0.3 0.3 0.55
@@ -981,7 +1009,7 @@ Solid {
         ]
       }
       Pose {
-        translation -12.45 -1.42 -0.275
+        translation -15.45 -1.42 -0.275
         children [
           Box {
             size 0.3 0.3 0.55
@@ -989,7 +1017,7 @@ Solid {
         ]
       }
       Pose {
-        translation -17.2 1.34 -0.15
+        translation -20.2 1.34 -0.15
         children [
           Box {
             size 3 0.14 0.3
@@ -997,7 +1025,7 @@ Solid {
         ]
       }
       Pose {
-        translation -17.2 -1.34 -0.15
+        translation -20.2 -1.34 -0.15
         children [
           Box {
             size 3 0.14 0.3
@@ -1005,7 +1033,7 @@ Solid {
         ]
       }
       Pose {
-        translation -11 1.34 -0.15
+        translation -14 1.34 -0.15
         children [
           Box {
             size 2.6 0.14 0.3
@@ -1013,7 +1041,7 @@ Solid {
         ]
       }
       Pose {
-        translation -11 -1.34 -0.15
+        translation -14 -1.34 -0.15
         children [
           Box {
             size 2.6 0.14 0.3
@@ -1021,7 +1049,7 @@ Solid {
         ]
       }
       Pose {
-        translation -15.35 0 0.14
+        translation -18.35 0 0.14
         children [
           Box {
             size 0.1 3.2 0.28
@@ -1029,7 +1057,7 @@ Solid {
         ]
       }
       Pose {
-        translation -12.65 0 0.14
+        translation -15.65 0 0.14
         children [
           Box {
             size 0.1 3.2 0.28
@@ -1040,9 +1068,11 @@ Solid {
   }
 }
 StraightRoadSegment {
-  translation -19.4 -7.6 0.008
+  translation -25.4 -7.6 0.008
   name "StraightRoad-9"
   id "BLOCK_BOTTOM_W"
+  startJunction "J_WEST_LOWER"
+  endJunction "J_BLOCK_SOUTH"
   width 2.4
   numberOfLanes 4
   numberOfForwardLanes 2
@@ -1062,7 +1092,7 @@ StraightRoadSegment {
   roadBorderHeight 0.035
   startingRoadBorderWidth 0.14
   endingRoadBorderWidth 0.14
-  length 3.799999999999999
+  length 6.8
   startLine [
     ""
     ""
@@ -1089,9 +1119,11 @@ StraightRoadSegment {
   leftBorderBoundingObject TRUE
 }
 StraightRoadSegment {
-  translation -12.4 -7.6 0.008
+  translation -15.4 -7.6 0.008
   name "StraightRoad-10"
   id "BLOCK_BOTTOM_E"
+  startJunction "J_BLOCK_SOUTH"
+  endJunction "J_INNER_SOUTH"
   width 2.4
   numberOfLanes 4
   numberOfForwardLanes 2
@@ -1111,7 +1143,7 @@ StraightRoadSegment {
   roadBorderHeight 0.035
   startingRoadBorderWidth 0.14
   endingRoadBorderWidth 0.14
-  length 2.8000000000000007
+  length 5.8
   startLine [
     ""
     ""
@@ -1138,10 +1170,12 @@ StraightRoadSegment {
   leftBorderBoundingObject TRUE
 }
 StraightRoadSegment {
-  translation -14 7 0.008
+  translation -17 7 0.008
   rotation 0 0 1 -1.5707963267948966
   name "StraightRoad-11"
   id "RECONNECTED_NORTH"
+  startJunction "J_BLOCK_NORTH"
+  endJunction "J_BRIDGE_N"
   width 2.4
   numberOfLanes 4
   numberOfForwardLanes 2
@@ -1168,12 +1202,6 @@ StraightRoadSegment {
     "../../../../../../worlds/textures/stop_line.png"
     "../../../../../../worlds/textures/stop_line.png"
   ]
-  endLine [
-    "../../../../../../worlds/textures/stop_line.png"
-    "../../../../../../worlds/textures/stop_line.png"
-    ""
-    ""
-  ]
   appearance PBRAppearance {
     baseColor 0.12 0.14 0.16
     roughness 1
@@ -1188,10 +1216,12 @@ StraightRoadSegment {
   leftBorderBoundingObject TRUE
 }
 StraightRoadSegment {
-  translation -14 -1.6 0.008
+  translation -17 -1.6 0.008
   rotation 0 0 1 -1.5707963267948966
   name "StraightRoad-12"
   id "RECONNECTED_SOUTH"
+  startJunction "J_BRIDGE_S"
+  endJunction "J_BLOCK_SOUTH"
   width 2.4
   numberOfLanes 4
   numberOfForwardLanes 2
@@ -1212,12 +1242,6 @@ StraightRoadSegment {
   startingRoadBorderWidth 0.14
   endingRoadBorderWidth 0.14
   length 4.4
-  startLine [
-    ""
-    ""
-    "../../../../../../worlds/textures/stop_line.png"
-    "../../../../../../worlds/textures/stop_line.png"
-  ]
   endLine [
     "../../../../../../worlds/textures/stop_line.png"
     "../../../../../../worlds/textures/stop_line.png"
@@ -1242,6 +1266,8 @@ StraightRoadSegment {
   rotation 0 0 1 -1.5707963267948966
   name "StraightRoad-13"
   id "INNER_1"
+  startJunction "J_NORTH_WEST"
+  endJunction "J_INNER_NORTH"
   width 2.4
   numberOfLanes 4
   numberOfForwardLanes 2
@@ -1292,6 +1318,8 @@ StraightRoadSegment {
   rotation 0 0 1 -1.5707963267948966
   name "StraightRoad-14"
   id "INNER_2"
+  startJunction "J_INNER_NORTH"
+  endJunction "SIGNAL_CROSS"
   width 2.4
   numberOfLanes 4
   numberOfForwardLanes 2
@@ -1342,6 +1370,8 @@ StraightRoadSegment {
   rotation 0 0 1 -1.5707963267948966
   name "StraightRoad-15"
   id "INNER_3"
+  startJunction "SIGNAL_CROSS"
+  endJunction "J_INNER_SOUTH"
   width 2.4
   numberOfLanes 4
   numberOfForwardLanes 2
@@ -1391,6 +1421,8 @@ StraightRoadSegment {
   translation -6.4 0 0.008
   name "StraightRoad-16"
   id "CENTRAL_1"
+  startJunction "SIGNAL_CROSS"
+  endJunction "J_MID_BEND"
   width 2.4
   numberOfLanes 4
   numberOfForwardLanes 2
@@ -1440,6 +1472,8 @@ StraightRoadSegment {
   translation 0.6 0 0.008
   name "StraightRoad-17"
   id "CENTRAL_2"
+  startJunction "J_MID_BEND"
+  endJunction "J_MID_AXIS"
   width 2.4
   numberOfLanes 4
   numberOfForwardLanes 2
@@ -1489,6 +1523,8 @@ StraightRoadSegment {
   translation 4.6 0 0.008
   name "StraightRoad-18"
   id "CENTRAL_3"
+  startJunction "J_MID_AXIS"
+  endJunction "ROUNDABOUT"
   width 2.4
   numberOfLanes 4
   numberOfForwardLanes 2
@@ -1533,6 +1569,8 @@ StraightRoadSegment {
   rotation 0 0 1 1.5707963267948966
   name "StraightRoad-19"
   id "CENTRAL_AXIS"
+  startJunction "J_MID_AXIS"
+  endJunction "J_NORTH_MIDDLE"
   width 2.4
   numberOfLanes 4
   numberOfForwardLanes 2
@@ -1583,6 +1621,8 @@ StraightRoadSegment {
   rotation 0 0 1 1.5707963267948966
   name "StraightRoad-20"
   id "ROUNDABOUT_NORTH"
+  startJunction "ROUNDABOUT"
+  endJunction "J_NORTH_EAST"
   width 2.4
   numberOfLanes 4
   numberOfForwardLanes 2
@@ -1626,6 +1666,8 @@ StraightRoadSegment {
   translation 17.2 0 0.008
   name "StraightRoad-21"
   id "ROUNDABOUT_EAST"
+  startJunction "ROUNDABOUT"
+  endJunction "J_EAST"
   width 2.4
   numberOfLanes 4
   numberOfForwardLanes 2
@@ -1670,6 +1712,8 @@ StraightRoadSegment {
   rotation 0 0 1 -1.5707963267948966
   name "StraightRoad-22"
   id "ROUNDABOUT_SOUTH"
+  startJunction "ROUNDABOUT"
+  endJunction "J_LOWER_EAST"
   width 2.4
   numberOfLanes 4
   numberOfForwardLanes 2
@@ -1713,6 +1757,8 @@ Road {
   translation 0 0 0.008
   name "Road-6"
   id "Y_STEM"
+  startJunction "J_INNER_SOUTH"
+  endJunction "J_Y_SOUTH"
   width 2.4
   numberOfLanes 4
   numberOfForwardLanes 2
@@ -1735,7 +1781,6 @@ Road {
   ]
   wayPoints [
     -8 -9.2 0
-    -8 -9.4 0
     -7.505964 -10.082107 0
   ]
   startLine [
@@ -1768,6 +1813,8 @@ Road {
   translation 0 0 0.008
   name "Road-7"
   id "INNER_CURVE"
+  startJunction "J_INNER_NORTH"
+  endJunction "J_MID_BEND"
   width 2.4
   numberOfLanes 4
   numberOfForwardLanes 2
@@ -1822,12 +1869,17 @@ Crossroad {
   name "TJunction-1"
   id "J_WEST_UPPER"
   shape [
-    -7 22.2 0
-    -7 19.8 0
-    -7.4 19.4 0
-    -9.8 19.4 0
-    -10.2 19.8 0
-    -10.2 22.2 0
+    -7 28.2 0
+    -7 25.8 0
+    -7.4 25.4 0
+    -9.8 25.4 0
+    -10.2 25.8 0
+    -10.2 28.2 0
+  ]
+  connectedRoadIDs [
+    "OUTER_NW"
+    "WEST_1"
+    "BLOCK_TOP_W"
   ]
   appearance PBRAppearance {
     baseColor 0.12 0.14 0.16
@@ -1840,12 +1892,17 @@ Crossroad {
   name "TJunction-2"
   id "J_WEST_MIDDLE"
   shape [
-    1.6 22.2 0
-    1.6 19.8 0
-    1.2 19.4 0
-    -1.2 19.4 0
-    -1.6 19.8 0
-    -1.6 22.2 0
+    1.6 28.2 0
+    1.6 25.8 0
+    1.2 25.4 0
+    -1.2 25.4 0
+    -1.6 25.8 0
+    -1.6 28.2 0
+  ]
+  connectedRoadIDs [
+    "WEST_1"
+    "WEST_2"
+    "BLOCK_MID_TUNNEL"
   ]
   appearance PBRAppearance {
     baseColor 0.12 0.14 0.16
@@ -1858,12 +1915,17 @@ Crossroad {
   name "TJunction-3"
   id "J_WEST_LOWER"
   shape [
-    9.2 22.2 0
-    9.2 19.8 0
-    8.8 19.4 0
-    6.4 19.4 0
-    6 19.8 0
-    6 22.2 0
+    9.2 28.2 0
+    9.2 25.8 0
+    8.8 25.4 0
+    6.4 25.4 0
+    6 25.8 0
+    6 28.2 0
+  ]
+  connectedRoadIDs [
+    "OUTER_SW"
+    "WEST_2"
+    "BLOCK_BOTTOM_W"
   ]
   appearance PBRAppearance {
     baseColor 0.12 0.14 0.16
@@ -1883,6 +1945,11 @@ Crossroad {
     -16.2 6.4 0
     -16.2 9.6 0
   ]
+  connectedRoadIDs [
+    "OUTER_NW"
+    "NORTH_TRAINING"
+    "INNER_1"
+  ]
   appearance PBRAppearance {
     baseColor 0.12 0.14 0.16
     roughness 1
@@ -1900,6 +1967,11 @@ Crossroad {
     -13.8 -4.6 0
     -16.2 -4.6 0
     -16.2 -1.4 0
+  ]
+  connectedRoadIDs [
+    "NORTH_TRAINING"
+    "NORTH_LINK"
+    "CENTRAL_AXIS"
   ]
   appearance PBRAppearance {
     baseColor 0.12 0.14 0.16
@@ -1919,6 +1991,11 @@ Crossroad {
     -16.2 -13.6 0
     -16.2 -10.4 0
   ]
+  connectedRoadIDs [
+    "NORTH_LINK"
+    "OUTER_NE"
+    "ROUNDABOUT_NORTH"
+  ]
   appearance PBRAppearance {
     baseColor 0.12 0.14 0.16
     roughness 1
@@ -1937,6 +2014,11 @@ Crossroad {
     -1.6 -19.8 0
     -1.2 -19.4 0
   ]
+  connectedRoadIDs [
+    "OUTER_NE"
+    "OUTER_SE"
+    "ROUNDABOUT_EAST"
+  ]
   appearance PBRAppearance {
     baseColor 0.12 0.14 0.16
     roughness 1
@@ -1948,12 +2030,17 @@ Crossroad {
   name "TJunction-8"
   id "J_LOWER_EAST"
   shape [
-    11.942273 -10.209506 0
-    14.309728 -10.603405 0
-    14.422239 -13.152958 0
-    12.167196 -13.97441 0
+    11.942273 -10.209508 0
+    14.309729 -10.603404 0
+    14.422242 -13.152966 0
+    12.167194 -13.974402 0
     11.4 -13.2 0
     11.4 -10.8 0
+  ]
+  connectedRoadIDs [
+    "OUTER_SE"
+    "S_CURVES"
+    "ROUNDABOUT_SOUTH"
   ]
   appearance PBRAppearance {
     baseColor 0.12 0.14 0.16
@@ -1966,12 +2053,17 @@ Crossroad {
   name "TJunction-9"
   id "J_BLOCK_NORTH"
   shape [
-    -7.4 15.6 0
-    -7 15.2 0
-    -7 12.8 0
-    -7.4 12.4 0
-    -9.8 12.4 0
-    -9.8 15.6 0
+    -7.4 18.6 0
+    -7 18.2 0
+    -7 15.8 0
+    -7.4 15.4 0
+    -9.8 15.4 0
+    -9.8 18.6 0
+  ]
+  connectedRoadIDs [
+    "BLOCK_TOP_W"
+    "BLOCK_TOP_E"
+    "RECONNECTED_NORTH"
   ]
   appearance PBRAppearance {
     baseColor 0.12 0.14 0.16
@@ -1984,12 +2076,17 @@ Crossroad {
   name "TJunction-10"
   id "J_BLOCK_SOUTH"
   shape [
-    8.8 15.6 0
-    8.8 12.4 0
-    6.4 12.4 0
-    6 12.8 0
-    6 15.2 0
-    6.4 15.6 0
+    8.8 18.6 0
+    8.8 15.4 0
+    6.4 15.4 0
+    6 15.8 0
+    6 18.2 0
+    6.4 18.6 0
+  ]
+  connectedRoadIDs [
+    "BLOCK_BOTTOM_W"
+    "BLOCK_BOTTOM_E"
+    "RECONNECTED_SOUTH"
   ]
   appearance PBRAppearance {
     baseColor 0.12 0.14 0.16
@@ -2011,6 +2108,12 @@ Crossroad {
     -10.2 9.2 0
     -9.8 9.6 0
   ]
+  connectedRoadIDs [
+    "BLOCK_TOP_E"
+    "INNER_1"
+    "INNER_2"
+    "INNER_CURVE"
+  ]
   appearance PBRAppearance {
     baseColor 0.12 0.14 0.16
     roughness 1
@@ -2022,6 +2125,12 @@ RoadIntersection {
   rotation 0 0 1 0.7853981633974483
   name "RoadIntersection-1"
   id "SIGNAL_CROSS"
+  connectedRoadIDs [
+    "BLOCK_MID_TUNNEL"
+    "INNER_2"
+    "INNER_3"
+    "CENTRAL_1"
+  ]
   roadsWidth 2.4
   startRoadsLength [
     0.4
@@ -2054,11 +2163,16 @@ Crossroad {
   id "J_INNER_SOUTH"
   shape [
     8.8 9.6 0
-    9.2 9.2 0
-    9.2 6.8 0
+    9.786375 9.046979 0
+    8.613625 6.953021 0
     6 6.8 0
     6 9.2 0
     6.4 9.6 0
+  ]
+  connectedRoadIDs [
+    "BLOCK_BOTTOM_E"
+    "INNER_3"
+    "Y_STEM"
   ]
   boundingObject TRUE
   appearance PBRAppearance {
@@ -2079,6 +2193,11 @@ Crossroad {
     -1.6 2.2 0
     -1.2 2.6 0
   ]
+  connectedRoadIDs [
+    "CENTRAL_1"
+    "CENTRAL_2"
+    "INNER_CURVE"
+  ]
   appearance PBRAppearance {
     baseColor 0.12 0.14 0.16
     roughness 1
@@ -2097,6 +2216,11 @@ Crossroad {
     -1.6 -1.8 0
     -1.2 -1.4 0
   ]
+  connectedRoadIDs [
+    "CENTRAL_2"
+    "CENTRAL_3"
+    "CENTRAL_AXIS"
+  ]
   appearance PBRAppearance {
     baseColor 0.12 0.14 0.16
     roughness 1
@@ -2108,12 +2232,17 @@ Crossroad {
   name "YJunction-1"
   id "J_Y_SOUTH"
   shape [
-    11.556199 8.968544 0
-    13.535839 7.611699 0
-    12.716921 5.288081 0
-    10.327854 5.516901 0
-    9.702633 6.367544 0
-    10.46158 8.644384 0
+    11.414328 8.898471 0
+    13.53619 7.776997 0
+    12.716921 5.288083 0
+    10.327853 5.516899 0
+    9.495732 6.458985 0
+    10.668482 8.552943 0
+  ]
+  connectedRoadIDs [
+    "S_CURVES"
+    "OUTER_SW"
+    "Y_STEM"
   ]
   appearance PBRAppearance {
     baseColor 0.12 0.14 0.16
@@ -2126,6 +2255,12 @@ Roundabout {
   rotation 0 0 1 -0.7853981633974483
   name "Roundabout-1"
   id "ROUNDABOUT"
+  connectedRoadIDs [
+    "CENTRAL_3"
+    "ROUNDABOUT_NORTH"
+    "ROUNDABOUT_EAST"
+    "ROUNDABOUT_SOUTH"
+  ]
   subdivision 32
   borderWidth 0.1
   borderHeight 0.04
@@ -2171,13 +2306,13 @@ CrashBarrier {
   name "OuterBarrier-1"
   poleGap 0.6
   path [
-    -22.45 12.023728 0, -22.441247 12.291095 0, -22.4127 12.580943 0, -22.365256 12.868303 0, -22.29912 13.151946 0, -22.214575 13.430655 0, -22.111982 13.703239 0, -21.99178 13.968528 0, -21.854486 14.225388 0, -21.700686 14.472719 0, -21.531039 14.709461 0, -21.346271 14.934601 0, -21.147174 15.147174 0, -20.934601 15.346271 0, -20.709461 15.531039 0, -20.472719 15.700686 0, -20.225388 15.854486 0, -19.968528 15.99178 0, -19.703239 16.111982 0, -19.430655 16.214575 0, -19.151946 16.29912 0, -18.868303 16.365256 0, -18.580943 16.4127 0, -18.291095 16.441247 0, -18.023728 16.45 0, 18.023728 16.45 0, 18.291095 16.441247 0, 18.580943 16.4127 0, 18.868303 16.365256 0, 19.151946 16.29912 0, 19.430655 16.214575 0, 19.703239 16.111982 0, 19.968528 15.99178 0, 20.225388 15.854486 0, 20.472719 15.700686 0, 20.709461 15.531039 0, 20.934601 15.346271 0, 21.147174 15.147174 0, 21.346271 14.934601 0, 21.531039 14.709461 0, 21.700686 14.472719 0, 21.854486 14.225388 0, 21.99178 13.968528 0, 22.111982 13.703239 0, 22.214575 13.430655 0, 22.29912 13.151946 0, 22.365256 12.868303 0, 22.4127 12.580943 0, 22.441247 12.291095 0, 22.45 12.023728 0, 22.45 -12.023728 0, 22.441247 -12.291095 0, 22.4127 -12.580943 0, 22.365256 -12.868303 0, 22.29912 -13.151946 0, 22.214575 -13.430655 0, 22.111982 -13.703239 0, 21.99178 -13.968528 0, 21.854486 -14.225388 0, 21.700686 -14.472719 0, 21.531039 -14.709461 0, 21.346271 -14.934601 0, 21.147174 -15.147174 0, 20.934601 -15.346271 0, 20.709461 -15.531039 0, 20.472719 -15.700686 0, 20.225388 -15.854486 0, 19.968528 -15.99178 0, 19.703239 -16.111982 0, 19.430655 -16.214575 0, 19.151946 -16.29912 0, 18.868303 -16.365256 0, 18.580943 -16.4127 0, 18.291095 -16.441247 0, 18.004958 -16.450614 0, 17.703392 -16.442805 0, 17.414254 -16.420311 0, 17.1334 -16.384027 0, 16.861379 -16.335142 0, 16.598619 -16.274989 0, 16.345395 -16.204996 0, 16.10181 -16.126639 0, 15.867802 -16.041396 0, 15.643158 -15.950709 0, 15.427542 -15.855954 0, 15.220526 -15.758424 0, 15.021622 -15.659322 0, 14.830311 -15.559758 0, 14.646068 -15.46075 0, 14.468379 -15.363229 0, 14.130732 -15.175973 0, 13.969897 -15.087703 0, 13.813856 -15.00385 0, 13.662247 -14.924947 0, 13.514715 -14.851441 0, 13.370901 -14.783688 0, 13.24862 -14.72995 0, 10.487723 -14.582413 0, 10.316328 -14.610929 0, 9.990399 -14.674425 0, 9.665912 -14.745602 0, 9.342076 -14.823206 0, 9.018124 -14.905917 0, 8.693287 -14.992342 0, 8.366821 -15.080989 0, 8.037764 -15.170317 0, 7.705384 -15.258595 0, 7.368721 -15.344009 0, 7.026831 -15.424572 0, 6.678767 -15.498112 0, 6.323631 -15.562242 0, 5.960648 -15.614344 0, 5.589269 -15.651568 0, 5.209286 -15.670871 0, 4.820949 -15.669101 0, 4.425052 -15.64314 0, 4.022947 -15.590086 0, 3.616456 -15.507458 0, 3.207679 -15.393343 0, 2.798716 -15.246464 0, 2.391391 -15.066119 0, 1.987026 -14.852015 0, 1.586326 -14.604058 0, 1.18938 -14.322137 0, 0.795748 -14.005964 0, 0.432021 -13.679591 0, 0.194738 -13.467002 0, -0.011049 -13.296471 0, -0.203964 -13.149994 0, -0.384416 -13.025799 0, -0.553066 -12.921891 0, -0.710927 -12.836081 0, -0.85947 -12.766066 0, -1.000669 -12.709562 0, -1.136976 -12.664466 0, -1.271217 -12.629007 0, -1.40639 -12.601861 0, -1.545446 -12.582174 0, -1.691072 -12.569504 0, -1.845543 -12.563695 0, -2.010662 -12.564723 0, -2.187768 -12.572559 0, -2.377803 -12.587061 0, -2.581408 -12.607916 0, -2.799006 -12.634618 0, -3.030889 -12.66647 0, -3.27727 -12.702607 0, -3.538146 -12.741999 0, -3.814236 -12.783616 0, -4.10517 -12.826185 0, -4.411322 -12.86849 0, -4.732899 -12.909254 0, -5.070127 -12.947189 0, -5.086407 -12.948749 0, -7.626844 -13.849305 0, -7.739356 -13.92642 0, -8.122906 -14.178283 0, -8.499369 -14.41408 0, -8.869726 -14.634284 0, -9.234913 -14.839329 0, -9.595804 -15.029614 0, -9.953197 -15.205501 0, -10.307806 -15.367332 0, -10.660254 -15.515439 0, -11.011069 -15.650163 0, -11.360698 -15.77187 0, -11.709518 -15.880969 0, -12.057858 -15.97793 0, -12.406032 -16.063294 0, -12.754366 -16.13767 0, -13.103225 -16.201737 0, -13.453044 -16.256232 0, -13.80434 -16.301934 0, -14.157726 -16.33965 0, -14.513909 -16.370197 0, -14.873692 -16.394388 0, -15.237959 -16.413022 0, -15.607668 -16.426878 0, -15.983834 -16.436708 0, -16.36752 -16.443236 0, -16.75982 -16.447162 0, -17.161853 -16.449164 0, -17.574751 -16.449896 0, -18.02355 -16.450006 0, -18.291095 -16.441247 0, -18.580943 -16.4127 0, -18.868303 -16.365256 0, -19.151946 -16.29912 0, -19.430655 -16.214575 0, -19.703239 -16.111982 0, -19.968528 -15.99178 0, -20.225388 -15.854486 0, -20.472719 -15.700686 0, -20.709461 -15.531039 0, -20.934601 -15.346271 0, -21.147174 -15.147174 0, -21.346271 -14.934601 0, -21.531039 -14.709461 0, -21.700686 -14.472719 0, -21.854486 -14.225388 0, -21.99178 -13.968528 0, -22.111982 -13.703239 0, -22.214575 -13.430655 0, -22.29912 -13.151946 0, -22.365256 -12.868303 0, -22.4127 -12.580943 0, -22.441247 -12.291095 0, -22.45 -12.023728 0, -22.45 12.023728 0
+    -28.45 12.023727 0, -28.441248 12.291093 0, -28.4127 12.580944 0, -28.365256 12.868307 0, -28.299119 13.151948 0, -28.214575 13.430652 0, -28.111983 13.703237 0, -27.991779 13.96853 0, -27.854486 14.225387 0, -27.700686 14.472719 0, -27.531037 14.709464 0, -27.34627 14.934601 0, -27.147174 15.147174 0, -26.934601 15.34627 0, -26.709464 15.531037 0, -26.472719 15.700686 0, -26.225387 15.854486 0, -25.96853 15.991779 0, -25.703237 16.111983 0, -25.430652 16.214575 0, -25.151948 16.299119 0, -24.868307 16.365256 0, -24.580944 16.4127 0, -24.291093 16.441248 0, -24.023727 16.45 0, 18.023727 16.45 0, 18.291093 16.441248 0, 18.580944 16.4127 0, 18.868307 16.365256 0, 19.151948 16.299119 0, 19.430652 16.214575 0, 19.703237 16.111983 0, 19.96853 15.991779 0, 20.225387 15.854486 0, 20.472719 15.700686 0, 20.709464 15.531037 0, 20.934601 15.34627 0, 21.147174 15.147174 0, 21.34627 14.934601 0, 21.531037 14.709464 0, 21.700686 14.472719 0, 21.854486 14.225387 0, 21.991779 13.96853 0, 22.111983 13.703237 0, 22.214575 13.430652 0, 22.299119 13.151948 0, 22.365256 12.868307 0, 22.4127 12.580944 0, 22.441248 12.291093 0, 22.45 12.023727 0, 22.45 -12.023727 0, 22.441248 -12.291093 0, 22.4127 -12.580944 0, 22.365256 -12.868307 0, 22.299119 -13.151948 0, 22.214575 -13.430652 0, 22.111983 -13.703237 0, 21.991779 -13.96853 0, 21.854486 -14.225387 0, 21.700686 -14.472719 0, 21.531037 -14.709464 0, 21.34627 -14.934601 0, 21.147174 -15.147174 0, 20.934601 -15.34627 0, 20.709464 -15.531037 0, 20.472719 -15.700686 0, 20.225387 -15.854486 0, 19.96853 -15.991779 0, 19.703237 -16.111983 0, 19.430652 -16.214575 0, 19.151948 -16.299119 0, 18.868307 -16.365256 0, 18.580944 -16.4127 0, 18.291093 -16.441248 0, 18.004958 -16.450614 0, 17.703391 -16.442806 0, 17.414255 -16.420311 0, 17.133398 -16.384027 0, 16.861376 -16.335141 0, 16.598622 -16.274989 0, 16.345396 -16.204997 0, 16.101809 -16.126639 0, 15.867803 -16.041396 0, 15.643159 -15.950709 0, 15.427541 -15.855953 0, 15.220525 -15.758424 0, 15.021621 -15.659323 0, 14.83031 -15.559757 0, 14.64607 -15.46075 0, 14.46838 -15.36323 0, 14.130734 -15.175974 0, 13.969898 -15.087704 0, 13.813854 -15.003849 0, 13.662245 -14.924947 0, 13.514715 -14.851442 0, 13.370901 -14.783687 0, 13.248622 -14.72995 0, 10.487722 -14.582413 0, 10.316327 -14.610929 0, 9.9904 -14.674425 0, 9.665912 -14.745602 0, 9.342076 -14.823206 0, 9.018124 -14.905916 0, 8.693288 -14.992342 0, 8.36682 -15.080989 0, 8.037765 -15.170317 0, 7.705384 -15.258596 0, 7.368721 -15.344009 0, 7.026831 -15.424573 0, 6.678767 -15.498112 0, 6.32363 -15.562242 0, 5.960649 -15.614343 0, 5.58927 -15.651568 0, 5.209286 -15.670871 0, 4.820949 -15.669102 0, 4.425051 -15.643139 0, 4.022947 -15.590087 0, 3.616457 -15.507458 0, 3.207679 -15.393344 0, 2.798715 -15.246464 0, 2.39139 -15.066118 0, 1.987026 -14.852014 0, 1.586327 -14.604058 0, 1.189381 -14.322138 0, 0.795749 -14.005964 0, 0.432022 -13.679592 0, 0.194738 -13.467002 0, -0.011049 -13.29647 0, -0.203964 -13.149993 0, -0.384416 -13.0258 0, -0.553067 -12.921891 0, -0.710928 -12.83608 0, -0.859469 -12.766066 0, -1.000669 -12.709562 0, -1.136975 -12.664466 0, -1.271215 -12.629008 0, -1.40639 -12.601861 0, -1.545446 -12.582174 0, -1.691074 -12.569504 0, -1.845544 -12.563695 0, -2.010661 -12.564723 0, -2.187768 -12.572559 0, -2.377804 -12.587061 0, -2.581407 -12.607916 0, -2.799006 -12.634618 0, -3.03089 -12.66647 0, -3.277269 -12.702607 0, -3.538145 -12.741999 0, -3.814236 -12.783616 0, -4.105171 -12.826186 0, -4.411323 -12.86849 0, -4.732898 -12.909253 0, -5.070127 -12.94719 0, -5.10599 -12.950625 0, -7.7709 -13.815738 0, -8.154306 -14.018381 0, -8.701451 -14.278933 0, -9.260353 -14.518952 0, -9.829723 -14.739556 0, -10.408327 -14.941809 0, -10.994966 -15.126725 0, -11.58847 -15.295271 0, -12.187689 -15.448369 0, -12.791471 -15.586899 0, -13.398675 -15.711707 0, -14.008149 -15.823603 0, -14.618737 -15.923374 0, -15.229279 -16.011782 0, -15.838605 -16.089568 0, -16.445529 -16.157457 0, -17.04886 -16.216159 0, -17.647397 -16.26637 0, -18.239923 -16.308778 0, -18.825212 -16.344061 0, -19.402025 -16.372889 0, -19.969112 -16.395928 0, -20.525204 -16.413834 0, -21.069022 -16.427264 0, -21.599267 -16.436866 0, -22.114618 -16.443289 0, -22.613727 -16.447175 0, -23.095223 -16.449165 0, -23.557687 -16.449896 0, -24.023556 -16.450006 0, -24.291093 -16.441248 0, -24.580944 -16.4127 0, -24.868307 -16.365256 0, -25.151948 -16.299119 0, -25.430652 -16.214575 0, -25.703237 -16.111983 0, -25.96853 -15.991779 0, -26.225387 -15.854486 0, -26.472719 -15.700686 0, -26.709464 -15.531037 0, -26.934601 -15.34627 0, -27.147174 -15.147174 0, -27.34627 -14.934601 0, -27.531037 -14.709464 0, -27.700686 -14.472719 0, -27.854486 -14.225387 0, -27.991779 -13.96853 0, -28.111983 -13.703237 0, -28.214575 -13.430652 0, -28.299119 -13.151948 0, -28.365256 -12.868307 0, -28.4127 -12.580944 0, -28.441248 -12.291093 0, -28.45 -12.023727 0, -28.45 12.023727 0
   ]
   barrierOnRightSide FALSE
   enableBoundingObject TRUE
 }
 Solid {
-  translation -18.92 9.99 0
+  translation -24.92 9.99 0
   children [
     Pose {
       translation 0 0 0.28
@@ -2386,7 +2521,7 @@ Solid {
   }
 }
 Solid {
-  translation -12.61 6.52 0
+  translation -15.61 6.52 0
   rotation 0 0 1 -1.5707963267948966
   children [
     Pose {
@@ -2456,7 +2591,7 @@ Solid {
   }
 }
 Solid {
-  translation -15.39 -5.52 0
+  translation -18.39 -5.52 0
   rotation 0 0 1 1.5707963267948966
   children [
     Pose {
@@ -3224,7 +3359,7 @@ Solid {
   }
 }
 Solid {
-  translation -17.6 13.5 0
+  translation -20.6 13.5 0
   rotation 0 0 1 -1.5707963267948966
   children [
     Pose {
@@ -3347,6 +3482,7 @@ DEF SIGNAL_SYSTEM Robot {
                 baseColor 0.08 0.08 0.08
                 roughness 0.5
                 metalness 0
+                emissiveColor 1 0 0
                 emissiveIntensity 3
               }
               geometry Sphere {
@@ -3365,7 +3501,6 @@ DEF SIGNAL_SYSTEM Robot {
                 baseColor 0.08 0.08 0.08
                 roughness 0.5
                 metalness 0
-                emissiveColor 1 0.550000011920929 0
                 emissiveIntensity 3
               }
               geometry Sphere {
@@ -3667,6 +3802,7 @@ DEF SIGNAL_SYSTEM Robot {
                 baseColor 0.08 0.08 0.08
                 roughness 0.5
                 metalness 0
+                emissiveColor 1 0 0
                 emissiveIntensity 3
               }
               geometry Sphere {
@@ -3685,7 +3821,6 @@ DEF SIGNAL_SYSTEM Robot {
                 baseColor 0.08 0.08 0.08
                 roughness 0.5
                 metalness 0
-                emissiveColor 1 0.550000011920929 0
                 emissiveIntensity 3
               }
               geometry Sphere {
@@ -3725,10 +3860,1416 @@ DEF SIGNAL_SYSTEM Robot {
   ]
   name "junction signals"
   controller "traffic_signals"
-  customData "{\"time\": 192.0, \"EW\": \"amber\", \"NS\": \"red\"}"
+  customData "{\"time\": 64.0, \"EW\": \"red\", \"NS\": \"red\"}"
 }
 DEF INSPECTOR Robot {
   name "world inspector"
   controller "world_inspector"
   supervisor TRUE
+}
+Crossroad {
+  name "BridgeSeam-BRIDGE_N"
+  id "J_BRIDGE_N"
+  shape []
+  connectedRoadIDs [
+    "RECONNECTED_BRIDGE"
+    "RECONNECTED_NORTH"
+  ]
+}
+Crossroad {
+  name "BridgeSeam-BRIDGE_S"
+  id "J_BRIDGE_S"
+  shape []
+  connectedRoadIDs [
+    "RECONNECTED_BRIDGE"
+    "RECONNECTED_SOUTH"
+  ]
+}
+Solid {
+  children [
+    Pose {
+      translation -25.550503 7.150503 0.0255
+      rotation 0 0 1 0.785398
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.565645 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -25.550503 10.049497 0.0255
+      rotation 0 0 1 2.356194
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.565645 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -28.27 8.6 0.0255
+      rotation 0 0 1 -1.570796
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 3.19996 0.14 0.035
+          }
+        }
+      ]
+    }
+  ]
+  name "JunctionCurbs-WEST_UPPER"
+  boundingObject Group {
+    children [
+      Pose {
+        translation -25.550503 7.150503 0.0255
+        rotation 0 0 1 0.785398
+        children [
+          Box {
+            size 0.565645 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation -25.550503 10.049497 0.0255
+        rotation 0 0 1 2.356194
+        children [
+          Box {
+            size 0.565645 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation -28.27 8.6 0.0255
+        rotation 0 0 1 -1.570796
+        children [
+          Box {
+            size 3.19996 0.14 0.035
+          }
+        ]
+      }
+    ]
+  }
+}
+Solid {
+  children [
+    Pose {
+      translation -25.550503 -1.449497 0.0255
+      rotation 0 0 1 0.785398
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.565645 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -25.550503 1.449497 0.0255
+      rotation 0 0 1 2.356194
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.565645 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -28.27 0 0.0255
+      rotation 0 0 1 -1.570796
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 3.19996 0.14 0.035
+          }
+        }
+      ]
+    }
+  ]
+  name "JunctionCurbs-WEST_MIDDLE"
+  boundingObject Group {
+    children [
+      Pose {
+        translation -25.550503 -1.449497 0.0255
+        rotation 0 0 1 0.785398
+        children [
+          Box {
+            size 0.565645 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation -25.550503 1.449497 0.0255
+        rotation 0 0 1 2.356194
+        children [
+          Box {
+            size 0.565645 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation -28.27 0 0.0255
+        rotation 0 0 1 -1.570796
+        children [
+          Box {
+            size 3.19996 0.14 0.035
+          }
+        ]
+      }
+    ]
+  }
+}
+Solid {
+  children [
+    Pose {
+      translation -25.550503 -9.049497 0.0255
+      rotation 0 0 1 0.785398
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.565645 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -25.550503 -6.150503 0.0255
+      rotation 0 0 1 2.356194
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.565645 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -28.27 -7.6 0.0255
+      rotation 0 0 1 -1.570796
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 3.19996 0.14 0.035
+          }
+        }
+      ]
+    }
+  ]
+  name "JunctionCurbs-WEST_LOWER"
+  boundingObject Group {
+    children [
+      Pose {
+        translation -25.550503 -9.049497 0.0255
+        rotation 0 0 1 0.785398
+        children [
+          Box {
+            size 0.565645 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation -25.550503 -6.150503 0.0255
+        rotation 0 0 1 2.356194
+        children [
+          Box {
+            size 0.565645 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation -28.27 -7.6 0.0255
+        rotation 0 0 1 -1.570796
+        children [
+          Box {
+            size 3.19996 0.14 0.035
+          }
+        ]
+      }
+    ]
+  }
+}
+Solid {
+  children [
+    Pose {
+      translation -9.449497 13.550503 0.0255
+      rotation 0 0 1 -0.785398
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.565645 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -6.550503 13.550503 0.0255
+      rotation 0 0 1 0.785398
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.565645 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -8 16.27 0.0255
+      rotation 0 0 1 3.141593
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 3.19996 0.14 0.035
+          }
+        }
+      ]
+    }
+  ]
+  name "JunctionCurbs-NORTH_WEST"
+  boundingObject Group {
+    children [
+      Pose {
+        translation -9.449497 13.550503 0.0255
+        rotation 0 0 1 -0.785398
+        children [
+          Box {
+            size 0.565645 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation -6.550503 13.550503 0.0255
+        rotation 0 0 1 0.785398
+        children [
+          Box {
+            size 0.565645 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation -8 16.27 0.0255
+        rotation 0 0 1 3.141593
+        children [
+          Box {
+            size 3.19996 0.14 0.035
+          }
+        ]
+      }
+    ]
+  }
+}
+Solid {
+  children [
+    Pose {
+      translation 1.550503 13.550503 0.0255
+      rotation 0 0 1 -0.785398
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.565645 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 4.449497 13.550503 0.0255
+      rotation 0 0 1 0.785398
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.565645 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 3 16.27 0.0255
+      rotation 0 0 1 3.141593
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 3.19996 0.14 0.035
+          }
+        }
+      ]
+    }
+  ]
+  name "JunctionCurbs-NORTH_MIDDLE"
+  boundingObject Group {
+    children [
+      Pose {
+        translation 1.550503 13.550503 0.0255
+        rotation 0 0 1 -0.785398
+        children [
+          Box {
+            size 0.565645 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation 4.449497 13.550503 0.0255
+        rotation 0 0 1 0.785398
+        children [
+          Box {
+            size 0.565645 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation 3 16.27 0.0255
+        rotation 0 0 1 3.141593
+        children [
+          Box {
+            size 3.19996 0.14 0.035
+          }
+        ]
+      }
+    ]
+  }
+}
+Solid {
+  children [
+    Pose {
+      translation 10.550503 13.550503 0.0255
+      rotation 0 0 1 -0.785398
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.565645 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 13.449497 13.550503 0.0255
+      rotation 0 0 1 0.785398
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.565645 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 12 16.27 0.0255
+      rotation 0 0 1 3.141593
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 3.19996 0.14 0.035
+          }
+        }
+      ]
+    }
+  ]
+  name "JunctionCurbs-NORTH_EAST"
+  boundingObject Group {
+    children [
+      Pose {
+        translation 10.550503 13.550503 0.0255
+        rotation 0 0 1 -0.785398
+        children [
+          Box {
+            size 0.565645 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation 13.449497 13.550503 0.0255
+        rotation 0 0 1 0.785398
+        children [
+          Box {
+            size 0.565645 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation 12 16.27 0.0255
+        rotation 0 0 1 3.141593
+        children [
+          Box {
+            size 3.19996 0.14 0.035
+          }
+        ]
+      }
+    ]
+  }
+}
+Solid {
+  children [
+    Pose {
+      translation 19.550503 -1.449497 0.0255
+      rotation 0 0 1 -0.785398
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.565645 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 22.27 0 0.0255
+      rotation 0 0 1 1.570796
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 3.19996 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 19.550503 1.449497 0.0255
+      rotation 0 0 1 -2.356194
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.565645 0.14 0.035
+          }
+        }
+      ]
+    }
+  ]
+  name "JunctionCurbs-EAST"
+  boundingObject Group {
+    children [
+      Pose {
+        translation 19.550503 -1.449497 0.0255
+        rotation 0 0 1 -0.785398
+        children [
+          Box {
+            size 0.565645 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation 22.27 0 0.0255
+        rotation 0 0 1 1.570796
+        children [
+          Box {
+            size 3.19996 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation 19.550503 1.449497 0.0255
+        rotation 0 0 1 -2.356194
+        children [
+          Box {
+            size 0.565645 0.14 0.035
+          }
+        ]
+      }
+    ]
+  }
+}
+Solid {
+  children [
+    Pose {
+      translation 11.875099 -14.435917 0.0255
+      rotation 0 0 1 -0.044102
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 2.552003 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 13.636467 -11.733869 0.0255
+      rotation 0 0 1 2.36087
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 1.090045 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 10.457406 -11.619579 0.0255
+      rotation 0 0 1 -2.398736
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.801672 0.14 0.035
+          }
+        }
+      ]
+    }
+  ]
+  name "JunctionCurbs-LOWER_EAST"
+  boundingObject Group {
+    children [
+      Pose {
+        translation 11.875099 -14.435917 0.0255
+        rotation 0 0 1 -0.044102
+        children [
+          Box {
+            size 2.552003 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation 13.636467 -11.733869 0.0255
+        rotation 0 0 1 2.36087
+        children [
+          Box {
+            size 1.090045 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation 10.457406 -11.619579 0.0255
+        rotation 0 0 1 -2.398736
+        children [
+          Box {
+            size 0.801672 0.14 0.035
+          }
+        ]
+      }
+    ]
+  }
+}
+Solid {
+  children [
+    Pose {
+      translation -18.449497 7.150503 0.0255
+      rotation 0 0 1 -0.785398
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.565645 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -15.550503 7.150503 0.0255
+      rotation 0 0 1 0.785398
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.565645 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -17 9.87 0.0255
+      rotation 0 0 1 3.141593
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 3.19996 0.14 0.035
+          }
+        }
+      ]
+    }
+  ]
+  name "JunctionCurbs-BLOCK_NORTH"
+  boundingObject Group {
+    children [
+      Pose {
+        translation -18.449497 7.150503 0.0255
+        rotation 0 0 1 -0.785398
+        children [
+          Box {
+            size 0.565645 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation -15.550503 7.150503 0.0255
+        rotation 0 0 1 0.785398
+        children [
+          Box {
+            size 0.565645 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation -17 9.87 0.0255
+        rotation 0 0 1 3.141593
+        children [
+          Box {
+            size 3.19996 0.14 0.035
+          }
+        ]
+      }
+    ]
+  }
+}
+Solid {
+  children [
+    Pose {
+      translation -17 -8.87 0.0255
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 3.19996 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -15.550503 -6.150503 0.0255
+      rotation 0 0 1 2.356194
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.565645 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -18.449497 -6.150503 0.0255
+      rotation 0 0 1 -2.356194
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.565645 0.14 0.035
+          }
+        }
+      ]
+    }
+  ]
+  name "JunctionCurbs-BLOCK_SOUTH"
+  boundingObject Group {
+    children [
+      Pose {
+        translation -17 -8.87 0.0255
+        children [
+          Box {
+            size 3.19996 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation -15.550503 -6.150503 0.0255
+        rotation 0 0 1 2.356194
+        children [
+          Box {
+            size 0.565645 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation -18.449497 -6.150503 0.0255
+        rotation 0 0 1 -2.356194
+        children [
+          Box {
+            size 0.565645 0.14 0.035
+          }
+        ]
+      }
+    ]
+  }
+}
+Solid {
+  children [
+    Pose {
+      translation -9.449497 7.150503 0.0255
+      rotation 0 0 1 -0.785398
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.565645 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -6.550503 7.150503 0.0255
+      rotation 0 0 1 0.785398
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.565645 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -6.550503 10.049497 0.0255
+      rotation 0 0 1 2.356194
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.565645 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -9.449497 10.049497 0.0255
+      rotation 0 0 1 -2.356194
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.565645 0.14 0.035
+          }
+        }
+      ]
+    }
+  ]
+  name "JunctionCurbs-INNER_NORTH"
+  boundingObject Group {
+    children [
+      Pose {
+        translation -9.449497 7.150503 0.0255
+        rotation 0 0 1 -0.785398
+        children [
+          Box {
+            size 0.565645 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation -6.550503 7.150503 0.0255
+        rotation 0 0 1 0.785398
+        children [
+          Box {
+            size 0.565645 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation -6.550503 10.049497 0.0255
+        rotation 0 0 1 2.356194
+        children [
+          Box {
+            size 0.565645 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation -9.449497 10.049497 0.0255
+        rotation 0 0 1 -2.356194
+        children [
+          Box {
+            size 0.565645 0.14 0.035
+          }
+        ]
+      }
+    ]
+  }
+}
+Solid {
+  children [
+    Pose {
+      translation -9.449497 -1.449497 0.0255
+      rotation 0 0 1 -0.785398
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.565645 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -6.550503 -1.449497 0.0255
+      rotation 0 0 1 0.785398
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.565645 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -6.550503 1.449497 0.0255
+      rotation 0 0 1 2.356194
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.565645 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -9.449497 1.449497 0.0255
+      rotation 0 0 1 -2.356194
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.565645 0.14 0.035
+          }
+        }
+      ]
+    }
+  ]
+  name "JunctionCurbs-SIGNAL_CROSS"
+  boundingObject Group {
+    children [
+      Pose {
+        translation -9.449497 -1.449497 0.0255
+        rotation 0 0 1 -0.785398
+        children [
+          Box {
+            size 0.565645 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation -6.550503 -1.449497 0.0255
+        rotation 0 0 1 0.785398
+        children [
+          Box {
+            size 0.565645 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation -6.550503 1.449497 0.0255
+        rotation 0 0 1 2.356194
+        children [
+          Box {
+            size 0.565645 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation -9.449497 1.449497 0.0255
+        rotation 0 0 1 -2.356194
+        children [
+          Box {
+            size 0.565645 0.14 0.035
+          }
+        ]
+      }
+    ]
+  }
+}
+Solid {
+  children [
+    Pose {
+      translation -9.384548 -9.32742 0.0255
+      rotation 0 0 1 -1.059805
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 1.130786 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -6.80663 -7.310904 0.0255
+      rotation 0 0 1 1.512316
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 2.618061 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -9.449497 -6.150503 0.0255
+      rotation 0 0 1 -2.356194
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.565645 0.14 0.035
+          }
+        }
+      ]
+    }
+  ]
+  name "JunctionCurbs-INNER_SOUTH"
+  boundingObject Group {
+    children [
+      Pose {
+        translation -9.384548 -9.32742 0.0255
+        rotation 0 0 1 -1.059805
+        children [
+          Box {
+            size 1.130786 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation -6.80663 -7.310904 0.0255
+        rotation 0 0 1 1.512316
+        children [
+          Box {
+            size 2.618061 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation -9.449497 -6.150503 0.0255
+        rotation 0 0 1 -2.356194
+        children [
+          Box {
+            size 0.565645 0.14 0.035
+          }
+        ]
+      }
+    ]
+  }
+}
+Solid {
+  children [
+    Pose {
+      translation -1 -1.27 0.0255
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 3.19996 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.449497 1.449497 0.0255
+      rotation 0 0 1 2.356194
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.565645 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -2.449497 1.449497 0.0255
+      rotation 0 0 1 -2.356194
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.565645 0.14 0.035
+          }
+        }
+      ]
+    }
+  ]
+  name "JunctionCurbs-MID_BEND"
+  boundingObject Group {
+    children [
+      Pose {
+        translation -1 -1.27 0.0255
+        children [
+          Box {
+            size 3.19996 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation 0.449497 1.449497 0.0255
+        rotation 0 0 1 2.356194
+        children [
+          Box {
+            size 0.565645 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation -2.449497 1.449497 0.0255
+        rotation 0 0 1 -2.356194
+        children [
+          Box {
+            size 0.565645 0.14 0.035
+          }
+        ]
+      }
+    ]
+  }
+}
+Solid {
+  children [
+    Pose {
+      translation 3 -1.27 0.0255
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 3.19996 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 4.449497 1.449497 0.0255
+      rotation 0 0 1 2.356194
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.565645 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 1.550503 1.449497 0.0255
+      rotation 0 0 1 -2.356194
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.565645 0.14 0.035
+          }
+        }
+      ]
+    }
+  ]
+  name "JunctionCurbs-MID_AXIS"
+  boundingObject Group {
+    children [
+      Pose {
+        translation 3 -1.27 0.0255
+        children [
+          Box {
+            size 3.19996 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation 4.449497 1.449497 0.0255
+        rotation 0 0 1 2.356194
+        children [
+          Box {
+            size 0.565645 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation 1.550503 1.449497 0.0255
+        rotation 0 0 1 -2.356194
+        children [
+          Box {
+            size 0.565645 0.14 0.035
+          }
+        ]
+      }
+    ]
+  }
+}
+Solid {
+  children [
+    Pose {
+      translation -6.510653 -13.193046 0.0255
+      rotation 0 0 1 0.317996
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 2.620245 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -5.941601 -9.859328 0.0255
+      rotation 0 0 1 2.418095
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 1.256921 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -8.789222 -11.01198 0.0255
+      rotation 0 0 1 -2.004631
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.821956 0.14 0.035
+          }
+        }
+      ]
+    }
+  ]
+  name "JunctionCurbs-Y_SOUTH"
+  boundingObject Group {
+    children [
+      Pose {
+        translation -6.510653 -13.193046 0.0255
+        rotation 0 0 1 0.317996
+        children [
+          Box {
+            size 2.620245 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation -5.941601 -9.859328 0.0255
+        rotation 0 0 1 2.418095
+        children [
+          Box {
+            size 1.256921 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation -8.789222 -11.01198 0.0255
+        rotation 0 0 1 -2.004631
+        children [
+          Box {
+            size 0.821956 0.14 0.035
+          }
+        ]
+      }
+    ]
+  }
 }

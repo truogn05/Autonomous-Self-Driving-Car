@@ -271,7 +271,7 @@ def draw_edge(e):
             lid=name+('_B' if reverse else '_F')+str(index)
             lane_graph[lid]={'from':e['to'] if reverse else e['from'], 'to':e['from'] if reverse else e['to'],
                 'points':offset(seq,-LANE_WIDTH*(index-.5)), 'lane_index':index,
-                'successors':[], 'speed_limit_m_s':.5}
+                'road_id': e['id'], 'successors':[], 'speed_limit_m_s':.5}
     # Split at a shared on-road change zone; dashed dividers permit changing
     # lane before selecting a junction turn, rather than switching at the junction.
     for suffix in ('F','B'):
@@ -371,11 +371,13 @@ def connectors():
             if target['from']!=nid:
                 continue
             # No automatic U-turn at ordinary intersections or roundabout entries.
-            if lane['from']==target['to']:
+            if not nid.startswith('CHANGE_') and lane.get('road_id') and lane.get('road_id') == target.get('road_id'):
                 continue
             if nid.startswith('R_') and not (lid.startswith('RING_') or other.startswith('RING_')):
                 continue
-            if not nid.startswith('CHANGE_') and 'lane_index' in lane and 'lane_index' in target:
+            if nid.startswith('R_') and lane.get('lane_index') != target.get('lane_index'):
+                continue
+            if not nid.startswith(('CHANGE_', 'R_')) and 'lane_index' in lane and 'lane_index' in target:
                 incoming=direction(lane['points'][-2],lane['points'][-1])
                 outgoing=direction(target['points'][0],target['points'][1])
                 turn=math.atan2(incoming[0]*outgoing[1]-incoming[1]*outgoing[0],incoming[0]*outgoing[0]+incoming[1]*outgoing[1])
@@ -390,27 +392,31 @@ def connectors():
                 continue
             u=direction(lane['points'][-2],a)
             v=direction(d,target['points'][1])
-            reach=math.dist(a,d)*.45
+            # Native RoadIntersection has square inside corners; turn farther
+            # into the intersection so the robot footprint clears those corners.
+            reach=math.dist(a,d)*(.6 if nid=='SIGNAL_CROSS' else .45)
             cid=f'{lid}__{other}'
             lane_graph[cid]={'from':nid,'to':nid,'points':bezier(a,add(a,mul(u,reach)),add(d,mul(v,-reach)),d,16),
                              'successors':[other],'speed_limit_m_s':.25,'junction':nid}
             lane['successors'].append(cid)
 
 
-def overview():
+def overview(bounds=(-24,24,-18,18)):
+    xmin,xmax,ymin,ymax=bounds
+    width,height=(xmax-xmin)*22.5+40,(ymax-ymin)*22.5+40
     def path(pts):
-        return ' '.join(('M' if i==0 else 'L')+f'{x*22.5+540:.2f},{430-y*22.5:.2f}' for i,(x,y) in enumerate(pts))
-    svg=['<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="860" viewBox="0 0 1080 860">',
-         '<rect width="1080" height="860" fill="#e9eddf"/>']
+        return ' '.join(('M' if i==0 else 'L')+f'{(x-xmin)*22.5+20:.2f},{20+(ymax-y)*22.5:.2f}' for i,(x,y) in enumerate(pts))
+    svg=[f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
+         '<rect width="100%" height="100%" fill="#e9eddf"/>']
     for e in edges:
         svg.append(f'<path d="{path(e["full_points"])}" fill="none" stroke="#343c42" stroke-width="54" stroke-linejoin="round"/>')
-    svg.append('<circle cx="810" cy="430" r="72" fill="none" stroke="#343c42" stroke-width="36"/>')
+    svg.append(f'<circle cx="{(12-xmin)*22.5+20}" cy="{20+ymax*22.5}" r="72" fill="none" stroke="#343c42" stroke-width="36"/>')
     for e in edges:
         svg.append(f'<path d="{path(e["points"])}" fill="none" stroke="#edc546" stroke-width="1.2"/>')
     for name,n in junctions.items():
-        x,y=n['position']; x=x*22.5+540;y=430-y*22.5
+        x,y=n['position']; x=(x-xmin)*22.5+20;y=20+(ymax-y)*22.5
         svg.append(f'<text x="{x+5}" y="{y-14}" font-family="Arial" font-size="10" fill="#b51f36" stroke="white" stroke-width="2" paint-order="stroke">{name}</text>')
-    svg.append('<text x="25" y="32" font-family="Arial" font-size="21" fill="#263c34">MY WORLD / traffic practice town / 48 x 36 m</text></svg>')
+    svg.append(f'<text x="25" y="32" font-family="Arial" font-size="21" fill="#263c34">MY WORLD / traffic practice town / {xmax-xmin} x {ymax-ymin} m</text></svg>')
     (ROOT/'map.svg').write_text('\n'.join(svg),encoding='utf-8')
 
 
@@ -438,7 +444,7 @@ def validate():
             assert -24<x<24 and -18<y<18
 
 
-def main():
+def legacy_flat_world():
     OUT.mkdir(exist_ok=True)
     world=OUT/'my_world.wbt'
     backup=OUT/'my_world.original.wbt'
@@ -474,4 +480,6 @@ def main():
 
 
 if __name__=='__main__':
+    # The saved WBT includes GUI edits and the tunnel; synchronize it in place.
+    from sync_world import main
     main()

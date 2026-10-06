@@ -1,8 +1,15 @@
 {
+  "roads_checked": 29,
+  "junctions_checked": 19,
+  "road_mouths_checked": 50,
+  "incident_road_curbs_checked": 100,
+  "road_triangles_checked": 554,
   "footprint_radius_m": 0.186,
-  "lanes_checked": 694,
+  "lanes_checked": 628,
   "outside_road": [],
-  "world_sha256": "c61e463363c5425804ab04966257d0353f2558b37c7d6d994e4ec09304d459b3",
-  "map_sha256": "268fbc9c34450b2f3d43f71171c356cc136a8f9d34e6cd788e06c35f693dcdda",
-  "note": "Geometry QA, not a vehicle dynamics or localization test. Stationary training obstacle is intentional."
+  "directed_strong_connectivity": true,
+  "ordinary_junction_u_turns": 0,
+  "world_sha256": "2fadcdc0a0d5aedc868605f0dcedc516deb8903e09073be2ead2d57787679c69",
+  "map_sha256": "841d0a4e4e5c2fdc0342ac10880322dc6b9be42fd4716051ab72cb33c66d608b",
+  "note": "Actual road/junction XY geometry and metadata QA; not vehicle dynamics or tunnel clearance verification."
 }

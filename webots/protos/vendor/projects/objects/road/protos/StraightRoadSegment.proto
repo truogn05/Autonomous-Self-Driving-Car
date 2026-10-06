@@ -75,8 +75,12 @@ PROTO StraightRoadSegment [
     translation IS translation
     rotation IS rotation
     name IS name
+    id IS id
+    startJunction IS startJunction
+    endJunction IS endJunction
     width IS width
     numberOfLanes IS numberOfLanes
+    numberOfForwardLanes IS numberOfForwardLanes
     lines IS lines
     roadBorderHeight IS roadBorderHeight
     roadBorderWidth [ %<= startingRoadBorderWidth >%, %<= endingRoadBorderWidth >%]

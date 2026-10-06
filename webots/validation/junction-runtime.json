@@ -1,0 +1,518 @@
+{
+  "nonce": "696d7ea08cf7452b852839057058b2ea",
+  "source_world_sha256": "2fadcdc0a0d5aedc868605f0dcedc516deb8903e09073be2ead2d57787679c69",
+  "snapshot_world_sha256": "eeee89edc4dbeda425906cf114d5ebdbbe9ae8438c3b71cb56472814ed52c8b6",
+  "scratch": "C:\\Users\\nguye\\AppData\\Local\\Temp\\junction-verification-dmg0pulm",
+  "port": 57778,
+  "status": "passed",
+  "errors": [],
+  "roads": [
+    {
+      "id": "OUTER_NW",
+      "type": "Road",
+      "startJunction": "J_WEST_UPPER",
+      "endJunction": "J_NORTH_WEST"
+    },
+    {
+      "id": "NORTH_TRAINING",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_NORTH_WEST",
+      "endJunction": "J_NORTH_MIDDLE"
+    },
+    {
+      "id": "NORTH_LINK",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_NORTH_MIDDLE",
+      "endJunction": "J_NORTH_EAST"
+    },
+    {
+      "id": "OUTER_NE",
+      "type": "Road",
+      "startJunction": "J_NORTH_EAST",
+      "endJunction": "J_EAST"
+    },
+    {
+      "id": "OUTER_SE",
+      "type": "Road",
+      "startJunction": "J_EAST",
+      "endJunction": "J_LOWER_EAST"
+    },
+    {
+      "id": "S_CURVES",
+      "type": "Road",
+      "startJunction": "J_Y_SOUTH",
+      "endJunction": "J_LOWER_EAST"
+    },
+    {
+      "id": "OUTER_SW",
+      "type": "Road",
+      "startJunction": "J_WEST_LOWER",
+      "endJunction": "J_Y_SOUTH"
+    },
+    {
+      "id": "WEST_1",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_WEST_UPPER",
+      "endJunction": "J_WEST_MIDDLE"
+    },
+    {
+      "id": "WEST_2",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_WEST_MIDDLE",
+      "endJunction": "J_WEST_LOWER"
+    },
+    {
+      "id": "BLOCK_TOP_W",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_WEST_UPPER",
+      "endJunction": "J_BLOCK_NORTH"
+    },
+    {
+      "id": "BLOCK_TOP_E",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_BLOCK_NORTH",
+      "endJunction": "J_INNER_NORTH"
+    },
+    {
+      "id": "BLOCK_MID_TUNNEL",
+      "type": "Road",
+      "startJunction": "J_WEST_MIDDLE",
+      "endJunction": "SIGNAL_CROSS"
+    },
+    {
+      "id": "RECONNECTED_BRIDGE",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_BRIDGE_N",
+      "endJunction": "J_BRIDGE_S"
+    },
+    {
+      "id": "BLOCK_BOTTOM_W",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_WEST_LOWER",
+      "endJunction": "J_BLOCK_SOUTH"
+    },
+    {
+      "id": "BLOCK_BOTTOM_E",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_BLOCK_SOUTH",
+      "endJunction": "J_INNER_SOUTH"
+    },
+    {
+      "id": "RECONNECTED_NORTH",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_BLOCK_NORTH",
+      "endJunction": "J_BRIDGE_N"
+    },
+    {
+      "id": "RECONNECTED_SOUTH",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_BRIDGE_S",
+      "endJunction": "J_BLOCK_SOUTH"
+    },
+    {
+      "id": "INNER_1",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_NORTH_WEST",
+      "endJunction": "J_INNER_NORTH"
+    },
+    {
+      "id": "INNER_2",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_INNER_NORTH",
+      "endJunction": "SIGNAL_CROSS"
+    },
+    {
+      "id": "INNER_3",
+      "type": "StraightRoadSegment",
+      "startJunction": "SIGNAL_CROSS",
+      "endJunction": "J_INNER_SOUTH"
+    },
+    {
+      "id": "CENTRAL_1",
+      "type": "StraightRoadSegment",
+      "startJunction": "SIGNAL_CROSS",
+      "endJunction": "J_MID_BEND"
+    },
+    {
+      "id": "CENTRAL_2",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_MID_BEND",
+      "endJunction": "J_MID_AXIS"
+    },
+    {
+      "id": "CENTRAL_3",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_MID_AXIS",
+      "endJunction": "ROUNDABOUT"
+    },
+    {
+      "id": "CENTRAL_AXIS",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_MID_AXIS",
+      "endJunction": "J_NORTH_MIDDLE"
+    },
+    {
+      "id": "ROUNDABOUT_NORTH",
+      "type": "StraightRoadSegment",
+      "startJunction": "ROUNDABOUT",
+      "endJunction": "J_NORTH_EAST"
+    },
+    {
+      "id": "ROUNDABOUT_EAST",
+      "type": "StraightRoadSegment",
+      "startJunction": "ROUNDABOUT",
+      "endJunction": "J_EAST"
+    },
+    {
+      "id": "ROUNDABOUT_SOUTH",
+      "type": "StraightRoadSegment",
+      "startJunction": "ROUNDABOUT",
+      "endJunction": "J_LOWER_EAST"
+    },
+    {
+      "id": "Y_STEM",
+      "type": "Road",
+      "startJunction": "J_INNER_SOUTH",
+      "endJunction": "J_Y_SOUTH"
+    },
+    {
+      "id": "INNER_CURVE",
+      "type": "Road",
+      "startJunction": "J_INNER_NORTH",
+      "endJunction": "J_MID_BEND"
+    }
+  ],
+  "junctions": [
+    {
+      "id": "J_WEST_UPPER",
+      "type": "Crossroad",
+      "connectedRoadIDs": [
+        "OUTER_NW",
+        "WEST_1",
+        "BLOCK_TOP_W"
+      ]
+    },
+    {
+      "id": "J_WEST_MIDDLE",
+      "type": "Crossroad",
+      "connectedRoadIDs": [
+        "WEST_1",
+        "WEST_2",
+        "BLOCK_MID_TUNNEL"
+      ]
+    },
+    {
+      "id": "J_WEST_LOWER",
+      "type": "Crossroad",
+      "connectedRoadIDs": [
+        "OUTER_SW",
+        "WEST_2",
+        "BLOCK_BOTTOM_W"
+      ]
+    },
+    {
+      "id": "J_NORTH_WEST",
+      "type": "Crossroad",
+      "connectedRoadIDs": [
+        "OUTER_NW",
+        "NORTH_TRAINING",
+        "INNER_1"
+      ]
+    },
+    {
+      "id": "J_NORTH_MIDDLE",
+      "type": "Crossroad",
+      "connectedRoadIDs": [
+        "NORTH_TRAINING",
+        "NORTH_LINK",
+        "CENTRAL_AXIS"
+      ]
+    },
+    {
+      "id": "J_NORTH_EAST",
+      "type": "Crossroad",
+      "connectedRoadIDs": [
+        "NORTH_LINK",
+        "OUTER_NE",
+        "ROUNDABOUT_NORTH"
+      ]
+    },
+    {
+      "id": "J_EAST",
+      "type": "Crossroad",
+      "connectedRoadIDs": [
+        "OUTER_NE",
+        "OUTER_SE",
+        "ROUNDABOUT_EAST"
+      ]
+    },
+    {
+      "id": "J_LOWER_EAST",
+      "type": "Crossroad",
+      "connectedRoadIDs": [
+        "OUTER_SE",
+        "S_CURVES",
+        "ROUNDABOUT_SOUTH"
+      ]
+    },
+    {
+      "id": "J_BLOCK_NORTH",
+      "type": "Crossroad",
+      "connectedRoadIDs": [
+        "BLOCK_TOP_W",
+        "BLOCK_TOP_E",
+        "RECONNECTED_NORTH"
+      ]
+    },
+    {
+      "id": "J_BLOCK_SOUTH",
+      "type": "Crossroad",
+      "connectedRoadIDs": [
+        "BLOCK_BOTTOM_W",
+        "BLOCK_BOTTOM_E",
+        "RECONNECTED_SOUTH"
+      ]
+    },
+    {
+      "id": "J_INNER_NORTH",
+      "type": "Crossroad",
+      "connectedRoadIDs": [
+        "BLOCK_TOP_E",
+        "INNER_1",
+        "INNER_2",
+        "INNER_CURVE"
+      ]
+    },
+    {
+      "id": "SIGNAL_CROSS",
+      "type": "RoadIntersection",
+      "connectedRoadIDs": [
+        "BLOCK_MID_TUNNEL",
+        "INNER_2",
+        "INNER_3",
+        "CENTRAL_1"
+      ]
+    },
+    {
+      "id": "J_INNER_SOUTH",
+      "type": "Crossroad",
+      "connectedRoadIDs": [
+        "BLOCK_BOTTOM_E",
+        "INNER_3",
+        "Y_STEM"
+      ]
+    },
+    {
+      "id": "J_MID_BEND",
+      "type": "Crossroad",
+      "connectedRoadIDs": [
+        "CENTRAL_1",
+        "CENTRAL_2",
+        "INNER_CURVE"
+      ]
+    },
+    {
+      "id": "J_MID_AXIS",
+      "type": "Crossroad",
+      "connectedRoadIDs": [
+        "CENTRAL_2",
+        "CENTRAL_3",
+        "CENTRAL_AXIS"
+      ]
+    },
+    {
+      "id": "J_Y_SOUTH",
+      "type": "Crossroad",
+      "connectedRoadIDs": [
+        "S_CURVES",
+        "OUTER_SW",
+        "Y_STEM"
+      ]
+    },
+    {
+      "id": "ROUNDABOUT",
+      "type": "Roundabout",
+      "connectedRoadIDs": [
+        "CENTRAL_3",
+        "ROUNDABOUT_NORTH",
+        "ROUNDABOUT_EAST",
+        "ROUNDABOUT_SOUTH"
+      ]
+    },
+    {
+      "id": "J_BRIDGE_N",
+      "type": "Crossroad",
+      "connectedRoadIDs": [
+        "RECONNECTED_BRIDGE",
+        "RECONNECTED_NORTH"
+      ]
+    },
+    {
+      "id": "J_BRIDGE_S",
+      "type": "Crossroad",
+      "connectedRoadIDs": [
+        "RECONNECTED_BRIDGE",
+        "RECONNECTED_SOUTH"
+      ]
+    }
+  ],
+  "probes": [
+    {
+      "name": "tunnel-north",
+      "initial_position": [
+        -17,
+        0.6,
+        -0.43
+      ],
+      "position": [
+        -17.0,
+        0.6,
+        -0.5100141608710728
+      ],
+      "expected_center_z": -0.51,
+      "contacts": [
+        [
+          -17.0,
+          0.6599999999999999,
+          -0.550000011920929
+        ],
+        [
+          -17.08,
+          0.54,
+          -0.550000011920929
+        ],
+        [
+          -17.08,
+          0.6599999999999999,
+          -0.550000011920929
+        ],
+        [
+          -17.0,
+          0.54,
+          -0.550000011920929
+        ],
+        [
+          -16.92,
+          0.6599999999999999,
+          -0.550000011920929
+        ],
+        [
+          -16.92,
+          0.5399999999999999,
+          -0.550000011920929
+        ]
+      ]
+    },
+    {
+      "name": "tunnel-south",
+      "initial_position": [
+        -17,
+        -0.6,
+        -0.43
+      ],
+      "position": [
+        -17.0,
+        -0.6,
+        -0.5100141424678599
+      ],
+      "expected_center_z": -0.51,
+      "contacts": [
+        [
+          -17.08,
+          -0.6600000000000001,
+          -0.5500605759821109
+        ],
+        [
+          -17.08,
+          -0.54,
+          -0.5500605759821109
+        ],
+        [
+          -16.92,
+          -0.6599999999999999,
+          -0.550000011920929
+        ],
+        [
+          -17.0,
+          -0.6600000000000001,
+          -0.5500605759821109
+        ],
+        [
+          -17.0,
+          -0.5399999999999999,
+          -0.550000011920929
+        ],
+        [
+          -16.92,
+          -0.54,
+          -0.550000011920929
+        ],
+        [
+          -17.0,
+          -0.66,
+          -0.550000011920929
+        ],
+        [
+          -17.0,
+          -0.54,
+          -0.5500605759821109
+        ]
+      ]
+    },
+    {
+      "name": "bridge",
+      "initial_position": [
+        -17,
+        0,
+        0.128
+      ],
+      "position": [
+        -16.999999999999343,
+        1.658672771208409e-13,
+        0.047985851042303816
+      ],
+      "expected_center_z": 0.048,
+      "contacts": [
+        [
+          -17.04500001899898,
+          0.06000000000000005,
+          -0.012454400000000018
+        ],
+        [
+          -16.92,
+          0.06000000000000005,
+          -0.012454400000000018
+        ],
+        [
+          -16.92,
+          -0.06000000000000005,
+          -0.012454400000000018
+        ],
+        [
+          -16.955000016763808,
+          -0.06000000000000005,
+          -0.012454400000000018
+        ],
+        [
+          -17.08,
+          0.06000000000000005,
+          -0.012454400000000018
+        ],
+        [
+          -17.08,
+          -0.06000000000000005,
+          -0.012454400000000018
+        ]
+      ]
+    }
+  ],
+  "images": [
+    "junction-overview.png",
+    "junction-west-detail.png"
+  ],
+  "elevations": {
+    "tunnel_floor_z": -0.55,
+    "bridge_floor_z": 0.008
+  },
+  "simulation_seconds": 4.224
+}

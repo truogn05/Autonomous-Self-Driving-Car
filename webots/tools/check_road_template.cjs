@@ -4,21 +4,24 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const assert = require('node:assert/strict');
-const source = fs.readFileSync(path.join(__dirname,
-  '../protos/vendor/projects/objects/road/protos/Road.proto'), 'utf8');
-let code = 'let out = "";\n';
-let cursor = source.indexOf('%<');
-for (const match of source.slice(cursor).matchAll(/%<(=)?([\s\S]*?)>%/g)) {
-  const index = source.indexOf('%<') + match.index;
-  code += `out += ${JSON.stringify(source.slice(cursor, index))};\n`;
-  code += match[1] ? `out += (${match[2]});\n`
-    : match[2].replace(/import .*?;/g, '') + '\n';
-  cursor = index + match[0].length;
+function compileTemplate(filename) {
+  const source = fs.readFileSync(path.join(__dirname,
+    '../protos/vendor/projects/objects/road/protos/', filename), 'utf8');
+  let code = 'let out = "";\n';
+  let cursor = source.indexOf('%<');
+  for (const match of source.slice(cursor).matchAll(/%<(=)?([\s\S]*?)>%/g)) {
+    const index = source.indexOf('%<') + match.index;
+    code += `out += ${JSON.stringify(source.slice(cursor, index))};\n`;
+    code += match[1] ? `out += (${match[2]});\n`
+      : match[2].replace(/import .*?;/g, '') + '\n';
+    cursor = index + match[0].length;
+  }
+  code += `out += ${JSON.stringify(source.slice(cursor))}; return out;`;
+  return new Function('fields', 'wbgeometry', 'wbvector2', 'wbvector3', code);
 }
-code += `out += ${JSON.stringify(source.slice(cursor))}; return out;`;
-const render = new Function('fields', 'wbgeometry', 'wbvector2', 'wbvector3', code);
+const render = compileTemplate('Road.proto');
 const vector2 = {
-  angle: (a, b) => Math.atan2(b.y-a.y, b.x-a.x),
+  angle: (a, b) => Math.atan2(a.y-b.y, a.x-b.x),
   distance: (a, b) => Math.hypot(a.x-b.x, a.y-b.y)
 };
 const vector3 = {distance: (a, b) => Math.hypot(a.x-b.x, a.y-b.y, a.z-b.z)};
@@ -70,4 +73,10 @@ for (const [start, end, count] of [
     assert(Math.abs(Math.hypot(p[3]-p[0],p[4]-p[1])-1.2) < 1e-8);
   }
 }
-console.log('Road template OK: 4/5/6/7 lanes, straight/curved, endpoint markings and roundabout blanks.');
+const straightValues = {length: 5, startingRoadTilt: 0, endingRoadTilt: 0,
+  startingRoadBorderWidth: .14, endingRoadBorderWidth: .14};
+const straight = compileTemplate('StraightRoadSegment.proto')(
+  Object.fromEntries(Object.entries(straightValues).map(([k,v]) => [k,{value:v,defaultValue:v}])));
+for (const field of ['id', 'startJunction', 'endJunction', 'numberOfForwardLanes'])
+  assert(new RegExp(`\\b${field} IS ${field}\\b`).test(straight), `StraightRoadSegment must forward ${field}`);
+console.log('Road template OK: 4/5/6/7 lanes, straight/curved, endpoint markings, roundabout blanks and junction bindings.');
