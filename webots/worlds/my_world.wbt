@@ -29,23 +29,68 @@ DirectionalLight {
   intensity 1.2
   castShadows TRUE
 }
-DEF GROUND Solid {
-  translation 0 0 -0.06
+DEF GROUND-North Solid {
+  translation 0 9.725 -0.06
   children [
     Shape {
-      appearance PBRAppearance {
+      appearance DEF GROUND_APP PBRAppearance {
         baseColor 0.38 0.48 0.32
         roughness 0.85
         metalness 0
       }
       geometry Box {
-        size 48 36 0.12
+        size 48 16.55 0.12
       }
     }
   ]
-  name "GROUND"
+  name "GROUND-North"
   boundingObject Box {
-    size 48 36 0.12
+    size 48 16.55 0.12
+  }
+}
+DEF GROUND-South Solid {
+  translation 0 -9.725 -0.06
+  children [
+    Shape {
+      appearance USE GROUND_APP
+      geometry Box {
+        size 48 16.55 0.12
+      }
+    }
+  ]
+  name "GROUND-South"
+  boundingObject Box {
+    size 48 16.55 0.12
+  }
+}
+DEF GROUND-West Solid {
+  translation -21.7 0 -0.06
+  children [
+    Shape {
+      appearance USE GROUND_APP
+      geometry Box {
+        size 4.6 2.9 0.12
+      }
+    }
+  ]
+  name "GROUND-West"
+  boundingObject Box {
+    size 4.6 2.9 0.12
+  }
+}
+DEF GROUND-East Solid {
+  translation 7.2 0 -0.06
+  children [
+    Shape {
+      appearance USE GROUND_APP
+      geometry Box {
+        size 33.6 2.9 0.12
+      }
+    }
+  ]
+  name "GROUND-East"
+  boundingObject Box {
+    size 33.6 2.9 0.12
   }
 }
 Road {
@@ -73,7 +118,7 @@ Road {
     0.14
   ]
   wayPoints [
-    -21 8.6 0, -21 12 0, -20.993577 12.196209 0, -20.974335 12.391579 0, -20.942356 12.585271 0, -20.897777 12.776457 0, -20.84079 12.964318 0, -20.771639 13.14805 0, -20.690618 13.326866 0, -20.598076 13.5 0, -20.494409 13.666711 0, -20.38006 13.826284 0, -20.255519 13.978037 0, -20.12132 14.12132 0, -19.978037 14.255519 0, -19.826284 14.38006 0, -19.666711 14.494409 0, -19.5 14.598076 0, -19.326866 14.690618 0, -19.14805 14.771639 0, -18.964318 14.84079 0, -18.776457 14.897777 0, -18.585271 14.942356 0, -18.391579 14.974335 0, -18.196209 14.993577 0, -18 15 0, -9.6 15 0
+    -21 10.2 0, -21 12 0, -20.993577 12.196209 0, -20.974335 12.391579 0, -20.942356 12.585271 0, -20.897777 12.776457 0, -20.84079 12.964318 0, -20.771639 13.14805 0, -20.690618 13.326866 0, -20.598076 13.5 0, -20.494409 13.666711 0, -20.38006 13.826284 0, -20.255519 13.978037 0, -20.12132 14.12132 0, -19.978037 14.255519 0, -19.826284 14.38006 0, -19.666711 14.494409 0, -19.5 14.598076 0, -19.326866 14.690618 0, -19.14805 14.771639 0, -18.964318 14.84079 0, -18.776457 14.897777 0, -18.585271 14.942356 0, -18.391579 14.974335 0, -18.196209 14.993577 0, -18 15 0, -9.6 15 0
   ]
   startLine [
     ""
@@ -383,7 +428,7 @@ Road {
     0.14
   ]
   wayPoints [
-    -21 -8.2 0, -21 -12 0, -20.993577 -12.196209 0, -20.974335 -12.391579 0, -20.942356 -12.585271 0, -20.897777 -12.776457 0, -20.84079 -12.964318 0, -20.771639 -13.14805 0, -20.690618 -13.326866 0, -20.598076 -13.5 0, -20.494409 -13.666711 0, -20.38006 -13.826284 0, -20.255519 -13.978037 0, -20.12132 -14.12132 0, -19.978037 -14.255519 0, -19.826284 -14.38006 0, -19.666711 -14.494409 0, -19.5 -14.598076 0, -19.326866 -14.690618 0, -19.14805 -14.771639 0, -18.964318 -14.84079 0, -18.776457 -14.897777 0, -18.585271 -14.942356 0, -18.391579 -14.974335 0, -18.196209 -14.993577 0, -18 -15 0, -17.576215 -14.999896 0, -17.166748 -14.99917 0, -16.770685 -14.997198 0, -16.387109 -14.993359 0, -16.015106 -14.98703 0, -15.65376 -14.977588 0, -15.302155 -14.96441 0, -14.959375 -14.946875 0, -14.624506 -14.924359 0, -14.296631 -14.89624 0, -13.974835 -14.861896 0, -13.658203 -14.820703 0, -13.345819 -14.77204 0, -13.036768 -14.715283 0, -12.730133 -14.649811 0, -12.425 -14.575 0, -12.120453 -14.490228 0, -11.815576 -14.394873 0, -11.509454 -14.288312 0, -11.201172 -14.169922 0, -10.889813 -14.039081 0, -10.574463 -13.895166 0, -10.254205 -13.737555 0, -9.928125 -13.565625 0, -9.595306 -13.378754 0, -9.254834 -13.176318 0, -8.905792 -12.957697 0, -8.547266 -12.722266 0, -8.290122 -12.546019 0
+    -21 -9.2 0, -21 -12 0, -20.993577 -12.196209 0, -20.974335 -12.391579 0, -20.942356 -12.585271 0, -20.897777 -12.776457 0, -20.84079 -12.964318 0, -20.771639 -13.14805 0, -20.690618 -13.326866 0, -20.598076 -13.5 0, -20.494409 -13.666711 0, -20.38006 -13.826284 0, -20.255519 -13.978037 0, -20.12132 -14.12132 0, -19.978037 -14.255519 0, -19.826284 -14.38006 0, -19.666711 -14.494409 0, -19.5 -14.598076 0, -19.326866 -14.690618 0, -19.14805 -14.771639 0, -18.964318 -14.84079 0, -18.776457 -14.897777 0, -18.585271 -14.942356 0, -18.391579 -14.974335 0, -18.196209 -14.993577 0, -18 -15 0, -17.576215 -14.999896 0, -17.166748 -14.99917 0, -16.770685 -14.997198 0, -16.387109 -14.993359 0, -16.015106 -14.98703 0, -15.65376 -14.977588 0, -15.302155 -14.96441 0, -14.959375 -14.946875 0, -14.624506 -14.924359 0, -14.296631 -14.89624 0, -13.974835 -14.861896 0, -13.658203 -14.820703 0, -13.345819 -14.77204 0, -13.036768 -14.715283 0, -12.730133 -14.649811 0, -12.425 -14.575 0, -12.120453 -14.490228 0, -11.815576 -14.394873 0, -11.509454 -14.288312 0, -11.201172 -14.169922 0, -10.889813 -14.039081 0, -10.574463 -13.895166 0, -10.254205 -13.737555 0, -9.928125 -13.565625 0, -9.595306 -13.378754 0, -9.254834 -13.176318 0, -8.905792 -12.957697 0, -8.547266 -12.722266 0, -8.290122 -12.546019 0
   ]
   startLine [
     ""
@@ -412,7 +457,7 @@ Road {
   leftBorderBoundingObject TRUE
 }
 StraightRoadSegment {
-  translation -21 5.4 0.008
+  translation -21 7 0.008
   rotation 0 0 1 -1.5707963267948966
   name "StraightRoad-3"
   id "WEST_1"
@@ -435,7 +480,7 @@ StraightRoadSegment {
   roadBorderHeight 0.035
   startingRoadBorderWidth 0.14
   endingRoadBorderWidth 0.14
-  length 3.8000000000000007
+  length 5.4
   startLine [
     ""
     ""
@@ -485,7 +530,7 @@ StraightRoadSegment {
   roadBorderHeight 0.035
   startingRoadBorderWidth 0.14
   endingRoadBorderWidth 0.14
-  length 3.4
+  length 4.4
   startLine [
     "../../../../../../worlds/textures/crossing.png"
     "../../../../../../worlds/textures/crossing.png"
@@ -512,7 +557,7 @@ StraightRoadSegment {
   leftBorderBoundingObject TRUE
 }
 StraightRoadSegment {
-  translation -19.4 7 0.008
+  translation -19.4 8.6 0.008
   name "StraightRoad-5"
   id "BLOCK_TOP_W"
   width 2.4
@@ -561,7 +606,7 @@ StraightRoadSegment {
   leftBorderBoundingObject TRUE
 }
 StraightRoadSegment {
-  translation -12.4 7 0.008
+  translation -12.4 8.6 0.008
   name "StraightRoad-6"
   id "BLOCK_TOP_E"
   width 2.4
@@ -609,10 +654,80 @@ StraightRoadSegment {
   rightBorderBoundingObject TRUE
   leftBorderBoundingObject TRUE
 }
+Road {
+  translation 0 0 0
+  name "Road-BLOCK_MID_TUNNEL"
+  id "BLOCK_MID_TUNNEL"
+  width 2.4
+  numberOfLanes 4
+  numberOfForwardLanes 2
+  lines [
+    RoadLine {
+      width 0.025
+    }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "double"
+      width 0.025
+    }
+    RoadLine {
+      width 0.025
+    }
+  ]
+  roadBorderHeight 0.035
+  roadBorderWidth [
+    0.14
+  ]
+  wayPoints [
+    -19.4 0 0.008
+    -18.6 0 0.006
+    -17.8 0 -0.06
+    -17.0 0 -0.20
+    -16.2 0 -0.38
+    -15.5 0 -0.52
+    -15.0 0 -0.55
+    -14.4 0 -0.55
+    -14.0 0 -0.55
+    -13.6 0 -0.55
+    -13.0 0 -0.55
+    -12.5 0 -0.52
+    -11.8 0 -0.38
+    -11.0 0 -0.20
+    -10.2 0 -0.06
+    -9.6 0 0.008
+  ]
+  startLine [
+    "../../../../../../worlds/textures/crossing.png"
+    "../../../../../../worlds/textures/crossing.png"
+    "../../../../../../worlds/textures/stop_crossing.png"
+    "../../../../../../worlds/textures/stop_crossing.png"
+  ]
+  endLine [
+    "../../../../../../worlds/textures/stop_crossing.png"
+    "../../../../../../worlds/textures/stop_crossing.png"
+    "../../../../../../worlds/textures/crossing.png"
+    "../../../../../../worlds/textures/crossing.png"
+  ]
+  splineSubdivision -1
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  roadBoundingObject TRUE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
 StraightRoadSegment {
-  translation -19.4 0 0.008
-  name "StraightRoad-7"
-  id "BLOCK_MID_W"
+  translation -14 1.6 0.008
+  rotation 0 0 1 -1.5707963267948966
+  name "StraightRoad-RECONNECTED_BRIDGE"
+  id "RECONNECTED_BRIDGE"
   width 2.4
   numberOfLanes 4
   numberOfForwardLanes 2
@@ -632,19 +747,7 @@ StraightRoadSegment {
   roadBorderHeight 0.035
   startingRoadBorderWidth 0.14
   endingRoadBorderWidth 0.14
-  length 3.799999999999999
-  startLine [
-    "../../../../../../worlds/textures/crossing.png"
-    "../../../../../../worlds/textures/crossing.png"
-    "../../../../../../worlds/textures/stop_crossing.png"
-    "../../../../../../worlds/textures/stop_crossing.png"
-  ]
-  endLine [
-    "../../../../../../worlds/textures/stop_line.png"
-    "../../../../../../worlds/textures/stop_line.png"
-    ""
-    ""
-  ]
+  length 3.2
   appearance PBRAppearance {
     baseColor 0.12 0.14 0.16
     roughness 1
@@ -657,58 +760,291 @@ StraightRoadSegment {
   }
   rightBorderBoundingObject TRUE
   leftBorderBoundingObject TRUE
+  roadBoundingObject TRUE
+}
+Solid {
+  translation 0 0 0
+  children [
+    Pose {
+      translation -14 0 -0.02
+      children [
+        Shape {
+          appearance DEF CONCRETE PBRAppearance {
+            baseColor 0.62 0.64 0.62
+            roughness 0.85
+            metalness 0
+          }
+          geometry Box {
+            size 3.0 2.8 0.05
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -14 1.34 -0.275
+      children [
+        Shape {
+          appearance USE CONCRETE
+          geometry DEF TUNNEL_WALL Box {
+            size 3.0 0.14 0.55
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -14 -1.34 -0.275
+      children [
+        Shape {
+          appearance USE CONCRETE
+          geometry USE TUNNEL_WALL
+        }
+      ]
+    }
+    Pose {
+      translation -15.55 1.42 -0.275
+      children [
+        Shape {
+          appearance USE CONCRETE
+          geometry Box {
+            size 0.3 0.3 0.55
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -15.55 -1.42 -0.275
+      children [
+        Shape {
+          appearance USE CONCRETE
+          geometry Box {
+            size 0.3 0.3 0.55
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -15.55 0 0.045
+      children [
+        Shape {
+          appearance USE CONCRETE
+          geometry Box {
+            size 0.3 3.14 0.09
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -12.45 1.42 -0.275
+      children [
+        Shape {
+          appearance USE CONCRETE
+          geometry Box {
+            size 0.3 0.3 0.55
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -12.45 -1.42 -0.275
+      children [
+        Shape {
+          appearance USE CONCRETE
+          geometry Box {
+            size 0.3 0.3 0.55
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -12.45 0 0.045
+      children [
+        Shape {
+          appearance USE CONCRETE
+          geometry Box {
+            size 0.3 3.14 0.09
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -17.2 1.34 -0.15
+      children [
+        Shape {
+          appearance USE CONCRETE
+          geometry Box {
+            size 3.0 0.14 0.3
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -17.2 -1.34 -0.15
+      children [
+        Shape {
+          appearance USE CONCRETE
+          geometry Box {
+            size 3.0 0.14 0.3
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -11.0 1.34 -0.15
+      children [
+        Shape {
+          appearance USE CONCRETE
+          geometry Box {
+            size 2.6 0.14 0.3
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -11.0 -1.34 -0.15
+      children [
+        Shape {
+          appearance USE CONCRETE
+          geometry Box {
+            size 2.6 0.14 0.3
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -15.35 0 0.14
+      children [
+        Shape {
+          appearance USE CONCRETE
+          geometry Box {
+            size 0.1 3.2 0.28
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -12.65 0 0.14
+      children [
+        Shape {
+          appearance USE CONCRETE
+          geometry Box {
+            size 0.1 3.2 0.28
+          }
+        }
+      ]
+    }
+    PointLight {
+      translation -14 0 -0.15
+      ambientIntensity 0.3
+      intensity 2.5
+      radius 6
+      color 1 0.95 0.8
+      castShadows FALSE
+    }
+  ]
+  name "Tunnel-Structure"
+  boundingObject Group {
+    children [
+      Pose {
+        translation -14 1.34 -0.275
+        children [
+          Box {
+            size 3.0 0.14 0.55
+          }
+        ]
+      }
+      Pose {
+        translation -14 -1.34 -0.275
+        children [
+          Box {
+            size 3.0 0.14 0.55
+          }
+        ]
+      }
+      Pose {
+        translation -15.55 1.42 -0.275
+        children [
+          Box {
+            size 0.3 0.3 0.55
+          }
+        ]
+      }
+      Pose {
+        translation -15.55 -1.42 -0.275
+        children [
+          Box {
+            size 0.3 0.3 0.55
+          }
+        ]
+      }
+      Pose {
+        translation -12.45 1.42 -0.275
+        children [
+          Box {
+            size 0.3 0.3 0.55
+          }
+        ]
+      }
+      Pose {
+        translation -12.45 -1.42 -0.275
+        children [
+          Box {
+            size 0.3 0.3 0.55
+          }
+        ]
+      }
+      Pose {
+        translation -17.2 1.34 -0.15
+        children [
+          Box {
+            size 3.0 0.14 0.3
+          }
+        ]
+      }
+      Pose {
+        translation -17.2 -1.34 -0.15
+        children [
+          Box {
+            size 3.0 0.14 0.3
+          }
+        ]
+      }
+      Pose {
+        translation -11.0 1.34 -0.15
+        children [
+          Box {
+            size 2.6 0.14 0.3
+          }
+        ]
+      }
+      Pose {
+        translation -11.0 -1.34 -0.15
+        children [
+          Box {
+            size 2.6 0.14 0.3
+          }
+        ]
+      }
+      Pose {
+        translation -15.35 0 0.14
+        children [
+          Box {
+            size 0.1 3.2 0.28
+          }
+        ]
+      }
+      Pose {
+        translation -12.65 0 0.14
+        children [
+          Box {
+            size 0.1 3.2 0.28
+          }
+        ]
+      }
+    ]
+  }
 }
 StraightRoadSegment {
-  translation -12.4 0 0.008
-  name "StraightRoad-8"
-  id "BLOCK_MID_E"
-  width 2.4
-  numberOfLanes 4
-  numberOfForwardLanes 2
-  lines [
-    RoadLine {
-      width 0.025
-    }
-    RoadLine {
-      color 0.85 0.75 0.3
-      type "double"
-      width 0.025
-    }
-    RoadLine {
-      width 0.025
-    }
-  ]
-  roadBorderHeight 0.035
-  startingRoadBorderWidth 0.14
-  endingRoadBorderWidth 0.14
-  length 2.8000000000000007
-  startLine [
-    ""
-    ""
-    "../../../../../../worlds/textures/stop_line.png"
-    "../../../../../../worlds/textures/stop_line.png"
-  ]
-  endLine [
-    "../../../../../../worlds/textures/stop_crossing.png"
-    "../../../../../../worlds/textures/stop_crossing.png"
-    "../../../../../../worlds/textures/crossing.png"
-    "../../../../../../worlds/textures/crossing.png"
-  ]
-  appearance PBRAppearance {
-    baseColor 0.12 0.14 0.16
-    roughness 1
-    metalness 0
-  }
-  pavementAppearance PBRAppearance {
-    baseColor 0.65 0.67 0.62
-    roughness 1
-    metalness 0
-  }
-  rightBorderBoundingObject TRUE
-  leftBorderBoundingObject TRUE
-}
-StraightRoadSegment {
-  translation -19.4 -6.6 0.008
+  translation -19.4 -7.6 0.008
   name "StraightRoad-9"
   id "BLOCK_BOTTOM_W"
   width 2.4
@@ -757,7 +1093,7 @@ StraightRoadSegment {
   leftBorderBoundingObject TRUE
 }
 StraightRoadSegment {
-  translation -12.4 -6.6 0.008
+  translation -12.4 -7.6 0.008
   name "StraightRoad-10"
   id "BLOCK_BOTTOM_E"
   width 2.4
@@ -806,7 +1142,7 @@ StraightRoadSegment {
   leftBorderBoundingObject TRUE
 }
 StraightRoadSegment {
-  translation -14 5.4 0.008
+  translation -14 7 0.008
   rotation 0 0 1 -1.5707963267948966
   name "StraightRoad-11"
   id "RECONNECTED_NORTH"
@@ -829,7 +1165,7 @@ StraightRoadSegment {
   roadBorderHeight 0.035
   startingRoadBorderWidth 0.14
   endingRoadBorderWidth 0.14
-  length 3.8000000000000007
+  length 5.4
   startLine [
     ""
     ""
@@ -879,7 +1215,7 @@ StraightRoadSegment {
   roadBorderHeight 0.035
   startingRoadBorderWidth 0.14
   endingRoadBorderWidth 0.14
-  length 3.4
+  length 4.4
   startLine [
     ""
     ""
@@ -929,7 +1265,7 @@ StraightRoadSegment {
   roadBorderHeight 0.035
   startingRoadBorderWidth 0.14
   endingRoadBorderWidth 0.14
-  length 4.800000000000001
+  length 3.2
   startLine [
     ""
     ""
@@ -956,7 +1292,7 @@ StraightRoadSegment {
   leftBorderBoundingObject TRUE
 }
 StraightRoadSegment {
-  translation -8 5.4 0.008
+  translation -8 7 0.008
   rotation 0 0 1 -1.5707963267948966
   name "StraightRoad-14"
   id "INNER_2"
@@ -979,7 +1315,7 @@ StraightRoadSegment {
   roadBorderHeight 0.035
   startingRoadBorderWidth 0.14
   endingRoadBorderWidth 0.14
-  length 3.8000000000000007
+  length 5.4
   startLine [
     ""
     ""
@@ -1029,7 +1365,7 @@ StraightRoadSegment {
   roadBorderHeight 0.035
   startingRoadBorderWidth 0.14
   endingRoadBorderWidth 0.14
-  length 3.4
+  length 4.4
   startLine [
     "../../../../../../worlds/textures/crossing.png"
     "../../../../../../worlds/textures/crossing.png"
@@ -1402,8 +1738,8 @@ Road {
     0.14
   ]
   wayPoints [
-    -8 -8.2 0
-    -8 -8.6 0
+    -8 -9.2 0
+    -8 -9.4 0
     -7.505964 -10.082107 0
   ]
   startLine [
@@ -1457,7 +1793,7 @@ Road {
     0.14
   ]
   wayPoints [
-    -6.4 7 0, -4 7 0, -3.803791 6.993577 0, -3.608421 6.974335 0, -3.414729 6.942356 0, -3.223543 6.897777 0, -3.035682 6.84079 0, -2.85195 6.771639 0, -2.673134 6.690618 0, -2.5 6.598076 0, -2.333289 6.494409 0, -2.173716 6.38006 0, -2.021963 6.255519 0, -1.87868 6.12132 0, -1.744481 5.978037 0, -1.61994 5.826284 0, -1.505591 5.666711 0, -1.401924 5.5 0, -1.309382 5.326866 0, -1.228361 5.14805 0, -1.15921 4.964318 0, -1.102223 4.776457 0, -1.057644 4.585271 0, -1.025665 4.391579 0, -1.006423 4.196209 0, -1 4 0, -1 1.6 0
+    -6.4 8.6 0, -4 8.6 0, -3.803791 8.593577 0, -3.608421 8.574335 0, -3.414729 8.542356 0, -3.223543 8.497777 0, -3.035682 8.44079 0, -2.85195 8.371639 0, -2.673134 8.290618 0, -2.5 8.198076 0, -2.333289 8.094409 0, -2.173716 7.98006 0, -2.021963 7.855519 0, -1.87868 7.72132 0, -1.744481 7.578037 0, -1.61994 7.426284 0, -1.505591 7.266711 0, -1.401924 7.1 0, -1.309382 6.926866 0, -1.228361 6.74805 0, -1.15921 6.564318 0, -1.102223 6.376457 0, -1.057644 6.185271 0, -1.025665 5.991579 0, -1.006423 5.796209 0, -1 5.6 0, -1 1.6 0
   ]
   startLine [
     ""
@@ -1490,12 +1826,12 @@ Crossroad {
   name "TJunction-1"
   id "J_WEST_UPPER"
   shape [
-    -5.4 22.2 0
-    -5.4 19.8 0
-    -5.8 19.4 0
-    -8.2 19.4 0
-    -8.6 19.8 0
-    -8.6 22.2 0
+    -7.0 22.2 0
+    -7.0 19.8 0
+    -7.4 19.4 0
+    -9.8 19.4 0
+    -10.2 19.8 0
+    -10.2 22.2 0
   ]
   appearance PBRAppearance {
     baseColor 0.12 0.14 0.16
@@ -1526,12 +1862,12 @@ Crossroad {
   name "TJunction-3"
   id "J_WEST_LOWER"
   shape [
-    8.2 22.2 0
-    8.2 19.8 0
-    7.8 19.4 0
-    5.4 19.4 0
-    5 19.8 0
-    5 22.2 0
+    9.2 22.2 0
+    9.2 19.8 0
+    8.8 19.4 0
+    6.4 19.4 0
+    6.0 19.8 0
+    6.0 22.2 0
   ]
   appearance PBRAppearance {
     baseColor 0.12 0.14 0.16
@@ -1634,32 +1970,12 @@ Crossroad {
   name "TJunction-9"
   id "J_BLOCK_NORTH"
   shape [
-    -5.8 15.6 0
-    -5.4 15.2 0
-    -5.4 12.8 0
-    -5.8 12.4 0
-    -8.2 12.4 0
-    -8.2 15.6 0
-  ]
-  appearance PBRAppearance {
-    baseColor 0.12 0.14 0.16
-    roughness 1
-    metalness 0
-  }
-}
-Crossroad {
-  translation 0 0 0.008
-  name "Crossroad-1"
-  id "J_BLOCK_CROSS"
-  shape [
-    1.2 15.6 0
-    1.6 15.2 0
-    1.6 12.8 0
-    1.2 12.4 0
-    -1.2 12.4 0
-    -1.6 12.8 0
-    -1.6 15.2 0
-    -1.2 15.6 0
+    -7.4 15.6 0
+    -7.0 15.2 0
+    -7.0 12.8 0
+    -7.4 12.4 0
+    -9.8 12.4 0
+    -9.8 15.6 0
   ]
   appearance PBRAppearance {
     baseColor 0.12 0.14 0.16
@@ -1672,12 +1988,12 @@ Crossroad {
   name "TJunction-10"
   id "J_BLOCK_SOUTH"
   shape [
-    7.8 15.6 0
-    7.8 12.4 0
-    5.4 12.4 0
-    5 12.8 0
-    5 15.2 0
-    5.4 15.6 0
+    8.8 15.6 0
+    8.8 12.4 0
+    6.4 12.4 0
+    6.0 12.8 0
+    6.0 15.2 0
+    6.4 15.6 0
   ]
   appearance PBRAppearance {
     baseColor 0.12 0.14 0.16
@@ -1690,14 +2006,14 @@ Crossroad {
   name "Crossroad-2"
   id "J_INNER_NORTH"
   shape [
-    -5.8 9.6 0
-    -5.4 9.2 0
-    -5.4 6.8 0
-    -5.8 6.4 0
-    -8.2 6.4 0
-    -8.6 6.8 0
-    -8.6 9.2 0
-    -8.2 9.6 0
+    -7.4 9.6 0
+    -7.0 9.2 0
+    -7.0 6.8 0
+    -7.4 6.4 0
+    -9.8 6.4 0
+    -10.2 6.8 0
+    -10.2 9.2 0
+    -9.8 9.6 0
   ]
   appearance PBRAppearance {
     baseColor 0.12 0.14 0.16
@@ -1741,12 +2057,12 @@ Crossroad {
   name "TJunction-11"
   id "J_INNER_SOUTH"
   shape [
-    7.8 9.6 0
-    8.2 9.2 0
-    8.2 6.8 0
-    5 6.8 0
-    5 9.2 0
-    5.4 9.6 0
+    8.8 9.6 0
+    9.2 9.2 0
+    9.2 6.8 0
+    6.0 6.8 0
+    6.0 9.2 0
+    6.4 9.6 0
   ]
   boundingObject TRUE
   appearance PBRAppearance {
@@ -1819,6 +2135,12 @@ Roundabout {
   borderHeight 0.04
   innerRadius 2.4
   outerRadius 4
+  numberOfLanes 2
+  lines [
+    RoadLine {
+      width 0.025
+    }
+  ]
   startRoadsLength [
     1.2
   ]
@@ -1859,7 +2181,7 @@ CrashBarrier {
   enableBoundingObject TRUE
 }
 Solid {
-  translation -18.92 8.39 0
+  translation -18.92 9.99 0
   children [
     Pose {
       translation 0 0 0.28
@@ -2068,7 +2390,7 @@ Solid {
   }
 }
 Solid {
-  translation -12.61 4.92 0
+  translation -12.61 6.52 0
   rotation 0 0 1 -1.5707963267948966
   children [
     Pose {
@@ -2138,7 +2460,7 @@ Solid {
   }
 }
 Solid {
-  translation -15.39 -4.52 0
+  translation -15.39 -5.52 0
   rotation 0 0 1 1.5707963267948966
   children [
     Pose {
@@ -2208,7 +2530,7 @@ Solid {
   }
 }
 Solid {
-  translation -6.61 -8.68 0
+  translation -6.61 -9.68 0
   rotation 0 0 1 -1.5707963267948966
   children [
     Pose {

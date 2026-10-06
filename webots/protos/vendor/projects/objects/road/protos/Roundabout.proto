@@ -44,6 +44,8 @@ PROTO Roundabout [
   field        SFString             contactMaterial          "default"                             # Is `Solid.contactMaterial`.
   field        SFBool               locked                   TRUE                                  # Is `Solid.locked`.
   field        SFNode               appearance               Asphalt { }                           # Defines the appearance of the road.
+  field        SFInt32              numberOfLanes            1                                     # Defines the number of lanes of the roundabout ring road.
+  field        MFNode{RoadLine {}}  lines                    []                                    # Defines the property of each line separating two lanes in the roundabout ring road.
 ]
 {
   %<
@@ -241,7 +243,8 @@ PROTO Roundabout [
           roadBoundingObject IS roadBoundingObject
           curvatureRadius %<= (innerRadius + outerRadius) * 0.5 >%
           width %<= outerRadius - innerRadius >%
-          numberOfLanes 1
+          numberOfLanes IS numberOfLanes
+          lines IS lines
           appearance IS appearance
           castShadows IS castShadows
         }
@@ -266,7 +269,8 @@ PROTO Roundabout [
           contactMaterial IS contactMaterial
           curvatureRadius %<= (innerRadius + outerRadius) * 0.5 >%
           width %<= outerRadius - innerRadius >%
-          numberOfLanes 1
+          numberOfLanes IS numberOfLanes
+          lines IS lines
           appearance IS appearance
           castShadows IS castShadows
         }
