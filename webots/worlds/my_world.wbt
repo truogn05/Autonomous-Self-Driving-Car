@@ -13,8 +13,8 @@ WorldInfo {
 }
 DEF OVERVIEW Viewpoint {
   fieldOfView 0.85
-  orientation -0.5619162706306547 0.5790318590163926 0.5907386994641175 2.0479666709450903
-  position 2.476477335508007 -8.636426794020977 167.6923026757139
+  orientation -0.5773502691896258 0.5773502691896258 0.5773502691896258 2.0944
+  position -9.022187203205727e-05 -9.022212717775524e-05 136.02557733007316
   description "Town overview - north up"
 }
 Background {
@@ -93,7 +93,7 @@ DEF GROUND-East Solid {
   }
 }
 Road {
-  name "Road-1"
+  name "Road-OUTER_NW"
   id "OUTER_NW"
   startJunction "J_WEST_UPPER"
   endJunction "J_NORTH_WEST"
@@ -118,7 +118,7 @@ Road {
     0.14
   ]
   wayPoints [
-    -35 12.74 0.008, -35 13.037549 0.008, -35 13.335098 0.008, -35 13.632647 0.008, -35 13.930196 0.008, -35 14.227745 0.008, -34.995901 14.525226 0.008, -34.969413 14.821389 0.008, -34.911606 15.113071 0.008, -34.821927 15.396479 0.008, -34.699302 15.667361 0.008, -34.550583 15.924859 0.008, -34.374783 16.164736 0.008, -34.179207 16.388775 0.008, -33.964734 16.594808 0.008, -33.733542 16.781928 0.008, -33.489395 16.951794 0.008, -33.233985 17.104285 0.008, -32.967545 17.236585 0.008, -32.693218 17.351571 0.008, -32.412311 17.449387 0.008, -32.126011 17.530146 0.008, -31.835283 17.593216 0.008, -31.541184 17.638012 0.008, -31.245141 17.667441 0.008, -30.948437 17.689848 0.008, -30.651733 17.712255 0.008, -30.355029 17.734662 0.008, -30.058325 17.757069 0.008, -29.761621 17.779476 0.008, -29.464917 17.801883 0.008, -29.168213 17.82429 0.008, -28.871509 17.846698 0.008, -28.574805 17.869105 0.008, -28.278101 17.891512 0.008, -27.981397 17.913919 0.008, -27.684693 17.936326 0.008, -27.387988 17.958733 0.008, -27.091284 17.98114 0.008, -26.79458 18.003547 0.008, -26.497876 18.025954 0.008, -26.201172 18.048361 0.008, -25.904468 18.070768 0.008, -25.607764 18.093175 0.008, -25.31106 18.115582 0.008, -25.014356 18.137989 0.008, -24.717652 18.160396 0.008, -24.420948 18.182803 0.008, -24.124244 18.20521 0.008, -23.82754 18.227617 0.008, -23.530836 18.250024 0.008, -23.234132 18.272432 0.008, -22.937428 18.294839 0.008, -22.640724 18.317246 0.008, -22.34402 18.339653 0.008, -22.047316 18.36206 0.008, -21.750612 18.384467 0.008, -21.453908 18.406874 0.008, -21.157204 18.429281 0.008, -20.8605 18.451688 0.008, -20.563795 18.474095 0.008, -20.267091 18.496502 0.008, -19.970387 18.518909 0.008, -19.673683 18.541316 0.008, -19.376979 18.563723 0.008, -19.080275 18.58613 0.008, -18.783571 18.608537 0.008, -18.486867 18.630944 0.008, -18.190163 18.653351 0.008, -17.893459 18.675758 0.008, -17.596755 18.698166 0.008, -17.300051 18.720573 0.008, -17.003347 18.74298 0.008, -16.706643 18.765387 0.008, -16.409939 18.787794 0.008, -16.113235 18.810201 0.008, -15.816531 18.832608 0.008, -15.519827 18.855015 0.008, -15.223123 18.877422 0.008, -14.926419 18.899829 0.008, -14.629715 18.922236 0.008, -14.333011 18.944643 0.008, -14.036307 18.96705 0.008, -13.739602 18.989457 0.008
+    -35 12.74 0.008, -35 13.036669 0.008, -35 13.333337 0.008, -35 13.630006 0.008, -35 13.926674 0.008, -35 14.223343 0.008, -34.995973 14.519984 0.008, -34.969938 14.815503 0.008, -34.912881 15.106624 0.008, -34.824076 15.389677 0.008, -34.702505 15.660276 0.008, -34.5548 15.917548 0.008, -34.38018 16.157363 0.008, -34.185675 16.381358 0.008, -33.972337 16.587495 0.008, -33.742308 16.774824 0.008, -33.499258 16.944924 0.008, -33.244972 17.097716 0.008, -32.979709 17.230535 0.008, -32.706448 17.346016 0.008, -32.42658 17.444408 0.008, -32.141309 17.52582 0.008, -31.8516 17.589665 0.008, -31.558482 17.635364 0.008, -31.263367 17.665617 0.008, -30.967576 17.688397 0.008, -30.671751 17.710744 0.008, -30.375925 17.733084 0.008, -30.080099 17.755425 0.008, -29.784272 17.777766 0.008, -29.488446 17.800106 0.008, -29.19262 17.822447 0.008, -28.896794 17.844789 0.008, -28.600968 17.867129 0.008, -28.305142 17.88947 0.008, -28.009316 17.911811 0.008, -27.71349 17.934151 0.008, -27.417663 17.956492 0.008, -27.121837 17.978833 0.008, -26.826011 18.001173 0.008, -26.530185 18.023514 0.008, -26.234359 18.045855 0.008, -25.938533 18.068195 0.008, -25.642707 18.090536 0.008, -25.346881 18.112877 0.008, -25.051054 18.135217 0.008, -24.755228 18.157558 0.008, -24.459402 18.179899 0.008, -24.163576 18.202239 0.008, -23.86775 18.22458 0.008, -23.572089 18.249005 0.008, -23.27747 18.283753 0.008, -22.984439 18.330014 0.008, -22.693293 18.38695 0.008, -22.404207 18.453563 0.008, -22.117265 18.528886 0.008, -21.832479 18.61199 0.008, -21.5498 18.702004 0.008, -21.269133 18.798112 0.008, -20.990348 18.89955 0.008, -20.713287 19.005608 0.008, -20.437774 19.115626 0.008, -20.163618 19.228984 0.008, -19.89062 19.345103 0.008, -19.618573 19.463434 0.008, -19.347265 19.583452 0.008, -19.076483 19.704651 0.008, -18.806013 19.826546 0.008, -18.535608 19.948583 0.008, -18.265027 20.070231 0.008, -17.994053 20.191001 0.008, -17.722472 20.310397 0.008, -17.450069 20.427908 0.008, -17.176634 20.542996 0.008, -16.901964 20.655102 0.008, -16.62586 20.763629 0.008, -16.348137 20.867941 0.008, -16.068624 20.967356 0.008, -15.787174 21.061143 0.008, -15.503669 21.148517 0.008
   ]
   startLine [
     ""
@@ -146,110 +146,8 @@ Road {
   rightBorderBoundingObject TRUE
   leftBorderBoundingObject TRUE
 }
-StraightRoadSegment {
-  translation -10.26 19 0.008
-  name "StraightRoad-1"
-  id "NORTH_TRAINING"
-  startJunction "J_NORTH_WEST"
-  endJunction "J_NORTH_MIDDLE"
-  width 2.4
-  numberOfLanes 4
-  numberOfForwardLanes 2
-  lines [
-    RoadLine {
-      width 0.025
-    }
-    RoadLine {
-      color 0.85 0.75 0.3
-      type "double"
-      width 0.025
-    }
-    RoadLine {
-      width 0.025
-    }
-  ]
-  roadBorderHeight 0.035
-  startingRoadBorderWidth 0.14
-  endingRoadBorderWidth 0.14
-  length 15.52
-  startLine [
-    ""
-    ""
-    "../../../../../../worlds/textures/stop_line.png"
-    "../../../../../../worlds/textures/stop_line.png"
-  ]
-  endLine [
-    "../../../../../../worlds/textures/stop_crossing.png"
-    "../../../../../../worlds/textures/stop_crossing.png"
-    "../../../../../../worlds/textures/crossing.png"
-    "../../../../../../worlds/textures/crossing.png"
-  ]
-  appearance PBRAppearance {
-    baseColor 0.12 0.14 0.16
-    roughness 1
-    metalness 0
-  }
-  pavementAppearance PBRAppearance {
-    baseColor 0.65 0.67 0.62
-    roughness 1
-    metalness 0
-  }
-  rightBorderBoundingObject TRUE
-  leftBorderBoundingObject TRUE
-}
-StraightRoadSegment {
-  translation 8.74 19 0.008
-  name "StraightRoad-2"
-  id "NORTH_LINK"
-  startJunction "J_NORTH_MIDDLE"
-  endJunction "J_NORTH_EAST"
-  width 2.4
-  numberOfLanes 4
-  numberOfForwardLanes 2
-  lines [
-    RoadLine {
-      width 0.025
-    }
-    RoadLine {
-      color 0.85 0.75 0.3
-      type "double"
-      width 0.025
-    }
-    RoadLine {
-      width 0.025
-    }
-  ]
-  roadBorderHeight 0.035
-  startingRoadBorderWidth 0.14
-  endingRoadBorderWidth 0.14
-  length 10.32
-  startLine [
-    "../../../../../../worlds/textures/crossing.png"
-    "../../../../../../worlds/textures/crossing.png"
-    "../../../../../../worlds/textures/stop_crossing.png"
-    "../../../../../../worlds/textures/stop_crossing.png"
-  ]
-  endLine [
-    "../../../../../../worlds/textures/stop_line.png"
-    "../../../../../../worlds/textures/stop_line.png"
-    ""
-    ""
-  ]
-  appearance PBRAppearance {
-    baseColor 0.12 0.14 0.16
-    roughness 1
-    metalness 0
-  }
-  pavementAppearance PBRAppearance {
-    baseColor 0.65 0.67 0.62
-    roughness 1
-    metalness 0
-  }
-  rightBorderBoundingObject TRUE
-  leftBorderBoundingObject TRUE
-}
 Road {
-  name "Road-2"
+  name "Road-OUTER_NE"
   id "OUTER_NE"
   startJunction "J_NORTH_EAST"
   endJunction "J_EAST"
@@ -274,7 +172,7 @@ Road {
     0.14
   ]
   wayPoints [
-    24.938715 18.941327 0.008, 25.237423 18.928236 0.008, 25.536132 18.915144 0.008, 25.83484 18.902052 0.008, 26.133549 18.888961 0.008, 26.432257 18.875869 0.008, 26.730965 18.862777 0.008, 27.029674 18.849686 0.008, 27.328382 18.836594 0.008, 27.627091 18.823502 0.008, 27.925799 18.810411 0.008, 28.224113 18.793975 0.008, 28.516539 18.732192 0.008, 28.803783 18.649658 0.008, 29.084848 18.548012 0.008, 29.358947 18.428769 0.008, 29.625452 18.293316 0.008, 29.883193 18.141828 0.008, 30.132433 17.976756 0.008, 30.372913 17.799182 0.008, 30.604367 17.610002 0.008, 30.826564 17.410035 0.008, 31.039296 17.200028 0.008, 31.242368 16.980664 0.008, 31.43559 16.752577 0.008, 31.618776 16.516352 0.008, 31.791731 16.272536 0.008, 31.954254 16.021645 0.008, 32.106128 15.764168 0.008, 32.247122 15.500575 0.008, 32.376982 15.231323 0.008, 32.495433 14.956861 0.008, 32.602172 14.677636 0.008, 32.696866 14.394102 0.008, 32.766195 14.10385 0.008, 32.818778 13.809514 0.008, 32.871361 13.515179 0.008, 32.923943 13.220844 0.008, 32.976526 12.926509 0.008, 33.029109 12.632174 0.008, 33.081692 12.337839 0.008, 33.134274 12.043504 0.008, 33.186857 11.749169 0.008, 33.23944 11.454833 0.008, 33.292023 11.160498 0.008, 33.344606 10.866163 0.008, 33.397188 10.571828 0.008, 33.449771 10.277493 0.008, 33.502354 9.983158 0.008, 33.554937 9.688823 0.008, 33.60752 9.394488 0.008, 33.660102 9.100153 0.008, 33.712685 8.805817 0.008, 33.765268 8.511482 0.008, 33.817851 8.217147 0.008, 33.870434 7.922812 0.008, 33.923016 7.628477 0.008, 33.975599 7.334142 0.008, 34.028182 7.039807 0.008, 34.080765 6.745472 0.008, 34.133347 6.451137 0.008, 34.18593 6.156801 0.008, 34.238513 5.862466 0.008, 34.291096 5.568131 0.008, 34.343679 5.273796 0.008, 34.396261 4.979461 0.008, 34.448844 4.685126 0.008, 34.501427 4.390791 0.008, 34.55401 4.096456 0.008, 34.606593 3.80212 0.008, 34.659175 3.507785 0.008, 34.711758 3.21345 0.008, 34.764341 2.919115 0.008
+    26.712329 21.154588 0.008, 26.99902 21.075247 0.008, 27.283791 20.989268 0.008, 27.566738 20.89746 0.008, 27.847959 20.800499 0.008, 28.126544 20.696363 0.008, 28.393704 20.565661 0.008, 28.648127 20.411565 0.008, 28.893446 20.243346 0.008, 29.130011 20.06302 0.008, 29.357755 19.871675 0.008, 29.576101 19.669664 0.008, 29.786566 19.459452 0.008, 29.989882 19.242315 0.008, 30.186587 19.019171 0.008, 30.376781 18.790455 0.008, 30.559115 18.555421 0.008, 30.735801 18.316111 0.008, 30.906991 18.07284 0.008, 31.072786 17.82586 0.008, 31.232635 17.574991 0.008, 31.386269 17.320267 0.008, 31.534897 17.062591 0.008, 31.678506 16.802083 0.008, 31.817035 16.538839 0.008, 31.949986 16.272735 0.008, 32.076803 16.003654 0.008, 32.198291 15.732124 0.008, 32.314192 15.458163 0.008, 32.424168 15.181771 0.008, 32.52778 14.902931 0.008, 32.624377 14.621586 0.008, 32.710695 14.336938 0.008, 32.776383 14.04682 0.008, 32.828699 13.753985 0.008, 32.881012 13.461151 0.008, 32.933327 13.168317 0.008, 32.985642 12.875482 0.008, 33.037957 12.582648 0.008, 33.090272 12.289814 0.008, 33.142586 11.996979 0.008, 33.194901 11.704145 0.008, 33.247215 11.411311 0.008, 33.29953 11.118476 0.008, 33.351845 10.825642 0.008, 33.404159 10.532808 0.008, 33.456474 10.239973 0.008, 33.508788 9.947139 0.008, 33.561103 9.654305 0.008, 33.613419 9.36147 0.008, 33.665733 9.068636 0.008, 33.718048 8.775802 0.008, 33.770362 8.482967 0.008, 33.822677 8.190133 0.008, 33.874992 7.897299 0.008, 33.927306 7.604464 0.008, 33.979621 7.31163 0.008, 34.031936 7.018796 0.008, 34.08425 6.725961 0.008, 34.136564 6.433127 0.008, 34.188879 6.140293 0.008, 34.241194 5.847458 0.008, 34.293509 5.554624 0.008, 34.345823 5.26179 0.008, 34.398138 4.968955 0.008, 34.450453 4.676121 0.008, 34.502768 4.383287 0.008, 34.555083 4.090452 0.008, 34.607397 3.797618 0.008, 34.659711 3.504784 0.008, 34.712026 3.211949 0.008, 34.764341 2.919115 0.008
   ]
   startLine [
     ""
@@ -690,7 +588,7 @@ Road {
     }
     RoadLine {
       color 0.85 0.75 0.3
-      type "double"
+      type "none"
       width 0.025
     }
     RoadLine {
@@ -1259,9 +1157,9 @@ StraightRoadSegment {
   leftBorderBoundingObject TRUE
 }
 StraightRoadSegment {
-  translation -12 17.26 0.008
+  translation -11.999999 18.25 0.008
   rotation 0 0 1 -1.570796
-  name "StraightRoad-13"
+  name "Road-INNER_1"
   id "INNER_1"
   startJunction "J_NORTH_WEST"
   endJunction "J_INNER_NORTH"
@@ -1284,7 +1182,7 @@ StraightRoadSegment {
   roadBorderHeight 0.035
   startingRoadBorderWidth 0.14
   endingRoadBorderWidth 0.14
-  length 4.52
+  length 5.51
   startLine [
     ""
     ""
@@ -1435,7 +1333,7 @@ StraightRoadSegment {
     }
     RoadLine {
       color 0.85 0.75 0.3
-      type "double"
+      type "none"
       width 0.025
     }
     RoadLine {
@@ -1506,7 +1404,7 @@ StraightRoadSegment {
     }
     RoadLine {
       color 0.85 0.75 0.3
-      type "double"
+      type "none"
       width 0.025
     }
     RoadLine {
@@ -1577,7 +1475,7 @@ StraightRoadSegment {
     }
     RoadLine {
       color 0.85 0.75 0.3
-      type "double"
+      type "none"
       width 0.025
     }
     RoadLine {
@@ -1620,7 +1518,7 @@ StraightRoadSegment {
 StraightRoadSegment {
   translation 7 2.94 0.008
   rotation 0 0 1 1.570796
-  name "StraightRoad-19"
+  name "Road-CENTRAL_AXIS"
   id "CENTRAL_AXIS"
   startJunction "J_MID_AXIS"
   endJunction "J_NORTH_MIDDLE"
@@ -1643,7 +1541,7 @@ StraightRoadSegment {
   roadBorderHeight 0.035
   startingRoadBorderWidth 0.14
   endingRoadBorderWidth 0.14
-  length 14.32
+  length 15.26
   startLine [
     ""
     ""
@@ -1672,7 +1570,7 @@ StraightRoadSegment {
 StraightRoadSegment {
   translation 22 6 0.008
   rotation 0 0 1 1.570796
-  name "StraightRoad-20"
+  name "Road-ROUNDABOUT_NORTH"
   id "ROUNDABOUT_NORTH"
   startJunction "ROUNDABOUT"
   endJunction "J_NORTH_EAST"
@@ -1691,7 +1589,7 @@ StraightRoadSegment {
     }
     RoadLine {
       color 0.85 0.75 0.3
-      type "double"
+      type "none"
       width 0.025
     }
     RoadLine {
@@ -1707,7 +1605,7 @@ StraightRoadSegment {
   roadBorderHeight 0.035
   startingRoadBorderWidth 0.14
   endingRoadBorderWidth 0.14
-  length 11.26
+  length 12.25
   endLine [
     "../../../../../../worlds/textures/stop_line.png"
     "../../../../../../worlds/textures/stop_line.png"
@@ -1752,7 +1650,7 @@ StraightRoadSegment {
     }
     RoadLine {
       color 0.85 0.75 0.3
-      type "double"
+      type "none"
       width 0.025
     }
     RoadLine {
@@ -1814,7 +1712,7 @@ StraightRoadSegment {
     }
     RoadLine {
       color 0.85 0.75 0.3
-      type "double"
+      type "none"
       width 0.025
     }
     RoadLine {
@@ -2040,20 +1938,20 @@ Crossroad {
   name "TJunction-4"
   id "J_NORTH_WEST"
   shape [
-    -20.18605 13.829968 0
-    -17.792864 13.649236 0
-    -17.26 13.2 0
-    -17.26 10.8 0
-    -17.8 10.26 0
-    -20.2 10.26 0
-    -20.74 10.8 0
-    -20.74 13.2 0
+    -22.295291 15.857096 0
+    -20.001743 15.150242 0
+    -18.25 13.199999 0
+    -18.25 10.799999 0
+    -19.1 10.1 0
+    -23.9 10.1 0
+    -24.963828 11.933647 0
+    -24.175802 14.200587 0
   ]
   connectedRoadIDs [
     "OUTER_NW"
-    "NORTH_TRAINING"
     "INNER_1"
-    "NORTH_ACCESS_W"
+    "NORTH_FAN_W"
+    "NORTH_MERGED_W"
   ]
   appearance PBRAppearance {
     baseColor 0.12 0.14 0.16
@@ -2066,20 +1964,22 @@ Crossroad {
   name "TJunction-5"
   id "J_NORTH_MIDDLE"
   shape [
-    -17.8 -5.26 0
-    -17.26 -5.800005 0
-    -17.26 -8.200005 0
-    -17.8 -8.74 0
-    -20.2 -8.74 0
-    -20.74 -8.2 0
-    -20.74 -5.8 0
-    -20.2 -5.26 0
+    -19.1 -3.5 0
+    -18.2 -5.800005 0
+    -18.2 -8.200005 0
+    -19.1 -10.5 0
+    -23.9 -10.5 0
+    -25.861157 -6.754427 0
+    -25.073131 -4.487487 0
+    -23.9 -3.5 0
   ]
   connectedRoadIDs [
-    "NORTH_TRAINING"
-    "NORTH_LINK"
     "CENTRAL_AXIS"
-    "NORTH_ACCESS_M"
+    "NORTH_FAN_M"
+    "NORTH_GROUND_W_S"
+    "NORTH_GROUND_E_S"
+    "NORTH_GROUND_W_N"
+    "NORTH_GROUND_E_N"
   ]
   appearance PBRAppearance {
     baseColor 0.12 0.14 0.16
@@ -2092,20 +1992,20 @@ Crossroad {
   name "TJunction-6"
   id "J_NORTH_EAST"
   shape [
-    -17.8 -19.06 0
-    -17.260001 -19.600004 0
-    -17.259999 -24.400004 0
-    -17.742478 -24.886175 0
-    -20.140176 -24.991255 0
-    -20.74 -23.2 0
-    -20.74 -20.8 0
-    -20.2 -19.06 0
+    -19.1 -19 0
+    -18.250001 -19.600004 0
+    -18.249999 -24.400004 0
+    -19.99806 -26.392263 0
+    -22.311116 -27.032395 0
+    -24.492786 -23.745202 0
+    -24.908812 -21.381534 0
+    -23.9 -19 0
   ]
   connectedRoadIDs [
-    "NORTH_LINK"
     "OUTER_NE"
     "ROUNDABOUT_NORTH"
-    "NORTH_ACCESS_E"
+    "NORTH_FAN_E"
+    "NORTH_MERGED_E"
   ]
   appearance PBRAppearance {
     baseColor 0.12 0.14 0.16
@@ -2123,8 +2023,8 @@ Crossroad {
     3.125051 -35.953844 0
     2.4 -36.74 0
     -2.4 -36.74 0
-    -3.130154 -35.945638 0
-    -2.708076 -33.583044 0
+    -3.130155 -35.945638 0
+    -2.708075 -33.583044 0
     -2.4 -33.26 0
   ]
   connectedRoadIDs [
@@ -2221,8 +2121,8 @@ Crossroad {
     -9.26 10.8 0
     -9.8 10.26 0
     -12.2 10.26 0
-    -12.74 10.799999 0
-    -12.74 13.199999 0
+    -12.74 10.799997 0
+    -12.74 13.199997 0
     -12.2 13.74 0
   ]
   connectedRoadIDs [
@@ -2393,7 +2293,7 @@ Roundabout {
     }
     RoadLine {
       color 0.85 0.75 0.3
-      type "double"
+      type "none"
       width 0.025
     }
     RoadLine {
@@ -2508,8 +2408,8 @@ Solid {
   }
 }
 Solid {
-  translation 8.39 16.78 0
-  rotation 0 0 1 -1.570796
+  translation 4.150416 25.464134 0
+  rotation 0 0 1 1.905346
   children [
     Pose {
       translation 0 0 0.28
@@ -2578,8 +2478,8 @@ Solid {
   }
 }
 Solid {
-  translation 24.59 16.78 0
-  rotation 0 0 1 -1.570796
+  translation 21.277616 25.414481 0
+  rotation 0 0 1 1.396572
   children [
     Pose {
       translation 0 0 0.28
@@ -3609,7 +3509,6 @@ DEF SIGNAL_SYSTEM Robot {
                 baseColor 0.08 0.08 0.08
                 roughness 0.5
                 metalness 0
-                emissiveColor 1 0 0
                 emissiveIntensity 3
               }
               geometry Sphere {
@@ -3649,6 +3548,7 @@ DEF SIGNAL_SYSTEM Robot {
                 baseColor 0.08 0.08 0.08
                 roughness 0.5
                 metalness 0
+                emissiveColor 0 1 0.18000000715255737
                 emissiveIntensity 3
               }
               geometry Sphere {
@@ -3716,6 +3616,7 @@ DEF SIGNAL_SYSTEM Robot {
                 baseColor 0.08 0.08 0.08
                 roughness 0.5
                 metalness 0
+                emissiveColor 1 0 0
                 emissiveIntensity 3
               }
               geometry Sphere {
@@ -3755,7 +3656,6 @@ DEF SIGNAL_SYSTEM Robot {
                 baseColor 0.08 0.08 0.08
                 roughness 0.5
                 metalness 0
-                emissiveColor 0 1 0.18000000715255737
                 emissiveIntensity 3
               }
               geometry Sphere {
@@ -3823,6 +3723,7 @@ DEF SIGNAL_SYSTEM Robot {
                 baseColor 0.08 0.08 0.08
                 roughness 0.5
                 metalness 0
+                emissiveColor 1 0 0
                 emissiveIntensity 3
               }
               geometry Sphere {
@@ -3862,7 +3763,6 @@ DEF SIGNAL_SYSTEM Robot {
                 baseColor 0.08 0.08 0.08
                 roughness 0.5
                 metalness 0
-                emissiveColor 0 1 0.18000000715255737
                 emissiveIntensity 3
               }
               geometry Sphere {
@@ -3929,7 +3829,6 @@ DEF SIGNAL_SYSTEM Robot {
                 baseColor 0.08 0.08 0.08
                 roughness 0.5
                 metalness 0
-                emissiveColor 1 0 0
                 emissiveIntensity 3
               }
               geometry Sphere {
@@ -3969,6 +3868,7 @@ DEF SIGNAL_SYSTEM Robot {
                 baseColor 0.08 0.08 0.08
                 roughness 0.5
                 metalness 0
+                emissiveColor 0 1 0.18000000715255737
                 emissiveIntensity 3
               }
               geometry Sphere {
@@ -3987,7 +3887,7 @@ DEF SIGNAL_SYSTEM Robot {
   ]
   name "junction signals"
   controller "traffic_signals"
-  customData "{\"time\": 91.008, \"EW\": \"red\", \"NS\": \"green\"}"
+  customData "{\"time\": 0.032, \"EW\": \"green\", \"NS\": \"red\"}"
 }
 DEF INSPECTOR Robot {
   name "world inspector"
@@ -4565,7 +4465,7 @@ StraightRoadSegment {
     }
     RoadLine {
       color 0.85 0.75 0.3
-      type "double"
+      type "none"
       width 0.025
     }
     RoadLine {
@@ -4720,63 +4620,11 @@ StraightRoadSegment {
   leftBorderBoundingObject TRUE
 }
 StraightRoadSegment {
-  translation -12 20.74 0.008
-  rotation 0 0 1 1.570796
-  name "Road-NORTH_ACCESS_W"
-  id "NORTH_ACCESS_W"
-  startJunction "J_NORTH_WEST"
-  endJunction "J_N1_W"
-  width 2.4
-  numberOfLanes 4
-  numberOfForwardLanes 2
-  lines [
-    RoadLine {
-      width 0.025
-    }
-    RoadLine {
-      color 0.85 0.75 0.3
-      type "double"
-      width 0.025
-    }
-    RoadLine {
-      width 0.025
-    }
-  ]
-  roadBorderHeight 0.035
-  startingRoadBorderWidth 0.14
-  endingRoadBorderWidth 0.14
-  length 1.52
-  startLine [
-    ""
-    ""
-    "../../../../../../worlds/textures/stop_line.png"
-    "../../../../../../worlds/textures/stop_line.png"
-  ]
-  endLine [
-    "../../../../../../worlds/textures/stop_line.png"
-    "../../../../../../worlds/textures/stop_line.png"
-    ""
-    ""
-  ]
-  appearance PBRAppearance {
-    baseColor 0.12 0.14 0.16
-    roughness 1
-    metalness 0
-  }
-  pavementAppearance PBRAppearance {
-    baseColor 0.65 0.67 0.62
-    roughness 1
-    metalness 0
-  }
-  rightBorderBoundingObject TRUE
-  leftBorderBoundingObject TRUE
-}
-StraightRoadSegment {
-  translation -12.715542 25.431084 0.008
-  rotation 0 0 1 2.034444
+  translation -13.067117 24.569815 0.008
+  rotation 0 0 1 1.905346
   name "Road-NORTH_FAN_W"
   id "NORTH_FAN_W"
-  startJunction "J_N1_W"
+  startJunction "J_NORTH_WEST"
   endJunction "J_N2_W"
   width 2.4
   numberOfLanes 4
@@ -4797,7 +4645,7 @@ StraightRoadSegment {
   roadBorderHeight 0.035
   startingRoadBorderWidth 0.14
   endingRoadBorderWidth 0.14
-  length 4.776106
+  length 5.434443
   startLine [
     ""
     ""
@@ -4876,63 +4724,11 @@ StraightRoadSegment {
   leftBorderBoundingObject TRUE
 }
 StraightRoadSegment {
-  translation 7 20.74 0.008
-  rotation 0 0 1 1.570796
-  name "Road-NORTH_ACCESS_M"
-  id "NORTH_ACCESS_M"
-  startJunction "J_NORTH_MIDDLE"
-  endJunction "J_N1_M"
-  width 2.4
-  numberOfLanes 4
-  numberOfForwardLanes 2
-  lines [
-    RoadLine {
-      width 0.025
-    }
-    RoadLine {
-      color 0.85 0.75 0.3
-      type "double"
-      width 0.025
-    }
-    RoadLine {
-      width 0.025
-    }
-  ]
-  roadBorderHeight 0.035
-  startingRoadBorderWidth 0.14
-  endingRoadBorderWidth 0.14
-  length 1.52
-  startLine [
-    "../../../../../../worlds/textures/crossing.png"
-    "../../../../../../worlds/textures/crossing.png"
-    "../../../../../../worlds/textures/stop_crossing.png"
-    "../../../../../../worlds/textures/stop_crossing.png"
-  ]
-  endLine [
-    "../../../../../../worlds/textures/stop_line.png"
-    "../../../../../../worlds/textures/stop_line.png"
-    ""
-    ""
-  ]
-  appearance PBRAppearance {
-    baseColor 0.12 0.14 0.16
-    roughness 1
-    metalness 0
-  }
-  pavementAppearance PBRAppearance {
-    baseColor 0.65 0.67 0.62
-    roughness 1
-    metalness 0
-  }
-  rightBorderBoundingObject TRUE
-  leftBorderBoundingObject TRUE
-}
-StraightRoadSegment {
-  translation 5.851481 26.297037 0.008
-  rotation 0 0 1 2.034444
+  translation 5.620957 25.467144 0.008
+  rotation 0 0 1 1.905346
   name "Road-NORTH_FAN_M"
   id "NORTH_FAN_M"
-  startJunction "J_N1_M"
+  startJunction "J_NORTH_MIDDLE"
   endJunction "J_N2_M"
   width 2.4
   numberOfLanes 4
@@ -4953,12 +4749,12 @@ StraightRoadSegment {
   roadBorderHeight 0.035
   startingRoadBorderWidth 0.14
   endingRoadBorderWidth 0.14
-  length 3.807941
+  length 4.484444
   startLine [
-    ""
-    ""
-    "../../../../../../worlds/textures/stop_line.png"
-    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/crossing.png"
+    "../../../../../../worlds/textures/crossing.png"
+    "../../../../../../worlds/textures/stop_crossing.png"
+    "../../../../../../worlds/textures/stop_crossing.png"
   ]
   endLine [
     "../../../../../../worlds/textures/stop_line.png"
@@ -5032,63 +4828,11 @@ StraightRoadSegment {
   leftBorderBoundingObject TRUE
 }
 StraightRoadSegment {
-  translation 22 20.74 0.008
-  rotation 0 0 1 1.570796
-  name "Road-NORTH_ACCESS_E"
-  id "NORTH_ACCESS_E"
-  startJunction "J_NORTH_EAST"
-  endJunction "J_N1_E"
-  width 2.4
-  numberOfLanes 4
-  numberOfForwardLanes 2
-  lines [
-    RoadLine {
-      width 0.025
-    }
-    RoadLine {
-      color 0.85 0.75 0.3
-      type "double"
-      width 0.025
-    }
-    RoadLine {
-      width 0.025
-    }
-  ]
-  roadBorderHeight 0.035
-  startingRoadBorderWidth 0.14
-  endingRoadBorderWidth 0.14
-  length 1.52
-  startLine [
-    ""
-    ""
-    "../../../../../../worlds/textures/stop_line.png"
-    "../../../../../../worlds/textures/stop_line.png"
-  ]
-  endLine [
-    "../../../../../../worlds/textures/stop_line.png"
-    "../../../../../../worlds/textures/stop_line.png"
-    ""
-    ""
-  ]
-  appearance PBRAppearance {
-    baseColor 0.12 0.14 0.16
-    roughness 1
-    metalness 0
-  }
-  pavementAppearance PBRAppearance {
-    baseColor 0.65 0.67 0.62
-    roughness 1
-    metalness 0
-  }
-  rightBorderBoundingObject TRUE
-  leftBorderBoundingObject TRUE
-}
-StraightRoadSegment {
-  translation 22.388057 25.552228 0.008
-  rotation 0 0 1 1.325818
+  translation 22.563368 24.700799 0.008
+  rotation 0 0 1 1.396572
   name "Road-NORTH_FAN_E"
   id "NORTH_FAN_E"
-  startJunction "J_N1_E"
+  startJunction "J_NORTH_EAST"
   endJunction "J_N2_E"
   width 2.4
   numberOfLanes 4
@@ -5109,7 +4853,7 @@ StraightRoadSegment {
   roadBorderHeight 0.035
   startingRoadBorderWidth 0.14
   endingRoadBorderWidth 0.14
-  length 4.529971
+  length 5.326787
   startLine [
     ""
     ""
@@ -5162,108 +4906,6 @@ StraightRoadSegment {
   startingRoadBorderWidth 0.14
   endingRoadBorderWidth 0.14
   length 4.519616
-  startLine [
-    ""
-    ""
-    "../../../../../../worlds/textures/stop_line.png"
-    "../../../../../../worlds/textures/stop_line.png"
-  ]
-  endLine [
-    "../../../../../../worlds/textures/stop_line.png"
-    "../../../../../../worlds/textures/stop_line.png"
-    ""
-    ""
-  ]
-  appearance PBRAppearance {
-    baseColor 0.12 0.14 0.16
-    roughness 1
-    metalness 0
-  }
-  pavementAppearance PBRAppearance {
-    baseColor 0.65 0.67 0.62
-    roughness 1
-    metalness 0
-  }
-  rightBorderBoundingObject TRUE
-  leftBorderBoundingObject TRUE
-}
-StraightRoadSegment {
-  translation -10.26 24 0.008
-  name "Road-N1_CROSS_W"
-  id "N1_CROSS_W"
-  startJunction "J_N1_W"
-  endJunction "J_N1_M"
-  width 2.4
-  numberOfLanes 4
-  numberOfForwardLanes 2
-  lines [
-    RoadLine {
-      width 0.025
-    }
-    RoadLine {
-      color 0.85 0.75 0.3
-      type "double"
-      width 0.025
-    }
-    RoadLine {
-      width 0.025
-    }
-  ]
-  roadBorderHeight 0.035
-  startingRoadBorderWidth 0.14
-  endingRoadBorderWidth 0.14
-  length 14.691834
-  startLine [
-    ""
-    ""
-    "../../../../../../worlds/textures/stop_line.png"
-    "../../../../../../worlds/textures/stop_line.png"
-  ]
-  endLine [
-    "../../../../../../worlds/textures/stop_line.png"
-    "../../../../../../worlds/textures/stop_line.png"
-    ""
-    ""
-  ]
-  appearance PBRAppearance {
-    baseColor 0.12 0.14 0.16
-    roughness 1
-    metalness 0
-  }
-  pavementAppearance PBRAppearance {
-    baseColor 0.65 0.67 0.62
-    roughness 1
-    metalness 0
-  }
-  rightBorderBoundingObject TRUE
-  leftBorderBoundingObject TRUE
-}
-StraightRoadSegment {
-  translation 8.74 24 0.008
-  name "Road-N1_CROSS_E"
-  id "N1_CROSS_E"
-  startJunction "J_N1_M"
-  endJunction "J_N1_E"
-  width 2.4
-  numberOfLanes 4
-  numberOfForwardLanes 2
-  lines [
-    RoadLine {
-      width 0.025
-    }
-    RoadLine {
-      color 0.85 0.75 0.3
-      type "double"
-      width 0.025
-    }
-    RoadLine {
-      width 0.025
-    }
-  ]
-  roadBorderHeight 0.035
-  startingRoadBorderWidth 0.14
-  endingRoadBorderWidth 0.14
-  length 11.52
   startLine [
     ""
     ""
@@ -5577,84 +5219,12 @@ Crossroad {
 }
 Crossroad {
   translation 0 0 0.008
-  name "Junction-N1_W"
-  id "J_N1_W"
-  shape [
-    -24.894428 13.788855 0
-    -22.26 13.2 0
-    -22.26 10.8 0
-    -22.8 10.26 0
-    -25.2 10.26 0
-    -25.96774 11.642229 0
-  ]
-  connectedRoadIDs [
-    "NORTH_ACCESS_W"
-    "NORTH_FAN_W"
-    "N1_CROSS_W"
-  ]
-  appearance PBRAppearance {
-    baseColor 0.12 0.14 0.16
-    roughness 1
-    metalness 0
-  }
-}
-Crossroad {
-  translation 0 0 0.008
-  name "Junction-N1_M"
-  id "J_N1_M"
-  shape [
-    -22.8 -4.431834 0
-    -22.26 -5.8 0
-    -22.26 -8.2 0
-    -22.8 -8.74 0
-    -25.2 -8.74 0
-    -26.833693 -6.924794 0
-    -25.760381 -4.778168 0
-    -25.2 -4.431834 0
-  ]
-  connectedRoadIDs [
-    "NORTH_ACCESS_M"
-    "NORTH_FAN_M"
-    "N1_CROSS_W"
-    "N1_CROSS_E"
-  ]
-  appearance PBRAppearance {
-    baseColor 0.12 0.14 0.16
-    roughness 1
-    metalness 0
-  }
-}
-Crossroad {
-  translation 0 0 0.008
-  name "Junction-N1_E"
-  id "J_N1_E"
-  shape [
-    -22.8 -20.26 0
-    -22.26 -20.8 0
-    -22.26 -23.2 0
-    -25.261186 -23.552228 0
-    -25.84327 -21.223886 0
-    -25.2 -20.26 0
-  ]
-  connectedRoadIDs [
-    "NORTH_ACCESS_E"
-    "NORTH_FAN_E"
-    "N1_CROSS_E"
-  ]
-  appearance PBRAppearance {
-    baseColor 0.12 0.14 0.16
-    roughness 1
-    metalness 0
-  }
-}
-Crossroad {
-  translation 0 0 0.008
   name "Junction-N2_W"
   id "J_N2_W"
   shape [
     -33.74 17.2 0
-    -29.166307 15.924794 0
-    -30.239619 13.778169 0
+    -29.30895 15.984953 0
+    -30.096976 13.718013 0
     -30.8 13.431834 0
     -33.2 13.431834 0
     -33.74 14.8 0
@@ -5676,8 +5246,8 @@ Crossroad {
   id "J_N2_M"
   shape [
     -30.8 -1.26 0
-    -29.166306 -3.075205 0
-    -30.239619 -5.22183 0
+    -29.30895 -3.015048 0
+    -30.096975 -5.281987 0
     -30.8 -5.568166 0
     -33.2 -5.568166 0
     -33.74 -4.2 0
@@ -5702,8 +5272,8 @@ Crossroad {
   id "J_N2_E"
   shape [
     -30.8 -21.88376 0
-    -30.237988 -22.322564 0
-    -29.655903 -24.650906 0
+    -30.154958 -22.304902 0
+    -29.738932 -24.668569 0
     -33.74 -25.2 0
     -33.74 -22.8 0
     -33.2 -21.88376 0
@@ -5718,6 +5288,673 @@ Crossroad {
     roughness 1
     metalness 0
   }
+}
+StraightRoadSegment {
+  translation -10.1 21.5 0.008
+  name "Road-NORTH_MERGED_W"
+  id "NORTH_MERGED_W"
+  startJunction "J_NORTH_WEST"
+  endJunction "J_FLYOVER_W"
+  width 4.8
+  numberOfLanes 8
+  numberOfForwardLanes 4
+  lines [
+    RoadLine {
+      width 0.025
+    }
+    RoadLine {
+      width 0.025
+    }
+    RoadLine {
+      width 0.025
+    }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "none"
+      width 0.025
+    }
+    RoadLine {
+      width 0.025
+    }
+    RoadLine {
+      width 0.025
+    }
+    RoadLine {
+      width 0.025
+    }
+  ]
+  roadBorderHeight 0.035
+  startingRoadBorderWidth 0.14
+  endingRoadBorderWidth 0.14
+  length 10.35
+  startLine [
+    ""
+    ""
+    ""
+    ""
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+  ]
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+StraightRoadSegment {
+  translation 13.75 21.5 0.008
+  name "Road-NORTH_MERGED_E"
+  id "NORTH_MERGED_E"
+  startJunction "J_FLYOVER_E"
+  endJunction "J_NORTH_EAST"
+  width 4.8
+  numberOfLanes 8
+  numberOfForwardLanes 4
+  lines [
+    RoadLine {
+      width 0.025
+    }
+    RoadLine {
+      width 0.025
+    }
+    RoadLine {
+      width 0.025
+    }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "none"
+      width 0.025
+    }
+    RoadLine {
+      width 0.025
+    }
+    RoadLine {
+      width 0.025
+    }
+    RoadLine {
+      width 0.025
+    }
+  ]
+  roadBorderHeight 0.035
+  startingRoadBorderWidth 0.14
+  endingRoadBorderWidth 0.14
+  length 5.25
+  endLine [
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+    ""
+    ""
+    ""
+    ""
+  ]
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+StraightRoadSegment {
+  translation 0.25 19.7 0.008
+  name "Road-NORTH_GROUND_W_S"
+  id "NORTH_GROUND_W_S"
+  startJunction "J_FLYOVER_W"
+  endJunction "J_NORTH_MIDDLE"
+  width 1.2
+  numberOfForwardLanes 2
+  lines [
+    RoadLine {
+      width 0.025
+    }
+  ]
+  roadBorderHeight 0.035
+  startingRoadBorderWidth 0.14
+  endingRoadBorderWidth 0.14
+  leftBorder FALSE
+  length 3.25
+  endLine [
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+  ]
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  rightBorderBoundingObject TRUE
+}
+StraightRoadSegment {
+  translation 10.5 19.7 0.008
+  name "Road-NORTH_GROUND_E_S"
+  id "NORTH_GROUND_E_S"
+  startJunction "J_NORTH_MIDDLE"
+  endJunction "J_FLYOVER_E"
+  width 1.2
+  numberOfForwardLanes 2
+  lines [
+    RoadLine {
+      width 0.025
+    }
+  ]
+  roadBorderHeight 0.035
+  startingRoadBorderWidth 0.14
+  endingRoadBorderWidth 0.14
+  leftBorder FALSE
+  length 3.25
+  startLine [
+    ""
+    ""
+  ]
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  rightBorderBoundingObject TRUE
+}
+StraightRoadSegment {
+  translation 0.25 23.3 0.008
+  name "Road-NORTH_GROUND_W_N"
+  id "NORTH_GROUND_W_N"
+  startJunction "J_FLYOVER_W"
+  endJunction "J_NORTH_MIDDLE"
+  width 1.2
+  numberOfForwardLanes 0
+  lines [
+    RoadLine {
+      width 0.025
+    }
+  ]
+  roadBorderHeight 0.035
+  startingRoadBorderWidth 0.14
+  endingRoadBorderWidth 0.14
+  rightBorder FALSE
+  length 3.25
+  endLine [
+    ""
+    ""
+  ]
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  leftBorderBoundingObject TRUE
+}
+StraightRoadSegment {
+  translation 10.5 23.3 0.008
+  name "Road-NORTH_GROUND_E_N"
+  id "NORTH_GROUND_E_N"
+  startJunction "J_NORTH_MIDDLE"
+  endJunction "J_FLYOVER_E"
+  width 1.2
+  numberOfForwardLanes 0
+  lines [
+    RoadLine {
+      width 0.025
+    }
+  ]
+  roadBorderHeight 0.035
+  startingRoadBorderWidth 0.14
+  endingRoadBorderWidth 0.14
+  rightBorder FALSE
+  length 3.25
+  startLine [
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+  ]
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  leftBorderBoundingObject TRUE
+}
+Road {
+  name "Road-NORTH_FLYOVER"
+  id "NORTH_FLYOVER"
+  startJunction "J_FLYOVER_W"
+  endJunction "J_FLYOVER_E"
+  width 2.4
+  numberOfLanes 4
+  numberOfForwardLanes 2
+  lines [
+    RoadLine {
+      width 0.025
+    }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "none"
+      width 0.025
+    }
+    RoadLine {
+      width 0.025
+    }
+  ]
+  roadBorderHeight 0.1
+  roadBorderWidth [
+    0.1
+  ]
+  wayPoints [
+    0.25 21.5 0.008, 0.375 21.5 0.009924, 0.5 21.5 0.015477, 0.625 21.5 0.024328, 0.75 21.5 0.036148, 0.875 21.5 0.050607, 1 21.5 0.067375, 1.125 21.5 0.086122, 1.25 21.5 0.106519, 1.375 21.5 0.128234, 1.5 21.5 0.15094, 1.625 21.5 0.174305, 1.75 21.5 0.198, 1.875 21.5 0.221695, 2 21.5 0.24506, 2.125 21.5 0.267766, 2.25 21.5 0.289481, 2.375 21.5 0.309878, 2.5 21.5 0.328625, 2.625 21.5 0.345393, 2.75 21.5 0.359852, 2.875 21.5 0.371672, 3 21.5 0.380523, 3.125 21.5 0.386076, 3.25 21.5 0.388, 3.375 21.5 0.388, 3.5 21.5 0.388, 3.625 21.5 0.388, 3.75 21.5 0.388, 3.875 21.5 0.388, 4 21.5 0.388, 4.125 21.5 0.388, 4.25 21.5 0.388, 4.375 21.5 0.388, 4.5 21.5 0.388, 4.625 21.5 0.388, 4.75 21.5 0.388, 4.875 21.5 0.388, 5 21.5 0.388, 5.125 21.5 0.388, 5.25 21.5 0.388, 5.375 21.5 0.388, 5.5 21.5 0.388, 5.625 21.5 0.388, 5.75 21.5 0.388, 5.875 21.5 0.388, 6 21.5 0.388, 6.125 21.5 0.388, 6.25 21.5 0.388, 6.375 21.5 0.388, 6.5 21.5 0.388, 6.625 21.5 0.388, 6.75 21.5 0.388, 6.875 21.5 0.388, 7 21.5 0.388, 7.125 21.5 0.388, 7.25 21.5 0.388, 7.375 21.5 0.388, 7.5 21.5 0.388, 7.625 21.5 0.388, 7.75 21.5 0.388, 7.875 21.5 0.388, 8 21.5 0.388, 8.125 21.5 0.388, 8.25 21.5 0.388, 8.375 21.5 0.388, 8.5 21.5 0.388, 8.625 21.5 0.388, 8.75 21.5 0.388, 8.875 21.5 0.388, 9 21.5 0.388, 9.125 21.5 0.388, 9.25 21.5 0.388, 9.375 21.5 0.388, 9.5 21.5 0.388, 9.625 21.5 0.388, 9.75 21.5 0.388, 9.875 21.5 0.388, 10 21.5 0.388, 10.125 21.5 0.388, 10.25 21.5 0.388, 10.375 21.5 0.388, 10.5 21.5 0.388, 10.625 21.5 0.388, 10.75 21.5 0.388, 10.875 21.5 0.386076, 11 21.5 0.380523, 11.125 21.5 0.371672, 11.25 21.5 0.359852, 11.375 21.5 0.345393, 11.5 21.5 0.328625, 11.625 21.5 0.309878, 11.75 21.5 0.289481, 11.875 21.5 0.267766, 12 21.5 0.24506, 12.125 21.5 0.221695, 12.25 21.5 0.198, 12.375 21.5 0.174305, 12.5 21.5 0.15094, 12.625 21.5 0.128234, 12.75 21.5 0.106519, 12.875 21.5 0.086122, 13 21.5 0.067375, 13.125 21.5 0.050607, 13.25 21.5 0.036148, 13.375 21.5 0.024328, 13.5 21.5 0.015477, 13.625 21.5 0.009924, 13.75 21.5 0.008
+  ]
+  splineSubdivision -1
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  roadBoundingObject TRUE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+Crossroad {
+  translation 0 0 0.008
+  name "Junction-FLYOVER_W"
+  id "J_FLYOVER_W"
+  shape []
+  connectedRoadIDs [
+    "NORTH_MERGED_W"
+    "NORTH_GROUND_W_S"
+    "NORTH_GROUND_W_N"
+    "NORTH_FLYOVER"
+  ]
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+}
+Crossroad {
+  translation 0 0 0.008
+  name "Junction-FLYOVER_E"
+  id "J_FLYOVER_E"
+  shape []
+  connectedRoadIDs [
+    "NORTH_MERGED_E"
+    "NORTH_GROUND_E_S"
+    "NORTH_GROUND_E_N"
+    "NORTH_FLYOVER"
+  ]
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+}
+Solid {
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.65 0.67 0.62
+        roughness 1
+        metalness 0
+      }
+      geometry DEF MEDIAN_BLOCK_MID_TUNNEL IndexedFaceSet {
+        coord Coordinate {
+          point [
+            -32.81 -0.05 0.008, -32.81 0.05 0.008, -32.81 0.05 0.108, -32.81 -0.05 0.108, -32.668485 -0.05 0.008, -32.668485 0.05 0.008, -32.668485 0.05 0.108, -32.668485 -0.05 0.108, -32.372727 -0.05 0.008, -32.372727 0.05 0.008, -32.372727 0.05 0.108, -32.372727 -0.05 0.108, -32.07697 -0.05 0.008, -32.07697 0.05 0.008, -32.07697 0.05 0.108, -32.07697 -0.05 0.108, -31.781212 -0.05 0.008, -31.781212 0.05 0.008, -31.781212 0.05 0.108, -31.781212 -0.05 0.108, -31.485455 -0.05 0.008, -31.485455 0.05 0.008, -31.485455 0.05 0.108, -31.485455 -0.05 0.108, -31.189697 -0.05 0.008, -31.189697 0.05 0.008, -31.189697 0.05 0.108, -31.189697 -0.05 0.108, -30.893939 -0.05 0.008, -30.893939 0.05 0.008, -30.893939 0.05 0.108, -30.893939 -0.05 0.108, -30.598182 -0.05 0.008, -30.598182 0.05 0.008, -30.598182 0.05 0.108, -30.598182 -0.05 0.108, -30.302424 -0.05 0.008, -30.302424 0.05 0.008, -30.302424 0.05 0.108, -30.302424 -0.05 0.108, -30.006667 -0.05 0.008, -30.006667 0.05 0.008, -30.006667 0.05 0.108, -30.006667 -0.05 0.108, -29.710909 -0.05 0.008, -29.710909 0.05 0.008, -29.710909 0.05 0.108, -29.710909 -0.05 0.108, -29.415152 -0.05 0.008, -29.415152 0.05 0.008, -29.415152 0.05 0.108, -29.415152 -0.05 0.108, -29.119394 -0.05 0.008, -29.119394 0.05 0.008, -29.119394 0.05 0.108, -29.119394 -0.05 0.108, -28.823636 -0.05 0.008, -28.823636 0.05 0.008, -28.823636 0.05 0.108, -28.823636 -0.05 0.108, -28.527879 -0.05 0.008, -28.527879 0.05 0.008, -28.527879 0.05 0.108, -28.527879 -0.05 0.108, -28.232121 -0.05 0.00758, -28.232121 0.05 0.00758, -28.232121 0.05 0.10758, -28.232121 -0.05 0.10758, -27.936364 -0.05 0.006841, -27.936364 0.05 0.006841, -27.936364 0.05 0.106841, -27.936364 -0.05 0.106841, -27.640606 -0.05 0.006102, -27.640606 0.05 0.006102, -27.640606 0.05 0.106102, -27.640606 -0.05 0.106102, -27.344848 -0.05 -0.01505, -27.344848 0.05 -0.01505, -27.344848 0.05 0.08495, -27.344848 -0.05 0.08495, -27.049091 -0.05 -0.03945, -27.049091 0.05 -0.03945, -27.049091 0.05 0.06055, -27.049091 -0.05 0.06055, -26.753333 -0.05 -0.068167, -26.753333 0.05 -0.068167, -26.753333 0.05 0.031833, -26.753333 -0.05 0.031833, -26.457576 -0.05 -0.119924, -26.457576 0.05 -0.119924, -26.457576 0.05 -0.019924, -26.457576 -0.05 -0.019924, -26.161818 -0.05 -0.171682, -26.161818 0.05 -0.171682, -26.161818 0.05 -0.071682, -26.161818 -0.05 -0.071682, -25.866061 -0.05 -0.230136, -25.866061 0.05 -0.230136, -25.866061 0.05 -0.130136, -25.866061 -0.05 -0.130136, -25.570303 -0.05 -0.296682, -25.570303 0.05 -0.296682, -25.570303 0.05 -0.196682, -25.570303 -0.05 -0.196682, -25.274545 -0.05 -0.363227, -25.274545 0.05 -0.363227, -25.274545 0.05 -0.263227, -25.274545 -0.05 -0.263227, -24.978788 -0.05 -0.424242, -24.978788 0.05 -0.424242, -24.978788 0.05 -0.324242, -24.978788 -0.05 -0.324242, -24.68303 -0.05 -0.483394, -24.68303 0.05 -0.483394, -24.68303 0.05 -0.383394, -24.68303 -0.05 -0.383394, -24.387273 -0.05 -0.526764, -24.387273 0.05 -0.526764, -24.387273 0.05 -0.426764, -24.387273 -0.05 -0.426764, -24.091515 -0.05 -0.544509, -24.091515 0.05 -0.544509, -24.091515 0.05 -0.444509, -24.091515 -0.05 -0.444509, -23.795758 -0.05 -0.55, -23.795758 0.05 -0.55, -23.795758 0.05 -0.45, -23.795758 -0.05 -0.45, -23.5 -0.05 -0.55, -23.5 0.05 -0.55, -23.5 0.05 -0.45, -23.5 -0.05 -0.45, -23.204242 -0.05 -0.55, -23.204242 0.05 -0.55, -23.204242 0.05 -0.45, -23.204242 -0.05 -0.45, -22.908485 -0.05 -0.55, -22.908485 0.05 -0.55, -22.908485 0.05 -0.45, -22.908485 -0.05 -0.45, -22.612727 -0.05 -0.55, -22.612727 0.05 -0.55, -22.612727 0.05 -0.45, -22.612727 -0.05 -0.45, -22.31697 -0.05 -0.55, -22.31697 0.05 -0.55, -22.31697 0.05 -0.45, -22.31697 -0.05 -0.45, -22.021212 -0.05 -0.55, -22.021212 0.05 -0.55, -22.021212 0.05 -0.45, -22.021212 -0.05 -0.45, -21.725455 -0.05 -0.533527, -21.725455 0.05 -0.533527, -21.725455 0.05 -0.433527, -21.725455 -0.05 -0.433527, -21.429697 -0.05 -0.505939, -21.429697 0.05 -0.505939, -21.429697 0.05 -0.405939, -21.429697 -0.05 -0.405939, -21.133939 -0.05 -0.446788, -21.133939 0.05 -0.446788, -21.133939 0.05 -0.346788, -21.133939 -0.05 -0.346788, -20.838182 -0.05 -0.387636, -20.838182 0.05 -0.387636, -20.838182 0.05 -0.287636, -20.838182 -0.05 -0.287636, -20.542424 -0.05 -0.322045, -20.542424 0.05 -0.322045, -20.542424 0.05 -0.222045, -20.542424 -0.05 -0.222045, -20.246667 -0.05 -0.2555, -20.246667 0.05 -0.2555, -20.246667 0.05 -0.1555, -20.246667 -0.05 -0.1555, -19.950909 -0.05 -0.191409, -19.950909 0.05 -0.191409, -19.950909 0.05 -0.091409, -19.950909 -0.05 -0.091409, -19.655152 -0.05 -0.139652, -19.655152 0.05 -0.139652, -19.655152 0.05 -0.039652, -19.655152 -0.05 -0.039652, -19.359394 -0.05 -0.087894, -19.359394 0.05 -0.087894, -19.359394 0.05 0.012106, -19.359394 -0.05 0.012106, -19.063636 -0.05 -0.044545, -19.063636 0.05 -0.044545, -19.063636 0.05 0.055455, -19.063636 -0.05 0.055455, -18.767879 -0.05 -0.011026, -18.767879 0.05 -0.011026, -18.767879 0.05 0.088974, -18.767879 -0.05 0.088974, -18.472121 -0.05 0.008, -18.472121 0.05 0.008, -18.472121 0.05 0.108, -18.472121 -0.05 0.108, -18.176364 -0.05 0.008, -18.176364 0.05 0.008, -18.176364 0.05 0.108, -18.176364 -0.05 0.108, -17.880606 -0.05 0.008, -17.880606 0.05 0.008, -17.880606 0.05 0.108, -17.880606 -0.05 0.108, -17.584848 -0.05 0.008, -17.584848 0.05 0.008, -17.584848 0.05 0.108, -17.584848 -0.05 0.108, -17.289091 -0.05 0.008, -17.289091 0.05 0.008, -17.289091 0.05 0.108, -17.289091 -0.05 0.108, -16.993333 -0.05 0.008, -16.993333 0.05 0.008, -16.993333 0.05 0.108, -16.993333 -0.05 0.108, -16.697576 -0.05 0.008, -16.697576 0.05 0.008, -16.697576 0.05 0.108, -16.697576 -0.05 0.108, -16.401818 -0.05 0.008, -16.401818 0.05 0.008, -16.401818 0.05 0.108, -16.401818 -0.05 0.108, -16.106061 -0.05 0.008, -16.106061 0.05 0.008, -16.106061 0.05 0.108, -16.106061 -0.05 0.108, -15.810303 -0.05 0.008, -15.810303 0.05 0.008, -15.810303 0.05 0.108, -15.810303 -0.05 0.108, -15.514545 -0.05 0.008, -15.514545 0.05 0.008, -15.514545 0.05 0.108, -15.514545 -0.05 0.108, -15.218788 -0.05 0.008, -15.218788 0.05 0.008, -15.218788 0.05 0.108, -15.218788 -0.05 0.108, -14.92303 -0.05 0.008, -14.92303 0.05 0.008, -14.92303 0.05 0.108, -14.92303 -0.05 0.108, -14.627273 -0.05 0.008, -14.627273 0.05 0.008, -14.627273 0.05 0.108, -14.627273 -0.05 0.108, -14.331515 -0.05 0.008, -14.331515 0.05 0.008, -14.331515 0.05 0.108, -14.331515 -0.05 0.108, -14.19 -0.05 0.008, -14.19 0.05 0.008, -14.19 0.05 0.108, -14.19 -0.05 0.108
+          ]
+        }
+        coordIndex [
+          3, 2, 1, 0, -1, 0, 1, 5, 4, -1, 1, 2, 6, 5, -1, 2, 3, 7, 6, -1, 3, 0, 4, 7, -1, 4, 5, 9, 8, -1, 5, 6, 10, 9, -1, 6, 7, 11, 10, -1, 7, 4, 8, 11, -1, 8, 9, 13, 12, -1, 9, 10, 14, 13, -1, 10, 11, 15, 14, -1, 11, 8, 12, 15, -1, 12, 13, 17, 16, -1, 13, 14, 18, 17, -1, 14, 15, 19, 18, -1, 15, 12, 16, 19, -1, 16, 17, 21, 20, -1, 17, 18, 22, 21, -1, 18, 19, 23, 22, -1, 19, 16, 20, 23, -1, 20, 21, 25, 24, -1, 21, 22, 26, 25, -1, 22, 23, 27, 26, -1, 23, 20, 24, 27, -1, 24, 25, 29, 28, -1, 25, 26, 30, 29, -1, 26, 27, 31, 30, -1, 27, 24, 28, 31, -1, 28, 29, 33, 32, -1, 29, 30, 34, 33, -1, 30, 31, 35, 34, -1, 31, 28, 32, 35, -1, 32, 33, 37, 36, -1, 33, 34, 38, 37, -1, 34, 35, 39, 38, -1, 35, 32, 36, 39, -1, 36, 37, 41, 40, -1, 37, 38, 42, 41, -1, 38, 39, 43, 42, -1, 39, 36, 40, 43, -1, 40, 41, 45, 44, -1, 41, 42, 46, 45, -1, 42, 43, 47, 46, -1, 43, 40, 44, 47, -1, 44, 45, 49, 48, -1, 45, 46, 50, 49, -1, 46, 47, 51, 50, -1, 47, 44, 48, 51, -1, 48, 49, 53, 52, -1, 49, 50, 54, 53, -1, 50, 51, 55, 54, -1, 51, 48, 52, 55, -1, 52, 53, 57, 56, -1, 53, 54, 58, 57, -1, 54, 55, 59, 58, -1, 55, 52, 56, 59, -1, 56, 57, 61, 60, -1, 57, 58, 62, 61, -1, 58, 59, 63, 62, -1, 59, 56, 60, 63, -1, 60, 61, 65, 64, -1, 61, 62, 66, 65, -1, 62, 63, 67, 66, -1, 63, 60, 64, 67, -1, 64, 65, 69, 68, -1, 65, 66, 70, 69, -1, 66, 67, 71, 70, -1, 67, 64, 68, 71, -1, 68, 69, 73, 72, -1, 69, 70, 74, 73, -1, 70, 71, 75, 74, -1, 71, 68, 72, 75, -1, 72, 73, 77, 76, -1, 73, 74, 78, 77, -1, 74, 75, 79, 78, -1, 75, 72, 76, 79, -1, 76, 77, 81, 80, -1, 77, 78, 82, 81, -1, 78, 79, 83, 82, -1, 79, 76, 80, 83, -1, 80, 81, 85, 84, -1, 81, 82, 86, 85, -1, 82, 83, 87, 86, -1, 83, 80, 84, 87, -1, 84, 85, 89, 88, -1, 85, 86, 90, 89, -1, 86, 87, 91, 90, -1, 87, 84, 88, 91, -1, 88, 89, 93, 92, -1, 89, 90, 94, 93, -1, 90, 91, 95, 94, -1, 91, 88, 92, 95, -1, 92, 93, 97, 96, -1, 93, 94, 98, 97, -1, 94, 95, 99, 98, -1, 95, 92, 96, 99, -1, 96, 97, 101, 100, -1, 97, 98, 102, 101, -1, 98, 99, 103, 102, -1, 99, 96, 100, 103, -1, 100, 101, 105, 104, -1, 101, 102, 106, 105, -1, 102, 103, 107, 106, -1, 103, 100, 104, 107, -1, 104, 105, 109, 108, -1, 105, 106, 110, 109, -1, 106, 107, 111, 110, -1, 107, 104, 108, 111, -1, 108, 109, 113, 112, -1, 109, 110, 114, 113, -1, 110, 111, 115, 114, -1, 111, 108, 112, 115, -1, 112, 113, 117, 116, -1, 113, 114, 118, 117, -1, 114, 115, 119, 118, -1, 115, 112, 116, 119, -1, 116, 117, 121, 120, -1, 117, 118, 122, 121, -1, 118, 119, 123, 122, -1, 119, 116, 120, 123, -1, 120, 121, 125, 124, -1, 121, 122, 126, 125, -1, 122, 123, 127, 126, -1, 123, 120, 124, 127, -1, 124, 125, 129, 128, -1, 125, 126, 130, 129, -1, 126, 127, 131, 130, -1, 127, 124, 128, 131, -1, 128, 129, 133, 132, -1, 129, 130, 134, 133, -1, 130, 131, 135, 134, -1, 131, 128, 132, 135, -1, 132, 133, 137, 136, -1, 133, 134, 138, 137, -1, 134, 135, 139, 138, -1, 135, 132, 136, 139, -1, 136, 137, 141, 140, -1, 137, 138, 142, 141, -1, 138, 139, 143, 142, -1, 139, 136, 140, 143, -1, 140, 141, 145, 144, -1, 141, 142, 146, 145, -1, 142, 143, 147, 146, -1, 143, 140, 144, 147, -1, 144, 145, 149, 148, -1, 145, 146, 150, 149, -1, 146, 147, 151, 150, -1, 147, 144, 148, 151, -1, 148, 149, 153, 152, -1, 149, 150, 154, 153, -1, 150, 151, 155, 154, -1, 151, 148, 152, 155, -1, 152, 153, 157, 156, -1, 153, 154, 158, 157, -1, 154, 155, 159, 158, -1, 155, 152, 156, 159, -1, 156, 157, 161, 160, -1, 157, 158, 162, 161, -1, 158, 159, 163, 162, -1, 159, 156, 160, 163, -1, 160, 161, 165, 164, -1, 161, 162, 166, 165, -1, 162, 163, 167, 166, -1, 163, 160, 164, 167, -1, 164, 165, 169, 168, -1, 165, 166, 170, 169, -1, 166, 167, 171, 170, -1, 167, 164, 168, 171, -1, 168, 169, 173, 172, -1, 169, 170, 174, 173, -1, 170, 171, 175, 174, -1, 171, 168, 172, 175, -1, 172, 173, 177, 176, -1, 173, 174, 178, 177, -1, 174, 175, 179, 178, -1, 175, 172, 176, 179, -1, 176, 177, 181, 180, -1, 177, 178, 182, 181, -1, 178, 179, 183, 182, -1, 179, 176, 180, 183, -1, 180, 181, 185, 184, -1, 181, 182, 186, 185, -1, 182, 183, 187, 186, -1, 183, 180, 184, 187, -1, 184, 185, 189, 188, -1, 185, 186, 190, 189, -1, 186, 187, 191, 190, -1, 187, 184, 188, 191, -1, 188, 189, 193, 192, -1, 189, 190, 194, 193, -1, 190, 191, 195, 194, -1, 191, 188, 192, 195, -1, 192, 193, 197, 196, -1, 193, 194, 198, 197, -1, 194, 195, 199, 198, -1, 195, 192, 196, 199, -1, 196, 197, 201, 200, -1, 197, 198, 202, 201, -1, 198, 199, 203, 202, -1, 199, 196, 200, 203, -1, 200, 201, 205, 204, -1, 201, 202, 206, 205, -1, 202, 203, 207, 206, -1, 203, 200, 204, 207, -1, 204, 205, 209, 208, -1, 205, 206, 210, 209, -1, 206, 207, 211, 210, -1, 207, 204, 208, 211, -1, 208, 209, 213, 212, -1, 209, 210, 214, 213, -1, 210, 211, 215, 214, -1, 211, 208, 212, 215, -1, 212, 213, 217, 216, -1, 213, 214, 218, 217, -1, 214, 215, 219, 218, -1, 215, 212, 216, 219, -1, 216, 217, 221, 220, -1, 217, 218, 222, 221, -1, 218, 219, 223, 222, -1, 219, 216, 220, 223, -1, 220, 221, 225, 224, -1, 221, 222, 226, 225, -1, 222, 223, 227, 226, -1, 223, 220, 224, 227, -1, 224, 225, 229, 228, -1, 225, 226, 230, 229, -1, 226, 227, 231, 230, -1, 227, 224, 228, 231, -1, 228, 229, 233, 232, -1, 229, 230, 234, 233, -1, 230, 231, 235, 234, -1, 231, 228, 232, 235, -1, 232, 233, 237, 236, -1, 233, 234, 238, 237, -1, 234, 235, 239, 238, -1, 235, 232, 236, 239, -1, 236, 237, 241, 240, -1, 237, 238, 242, 241, -1, 238, 239, 243, 242, -1, 239, 236, 240, 243, -1, 240, 241, 245, 244, -1, 241, 242, 246, 245, -1, 242, 243, 247, 246, -1, 243, 240, 244, 247, -1, 244, 245, 249, 248, -1, 245, 246, 250, 249, -1, 246, 247, 251, 250, -1, 247, 244, 248, 251, -1, 248, 249, 253, 252, -1, 249, 250, 254, 253, -1, 250, 251, 255, 254, -1, 251, 248, 252, 255, -1, 252, 253, 257, 256, -1, 253, 254, 258, 257, -1, 254, 255, 259, 258, -1, 255, 252, 256, 259, -1, 256, 257, 258, 259, -1
+        ]
+      }
+    }
+  ]
+  name "CentreMedian-BLOCK_MID_TUNNEL"
+  boundingObject USE MEDIAN_BLOCK_MID_TUNNEL
+}
+Solid {
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.65 0.67 0.62
+        roughness 1
+        metalness 0
+      }
+      geometry DEF MEDIAN_CENTRAL_1 IndexedFaceSet {
+        coord Coordinate {
+          point [
+            -9.81 -0.05 0.008
+            -9.81 0.05 0.008
+            -9.81 0.05 0.108
+            -9.81 -0.05 0.108
+            -2.74 -0.05 0.008
+            -2.74 0.05 0.008
+            -2.74 0.05 0.108
+            -2.74 -0.05 0.108
+          ]
+        }
+        coordIndex [
+          3, 2, 1, 0, -1, 0, 1, 5, 4, -1, 1, 2, 6, 5, -1, 2, 3, 7, 6, -1, 3, 0, 4, 7, -1, 4, 5, 6, 7, -1
+        ]
+      }
+    }
+  ]
+  name "CentreMedian-CENTRAL_1"
+  boundingObject USE MEDIAN_CENTRAL_1
+}
+Solid {
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.65 0.67 0.62
+        roughness 1
+        metalness 0
+      }
+      geometry DEF MEDIAN_CENTRAL_2 IndexedFaceSet {
+        coord Coordinate {
+          point [
+            0.74 -0.05 0.008
+            0.74 0.05 0.008
+            0.74 0.05 0.108
+            0.74 -0.05 0.108
+            5.26 -0.05 0.008
+            5.26 0.05 0.008
+            5.26 0.05 0.108
+            5.26 -0.05 0.108
+          ]
+        }
+        coordIndex [
+          3, 2, 1, 0, -1, 0, 1, 5, 4, -1, 1, 2, 6, 5, -1, 2, 3, 7, 6, -1, 3, 0, 4, 7, -1, 4, 5, 6, 7, -1
+        ]
+      }
+    }
+  ]
+  name "CentreMedian-CENTRAL_2"
+  boundingObject USE MEDIAN_CENTRAL_2
+}
+Solid {
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.65 0.67 0.62
+        roughness 1
+        metalness 0
+      }
+      geometry DEF MEDIAN_CENTRAL_3 IndexedFaceSet {
+        coord Coordinate {
+          point [
+            8.74 -0.05 0.008
+            8.74 0.05 0.008
+            8.74 0.05 0.108
+            8.74 -0.05 0.108
+            16 -0.05 0.008
+            16 0.05 0.008
+            16 0.05 0.108
+            16 -0.05 0.108
+            16.3 -0.05 0.008
+            16.3 0.05 0.008
+            16.3 0.05 0.108
+            16.3 -0.05 0.108
+          ]
+        }
+        coordIndex [
+          3, 2, 1, 0, -1, 0, 1, 5, 4, -1, 1, 2, 6, 5, -1, 2, 3, 7, 6, -1, 3, 0, 4, 7, -1, 4, 5, 9, 8, -1, 5, 6, 10, 9, -1, 6, 7, 11, 10, -1, 7, 4, 8, 11, -1, 8, 9, 10, 11, -1
+        ]
+      }
+    }
+  ]
+  name "CentreMedian-CENTRAL_3"
+  boundingObject USE MEDIAN_CENTRAL_3
+}
+Solid {
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.65 0.67 0.62
+        roughness 1
+        metalness 0
+      }
+      geometry DEF MEDIAN_ROUNDABOUT_NORTH IndexedFaceSet {
+        coord Coordinate {
+          point [
+            22.05 5.7 0.008
+            21.95 5.7 0.008
+            21.95 5.7 0.108
+            22.05 5.7 0.108
+            22.05 6 0.008
+            21.95 6 0.008
+            21.95 6 0.108
+            22.05 6 0.108
+            22.050004 18.25 0.008
+            21.950004 18.25 0.008
+            21.950004 18.25 0.108
+            22.050004 18.25 0.108
+          ]
+        }
+        coordIndex [
+          3, 2, 1, 0, -1, 0, 1, 5, 4, -1, 1, 2, 6, 5, -1, 2, 3, 7, 6, -1, 3, 0, 4, 7, -1, 4, 5, 9, 8, -1, 5, 6, 10, 9, -1, 6, 7, 11, 10, -1, 7, 4, 8, 11, -1, 8, 9, 10, 11, -1
+        ]
+      }
+    }
+  ]
+  name "CentreMedian-ROUNDABOUT_NORTH"
+  boundingObject USE MEDIAN_ROUNDABOUT_NORTH
+}
+Solid {
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.65 0.67 0.62
+        roughness 1
+        metalness 0
+      }
+      geometry DEF MEDIAN_ROUNDABOUT_EAST IndexedFaceSet {
+        coord Coordinate {
+          point [
+            27.7 -0.05 0.008
+            27.7 0.05 0.008
+            27.7 0.05 0.108
+            27.7 -0.05 0.108
+            28 -0.05 0.008
+            28 0.05 0.008
+            28 0.05 0.108
+            28 -0.05 0.108
+            33.26 -0.05 0.008
+            33.26 0.05 0.008
+            33.26 0.05 0.108
+            33.26 -0.05 0.108
+          ]
+        }
+        coordIndex [
+          3, 2, 1, 0, -1, 0, 1, 5, 4, -1, 1, 2, 6, 5, -1, 2, 3, 7, 6, -1, 3, 0, 4, 7, -1, 4, 5, 9, 8, -1, 5, 6, 10, 9, -1, 6, 7, 11, 10, -1, 7, 4, 8, 11, -1, 8, 9, 10, 11, -1
+        ]
+      }
+    }
+  ]
+  name "CentreMedian-ROUNDABOUT_EAST"
+  boundingObject USE MEDIAN_ROUNDABOUT_EAST
+}
+Solid {
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.65 0.67 0.62
+        roughness 1
+        metalness 0
+      }
+      geometry DEF MEDIAN_ROUNDABOUT_SOUTH IndexedFaceSet {
+        coord Coordinate {
+          point [
+            21.95 -5.7 0.008
+            22.05 -5.7 0.008
+            22.05 -5.7 0.108
+            21.95 -5.7 0.108
+            21.95 -6 0.008
+            22.05 -6 0.008
+            22.05 -6 0.108
+            21.95 -6 0.108
+            21.950003 -15.4 0.008
+            22.050003 -15.4 0.008
+            22.050003 -15.4 0.108
+            21.950003 -15.4 0.108
+          ]
+        }
+        coordIndex [
+          3, 2, 1, 0, -1, 0, 1, 5, 4, -1, 1, 2, 6, 5, -1, 2, 3, 7, 6, -1, 3, 0, 4, 7, -1, 4, 5, 9, 8, -1, 5, 6, 10, 9, -1, 6, 7, 11, 10, -1, 7, 4, 8, 11, -1, 8, 9, 10, 11, -1
+        ]
+      }
+    }
+  ]
+  name "CentreMedian-ROUNDABOUT_SOUTH"
+  boundingObject USE MEDIAN_ROUNDABOUT_SOUTH
+}
+Solid {
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.65 0.67 0.62
+        roughness 1
+        metalness 0
+      }
+      geometry DEF MEDIAN_EAST_EXTENSION IndexedFaceSet {
+        coord Coordinate {
+          point [
+            36.74 -0.05 0.008
+            36.74 0.05 0.008
+            36.74 0.05 0.108
+            36.74 -0.05 0.108
+            40.26 -0.05 0.008
+            40.26 0.05 0.008
+            40.26 0.05 0.108
+            40.26 -0.05 0.108
+          ]
+        }
+        coordIndex [
+          3, 2, 1, 0, -1, 0, 1, 5, 4, -1, 1, 2, 6, 5, -1, 2, 3, 7, 6, -1, 3, 0, 4, 7, -1, 4, 5, 6, 7, -1
+        ]
+      }
+    }
+  ]
+  name "CentreMedian-EAST_EXTENSION"
+  boundingObject USE MEDIAN_EAST_EXTENSION
+}
+Solid {
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.65 0.67 0.62
+        roughness 1
+        metalness 0
+      }
+      geometry DEF MEDIAN_NORTH_MERGED_W IndexedFaceSet {
+        coord Coordinate {
+          point [
+            -10.1 21.45 0.008
+            -10.1 21.55 0.008
+            -10.1 21.55 0.108
+            -10.1 21.45 0.108
+            0.25 21.45 0.008
+            0.25 21.55 0.008
+            0.25 21.55 0.108
+            0.25 21.45 0.108
+          ]
+        }
+        coordIndex [
+          3, 2, 1, 0, -1, 0, 1, 5, 4, -1, 1, 2, 6, 5, -1, 2, 3, 7, 6, -1, 3, 0, 4, 7, -1, 4, 5, 6, 7, -1
+        ]
+      }
+    }
+  ]
+  name "CentreMedian-NORTH_MERGED_W"
+  boundingObject USE MEDIAN_NORTH_MERGED_W
+}
+Solid {
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.65 0.67 0.62
+        roughness 1
+        metalness 0
+      }
+      geometry DEF MEDIAN_NORTH_MERGED_E IndexedFaceSet {
+        coord Coordinate {
+          point [
+            13.75 21.45 0.008
+            13.75 21.55 0.008
+            13.75 21.55 0.108
+            13.75 21.45 0.108
+            19 21.45 0.008
+            19 21.55 0.008
+            19 21.55 0.108
+            19 21.45 0.108
+          ]
+        }
+        coordIndex [
+          3, 2, 1, 0, -1, 0, 1, 5, 4, -1, 1, 2, 6, 5, -1, 2, 3, 7, 6, -1, 3, 0, 4, 7, -1, 4, 5, 6, 7, -1
+        ]
+      }
+    }
+  ]
+  name "CentreMedian-NORTH_MERGED_E"
+  boundingObject USE MEDIAN_NORTH_MERGED_E
+}
+Solid {
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.65 0.67 0.62
+        roughness 1
+        metalness 0
+      }
+      geometry DEF MEDIAN_NORTH_FLYOVER IndexedFaceSet {
+        coord Coordinate {
+          point [
+            0.25 21.45 0.008, 0.25 21.55 0.008, 0.25 21.55 0.108, 0.25 21.45 0.108, 0.375 21.45 0.009924, 0.375 21.55 0.009924, 0.375 21.55 0.109924, 0.375 21.45 0.109924, 0.5 21.45 0.015477, 0.5 21.55 0.015477, 0.5 21.55 0.115477, 0.5 21.45 0.115477, 0.625 21.45 0.024328, 0.625 21.55 0.024328, 0.625 21.55 0.124328, 0.625 21.45 0.124328, 0.75 21.45 0.036148, 0.75 21.55 0.036148, 0.75 21.55 0.136148, 0.75 21.45 0.136148, 0.875 21.45 0.050607, 0.875 21.55 0.050607, 0.875 21.55 0.150607, 0.875 21.45 0.150607, 1 21.45 0.067375, 1 21.55 0.067375, 1 21.55 0.167375, 1 21.45 0.167375, 1.125 21.45 0.086122, 1.125 21.55 0.086122, 1.125 21.55 0.186122, 1.125 21.45 0.186122, 1.25 21.45 0.106519, 1.25 21.55 0.106519, 1.25 21.55 0.206519, 1.25 21.45 0.206519, 1.375 21.45 0.128234, 1.375 21.55 0.128234, 1.375 21.55 0.228234, 1.375 21.45 0.228234, 1.5 21.45 0.15094, 1.5 21.55 0.15094, 1.5 21.55 0.25094, 1.5 21.45 0.25094, 1.625 21.45 0.174305, 1.625 21.55 0.174305, 1.625 21.55 0.274305, 1.625 21.45 0.274305, 1.75 21.45 0.198, 1.75 21.55 0.198, 1.75 21.55 0.298, 1.75 21.45 0.298, 1.875 21.45 0.221695, 1.875 21.55 0.221695, 1.875 21.55 0.321695, 1.875 21.45 0.321695, 2 21.45 0.24506, 2 21.55 0.24506, 2 21.55 0.34506, 2 21.45 0.34506, 2.125 21.45 0.267766, 2.125 21.55 0.267766, 2.125 21.55 0.367766, 2.125 21.45 0.367766, 2.25 21.45 0.289481, 2.25 21.55 0.289481, 2.25 21.55 0.389481, 2.25 21.45 0.389481, 2.375 21.45 0.309878, 2.375 21.55 0.309878, 2.375 21.55 0.409878, 2.375 21.45 0.409878, 2.5 21.45 0.328625, 2.5 21.55 0.328625, 2.5 21.55 0.428625, 2.5 21.45 0.428625, 2.625 21.45 0.345393, 2.625 21.55 0.345393, 2.625 21.55 0.445393, 2.625 21.45 0.445393, 2.75 21.45 0.359852, 2.75 21.55 0.359852, 2.75 21.55 0.459852, 2.75 21.45 0.459852, 2.875 21.45 0.371672, 2.875 21.55 0.371672, 2.875 21.55 0.471672, 2.875 21.45 0.471672, 3 21.45 0.380523, 3 21.55 0.380523, 3 21.55 0.480523, 3 21.45 0.480523, 3.125 21.45 0.386076, 3.125 21.55 0.386076, 3.125 21.55 0.486076, 3.125 21.45 0.486076, 3.25 21.45 0.388, 3.25 21.55 0.388, 3.25 21.55 0.488, 3.25 21.45 0.488, 3.375 21.45 0.388, 3.375 21.55 0.388, 3.375 21.55 0.488, 3.375 21.45 0.488, 3.5 21.45 0.388, 3.5 21.55 0.388, 3.5 21.55 0.488, 3.5 21.45 0.488, 3.625 21.45 0.388, 3.625 21.55 0.388, 3.625 21.55 0.488, 3.625 21.45 0.488, 3.75 21.45 0.388, 3.75 21.55 0.388, 3.75 21.55 0.488, 3.75 21.45 0.488, 3.875 21.45 0.388, 3.875 21.55 0.388, 3.875 21.55 0.488, 3.875 21.45 0.488, 4 21.45 0.388, 4 21.55 0.388, 4 21.55 0.488, 4 21.45 0.488, 4.125 21.45 0.388, 4.125 21.55 0.388, 4.125 21.55 0.488, 4.125 21.45 0.488, 4.25 21.45 0.388, 4.25 21.55 0.388, 4.25 21.55 0.488, 4.25 21.45 0.488, 4.375 21.45 0.388, 4.375 21.55 0.388, 4.375 21.55 0.488, 4.375 21.45 0.488, 4.5 21.45 0.388, 4.5 21.55 0.388, 4.5 21.55 0.488, 4.5 21.45 0.488, 4.625 21.45 0.388, 4.625 21.55 0.388, 4.625 21.55 0.488, 4.625 21.45 0.488, 4.75 21.45 0.388, 4.75 21.55 0.388, 4.75 21.55 0.488, 4.75 21.45 0.488, 4.875 21.45 0.388, 4.875 21.55 0.388, 4.875 21.55 0.488, 4.875 21.45 0.488, 5 21.45 0.388, 5 21.55 0.388, 5 21.55 0.488, 5 21.45 0.488, 5.125 21.45 0.388, 5.125 21.55 0.388, 5.125 21.55 0.488, 5.125 21.45 0.488, 5.25 21.45 0.388, 5.25 21.55 0.388, 5.25 21.55 0.488, 5.25 21.45 0.488, 5.375 21.45 0.388, 5.375 21.55 0.388, 5.375 21.55 0.488, 5.375 21.45 0.488, 5.5 21.45 0.388, 5.5 21.55 0.388, 5.5 21.55 0.488, 5.5 21.45 0.488, 5.625 21.45 0.388, 5.625 21.55 0.388, 5.625 21.55 0.488, 5.625 21.45 0.488, 5.75 21.45 0.388, 5.75 21.55 0.388, 5.75 21.55 0.488, 5.75 21.45 0.488, 5.875 21.45 0.388, 5.875 21.55 0.388, 5.875 21.55 0.488, 5.875 21.45 0.488, 6 21.45 0.388, 6 21.55 0.388, 6 21.55 0.488, 6 21.45 0.488, 6.125 21.45 0.388, 6.125 21.55 0.388, 6.125 21.55 0.488, 6.125 21.45 0.488, 6.25 21.45 0.388, 6.25 21.55 0.388, 6.25 21.55 0.488, 6.25 21.45 0.488, 6.375 21.45 0.388, 6.375 21.55 0.388, 6.375 21.55 0.488, 6.375 21.45 0.488, 6.5 21.45 0.388, 6.5 21.55 0.388, 6.5 21.55 0.488, 6.5 21.45 0.488, 6.625 21.45 0.388, 6.625 21.55 0.388, 6.625 21.55 0.488, 6.625 21.45 0.488, 6.75 21.45 0.388, 6.75 21.55 0.388, 6.75 21.55 0.488, 6.75 21.45 0.488, 6.875 21.45 0.388, 6.875 21.55 0.388, 6.875 21.55 0.488, 6.875 21.45 0.488, 7 21.45 0.388, 7 21.55 0.388, 7 21.55 0.488, 7 21.45 0.488, 7.125 21.45 0.388, 7.125 21.55 0.388, 7.125 21.55 0.488, 7.125 21.45 0.488, 7.25 21.45 0.388, 7.25 21.55 0.388, 7.25 21.55 0.488, 7.25 21.45 0.488, 7.375 21.45 0.388, 7.375 21.55 0.388, 7.375 21.55 0.488, 7.375 21.45 0.488, 7.5 21.45 0.388, 7.5 21.55 0.388, 7.5 21.55 0.488, 7.5 21.45 0.488, 7.625 21.45 0.388, 7.625 21.55 0.388, 7.625 21.55 0.488, 7.625 21.45 0.488, 7.75 21.45 0.388, 7.75 21.55 0.388, 7.75 21.55 0.488, 7.75 21.45 0.488, 7.875 21.45 0.388, 7.875 21.55 0.388, 7.875 21.55 0.488, 7.875 21.45 0.488, 8 21.45 0.388, 8 21.55 0.388, 8 21.55 0.488, 8 21.45 0.488, 8.125 21.45 0.388, 8.125 21.55 0.388, 8.125 21.55 0.488, 8.125 21.45 0.488, 8.25 21.45 0.388, 8.25 21.55 0.388, 8.25 21.55 0.488, 8.25 21.45 0.488, 8.375 21.45 0.388, 8.375 21.55 0.388, 8.375 21.55 0.488, 8.375 21.45 0.488, 8.5 21.45 0.388, 8.5 21.55 0.388, 8.5 21.55 0.488, 8.5 21.45 0.488, 8.625 21.45 0.388, 8.625 21.55 0.388, 8.625 21.55 0.488, 8.625 21.45 0.488, 8.75 21.45 0.388, 8.75 21.55 0.388, 8.75 21.55 0.488, 8.75 21.45 0.488, 8.875 21.45 0.388, 8.875 21.55 0.388, 8.875 21.55 0.488, 8.875 21.45 0.488, 9 21.45 0.388, 9 21.55 0.388, 9 21.55 0.488, 9 21.45 0.488, 9.125 21.45 0.388, 9.125 21.55 0.388, 9.125 21.55 0.488, 9.125 21.45 0.488, 9.25 21.45 0.388, 9.25 21.55 0.388, 9.25 21.55 0.488, 9.25 21.45 0.488, 9.375 21.45 0.388, 9.375 21.55 0.388, 9.375 21.55 0.488, 9.375 21.45 0.488, 9.5 21.45 0.388, 9.5 21.55 0.388, 9.5 21.55 0.488, 9.5 21.45 0.488, 9.625 21.45 0.388, 9.625 21.55 0.388, 9.625 21.55 0.488, 9.625 21.45 0.488, 9.75 21.45 0.388, 9.75 21.55 0.388, 9.75 21.55 0.488, 9.75 21.45 0.488, 9.875 21.45 0.388, 9.875 21.55 0.388, 9.875 21.55 0.488, 9.875 21.45 0.488, 10 21.45 0.388, 10 21.55 0.388, 10 21.55 0.488, 10 21.45 0.488, 10.125 21.45 0.388, 10.125 21.55 0.388, 10.125 21.55 0.488, 10.125 21.45 0.488, 10.25 21.45 0.388, 10.25 21.55 0.388, 10.25 21.55 0.488, 10.25 21.45 0.488, 10.375 21.45 0.388, 10.375 21.55 0.388, 10.375 21.55 0.488, 10.375 21.45 0.488, 10.5 21.45 0.388, 10.5 21.55 0.388, 10.5 21.55 0.488, 10.5 21.45 0.488, 10.625 21.45 0.388, 10.625 21.55 0.388, 10.625 21.55 0.488, 10.625 21.45 0.488, 10.75 21.45 0.388, 10.75 21.55 0.388, 10.75 21.55 0.488, 10.75 21.45 0.488, 10.875 21.45 0.386076, 10.875 21.55 0.386076, 10.875 21.55 0.486076, 10.875 21.45 0.486076, 11 21.45 0.380523, 11 21.55 0.380523, 11 21.55 0.480523, 11 21.45 0.480523, 11.125 21.45 0.371672, 11.125 21.55 0.371672, 11.125 21.55 0.471672, 11.125 21.45 0.471672, 11.25 21.45 0.359852, 11.25 21.55 0.359852, 11.25 21.55 0.459852, 11.25 21.45 0.459852, 11.375 21.45 0.345393, 11.375 21.55 0.345393, 11.375 21.55 0.445393, 11.375 21.45 0.445393, 11.5 21.45 0.328625, 11.5 21.55 0.328625, 11.5 21.55 0.428625, 11.5 21.45 0.428625, 11.625 21.45 0.309878, 11.625 21.55 0.309878, 11.625 21.55 0.409878, 11.625 21.45 0.409878, 11.75 21.45 0.289481, 11.75 21.55 0.289481, 11.75 21.55 0.389481, 11.75 21.45 0.389481, 11.875 21.45 0.267766, 11.875 21.55 0.267766, 11.875 21.55 0.367766, 11.875 21.45 0.367766, 12 21.45 0.24506, 12 21.55 0.24506, 12 21.55 0.34506, 12 21.45 0.34506, 12.125 21.45 0.221695, 12.125 21.55 0.221695, 12.125 21.55 0.321695, 12.125 21.45 0.321695, 12.25 21.45 0.198, 12.25 21.55 0.198, 12.25 21.55 0.298, 12.25 21.45 0.298, 12.375 21.45 0.174305, 12.375 21.55 0.174305, 12.375 21.55 0.274305, 12.375 21.45 0.274305, 12.5 21.45 0.15094, 12.5 21.55 0.15094, 12.5 21.55 0.25094, 12.5 21.45 0.25094, 12.625 21.45 0.128234, 12.625 21.55 0.128234, 12.625 21.55 0.228234, 12.625 21.45 0.228234, 12.75 21.45 0.106519, 12.75 21.55 0.106519, 12.75 21.55 0.206519, 12.75 21.45 0.206519, 12.875 21.45 0.086122, 12.875 21.55 0.086122, 12.875 21.55 0.186122, 12.875 21.45 0.186122, 13 21.45 0.067375, 13 21.55 0.067375, 13 21.55 0.167375, 13 21.45 0.167375, 13.125 21.45 0.050607, 13.125 21.55 0.050607, 13.125 21.55 0.150607, 13.125 21.45 0.150607, 13.25 21.45 0.036148, 13.25 21.55 0.036148, 13.25 21.55 0.136148, 13.25 21.45 0.136148, 13.375 21.45 0.024328, 13.375 21.55 0.024328, 13.375 21.55 0.124328, 13.375 21.45 0.124328, 13.5 21.45 0.015477, 13.5 21.55 0.015477, 13.5 21.55 0.115477, 13.5 21.45 0.115477, 13.625 21.45 0.009924, 13.625 21.55 0.009924, 13.625 21.55 0.109924, 13.625 21.45 0.109924, 13.75 21.45 0.008, 13.75 21.55 0.008, 13.75 21.55 0.108, 13.75 21.45 0.108
+          ]
+        }
+        coordIndex [
+          3, 2, 1, 0, -1, 0, 1, 5, 4, -1, 1, 2, 6, 5, -1, 2, 3, 7, 6, -1, 3, 0, 4, 7, -1, 4, 5, 9, 8, -1, 5, 6, 10, 9, -1, 6, 7, 11, 10, -1, 7, 4, 8, 11, -1, 8, 9, 13, 12, -1, 9, 10, 14, 13, -1, 10, 11, 15, 14, -1, 11, 8, 12, 15, -1, 12, 13, 17, 16, -1, 13, 14, 18, 17, -1, 14, 15, 19, 18, -1, 15, 12, 16, 19, -1, 16, 17, 21, 20, -1, 17, 18, 22, 21, -1, 18, 19, 23, 22, -1, 19, 16, 20, 23, -1, 20, 21, 25, 24, -1, 21, 22, 26, 25, -1, 22, 23, 27, 26, -1, 23, 20, 24, 27, -1, 24, 25, 29, 28, -1, 25, 26, 30, 29, -1, 26, 27, 31, 30, -1, 27, 24, 28, 31, -1, 28, 29, 33, 32, -1, 29, 30, 34, 33, -1, 30, 31, 35, 34, -1, 31, 28, 32, 35, -1, 32, 33, 37, 36, -1, 33, 34, 38, 37, -1, 34, 35, 39, 38, -1, 35, 32, 36, 39, -1, 36, 37, 41, 40, -1, 37, 38, 42, 41, -1, 38, 39, 43, 42, -1, 39, 36, 40, 43, -1, 40, 41, 45, 44, -1, 41, 42, 46, 45, -1, 42, 43, 47, 46, -1, 43, 40, 44, 47, -1, 44, 45, 49, 48, -1, 45, 46, 50, 49, -1, 46, 47, 51, 50, -1, 47, 44, 48, 51, -1, 48, 49, 53, 52, -1, 49, 50, 54, 53, -1, 50, 51, 55, 54, -1, 51, 48, 52, 55, -1, 52, 53, 57, 56, -1, 53, 54, 58, 57, -1, 54, 55, 59, 58, -1, 55, 52, 56, 59, -1, 56, 57, 61, 60, -1, 57, 58, 62, 61, -1, 58, 59, 63, 62, -1, 59, 56, 60, 63, -1, 60, 61, 65, 64, -1, 61, 62, 66, 65, -1, 62, 63, 67, 66, -1, 63, 60, 64, 67, -1, 64, 65, 69, 68, -1, 65, 66, 70, 69, -1, 66, 67, 71, 70, -1, 67, 64, 68, 71, -1, 68, 69, 73, 72, -1, 69, 70, 74, 73, -1, 70, 71, 75, 74, -1, 71, 68, 72, 75, -1, 72, 73, 77, 76, -1, 73, 74, 78, 77, -1, 74, 75, 79, 78, -1, 75, 72, 76, 79, -1, 76, 77, 81, 80, -1, 77, 78, 82, 81, -1, 78, 79, 83, 82, -1, 79, 76, 80, 83, -1, 80, 81, 85, 84, -1, 81, 82, 86, 85, -1, 82, 83, 87, 86, -1, 83, 80, 84, 87, -1, 84, 85, 89, 88, -1, 85, 86, 90, 89, -1, 86, 87, 91, 90, -1, 87, 84, 88, 91, -1, 88, 89, 93, 92, -1, 89, 90, 94, 93, -1, 90, 91, 95, 94, -1, 91, 88, 92, 95, -1, 92, 93, 97, 96, -1, 93, 94, 98, 97, -1, 94, 95, 99, 98, -1, 95, 92, 96, 99, -1, 96, 97, 101, 100, -1, 97, 98, 102, 101, -1, 98, 99, 103, 102, -1, 99, 96, 100, 103, -1, 100, 101, 105, 104, -1, 101, 102, 106, 105, -1, 102, 103, 107, 106, -1, 103, 100, 104, 107, -1, 104, 105, 109, 108, -1, 105, 106, 110, 109, -1, 106, 107, 111, 110, -1, 107, 104, 108, 111, -1, 108, 109, 113, 112, -1, 109, 110, 114, 113, -1, 110, 111, 115, 114, -1, 111, 108, 112, 115, -1, 112, 113, 117, 116, -1, 113, 114, 118, 117, -1, 114, 115, 119, 118, -1, 115, 112, 116, 119, -1, 116, 117, 121, 120, -1, 117, 118, 122, 121, -1, 118, 119, 123, 122, -1, 119, 116, 120, 123, -1, 120, 121, 125, 124, -1, 121, 122, 126, 125, -1, 122, 123, 127, 126, -1, 123, 120, 124, 127, -1, 124, 125, 129, 128, -1, 125, 126, 130, 129, -1, 126, 127, 131, 130, -1, 127, 124, 128, 131, -1, 128, 129, 133, 132, -1, 129, 130, 134, 133, -1, 130, 131, 135, 134, -1, 131, 128, 132, 135, -1, 132, 133, 137, 136, -1, 133, 134, 138, 137, -1, 134, 135, 139, 138, -1, 135, 132, 136, 139, -1, 136, 137, 141, 140, -1, 137, 138, 142, 141, -1, 138, 139, 143, 142, -1, 139, 136, 140, 143, -1, 140, 141, 145, 144, -1, 141, 142, 146, 145, -1, 142, 143, 147, 146, -1, 143, 140, 144, 147, -1, 144, 145, 149, 148, -1, 145, 146, 150, 149, -1, 146, 147, 151, 150, -1, 147, 144, 148, 151, -1, 148, 149, 153, 152, -1, 149, 150, 154, 153, -1, 150, 151, 155, 154, -1, 151, 148, 152, 155, -1, 152, 153, 157, 156, -1, 153, 154, 158, 157, -1, 154, 155, 159, 158, -1, 155, 152, 156, 159, -1, 156, 157, 161, 160, -1, 157, 158, 162, 161, -1, 158, 159, 163, 162, -1, 159, 156, 160, 163, -1, 160, 161, 165, 164, -1, 161, 162, 166, 165, -1, 162, 163, 167, 166, -1, 163, 160, 164, 167, -1, 164, 165, 169, 168, -1, 165, 166, 170, 169, -1, 166, 167, 171, 170, -1, 167, 164, 168, 171, -1, 168, 169, 173, 172, -1, 169, 170, 174, 173, -1, 170, 171, 175, 174, -1, 171, 168, 172, 175, -1, 172, 173, 177, 176, -1, 173, 174, 178, 177, -1, 174, 175, 179, 178, -1, 175, 172, 176, 179, -1, 176, 177, 181, 180, -1, 177, 178, 182, 181, -1, 178, 179, 183, 182, -1, 179, 176, 180, 183, -1, 180, 181, 185, 184, -1, 181, 182, 186, 185, -1, 182, 183, 187, 186, -1, 183, 180, 184, 187, -1, 184, 185, 189, 188, -1, 185, 186, 190, 189, -1, 186, 187, 191, 190, -1, 187, 184, 188, 191, -1, 188, 189, 193, 192, -1, 189, 190, 194, 193, -1, 190, 191, 195, 194, -1, 191, 188, 192, 195, -1, 192, 193, 197, 196, -1, 193, 194, 198, 197, -1, 194, 195, 199, 198, -1, 195, 192, 196, 199, -1, 196, 197, 201, 200, -1, 197, 198, 202, 201, -1, 198, 199, 203, 202, -1, 199, 196, 200, 203, -1, 200, 201, 205, 204, -1, 201, 202, 206, 205, -1, 202, 203, 207, 206, -1, 203, 200, 204, 207, -1, 204, 205, 209, 208, -1, 205, 206, 210, 209, -1, 206, 207, 211, 210, -1, 207, 204, 208, 211, -1, 208, 209, 213, 212, -1, 209, 210, 214, 213, -1, 210, 211, 215, 214, -1, 211, 208, 212, 215, -1, 212, 213, 217, 216, -1, 213, 214, 218, 217, -1, 214, 215, 219, 218, -1, 215, 212, 216, 219, -1, 216, 217, 221, 220, -1, 217, 218, 222, 221, -1, 218, 219, 223, 222, -1, 219, 216, 220, 223, -1, 220, 221, 225, 224, -1, 221, 222, 226, 225, -1, 222, 223, 227, 226, -1, 223, 220, 224, 227, -1, 224, 225, 229, 228, -1, 225, 226, 230, 229, -1, 226, 227, 231, 230, -1, 227, 224, 228, 231, -1, 228, 229, 233, 232, -1, 229, 230, 234, 233, -1, 230, 231, 235, 234, -1, 231, 228, 232, 235, -1, 232, 233, 237, 236, -1, 233, 234, 238, 237, -1, 234, 235, 239, 238, -1, 235, 232, 236, 239, -1, 236, 237, 241, 240, -1, 237, 238, 242, 241, -1, 238, 239, 243, 242, -1, 239, 236, 240, 243, -1, 240, 241, 245, 244, -1, 241, 242, 246, 245, -1, 242, 243, 247, 246, -1, 243, 240, 244, 247, -1, 244, 245, 249, 248, -1, 245, 246, 250, 249, -1, 246, 247, 251, 250, -1, 247, 244, 248, 251, -1, 248, 249, 253, 252, -1, 249, 250, 254, 253, -1, 250, 251, 255, 254, -1, 251, 248, 252, 255, -1, 252, 253, 257, 256, -1, 253, 254, 258, 257, -1, 254, 255, 259, 258, -1, 255, 252, 256, 259, -1, 256, 257, 261, 260, -1, 257, 258, 262, 261, -1, 258, 259, 263, 262, -1, 259, 256, 260, 263, -1, 260, 261, 265, 264, -1, 261, 262, 266, 265, -1, 262, 263, 267, 266, -1, 263, 260, 264, 267, -1, 264, 265, 269, 268, -1, 265, 266, 270, 269, -1, 266, 267, 271, 270, -1, 267, 264, 268, 271, -1, 268, 269, 273, 272, -1, 269, 270, 274, 273, -1, 270, 271, 275, 274, -1, 271, 268, 272, 275, -1, 272, 273, 277, 276, -1, 273, 274, 278, 277, -1, 274, 275, 279, 278, -1, 275, 272, 276, 279, -1, 276, 277, 281, 280, -1, 277, 278, 282, 281, -1, 278, 279, 283, 282, -1, 279, 276, 280, 283, -1, 280, 281, 285, 284, -1, 281, 282, 286, 285, -1, 282, 283, 287, 286, -1, 283, 280, 284, 287, -1, 284, 285, 289, 288, -1, 285, 286, 290, 289, -1, 286, 287, 291, 290, -1, 287, 284, 288, 291, -1, 288, 289, 293, 292, -1, 289, 290, 294, 293, -1, 290, 291, 295, 294, -1, 291, 288, 292, 295, -1, 292, 293, 297, 296, -1, 293, 294, 298, 297, -1, 294, 295, 299, 298, -1, 295, 292, 296, 299, -1, 296, 297, 301, 300, -1, 297, 298, 302, 301, -1, 298, 299, 303, 302, -1, 299, 296, 300, 303, -1, 300, 301, 305, 304, -1, 301, 302, 306, 305, -1, 302, 303, 307, 306, -1, 303, 300, 304, 307, -1, 304, 305, 309, 308, -1, 305, 306, 310, 309, -1, 306, 307, 311, 310, -1, 307, 304, 308, 311, -1, 308, 309, 313, 312, -1, 309, 310, 314, 313, -1, 310, 311, 315, 314, -1, 311, 308, 312, 315, -1, 312, 313, 317, 316, -1, 313, 314, 318, 317, -1, 314, 315, 319, 318, -1, 315, 312, 316, 319, -1, 316, 317, 321, 320, -1, 317, 318, 322, 321, -1, 318, 319, 323, 322, -1, 319, 316, 320, 323, -1, 320, 321, 325, 324, -1, 321, 322, 326, 325, -1, 322, 323, 327, 326, -1, 323, 320, 324, 327, -1, 324, 325, 329, 328, -1, 325, 326, 330, 329, -1, 326, 327, 331, 330, -1, 327, 324, 328, 331, -1, 328, 329, 333, 332, -1, 329, 330, 334, 333, -1, 330, 331, 335, 334, -1, 331, 328, 332, 335, -1, 332, 333, 337, 336, -1, 333, 334, 338, 337, -1, 334, 335, 339, 338, -1, 335, 332, 336, 339, -1, 336, 337, 341, 340, -1, 337, 338, 342, 341, -1, 338, 339, 343, 342, -1, 339, 336, 340, 343, -1, 340, 341, 345, 344, -1, 341, 342, 346, 345, -1, 342, 343, 347, 346, -1, 343, 340, 344, 347, -1, 344, 345, 349, 348, -1, 345, 346, 350, 349, -1, 346, 347, 351, 350, -1, 347, 344, 348, 351, -1, 348, 349, 353, 352, -1, 349, 350, 354, 353, -1, 350, 351, 355, 354, -1, 351, 348, 352, 355, -1, 352, 353, 357, 356, -1, 353, 354, 358, 357, -1, 354, 355, 359, 358, -1, 355, 352, 356, 359, -1, 356, 357, 361, 360, -1, 357, 358, 362, 361, -1, 358, 359, 363, 362, -1, 359, 356, 360, 363, -1, 360, 361, 365, 364, -1, 361, 362, 366, 365, -1, 362, 363, 367, 366, -1, 363, 360, 364, 367, -1, 364, 365, 369, 368, -1, 365, 366, 370, 369, -1, 366, 367, 371, 370, -1, 367, 364, 368, 371, -1, 368, 369, 373, 372, -1, 369, 370, 374, 373, -1, 370, 371, 375, 374, -1, 371, 368, 372, 375, -1, 372, 373, 377, 376, -1, 373, 374, 378, 377, -1, 374, 375, 379, 378, -1, 375, 372, 376, 379, -1, 376, 377, 381, 380, -1, 377, 378, 382, 381, -1, 378, 379, 383, 382, -1, 379, 376, 380, 383, -1, 380, 381, 385, 384, -1, 381, 382, 386, 385, -1, 382, 383, 387, 386, -1, 383, 380, 384, 387, -1, 384, 385, 389, 388, -1, 385, 386, 390, 389, -1, 386, 387, 391, 390, -1, 387, 384, 388, 391, -1, 388, 389, 393, 392, -1, 389, 390, 394, 393, -1, 390, 391, 395, 394, -1, 391, 388, 392, 395, -1, 392, 393, 397, 396, -1, 393, 394, 398, 397, -1, 394, 395, 399, 398, -1, 395, 392, 396, 399, -1, 396, 397, 401, 400, -1, 397, 398, 402, 401, -1, 398, 399, 403, 402, -1, 399, 396, 400, 403, -1, 400, 401, 405, 404, -1, 401, 402, 406, 405, -1, 402, 403, 407, 406, -1, 403, 400, 404, 407, -1, 404, 405, 409, 408, -1, 405, 406, 410, 409, -1, 406, 407, 411, 410, -1, 407, 404, 408, 411, -1, 408, 409, 413, 412, -1, 409, 410, 414, 413, -1, 410, 411, 415, 414, -1, 411, 408, 412, 415, -1, 412, 413, 417, 416, -1, 413, 414, 418, 417, -1, 414, 415, 419, 418, -1, 415, 412, 416, 419, -1, 416, 417, 421, 420, -1, 417, 418, 422, 421, -1, 418, 419, 423, 422, -1, 419, 416, 420, 423, -1, 420, 421, 425, 424, -1, 421, 422, 426, 425, -1, 422, 423, 427, 426, -1, 423, 420, 424, 427, -1, 424, 425, 429, 428, -1, 425, 426, 430, 429, -1, 426, 427, 431, 430, -1, 427, 424, 428, 431, -1, 428, 429, 433, 432, -1, 429, 430, 434, 433, -1, 430, 431, 435, 434, -1, 431, 428, 432, 435, -1, 432, 433, 434, 435, -1
+        ]
+      }
+    }
+  ]
+  name "CentreMedian-NORTH_FLYOVER"
+  boundingObject USE MEDIAN_NORTH_FLYOVER
 }
 Solid {
   children [
@@ -6024,8 +6261,8 @@ Solid {
 Solid {
   children [
     Pose {
-      translation -13.478137 17.481313 0.0255
-      rotation 0 0 1 -0.870346
+      translation -14.221897 19.073795 0.0255
+      rotation 0 0 1 -0.73183
       children [
         Shape {
           appearance PBRAppearance {
@@ -6034,14 +6271,14 @@ Solid {
             metalness 0
           }
           geometry Box {
-            size 0.696923 0.14 0.035
+            size 2.621421 0.14 0.035
           }
         }
       ]
     }
     Pose {
-      translation -10.480503 17.480503 0.0255
-      rotation 0 0 1 0.785398
+      translation -10.395964 18.630501 0.0255
+      rotation 0 0 1 0.881872
       children [
         Shape {
           appearance PBRAppearance {
@@ -6050,14 +6287,14 @@ Solid {
             metalness 0
           }
           geometry Box {
-            size 0.763635 0.14 0.035
+            size 1.101095 0.14 0.035
           }
         }
       ]
     }
     Pose {
-      translation -10.480503 20.519497 0.0255
-      rotation 0 0 1 2.356195
+      translation -10.981696 24.492462 0.0255
+      rotation 0 0 1 2.615881
       children [
         Shape {
           appearance PBRAppearance {
@@ -6066,14 +6303,14 @@ Solid {
             metalness 0
           }
           geometry Box {
-            size 0.763635 0.14 0.035
+            size 2.119864 0.14 0.035
           }
         }
       ]
     }
     Pose {
-      translation -13.561208 20.515592 0.0255
-      rotation 0 0 1 -2.420315
+      translation -15.081368 23.281817 0.0255
+      rotation 0 0 1 -2.292948
       children [
         Shape {
           appearance PBRAppearance {
@@ -6082,7 +6319,7 @@ Solid {
             metalness 0
           }
           geometry Box {
-            size 0.838841 0.14 0.035
+            size 2.506022 0.14 0.035
           }
         }
       ]
@@ -6092,38 +6329,38 @@ Solid {
   boundingObject Group {
     children [
       Pose {
-        translation -13.478137 17.481313 0.0255
-        rotation 0 0 1 -0.870346
+        translation -14.221897 19.073795 0.0255
+        rotation 0 0 1 -0.73183
         children [
           Box {
-            size 0.696923 0.14 0.035
+            size 2.621421 0.14 0.035
           }
         ]
       }
       Pose {
-        translation -10.480503 17.480503 0.0255
-        rotation 0 0 1 0.785398
+        translation -10.395964 18.630501 0.0255
+        rotation 0 0 1 0.881872
         children [
           Box {
-            size 0.763635 0.14 0.035
+            size 1.101095 0.14 0.035
           }
         ]
       }
       Pose {
-        translation -10.480503 20.519497 0.0255
-        rotation 0 0 1 2.356195
+        translation -10.981696 24.492462 0.0255
+        rotation 0 0 1 2.615881
         children [
           Box {
-            size 0.763635 0.14 0.035
+            size 2.119864 0.14 0.035
           }
         ]
       }
       Pose {
-        translation -13.561208 20.515592 0.0255
-        rotation 0 0 1 -2.420315
+        translation -15.081368 23.281817 0.0255
+        rotation 0 0 1 -2.292948
         children [
           Box {
-            size 0.838841 0.14 0.035
+            size 2.506022 0.14 0.035
           }
         ]
       }
@@ -6133,8 +6370,8 @@ Solid {
 Solid {
   children [
     Pose {
-      translation 5.480505 17.480502 0.0255
-      rotation 0 0 1 -0.785393
+      translation 4.624495 18.584813 0.0255
+      rotation 0 0 1 -0.372987
       children [
         Shape {
           appearance PBRAppearance {
@@ -6143,14 +6380,14 @@ Solid {
             metalness 0
           }
           geometry Box {
-            size 0.763638 0.14 0.035
+            size 2.469782 0.14 0.035
           }
         }
       ]
     }
     Pose {
-      translation 8.5195 17.480503 0.0255
-      rotation 0 0 1 0.785403
+      translation 9.375511 18.584813 0.0255
+      rotation 0 0 1 0.372989
       children [
         Shape {
           appearance PBRAppearance {
@@ -6159,14 +6396,14 @@ Solid {
             metalness 0
           }
           geometry Box {
-            size 0.763632 0.14 0.035
+            size 2.469773 0.14 0.035
           }
         }
       ]
     }
     Pose {
-      translation 8.519497 20.519497 0.0255
-      rotation 0 0 1 2.356195
+      translation 10.57 21.5 0.0255
+      rotation 0 0 1 1.570796
       children [
         Shape {
           appearance PBRAppearance {
@@ -6175,14 +6412,14 @@ Solid {
             metalness 0
           }
           geometry Box {
-            size 0.763635 0.14 0.035
+            size 2.39996 0.14 0.035
           }
         }
       ]
     }
     Pose {
-      translation 5.480503 20.519498 0.0255
-      rotation 0 0 1 -2.356194
+      translation 8.659683 24.942592 0.0255
+      rotation 0 0 1 2.659249
       children [
         Shape {
           appearance PBRAppearance {
@@ -6191,7 +6428,39 @@ Solid {
             metalness 0
           }
           geometry Box {
-            size 0.763636 0.14 0.035
+            size 4.227897 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 3.94019 24.531644 0.0255
+      rotation 0 0 1 -2.270483
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 1.533377 0.14 0.035
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 3.43 21.5 0.0255
+      rotation 0 0 1 -1.570796
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.65 0.67 0.62
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 2.39996 0.14 0.035
           }
         }
       ]
@@ -6201,38 +6470,56 @@ Solid {
   boundingObject Group {
     children [
       Pose {
-        translation 5.480505 17.480502 0.0255
-        rotation 0 0 1 -0.785393
+        translation 4.624495 18.584813 0.0255
+        rotation 0 0 1 -0.372987
         children [
           Box {
-            size 0.763638 0.14 0.035
+            size 2.469782 0.14 0.035
           }
         ]
       }
       Pose {
-        translation 8.5195 17.480503 0.0255
-        rotation 0 0 1 0.785403
+        translation 9.375511 18.584813 0.0255
+        rotation 0 0 1 0.372989
         children [
           Box {
-            size 0.763632 0.14 0.035
+            size 2.469773 0.14 0.035
           }
         ]
       }
       Pose {
-        translation 8.519497 20.519497 0.0255
-        rotation 0 0 1 2.356195
+        translation 10.57 21.5 0.0255
+        rotation 0 0 1 1.570796
         children [
           Box {
-            size 0.763635 0.14 0.035
+            size 2.39996 0.14 0.035
           }
         ]
       }
       Pose {
-        translation 5.480503 20.519498 0.0255
-        rotation 0 0 1 -2.356194
+        translation 8.659683 24.942592 0.0255
+        rotation 0 0 1 2.659249
         children [
           Box {
-            size 0.763636 0.14 0.035
+            size 4.227897 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation 3.94019 24.531644 0.0255
+        rotation 0 0 1 -2.270483
+        children [
+          Box {
+            size 1.533377 0.14 0.035
+          }
+        ]
+      }
+      Pose {
+        translation 3.43 21.5 0.0255
+        rotation 0 0 1 -1.570796
+        children [
+          Box {
+            size 2.39996 0.14 0.035
           }
         ]
       }
@@ -6242,8 +6529,8 @@ Solid {
 Solid {
   children [
     Pose {
-      translation 19.280505 17.480503 0.0255
-      rotation 0 0 1 -0.785394
+      translation 19.242814 18.634632 0.0255
+      rotation 0 0 1 -0.95613
       children [
         Shape {
           appearance PBRAppearance {
@@ -6252,14 +6539,14 @@ Solid {
             metalness 0
           }
           geometry Box {
-            size 0.763637 0.14 0.035
+            size 1.040394 0.14 0.035
           }
         }
       ]
     }
     Pose {
-      translation 24.692398 17.451553 0.0255
-      rotation 0 0 1 0.781586
+      translation 25.442301 19.071412 0.0255
+      rotation 0 0 1 0.720203
       children [
         Shape {
           appearance PBRAppearance {
@@ -6268,14 +6555,14 @@ Solid {
             metalness 0
           }
           geometry Box {
-            size 0.684904 0.14 0.035
+            size 2.650396 0.14 0.035
           }
         }
       ]
     }
     Pose {
-      translation 24.117855 20.506465 0.0255
-      rotation 0 0 1 2.818467
+      translation 25.427507 23.460275 0.0255
+      rotation 0 0 1 2.555655
       children [
         Shape {
           appearance PBRAppearance {
@@ -6284,14 +6571,14 @@ Solid {
             metalness 0
           }
           geometry Box {
-            size 1.888976 0.14 0.035
+            size 3.945251 0.14 0.035
           }
         }
       ]
     }
     Pose {
-      translation 19.909252 20.536855 0.0255
-      rotation 0 0 1 -2.840672
+      translation 20.163464 24.468862 0.0255
+      rotation 0 0 1 -2.740911
       children [
         Shape {
           appearance PBRAppearance {
@@ -6300,7 +6587,7 @@ Solid {
             metalness 0
           }
           geometry Box {
-            size 1.821827 0.14 0.035
+            size 2.586349 0.14 0.035
           }
         }
       ]
@@ -6310,38 +6597,38 @@ Solid {
   boundingObject Group {
     children [
       Pose {
-        translation 19.280505 17.480503 0.0255
-        rotation 0 0 1 -0.785394
+        translation 19.242814 18.634632 0.0255
+        rotation 0 0 1 -0.95613
         children [
           Box {
-            size 0.763637 0.14 0.035
+            size 1.040394 0.14 0.035
           }
         ]
       }
       Pose {
-        translation 24.692398 17.451553 0.0255
-        rotation 0 0 1 0.781586
+        translation 25.442301 19.071412 0.0255
+        rotation 0 0 1 0.720203
         children [
           Box {
-            size 0.684904 0.14 0.035
+            size 2.650396 0.14 0.035
           }
         ]
       }
       Pose {
-        translation 24.117855 20.506465 0.0255
-        rotation 0 0 1 2.818467
+        translation 25.427507 23.460275 0.0255
+        rotation 0 0 1 2.555655
         children [
           Box {
-            size 1.888976 0.14 0.035
+            size 3.945251 0.14 0.035
           }
         ]
       }
       Pose {
-        translation 19.909252 20.536855 0.0255
-        rotation 0 0 1 -2.840672
+        translation 20.163464 24.468862 0.0255
+        rotation 0 0 1 -2.740911
         children [
           Box {
-            size 1.821827 0.14 0.035
+            size 2.586349 0.14 0.035
           }
         ]
       }
@@ -6383,8 +6670,8 @@ Solid {
       ]
     }
     Pose {
-      translation 36.39019 2.816613 0.0255
-      rotation 0 0 1 2.398287
+      translation 36.39019 2.816614 0.0255
+      rotation 0 0 1 2.398286
       children [
         Shape {
           appearance PBRAppearance {
@@ -6393,14 +6680,14 @@ Solid {
             metalness 0
           }
           geometry Box {
-            size 1.078911 0.14 0.035
+            size 1.078912 0.14 0.035
           }
         }
       ]
     }
     Pose {
       translation 33.373212 2.604695 0.0255
-      rotation 0 0 1 -2.379906
+      rotation 0 0 1 -2.379908
       children [
         Shape {
           appearance PBRAppearance {
@@ -6409,7 +6696,7 @@ Solid {
             metalness 0
           }
           geometry Box {
-            size 0.446355 0.14 0.035
+            size 0.446354 0.14 0.035
           }
         }
       ]
@@ -6437,20 +6724,20 @@ Solid {
         ]
       }
       Pose {
-        translation 36.39019 2.816613 0.0255
-        rotation 0 0 1 2.398287
+        translation 36.39019 2.816614 0.0255
+        rotation 0 0 1 2.398286
         children [
           Box {
-            size 1.078911 0.14 0.035
+            size 1.078912 0.14 0.035
           }
         ]
       }
       Pose {
         translation 33.373212 2.604695 0.0255
-        rotation 0 0 1 -2.379906
+        rotation 0 0 1 -2.379908
         children [
           Box {
-            size 0.446355 0.14 0.035
+            size 0.446354 0.14 0.035
           }
         ]
       }
@@ -6767,8 +7054,8 @@ Solid {
       ]
     }
     Pose {
-      translation -10.480502 12.519498 0.0255
-      rotation 0 0 1 2.356193
+      translation -10.480501 12.519498 0.0255
+      rotation 0 0 1 2.356192
       children [
         Shape {
           appearance PBRAppearance {
@@ -6777,14 +7064,14 @@ Solid {
             metalness 0
           }
           geometry Box {
-            size 0.763635 0.14 0.035
+            size 0.763634 0.14 0.035
           }
         }
       ]
     }
     Pose {
-      translation -13.519497 12.519497 0.0255
-      rotation 0 0 1 -2.356196
+      translation -13.519496 12.519497 0.0255
+      rotation 0 0 1 -2.356197
       children [
         Shape {
           appearance PBRAppearance {
@@ -6793,7 +7080,7 @@ Solid {
             metalness 0
           }
           geometry Box {
-            size 0.763636 0.14 0.035
+            size 0.763637 0.14 0.035
           }
         }
       ]
@@ -6821,20 +7108,20 @@ Solid {
         ]
       }
       Pose {
-        translation -10.480502 12.519498 0.0255
-        rotation 0 0 1 2.356193
+        translation -10.480501 12.519498 0.0255
+        rotation 0 0 1 2.356192
         children [
           Box {
-            size 0.763635 0.14 0.035
+            size 0.763634 0.14 0.035
           }
         ]
       }
       Pose {
-        translation -13.519497 12.519497 0.0255
-        rotation 0 0 1 -2.356196
+        translation -13.519496 12.519497 0.0255
+        rotation 0 0 1 -2.356197
         children [
           Box {
-            size 0.763636 0.14 0.035
+            size 0.763637 0.14 0.035
           }
         ]
       }
@@ -7980,8 +8267,8 @@ Solid {
 Solid {
   children [
     Pose {
-      translation -13.562741 23.561944 0.0255
-      rotation 0 0 1 -1.350888
+      translation -16.659984 31.505964 0.0255
+      rotation 0 0 1 -1.303163
       children [
         Shape {
           appearance PBRAppearance {
@@ -7990,14 +8277,14 @@ Solid {
             metalness 0
           }
           geometry Box {
-            size 2.699396 0.14 0.035
+            size 4.59458 0.14 0.035
           }
         }
       ]
     }
     Pose {
-      translation -10.480502 22.480502 0.0255
-      rotation 0 0 1 0.785399
+      translation -13.510089 30.422096 0.0255
+      rotation 0 0 1 1.184211
       children [
         Shape {
           appearance PBRAppearance {
@@ -8006,284 +8293,7 @@ Solid {
             metalness 0
           }
           geometry Box {
-            size 0.763635 0.14 0.035
-          }
-        }
-      ]
-    }
-    Pose {
-      translation -10.917125 25.645064 0.0255
-      rotation 0 0 1 2.634585
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColor 0.65 0.67 0.62
-            roughness 1
-            metalness 0
-          }
-          geometry Box {
-            size 1.581094 0.14 0.035
-          }
-        }
-      ]
-    }
-  ]
-  name "JunctionCurbs-N1_W"
-  boundingObject Group {
-    children [
-      Pose {
-        translation -13.562741 23.561944 0.0255
-        rotation 0 0 1 -1.350888
-        children [
-          Box {
-            size 2.699396 0.14 0.035
-          }
-        ]
-      }
-      Pose {
-        translation -10.480502 22.480502 0.0255
-        rotation 0 0 1 0.785399
-        children [
-          Box {
-            size 0.763635 0.14 0.035
-          }
-        ]
-      }
-      Pose {
-        translation -10.917125 25.645064 0.0255
-        rotation 0 0 1 2.634585
-        children [
-          Box {
-            size 1.581094 0.14 0.035
-          }
-        ]
-      }
-    ]
-  }
-}
-Solid {
-  children [
-    Pose {
-      translation 5.090218 22.464888 0.0255
-      rotation 0 0 1 -0.375919
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColor 0.65 0.67 0.62
-            roughness 1
-            metalness 0
-          }
-          geometry Box {
-            size 1.470837 0.14 0.035
-          }
-        }
-      ]
-    }
-    Pose {
-      translation 8.519498 22.480502 0.0255
-      rotation 0 0 1 0.785399
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColor 0.65 0.67 0.62
-            roughness 1
-            metalness 0
-          }
-          geometry Box {
-            size 0.763635 0.14 0.035
-          }
-        }
-      ]
-    }
-    Pose {
-      translation 7.879224 26.068877 0.0255
-      rotation 0 0 1 2.408775
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColor 0.65 0.67 0.62
-            roughness 1
-            metalness 0
-          }
-          geometry Box {
-            size 2.442076 0.14 0.035
-          }
-        }
-      ]
-    }
-    Pose {
-      translation 4.545456 25.516991 0.0255
-      rotation 0 0 1 -2.124371
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColor 0.65 0.67 0.62
-            roughness 1
-            metalness 0
-          }
-          geometry Box {
-            size 0.658727 0.14 0.035
-          }
-        }
-      ]
-    }
-  ]
-  name "JunctionCurbs-N1_M"
-  boundingObject Group {
-    children [
-      Pose {
-        translation 5.090218 22.464888 0.0255
-        rotation 0 0 1 -0.375919
-        children [
-          Box {
-            size 1.470837 0.14 0.035
-          }
-        ]
-      }
-      Pose {
-        translation 8.519498 22.480502 0.0255
-        rotation 0 0 1 0.785399
-        children [
-          Box {
-            size 0.763635 0.14 0.035
-          }
-        ]
-      }
-      Pose {
-        translation 7.879224 26.068877 0.0255
-        rotation 0 0 1 2.408775
-        children [
-          Box {
-            size 2.442076 0.14 0.035
-          }
-        ]
-      }
-      Pose {
-        translation 4.545456 25.516991 0.0255
-        rotation 0 0 1 -2.124371
-        children [
-          Box {
-            size 0.658727 0.14 0.035
-          }
-        ]
-      }
-    ]
-  }
-}
-Solid {
-  children [
-    Pose {
-      translation 20.480503 22.480503 0.0255
-      rotation 0 0 1 -0.785397
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColor 0.65 0.67 0.62
-            roughness 1
-            metalness 0
-          }
-          geometry Box {
-            size 0.763635 0.14 0.035
-          }
-        }
-      ]
-    }
-    Pose {
-      translation 23.445637 23.752433 0.0255
-      rotation 0 0 1 1.453968
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColor 0.65 0.67 0.62
-            roughness 1
-            metalness 0
-          }
-          geometry Box {
-            size 3.021745 0.14 0.035
-          }
-        }
-      ]
-    }
-    Pose {
-      translation 20.703086 25.57986 0.0255
-      rotation 0 0 1 -2.553102
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColor 0.65 0.67 0.62
-            roughness 1
-            metalness 0
-          }
-          geometry Box {
-            size 1.158784 0.14 0.035
-          }
-        }
-      ]
-    }
-  ]
-  name "JunctionCurbs-N1_E"
-  boundingObject Group {
-    children [
-      Pose {
-        translation 20.480503 22.480503 0.0255
-        rotation 0 0 1 -0.785397
-        children [
-          Box {
-            size 0.763635 0.14 0.035
-          }
-        ]
-      }
-      Pose {
-        translation 23.445637 23.752433 0.0255
-        rotation 0 0 1 1.453968
-        children [
-          Box {
-            size 3.021745 0.14 0.035
-          }
-        ]
-      }
-      Pose {
-        translation 20.703086 25.57986 0.0255
-        rotation 0 0 1 -2.553102
-        children [
-          Box {
-            size 1.158784 0.14 0.035
-          }
-        ]
-      }
-    ]
-  }
-}
-Solid {
-  children [
-    Pose {
-      translation -16.629825 31.434353 0.0255
-      rotation 0 0 1 -1.298889
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColor 0.65 0.67 0.62
-            roughness 1
-            metalness 0
-          }
-          geometry Box {
-            size 4.748098 0.14 0.035
-          }
-        }
-      ]
-    }
-    Pose {
-      translation -13.545456 30.483008 0.0255
-      rotation 0 0 1 1.017221
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColor 0.65 0.67 0.62
-            roughness 1
-            metalness 0
-          }
-          geometry Box {
-            size 0.658728 0.14 0.035
+            size 0.759 0.14 0.035
           }
         }
       ]
@@ -8309,20 +8319,20 @@ Solid {
   boundingObject Group {
     children [
       Pose {
-        translation -16.629825 31.434353 0.0255
-        rotation 0 0 1 -1.298889
+        translation -16.659984 31.505964 0.0255
+        rotation 0 0 1 -1.303163
         children [
           Box {
-            size 4.748098 0.14 0.035
+            size 4.59458 0.14 0.035
           }
         ]
       }
       Pose {
-        translation -13.545456 30.483008 0.0255
-        rotation 0 0 1 1.017221
+        translation -13.510089 30.422096 0.0255
+        rotation 0 0 1 1.184211
         children [
           Box {
-            size 0.658728 0.14 0.035
+            size 0.759 0.14 0.035
           }
         ]
       }
@@ -8341,8 +8351,8 @@ Solid {
 Solid {
   children [
     Pose {
-      translation 2.120775 29.931123 0.0255
-      rotation 0 0 1 -0.732818
+      translation 2.092201 30.001128 0.0255
+      rotation 0 0 1 -0.704249
       children [
         Shape {
           appearance PBRAppearance {
@@ -8351,14 +8361,14 @@ Solid {
             metalness 0
           }
           geometry Box {
-            size 2.442075 0.14 0.035
+            size 2.302876 0.14 0.035
           }
         }
       ]
     }
     Pose {
-      translation 5.454544 30.483008 0.0255
-      rotation 0 0 1 1.01722
+      translation 5.489911 30.422096 0.0255
+      rotation 0 0 1 1.184212
       children [
         Shape {
           appearance PBRAppearance {
@@ -8367,7 +8377,7 @@ Solid {
             metalness 0
           }
           geometry Box {
-            size 0.658728 0.14 0.035
+            size 0.759 0.14 0.035
           }
         }
       ]
@@ -8409,20 +8419,20 @@ Solid {
   boundingObject Group {
     children [
       Pose {
-        translation 2.120775 29.931123 0.0255
-        rotation 0 0 1 -0.732818
+        translation 2.092201 30.001128 0.0255
+        rotation 0 0 1 -0.704249
         children [
           Box {
-            size 2.442075 0.14 0.035
+            size 2.302876 0.14 0.035
           }
         ]
       }
       Pose {
-        translation 5.454544 30.483008 0.0255
-        rotation 0 0 1 1.01722
+        translation 5.489911 30.422096 0.0255
+        rotation 0 0 1 1.184212
         children [
           Box {
-            size 0.658728 0.14 0.035
+            size 0.759 0.14 0.035
           }
         ]
       }
@@ -8450,8 +8460,8 @@ Solid {
 Solid {
   children [
     Pose {
-      translation 22.047987 30.475915 0.0255
-      rotation 0 0 1 -0.90789
+      translation 22.035718 30.439211 0.0255
+      rotation 0 0 1 -0.992391
       children [
         Shape {
           appearance PBRAppearance {
@@ -8460,14 +8470,14 @@ Solid {
             metalness 0
           }
           geometry Box {
-            size 0.712986 0.14 0.035
+            size 0.77031 0.14 0.035
           }
         }
       ]
     }
     Pose {
-      translation 24.994829 31.688624 0.0255
-      rotation 0 0 1 1.437151
+      translation 25.003675 31.730249 0.0255
+      rotation 0 0 1 1.438747
       children [
         Shape {
           appearance PBRAppearance {
@@ -8476,7 +8486,7 @@ Solid {
             metalness 0
           }
           geometry Box {
-            size 4.120803 0.14 0.035
+            size 4.036166 0.14 0.035
           }
         }
       ]
@@ -8502,20 +8512,20 @@ Solid {
   boundingObject Group {
     children [
       Pose {
-        translation 22.047987 30.475915 0.0255
-        rotation 0 0 1 -0.90789
+        translation 22.035718 30.439211 0.0255
+        rotation 0 0 1 -0.992391
         children [
           Box {
-            size 0.712986 0.14 0.035
+            size 0.77031 0.14 0.035
           }
         ]
       }
       Pose {
-        translation 24.994829 31.688624 0.0255
-        rotation 0 0 1 1.437151
+        translation 25.003675 31.730249 0.0255
+        rotation 0 0 1 1.438747
         children [
           Box {
-            size 4.120803 0.14 0.035
+            size 4.036166 0.14 0.035
           }
         ]
       }
@@ -8530,4 +8540,69 @@ Solid {
       }
     ]
   }
+}
+Solid {
+  translation 7 21.5 0.352
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.65 0.67 0.62
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 7.5 2.4 0.06
+      }
+    }
+  ]
+  name "Bridge-NORTH_FLYOVER-Deck"
+  boundingObject Box {
+    size 7.5 2.4 0.06
+  }
+}
+Solid {
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.65 0.67 0.62
+        roughness 1
+        metalness 0
+      }
+      geometry DEF NORTH_FLYOVER_RAMP_WEST IndexedFaceSet {
+        coord Coordinate {
+          point [
+            0.25 20.3 0, 0.25 22.7 0, 0.25 20.3 0.002, 0.25 22.7 0.002, 0.375 20.3 0, 0.375 22.7 0, 0.375 20.3 0.003924, 0.375 22.7 0.003924, 0.5 20.3 0, 0.5 22.7 0, 0.5 20.3 0.009477, 0.5 22.7 0.009477, 0.625 20.3 0, 0.625 22.7 0, 0.625 20.3 0.018328, 0.625 22.7 0.018328, 0.75 20.3 0, 0.75 22.7 0, 0.75 20.3 0.030148, 0.75 22.7 0.030148, 0.875 20.3 0, 0.875 22.7 0, 0.875 20.3 0.044607, 0.875 22.7 0.044607, 1 20.3 0, 1 22.7 0, 1 20.3 0.061375, 1 22.7 0.061375, 1.125 20.3 0, 1.125 22.7 0, 1.125 20.3 0.080122, 1.125 22.7 0.080122, 1.25 20.3 0, 1.25 22.7 0, 1.25 20.3 0.100519, 1.25 22.7 0.100519, 1.375 20.3 0, 1.375 22.7 0, 1.375 20.3 0.122234, 1.375 22.7 0.122234, 1.5 20.3 0, 1.5 22.7 0, 1.5 20.3 0.14494, 1.5 22.7 0.14494, 1.625 20.3 0, 1.625 22.7 0, 1.625 20.3 0.168305, 1.625 22.7 0.168305, 1.75 20.3 0, 1.75 22.7 0, 1.75 20.3 0.192, 1.75 22.7 0.192, 1.875 20.3 0, 1.875 22.7 0, 1.875 20.3 0.215695, 1.875 22.7 0.215695, 2 20.3 0, 2 22.7 0, 2 20.3 0.23906, 2 22.7 0.23906, 2.125 20.3 0, 2.125 22.7 0, 2.125 20.3 0.261766, 2.125 22.7 0.261766, 2.25 20.3 0, 2.25 22.7 0, 2.25 20.3 0.283481, 2.25 22.7 0.283481, 2.375 20.3 0, 2.375 22.7 0, 2.375 20.3 0.303878, 2.375 22.7 0.303878, 2.5 20.3 0, 2.5 22.7 0, 2.5 20.3 0.322625, 2.5 22.7 0.322625, 2.625 20.3 0, 2.625 22.7 0, 2.625 20.3 0.339393, 2.625 22.7 0.339393, 2.75 20.3 0, 2.75 22.7 0, 2.75 20.3 0.353852, 2.75 22.7 0.353852, 2.875 20.3 0, 2.875 22.7 0, 2.875 20.3 0.365672, 2.875 22.7 0.365672, 3 20.3 0, 3 22.7 0, 3 20.3 0.374523, 3 22.7 0.374523, 3.125 20.3 0, 3.125 22.7 0, 3.125 20.3 0.380076, 3.125 22.7 0.380076, 3.25 20.3 0, 3.25 22.7 0, 3.25 20.3 0.382, 3.25 22.7 0.382
+          ]
+        }
+        coordIndex [
+          0, 2, 3, 1, -1, 0, 1, 5, 4, -1, 2, 6, 7, 3, -1, 0, 4, 6, 2, -1, 1, 3, 7, 5, -1, 4, 5, 9, 8, -1, 6, 10, 11, 7, -1, 4, 8, 10, 6, -1, 5, 7, 11, 9, -1, 8, 9, 13, 12, -1, 10, 14, 15, 11, -1, 8, 12, 14, 10, -1, 9, 11, 15, 13, -1, 12, 13, 17, 16, -1, 14, 18, 19, 15, -1, 12, 16, 18, 14, -1, 13, 15, 19, 17, -1, 16, 17, 21, 20, -1, 18, 22, 23, 19, -1, 16, 20, 22, 18, -1, 17, 19, 23, 21, -1, 20, 21, 25, 24, -1, 22, 26, 27, 23, -1, 20, 24, 26, 22, -1, 21, 23, 27, 25, -1, 24, 25, 29, 28, -1, 26, 30, 31, 27, -1, 24, 28, 30, 26, -1, 25, 27, 31, 29, -1, 28, 29, 33, 32, -1, 30, 34, 35, 31, -1, 28, 32, 34, 30, -1, 29, 31, 35, 33, -1, 32, 33, 37, 36, -1, 34, 38, 39, 35, -1, 32, 36, 38, 34, -1, 33, 35, 39, 37, -1, 36, 37, 41, 40, -1, 38, 42, 43, 39, -1, 36, 40, 42, 38, -1, 37, 39, 43, 41, -1, 40, 41, 45, 44, -1, 42, 46, 47, 43, -1, 40, 44, 46, 42, -1, 41, 43, 47, 45, -1, 44, 45, 49, 48, -1, 46, 50, 51, 47, -1, 44, 48, 50, 46, -1, 45, 47, 51, 49, -1, 48, 49, 53, 52, -1, 50, 54, 55, 51, -1, 48, 52, 54, 50, -1, 49, 51, 55, 53, -1, 52, 53, 57, 56, -1, 54, 58, 59, 55, -1, 52, 56, 58, 54, -1, 53, 55, 59, 57, -1, 56, 57, 61, 60, -1, 58, 62, 63, 59, -1, 56, 60, 62, 58, -1, 57, 59, 63, 61, -1, 60, 61, 65, 64, -1, 62, 66, 67, 63, -1, 60, 64, 66, 62, -1, 61, 63, 67, 65, -1, 64, 65, 69, 68, -1, 66, 70, 71, 67, -1, 64, 68, 70, 66, -1, 65, 67, 71, 69, -1, 68, 69, 73, 72, -1, 70, 74, 75, 71, -1, 68, 72, 74, 70, -1, 69, 71, 75, 73, -1, 72, 73, 77, 76, -1, 74, 78, 79, 75, -1, 72, 76, 78, 74, -1, 73, 75, 79, 77, -1, 76, 77, 81, 80, -1, 78, 82, 83, 79, -1, 76, 80, 82, 78, -1, 77, 79, 83, 81, -1, 80, 81, 85, 84, -1, 82, 86, 87, 83, -1, 80, 84, 86, 82, -1, 81, 83, 87, 85, -1, 84, 85, 89, 88, -1, 86, 90, 91, 87, -1, 84, 88, 90, 86, -1, 85, 87, 91, 89, -1, 88, 89, 93, 92, -1, 90, 94, 95, 91, -1, 88, 92, 94, 90, -1, 89, 91, 95, 93, -1, 92, 93, 97, 96, -1, 94, 98, 99, 95, -1, 92, 96, 98, 94, -1, 93, 95, 99, 97, -1, 96, 97, 99, 98, -1
+        ]
+      }
+    }
+  ]
+  name "Bridge-NORTH_FLYOVER-RampSupport-West"
+  boundingObject USE NORTH_FLYOVER_RAMP_WEST
+}
+Solid {
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.65 0.67 0.62
+        roughness 1
+        metalness 0
+      }
+      geometry DEF NORTH_FLYOVER_RAMP_EAST IndexedFaceSet {
+        coord Coordinate {
+          point [
+            10.75 20.3 0, 10.75 22.7 0, 10.75 20.3 0.382, 10.75 22.7 0.382, 10.875 20.3 0, 10.875 22.7 0, 10.875 20.3 0.380076, 10.875 22.7 0.380076, 11 20.3 0, 11 22.7 0, 11 20.3 0.374523, 11 22.7 0.374523, 11.125 20.3 0, 11.125 22.7 0, 11.125 20.3 0.365672, 11.125 22.7 0.365672, 11.25 20.3 0, 11.25 22.7 0, 11.25 20.3 0.353852, 11.25 22.7 0.353852, 11.375 20.3 0, 11.375 22.7 0, 11.375 20.3 0.339393, 11.375 22.7 0.339393, 11.5 20.3 0, 11.5 22.7 0, 11.5 20.3 0.322625, 11.5 22.7 0.322625, 11.625 20.3 0, 11.625 22.7 0, 11.625 20.3 0.303878, 11.625 22.7 0.303878, 11.75 20.3 0, 11.75 22.7 0, 11.75 20.3 0.283481, 11.75 22.7 0.283481, 11.875 20.3 0, 11.875 22.7 0, 11.875 20.3 0.261766, 11.875 22.7 0.261766, 12 20.3 0, 12 22.7 0, 12 20.3 0.23906, 12 22.7 0.23906, 12.125 20.3 0, 12.125 22.7 0, 12.125 20.3 0.215695, 12.125 22.7 0.215695, 12.25 20.3 0, 12.25 22.7 0, 12.25 20.3 0.192, 12.25 22.7 0.192, 12.375 20.3 0, 12.375 22.7 0, 12.375 20.3 0.168305, 12.375 22.7 0.168305, 12.5 20.3 0, 12.5 22.7 0, 12.5 20.3 0.14494, 12.5 22.7 0.14494, 12.625 20.3 0, 12.625 22.7 0, 12.625 20.3 0.122234, 12.625 22.7 0.122234, 12.75 20.3 0, 12.75 22.7 0, 12.75 20.3 0.100519, 12.75 22.7 0.100519, 12.875 20.3 0, 12.875 22.7 0, 12.875 20.3 0.080122, 12.875 22.7 0.080122, 13 20.3 0, 13 22.7 0, 13 20.3 0.061375, 13 22.7 0.061375, 13.125 20.3 0, 13.125 22.7 0, 13.125 20.3 0.044607, 13.125 22.7 0.044607, 13.25 20.3 0, 13.25 22.7 0, 13.25 20.3 0.030148, 13.25 22.7 0.030148, 13.375 20.3 0, 13.375 22.7 0, 13.375 20.3 0.018328, 13.375 22.7 0.018328, 13.5 20.3 0, 13.5 22.7 0, 13.5 20.3 0.009477, 13.5 22.7 0.009477, 13.625 20.3 0, 13.625 22.7 0, 13.625 20.3 0.003924, 13.625 22.7 0.003924, 13.75 20.3 0, 13.75 22.7 0, 13.75 20.3 0.002, 13.75 22.7 0.002
+          ]
+        }
+        coordIndex [
+          0, 2, 3, 1, -1, 0, 1, 5, 4, -1, 2, 6, 7, 3, -1, 0, 4, 6, 2, -1, 1, 3, 7, 5, -1, 4, 5, 9, 8, -1, 6, 10, 11, 7, -1, 4, 8, 10, 6, -1, 5, 7, 11, 9, -1, 8, 9, 13, 12, -1, 10, 14, 15, 11, -1, 8, 12, 14, 10, -1, 9, 11, 15, 13, -1, 12, 13, 17, 16, -1, 14, 18, 19, 15, -1, 12, 16, 18, 14, -1, 13, 15, 19, 17, -1, 16, 17, 21, 20, -1, 18, 22, 23, 19, -1, 16, 20, 22, 18, -1, 17, 19, 23, 21, -1, 20, 21, 25, 24, -1, 22, 26, 27, 23, -1, 20, 24, 26, 22, -1, 21, 23, 27, 25, -1, 24, 25, 29, 28, -1, 26, 30, 31, 27, -1, 24, 28, 30, 26, -1, 25, 27, 31, 29, -1, 28, 29, 33, 32, -1, 30, 34, 35, 31, -1, 28, 32, 34, 30, -1, 29, 31, 35, 33, -1, 32, 33, 37, 36, -1, 34, 38, 39, 35, -1, 32, 36, 38, 34, -1, 33, 35, 39, 37, -1, 36, 37, 41, 40, -1, 38, 42, 43, 39, -1, 36, 40, 42, 38, -1, 37, 39, 43, 41, -1, 40, 41, 45, 44, -1, 42, 46, 47, 43, -1, 40, 44, 46, 42, -1, 41, 43, 47, 45, -1, 44, 45, 49, 48, -1, 46, 50, 51, 47, -1, 44, 48, 50, 46, -1, 45, 47, 51, 49, -1, 48, 49, 53, 52, -1, 50, 54, 55, 51, -1, 48, 52, 54, 50, -1, 49, 51, 55, 53, -1, 52, 53, 57, 56, -1, 54, 58, 59, 55, -1, 52, 56, 58, 54, -1, 53, 55, 59, 57, -1, 56, 57, 61, 60, -1, 58, 62, 63, 59, -1, 56, 60, 62, 58, -1, 57, 59, 63, 61, -1, 60, 61, 65, 64, -1, 62, 66, 67, 63, -1, 60, 64, 66, 62, -1, 61, 63, 67, 65, -1, 64, 65, 69, 68, -1, 66, 70, 71, 67, -1, 64, 68, 70, 66, -1, 65, 67, 71, 69, -1, 68, 69, 73, 72, -1, 70, 74, 75, 71, -1, 68, 72, 74, 70, -1, 69, 71, 75, 73, -1, 72, 73, 77, 76, -1, 74, 78, 79, 75, -1, 72, 76, 78, 74, -1, 73, 75, 79, 77, -1, 76, 77, 81, 80, -1, 78, 82, 83, 79, -1, 76, 80, 82, 78, -1, 77, 79, 83, 81, -1, 80, 81, 85, 84, -1, 82, 86, 87, 83, -1, 80, 84, 86, 82, -1, 81, 83, 87, 85, -1, 84, 85, 89, 88, -1, 86, 90, 91, 87, -1, 84, 88, 90, 86, -1, 85, 87, 91, 89, -1, 88, 89, 93, 92, -1, 90, 94, 95, 91, -1, 88, 92, 94, 90, -1, 89, 91, 95, 93, -1, 92, 93, 97, 96, -1, 94, 98, 99, 95, -1, 92, 96, 98, 94, -1, 93, 95, 99, 97, -1, 96, 97, 99, 98, -1
+        ]
+      }
+    }
+  ]
+  name "Bridge-NORTH_FLYOVER-RampSupport-East"
+  boundingObject USE NORTH_FLYOVER_RAMP_EAST
 }

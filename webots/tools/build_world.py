@@ -34,6 +34,7 @@ def next_name(kind):
 
 
 chunks, edges, junctions, lane_graph = [], [], {}, {}
+medians = []
 
 
 def fmt(x):
@@ -88,18 +89,19 @@ def length(points):
 
 def at(points, s):
     for a, b in zip(points, points[1:]):
-        d = math.dist(a, b)
+        d = math.dist(a[:2], b[:2])
         if s <= d:
-            return add(a, mul(direction(a, b), max(0, s)))
+            ratio = max(0, s) / d
+            return tuple(a[k] + (b[k]-a[k])*ratio for k in range(len(a)))
         s -= d
     return points[-1]
 
 
 def cut(points, start, end):
-    total = length(points)
+    total = length([p[:2] for p in points])
     kept, acc = [at(points, start)], 0
     for a, b in zip(points, points[1:]):
-        acc += math.dist(a, b)
+        acc += math.dist(a[:2], b[:2])
         if start + 1e-5 < acc < total-end-1e-5:
             kept.append(b)
     kept.append(at(points, total-end))
@@ -268,16 +270,17 @@ def draw_edge(e):
           splineSubdivision -1 roadBorderWidth [ .14 ] {common} }}''')
     for reverse in (False,True):
         seq=list(reversed(pts)) if reverse else pts
-        for index in range(1, forward+1):
+        direction_count = count-forward if reverse else forward
+        for index in range(1, direction_count+1):
             lid=name+('_B' if reverse else '_F')+str(index)
             lane_graph[lid]={'from':e['to'] if reverse else e['from'], 'to':e['from'] if reverse else e['to'],
-                'points':offset(seq,-LANE_WIDTH*(index-.5)), 'lane_index':index,
-                'road_id': e['id'], 'direction_lanes': forward, 'successors':[], 'speed_limit_m_s':.5}
+                'points':offset(seq,-e['width']/2+LANE_WIDTH*(direction_count-index+.5)), 'lane_index':index,
+                'road_id': e['id'], 'direction_lanes': direction_count, 'successors':[], 'speed_limit_m_s':.5}
     # Split at a shared on-road change zone; dashed dividers permit changing
     # lane before selecting a junction turn, rather than switching at the junction.
     for suffix in ('F','B'):
         zone='CHANGE_'+name+'_'+suffix
-        for index in range(1, forward+1):
+        for index in range(1, (forward if suffix=='F' else count-forward)+1):
             lid=name+'_'+suffix+str(index)
             lane=lane_graph.pop(lid)
             points=lane['points']; total=length(points); gap=min(.8,total/4)
@@ -376,6 +379,12 @@ def connectors():
             # No automatic U-turn at ordinary intersections or roundabout entries.
             if not nid.startswith('CHANGE_') and lane.get('road_id') and lane.get('road_id') == target.get('road_id'):
                 continue
+            if junctions.get(nid,{}).get('kind') == 'lane_split':
+                # Lane centres meet exactly: inner two continue onto the bridge,
+                # outer two continue on the ground, without a crossing manoeuvre.
+                if math.dist(lane['points'][-1],target['points'][0])<.001:
+                    lane['successors'].append(other)
+                continue
             if nid.startswith('R_') and not (lid.startswith('RING_') or other.startswith('RING_')):
                 continue
             if nid.startswith('R_') and lane.get('lane_index') != target.get('lane_index'):
@@ -426,8 +435,13 @@ def overview(bounds=(-24,24,-18,18), ring=None):
         svg.append(f'<path d="{path(e["full_points"])}" fill="none" stroke="#343c42" stroke-width="{e["width"]*22.5}" stroke-linejoin="round"/>')
     cx,cy=ring['center']; inner,outer=ring['inner_radius'],ring['outer_radius']
     svg.append(f'<circle cx="{(cx-xmin)*22.5+20}" cy="{20+(ymax-cy)*22.5}" r="{(inner+outer)/2*22.5}" fill="none" stroke="#343c42" stroke-width="{(outer-inner)*22.5}"/>')
+    median_roads = {m['road_id'] for m in medians}
     for e in edges:
-        svg.append(f'<path d="{path(e["points"])}" fill="none" stroke="#edc546" stroke-width="1.2"/>')
+        if e['id'] not in median_roads:
+            svg.append(f'<path d="{path(e["points"])}" fill="none" stroke="#edc546" stroke-width="1.2"/>')
+    for median in medians:
+        for section in median['sections']:
+            svg.append(f'<path d="{path([p[:2] for p in section])}" fill="none" stroke="#a5aaa0" stroke-width="{median["width"]*22.5}" stroke-linejoin="round"/>')
     for name,n in junctions.items():
         x,y=n['position']; x=(x-xmin)*22.5+20;y=20+(ymax-y)*22.5
         svg.append(f'<text x="{x+5}" y="{y-14}" font-family="Arial" font-size="10" fill="#b51f36" stroke="white" stroke-width="2" paint-order="stroke">{name}</text>')

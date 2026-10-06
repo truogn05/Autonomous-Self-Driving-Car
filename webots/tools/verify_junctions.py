@@ -67,7 +67,7 @@ map_data = json.loads((root/'map.json').read_text(encoding='utf-8'))
 robot = Supervisor()
 dt = int(robot.getBasicTimeStep())
 children = robot.getRoot().getField('children')
-report = {**manifest, 'status':'failed', 'errors':[], 'roads':[], 'junctions':[], 'probes':[], 'images':[]}
+report = {**manifest, 'status':'failed', 'errors':[], 'roads':[], 'junctions':[], 'medians':[], 'probes':[], 'images':[]}
 
 def field(node, name):
     value = node.getField(name)
@@ -85,10 +85,14 @@ try:
     assert actual == manifest['snapshot_world_sha256'], 'Snapshot changed before load'
     assert hashlib.sha256((root/'map.json').read_bytes()).hexdigest() == manifest['snapshot_map_sha256'], 'Snapshot map changed before load'
     step(2)
-    roads, junctions = {}, {}
+    roads, junctions, solids = {}, {}, {}
     for i in range(children.getCount()):
         node = children.getMFNode(i)
         kind = node.getTypeName()
+        if kind == 'Solid':
+            name = field(node,'name').getSFString()
+            assert name not in solids, 'Duplicate solid name '+name
+            solids[name] = node
         if kind not in ('Road','StraightRoadSegment','Crossroad','RoadIntersection','Roundabout'):
             continue
         nid = field(node,'id').getSFString()
@@ -159,11 +163,70 @@ try:
         p = peak_support(points)
         assert field(node,'roadBoundingObject').getSFBool(), rid+' raised floor has no collider'
         probes.append((rid,[p[0],p[1],p[2]+.12],p[2],.04))
-    for i,(_,p,_,_) in enumerate(probes):
+    if 'north_flyover' in map_data:
+        flyover=map_data['north_flyover']
+        deck=next(r for r in map_data['roads'] if r['id']==flyover['road'])
+        cx,cy=flyover['center'];top=max(deck['elevations'])
+        assert field(roads[flyover['road']],'roadBoundingObject').getSFBool(), 'Flyover has no deck collider'
+        for i,offset in enumerate((-.9,-.3,.3,.9)):
+            probes.append(('flyover-deck-'+str(i+1),[cx,cy+offset,top+.12],top,.02))
+            probes.append(('flyover-underpass-'+str(i+1),[cx+offset,cy,.15],0,.02))
+        for i,offset in enumerate((-2.1,-1.5,1.5,2.1)):
+            probes.append(('flyover-ground-lane-'+str(i+1),[cx,cy+offset,.12],0,.02))
+        for part in ('Deck','RampSupport-West','RampSupport-East'):
+            name='Bridge-'+flyover['road']+'-'+part
+            assert name in solids and field(solids[name],'boundingObject').getSFNode() is not None, name+' missing physical support'
+        report['elevations']['flyover_floor_z']=top
+    expected_medians = {m['road_id']:m for m in map_data.get('medians',[])}
+    actual_medians = {name for name in solids if name.startswith('CentreMedian-')}
+    assert actual_medians == {'CentreMedian-'+rid for rid in expected_medians}, 'Loaded/map median groups differ'
+    for rid,median in expected_medians.items():
+        node=solids['CentreMedian-'+rid]
+        assert field(node,'boundingObject').getSFNode() is not None, rid+' median has no collider'
+        lines=field(roads[rid],'lines')
+        index=expected_roads[rid]['number_of_lanes']//2-1
+        assert field(lines.getMFNode(index),'type').getSFString()=='none', rid+' median retains centre paint'
+        flat=[(a,b) for section in median['sections'] for a,b in zip(section,section[1:]) if abs(a[2]-b[2])<1e-6]
+        assert flat, rid+' median has no flat probe location'
+        a,b=max(flat,key=lambda pair:math.dist(pair[0][:2],pair[1][:2]))
+        p=[(a[k]+b[k])/2 for k in range(3)]
+        support=p[2]+median['height']
+        probes.append(('median-top-'+rid,[p[0],p[1],support+.12],support,.02))
+        # The lane centre is .30 m from the road centre; its divider is .05 m wide on each side.
+        length=math.dist(a[:2],b[:2]);normal=[-(b[1]-a[1])/length,(b[0]-a[0])/length]
+        for side in (-1,1):
+            probes.append(('median-inner-lane-'+rid+'-'+str(side),
+                          [p[0]+side*.30*normal[0],p[1]+side*.30*normal[1],p[2]+.12],p[2],.02))
+        report['medians'].append({'road_id':rid,'name':'CentreMedian-'+rid,'width_m':median['width'],
+                                  'height_m':median['height'],'sections':len(median['sections'])})
+        # Crossing gaps must be physically open, in addition to the static geometry check.
+        road=expected_roads[rid]
+        for endpoint in ('startLine','endLine'):
+            paint=field(roads[rid],endpoint)
+            if not any('cross' in paint.getMFString(i) for i in range(paint.getCount())):
+                continue
+            indices=(0,1) if endpoint=='startLine' else (-1,-2)
+            a,b=[[*road['points'][i],road['elevations'][i]] for i in indices]
+            distance=math.dist(a[:2],b[:2]);t=.2/distance
+            p=[a[k]+t*(b[k]-a[k]) for k in range(3)]
+            probes.append(('median-crossing-gap-'+rid+'-'+endpoint,[p[0],p[1],p[2]+.12],p[2],.02))
+    if expected_medians:
+        ring_lines=field(junctions['ROUNDABOUT'],'startRoadsLine')
+        assert field(ring_lines.getMFNode(3),'type').getSFString()=='none', 'Roundabout sockets retain centre paint'
+        ring_center=map_data['roundabout']['center']
+        for nid,junction in map_data['junctions'].items():
+            if junction['kind']!='roundabout_port':
+                continue
+            mouth=junction['position'];length=math.dist(mouth,ring_center)
+            p=[mouth[k]+.15*(ring_center[k]-mouth[k])/length for k in (0,1)]
+            support=.008+expected_medians[junction['ports'][0]['edge']]['height']
+            probes.append(('median-roundabout-socket-'+nid,[*p,support+.12],support,.02))
+    for i,(name,p,_,_) in enumerate(probes):
+        height=.26 if name.startswith('flyover-underpass-') else .08
         children.importMFNodeFromString(-1, f'''DEF JUNCTION_PROBE_{i} Solid {{
           translation {p[0]} {p[1]} {p[2]} name "junction probe {i}"
-          children [ Shape {{ geometry Box {{ size .16 .12 .08 }} }} ]
-          boundingObject Box {{ size .16 .12 .08 }} physics Physics {{ density -1 mass .05 }} }}''')
+          children [ Shape {{ geometry Box {{ size .16 .12 {height} }} }} ]
+          boundingObject Box {{ size .16 .12 {height} }} physics Physics {{ density -1 mass .05 }} }}''')
         robot.getFromDef('JUNCTION_PROBE_'+str(i)).enableContactPointsTracking(dt)
     # Resting ODE bodies can sleep and stop emitting contacts. Retain contacts
     # during the fall, then check the final supported position separately.
@@ -178,10 +241,11 @@ try:
         node = robot.getFromDef('JUNCTION_PROBE_'+str(i))
         p = node.getPosition()
         contact_points = recorded[i]
+        height=.26 if name.startswith('flyover-underpass-') else .08
         report['probes'].append({'name':name,'initial_position':initial,'position':p,
-          'expected_center_z':support+.04,'contacts':contact_points})
+          'height_m':height,'expected_center_z':support+height/2,'contacts':contact_points})
         assert contact_points, name+' has no floor contact'
-        assert abs(p[2]-(support+.04)) < tolerance, name+' fell onto the wrong collider'
+        assert abs(p[2]-(support+height/2)) < tolerance, name+' fell onto the wrong collider'
         assert math.dist(p[:2],initial[:2]) < (tolerance+.01), name+' shifted into a side collider'
         assert all(abs(c[2]-support) < tolerance+.005 for c in contact_points), name+' has wall/roof contact'
         node.remove()
@@ -194,14 +258,32 @@ try:
     assert west_nodes, 'Western junctions missing from map'
     west_bounds = [min(p[0] for p in west_nodes)-4,max(p[0] for p in west_nodes)+4,
                    min(p[1] for p in west_nodes)-4,max(p[1] for p in west_nodes)+4]
-    for name,p,fov in [('junction-overview.png',overview_position(map_data['bounds']),.85),
-                       ('junction-west-detail.png',overview_position(west_bounds,.8),.8)]:
+    views=[('junction-overview.png',overview_position(map_data['bounds']),.85),
+           ('junction-west-detail.png',overview_position(west_bounds,.8),.8)]
+    if 'north_flyover' in map_data:
+        views.append(('junction-flyover-detail.png',overview_position([-13,23,16,27],.8),.8))
+    for name,p,fov in views:
         field(view,'position').setSFVec3f(p)
         field(view,'fieldOfView').setSFFloat(fov)
         step(16)
         robot.exportImage(str(root/name),100)
         step(2)
         assert (root/name).is_file() and (root/name).stat().st_size > 1000, 'Image export failed: '+name
+        report['images'].append(name)
+    if 'north_flyover' in map_data:
+        # ENU Viewpoint looks along local +X with local +Z up.
+        yaw=math.atan2(20,-25);pitch=math.atan2(10,math.hypot(25,20))
+        qw=math.cos(yaw/2)*math.cos(pitch/2)
+        q=[-math.sin(yaw/2)*math.sin(pitch/2),math.cos(yaw/2)*math.sin(pitch/2),math.sin(yaw/2)*math.cos(pitch/2)]
+        norm=math.sqrt(sum(v*v for v in q))
+        field(view,'orientation').setSFRotation([*(v/norm for v in q),2*math.acos(qw)])
+        field(view,'position').setSFVec3f([32,1.5,10.4])
+        field(view,'fieldOfView').setSFFloat(.9)
+        step(16)
+        name='junction-flyover-side.png'
+        robot.exportImage(str(root/name),100)
+        step(2)
+        assert (root/name).is_file() and (root/name).stat().st_size>1000
         report['images'].append(name)
     report['status'] = 'passed'
 except Exception:
@@ -311,6 +393,8 @@ def main():
                 raise RuntimeError('Unauthenticated runtime report: '+key)
         if digest(source) != manifest['source_world_sha256']:
             raise RuntimeError('Source world changed during verification')
+        if digest(root/'map.json') != manifest['snapshot_map_sha256']:
+            raise RuntimeError('Source map changed during verification')
         result = received
         log_text = (scratch/'webots.log').read_text(encoding='utf-8',errors='replace')
         if exit_code != 0:

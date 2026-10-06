@@ -1,17 +1,49 @@
 """Check actual world geometry, reciprocal junction links and lane footprints."""
 from pathlib import Path
+from collections import Counter
 import hashlib
 import json
 import math
 import re
 from textwrap import dedent
 from shapely.geometry import LineString, Point, Polygon, box
-from shapely.ops import unary_union
+from shapely.ops import nearest_points, unary_union
 from build_world import offset
-from sync_world import read_nodes, road_height
+from sync_world import NUMBER, read_nodes, road_height
 
 ROOT = Path(__file__).resolve().parents[1]
 EPS = .001
+
+
+def closed_mesh(node):
+    """Read the collision mesh and prove it is the visible, closed solid."""
+    match = re.search(r'\bgeometry\s+DEF\s+(\w+)\s+IndexedFaceSet\s*\{', node.text)
+    assert match and node.get('boundingObject') == 'USE '+match[1], (node.get('name'), 'Visual/collision mesh differs')
+    assert node.get('translation', [0, 0, 0]) == [0, 0, 0] and abs(node.get('rotation', [0, 0, 1, 0])[3]) < EPS, 'Generated mesh must use world coordinates'
+    source = re.sub(r'#[^\n]*', '', node.text[match.end():])
+    coords = re.search(r'\bcoord\s+Coordinate\s*\{\s*point\s*\[([^]]*)\]', source)
+    indices = re.search(r'\bcoordIndex\s*\[([^]]*)\]', source)
+    assert coords and indices, (node.get('name'), 'Missing mesh vertices/faces')
+    values = list(map(float, re.findall(NUMBER, coords[1])))
+    assert len(values) % 3 == 0 and all(math.isfinite(v) for v in values)
+    vertices = [values[i:i+3] for i in range(0, len(values), 3)]
+    faces, face = [], []
+    for value in map(int, re.findall(r'-?\d+', indices[1])):
+        if value == -1:
+            assert len(face) >= 3 and len(set(face)) == len(face)
+            faces.append(face); face = []
+        else:
+            assert 0 <= value < len(vertices), 'Mesh index outside Coordinate array'
+            face.append(value)
+    assert not face and faces, 'Every mesh face must terminate with -1'
+    edges = Counter((a, b) for f in faces for a, b in zip(f, f[1:]+f[:1]))
+    assert all(count == 1 and edges[b, a] == 1 for (a, b), count in edges.items()), (node.get('name'), 'Mesh is open or inconsistently oriented')
+    assert set(v for f in faces for v in f) == set(range(len(vertices))), 'Unused mesh vertices'
+    return vertices, faces
+
+
+def line_height(point, points):
+    return road_height(point, [{'points': [p[:2] for p in points], 'elevations': [p[2] for p in points]}])
 
 
 def transform(points, node):
@@ -124,6 +156,182 @@ def check_expansion(data, nodes, native_roads):
             'middle_lanes_per_direction': 4, 'northern_winding': north, 'physical_ground_bounds': list(bounds)}
 
 
+def check_flyover(data, nodes, native_roads):
+    if 'north_flyover' not in data:
+        return None
+    f=data['north_flyover']; roads={r['id']:r for r in data['roads']}
+    assert not set(f['removed_roads']) & set(native_roads), 'The old parallel rows remain'
+    assert not any(k.startswith('N1_') for k in data['junctions']), 'Old parallel junctions remain'
+    for eid in f['approaches']:
+        r=roads[eid]
+        assert (r['number_of_lanes'],r['forward_lanes'],r['width'])==(8,4,4.8)
+        assert all(abs(p[1]-21.5)<EPS for p in r['points']), 'Merged avenue centre'
+    bridge=roads[f['road']]
+    assert (bridge['number_of_lanes'],bridge['forward_lanes'],bridge['width'])==(4,2,2.4)
+    assert all(abs(p[1]-21.5)<EPS for p in bridge['points']), 'Bridge must run straight through centre'
+    assert bridge['from']==f['splits'][0] and bridge['to']==f['splits'][1]
+    assert abs(bridge['elevations'][0]-.008)<EPS and abs(bridge['elevations'][-1]-.008)<EPS
+    height=f['deck_height_m']; toes=f['toe_x']; flat=f['plateau_x']; thickness=f['deck_thickness_m']
+    assert abs(height-.38)<EPS and abs(thickness-.06)<EPS, 'Compact bridge dimensions differ from approved layout'
+    assert all(abs(a-b)<EPS for a,b in zip(toes,[.25,13.75])) and all(abs(a-b)<EPS for a,b in zip(flat,[3.25,10.75]))
+    assert math.dist(bridge['points'][0],[toes[0],f['center'][1]])<EPS and math.dist(bridge['points'][-1],[toes[1],f['center'][1]])<EPS
+    for eid in f['approaches']+f['ground_roads']:
+        actual=native_roads[eid].road_points()
+        for nid,point in [(roads[eid]['from'],actual[0]),(roads[eid]['to'],actual[-1])]:
+            if nid in f['splits']:
+                assert abs(point[0]-toes[f['splits'].index(nid)])<EPS and abs(point[2]-.008)<EPS, (eid,nid,'Actual road misses compact bridge split')
+    assert abs(max(bridge['elevations'])-(.008+height))<EPS
+    for p,z in zip(bridge['points'],bridge['elevations']):
+        t=max(0,min(1,(p[0]-toes[0])/(flat[0]-toes[0]) if p[0]<flat[0] else (toes[1]-p[0])/(toes[1]-flat[1]) if p[0]>flat[1] else 1))
+        assert abs(z-(.008+height*t*t*(3-2*t)))<EPS, ('Flyover profile/metadata differs',p,z)
+    grade=max(abs(b-a)/math.dist(p,q) for a,b,p,q in zip(bridge['elevations'],bridge['elevations'][1:],bridge['points'],bridge['points'][1:]))
+    assert grade<.20, ('Flyover ramp grade',grade)
+    for eid in f['ground_roads']:
+        r=roads[eid];forward=2 if eid.endswith('_S') else 0
+        assert (r['number_of_lanes'],r['forward_lanes'],r['width'])==(2,forward,1.2)
+        assert all(abs(z-.008)<EPS for z in r['elevations'])
+        assert all(abs(p[1]-(19.7 if forward else 23.3))<EPS for p in r['points'])
+        assert native_roads[eid].get(('left' if forward else 'right')+'Border')=='FALSE', 'Ground curb blocks the rising inner lane'
+    lanes=data['lanes']; split_links=0
+    for lane in lanes.values():
+        if lane.get('road_id') in f['approaches'] and lane['to'] in f['splits']:
+            assert len(lane['successors'])==1, 'Each approach lane must retain one branch'
+            target=lanes[lane['successors'][0]]
+            expected=f['road'] if lane['lane_index']<=2 else next(eid for eid in f['ground_roads'] if eid.endswith(('_W_S' if lane['to']=='FLYOVER_W' else '_E_N')))
+            assert target['road_id']==expected, ('Wrong bridge/ground split',lane,target)
+            split_links+=1
+    assert split_links==8
+    ground_routes=unary_union([LineString(l['points']).buffer(.186) for l in lanes.values()
+        if l.get('junction')==f['ground_junction'] or l.get('road_id') in f['ground_roads']])
+    structures={n.get('name'):n for n in nodes if n.get('name','').startswith('Bridge-NORTH_FLYOVER-')}
+    assert set(structures)=={'Bridge-NORTH_FLYOVER-Deck','Bridge-NORTH_FLYOVER-RampSupport-West','Bridge-NORTH_FLYOVER-RampSupport-East'} and len(structures)==sum(n.get('name','').startswith('Bridge-NORTH_FLYOVER-') for n in nodes), 'Missing/duplicate bridge structures'
+    assert not any(n.get('name','').startswith(('Flyover-Pier-','Flyover-Deck')) for n in nodes), 'Old bridge structures remain'
+    deck=structures['Bridge-NORTH_FLYOVER-Deck']
+    sizes=[list(map(float,re.findall(NUMBER,s))) for s in re.findall(r'\bBox\s*\{\s*size\s+([^}]+)\}',deck.text)]
+    assert len(sizes)==2 and all(math.dist(size,[flat[1]-flat[0],2.4,thickness])<EPS for size in sizes), 'Deck visible/collision boxes differ'
+    dx,dy,dz=deck.get('translation'); top=dz+thickness/2; underside=dz-thickness/2
+    assert abs(dx-(flat[0]+flat[1])/2)<EPS and abs(dy-f['center'][1])<EPS and abs(deck.get('rotation',[0,0,1,0])[3])<EPS
+    inset=f['structural_inset_m']
+    assert 0<inset<.008, 'Structural inset must avoid coplanar asphalt and keep toe supports above ground'
+    assert abs(top-(.008+height-inset))<EPS, 'Deck must meet the declared road underside'
+    clearance=underside-.008
+    assert clearance>=.30, ('Insufficient measured clearance below deck',clearance)
+    support_count=0
+    for side,limits in [('West',[toes[0],flat[0]]),('East',[flat[1],toes[1]])]:
+        node=structures['Bridge-NORTH_FLYOVER-RampSupport-'+side]
+        points=[[*p,z] for p,z in zip(bridge['points'],bridge['elevations']) if limits[0]-EPS<=p[0]<=limits[1]+EPS]
+        expected=[[p[0],p[1]+offset_y,z] for p in points for offset_y,z in [(-1.2,0),(1.2,0),(-1.2,p[2]-inset),(1.2,p[2]-inset)]]
+        vertices,faces=closed_mesh(node)
+        assert len(vertices)==len(expected) and all(math.dist(a,b)<EPS for a,b in zip(vertices,expected)), (side,'Support does not fill the ramp from ground to road underside')
+        assert len(faces)==4*(len(points)-1)+2, (side,'Incomplete ramp support faces')
+        footprint=box(limits[0],f['center'][1]-1.2,limits[1],f['center'][1]+1.2)
+        assert footprint.intersection(ground_routes).area<.000001, (side,'Ramp support blocks a ground movement footprint')
+        support_count+=1
+    polygon=Polygon(data['junctions'][f['ground_junction']]['polygon'])
+    for lane in lanes.values():
+        if lane.get('road_id')==f['road']:
+            strip=road_strip(bridge['points'],-1.2,1.2).buffer(.003)
+            assert LineString(lane['points']).buffer(.186,cap_style=2).difference(strip).area<.0001, 'Flyover lane leaves deck'
+        if lane.get('junction')==f['ground_junction']:
+            assert max(lane['elevations'])<.01, 'Ground turn connects to the raised deck'
+    crossing=polygon.intersection(road_strip(bridge['points'],-1.2,1.2))
+    crossing_length=crossing.bounds[2]-crossing.bounds[0]
+    length=sum(math.dist(a,b) for a,b in zip(bridge['points'],bridge['points'][1:]))
+    assert length<2*crossing_length, ('Flyover must be shorter than twice the actual crossing',length,crossing_length)
+    assert flat[0]<crossing.bounds[0] and flat[1]>crossing.bounds[2], 'Flat deck must extend beyond both crossing edges'
+    assert all(abs(road_height([x,f['center'][1]],[bridge])-(.008+height))<EPS for x in [crossing.bounds[0],crossing.bounds[2]]), 'Ramp descends into crossing'
+    return {'total_approach_lanes':8,'bridge_lanes_per_direction':2,'ground_lanes_per_direction':2,
+            'split_lanes_checked':split_links,'deck_height_m':height,'maximum_ramp_grade':round(grade,6),
+            'toe_distance_m':round(length,6),'crossing_length_m':round(crossing_length,6),'length_crossing_ratio':round(length/crossing_length,6),
+            'deck_clearance_m':round(clearance,6),'ramp_supports_checked':support_count,'ground_routes_clear':True,
+            'vehicle_height_verified':False}
+
+
+def check_medians(data,nodes,native_roads,ring):
+    roads={r['id']:r for r in data['roads']}
+    expected={r['id'] for r in data['roads'] if r['number_of_lanes']==8}|{data['north_flyover']['road']}
+    medians=data['medians']; by_id={m['road_id']:m for m in medians}
+    assert len(medians)==len(by_id)==11 and set(by_id)==expected, 'Median coverage must include every 8-lane road and the northern bridge'
+    groups=[n for n in nodes if n.get('name','').startswith('CentreMedian-')]
+    assert len(groups)==11 and {n.get('name') for n in groups}=={'CentreMedian-'+eid for eid in expected}, 'Missing or duplicated median groups'
+    groups={n.get('name')[13:]:n for n in groups}
+    dividers=re.findall(r'\bRoadLine\s*\{([^{}]*)\}',ring.get('startRoadsLine',''),re.S)
+    assert ring.get('startRoadsNumberOfLanes')==8 and len(dividers)==7 and re.search(r'\btype\s+"none"',dividers[3]), 'Roundabout centre paint remains'
+    obstacles=[]; crossing_gaps=0; socket_extensions=0
+    for eid,median in by_id.items():
+        road=roads[eid]; seq=native_roads[eid].road_points(); centerline=LineString([p[:2] for p in seq])
+        assert abs(median['width']-.10)<EPS and abs(median['height']-.10)<EPS, (eid,'Median width/height')
+        assert len(median['sections'])==1 and len(median['sections'][0])>=2, (eid,'Unexpected median sections')
+        section=median['sections'][0]; stations=[]
+        for p in section:
+            assert len(p)==3 and all(math.isfinite(v) for v in p), 'Invalid median baseline'
+            station=centerline.project(Point(p[:2])); stations.append(station)
+            # Socket extensions are checked separately below; road samples must retain their own XYZ.
+            if EPS<station<centerline.length-EPS:
+                assert Point(p[:2]).distance(centerline)<EPS and abs(p[2]-line_height(p[:2],seq))<EPS, (eid,'Median leaves its own road XYZ')
+            else:
+                assert abs(p[2]-seq[0 if station<EPS else -1][2])<EPS, (eid,'Median endpoint height')
+        assert all(a<=b+EPS for a,b in zip(stations,stations[1:])), (eid,'Median baseline backtracks')
+        for field,nid,p,anchor,nextp in [('startLine',road['from'],section[0],seq[0],seq[1]),('endLine',road['to'],section[-1],seq[-1],seq[-2])]:
+            crossing=any('crossing' in url for url in native_roads[eid].get(field,[]))
+            outward=[(nextp[k]-anchor[k])/math.dist(nextp[:2],anchor[:2]) for k in (0,1)]
+            delta=[p[k]-anchor[k] for k in (0,1)]
+            signed=sum(delta[k]*outward[k] for k in (0,1))
+            assert abs(delta[0]*outward[1]-delta[1]*outward[0])<EPS, (eid,field,'Median endpoint off centre')
+            if data['junctions'][nid]['kind']=='roundabout_port':
+                assert not crossing and abs(signed+.30)<EPS, (eid,'Median socket extension must be 0.30 m')
+                socket_extensions+=1
+            else:
+                assert abs(signed-(.45 if crossing else 0))<EPS, (eid,field,'Missing crossing gap or median stops short of road mouth')
+                crossing_gaps+=int(crossing)
+        left,right=offset([p[:2] for p in section],median['width']/2),offset([p[:2] for p in section],-median['width']/2)
+        expected_vertices=[[x,y,z] for p,l,r in zip(section,left,right) for (x,y),z in [(r,p[2]),(l,p[2]),(l,p[2]+median['height']),(r,p[2]+median['height'])]]
+        vertices,faces=closed_mesh(groups[eid])
+        assert len(vertices)==len(expected_vertices) and all(math.dist(a,b)<EPS for a,b in zip(vertices,expected_vertices)), (eid,'Median collider mesh differs from its declared baseline/width/height')
+        assert len(faces)==4*(len(section)-1)+2, (eid,'Incomplete median mesh')
+        footprint=road_strip([p[:2] for p in section],-median['width']/2,median['width']/2)
+        assert footprint.is_valid and footprint.area>0, (eid,'Invalid median footprint')
+        pieces=[(Polygon([right[i],right[i+1],left[i+1],left[i]]),section[i:i+2]) for i in range(len(section)-1)]
+        obstacles.append((eid,footprint,section,pieces))
+    minimum=math.inf; roundabout_minimum=math.inf; lane_checks=0
+    for lid,lane in data['lanes'].items():
+        route=LineString(lane['points']); xyz=[[*p,z] for p,z in zip(lane['points'],lane['elevations'])]
+        for eid,footprint,section,pieces in obstacles:
+            distance=route.distance(footprint)
+            if distance>.5:
+                continue
+            on_route,on_median=nearest_points(route,footprint)
+            lane_z=line_height(on_route.coords[0],xyz); base=line_height(on_median.coords[0],section)
+            same_height=base-EPS<=lane_z<=base+.10+EPS
+            if same_height:
+                clearance=distance-.186; minimum=min(minimum,clearance); lane_checks+=1
+                if lane.get('junction','').startswith('R_') or lid.startswith('RING_'):
+                    roundabout_minimum=min(roundabout_minimum,clearance)
+                    assert clearance>=.02-EPS, (lid,eid,'Median intrudes into roundabout turn reserve',clearance)
+            if distance>=.186-EPS:
+                continue
+            # Linear mesh/route segments let us check the whole overlapping interval, not just one sample.
+            for a,b in zip(xyz,xyz[1:]):
+                segment=LineString([a[:2],b[:2]])
+                if segment.distance(footprint)>=.186-EPS:
+                    continue
+                for piece,baseline in pieces:
+                    if segment.distance(piece)>=.186-EPS:
+                        continue
+                    overlap=segment.intersection(piece.buffer(.186))
+                    intervals=[overlap] if overlap.geom_type in ('LineString','Point') else list(overlap.geoms)
+                    for interval in intervals:
+                        differences=[line_height(p,[a,b])-line_height(p,baseline) for p in interval.coords]
+                        if differences:
+                            assert min(differences)>.10+EPS or max(differences)<-EPS, (lid,eid,'Lane/connector footprint collides with median at the same elevation',list(interval.coords),differences)
+    assert crossing_gaps==3 and socket_extensions==4, 'Unexpected crossing/socket coverage'
+    assert minimum>=-EPS and math.isfinite(roundabout_minimum), 'Missing or colliding median route checks'
+    return {'groups_checked':len(groups),'road_ids':sorted(by_id),'closed_collision_meshes':len(groups),
+            'crossing_gaps_checked':crossing_gaps,'crossing_gap_m':.45,'roundabout_socket_extensions_checked':socket_extensions,
+            'socket_extension_m':.30,'same_elevation_route_checks':lane_checks,'minimum_route_clearance_m':round(minimum,6),
+            'minimum_roundabout_clearance_m':round(roundabout_minimum,6),'vertical_separation_checked':True}
+
+
 def check():
     world_path, map_path = ROOT/'worlds/my_world.wbt', ROOT/'map.json'
     world = world_path.read_text(encoding='utf-8')
@@ -149,8 +357,9 @@ def check():
         assert all(math.dist(a, b[:2]) < EPS for a, b in zip(points, road['points'])), (eid, 'World/map coordinates differ')
         assert len(points3) == len(road['elevations']) and all(abs(p[2]-z)<EPS for p, z in zip(points3, road['elevations'])), (eid, 'World/map elevations differ')
         lanes = node.get('numberOfLanes')
-        assert lanes == road['number_of_lanes'] and lanes in (4, 8), eid
-        assert node.get('numberOfForwardLanes') == road['forward_lanes'] == lanes/2, eid
+        assert lanes == road['number_of_lanes'] and lanes in (2, 4, 8), eid
+        forward=road['forward_lanes']
+        assert node.get('numberOfForwardLanes') == forward and (forward in (0,2) if lanes==2 else forward==lanes/2), eid
         assert abs(node.get('width')-road['width']) < EPS and abs(road['width']-.6*lanes)<EPS, (eid, 'Width must keep .6 m lanes')
         if max(p[2] for p in points3) > .02:
             assert node.get('roadBoundingObject', 'FALSE') == 'TRUE', (eid, 'Raised road needs a physical road collider')
@@ -159,7 +368,10 @@ def check():
         dividers = re.findall(r'\bRoadLine\s*\{([^{}]*)\}', node.get('lines', ''), re.S)
         assert len(dividers) == lanes-1, (eid, 'Wrong lane-divider count')
         doubles = [i for i, text in enumerate(dividers) if re.search(r'\btype\s+"double"', text)]
-        assert doubles == [int(lanes/2)-1], (eid, 'Double center line must separate the two directions')
+        median_road = eid in {m['road_id'] for m in data.get('medians', [])}
+        none = [i for i,text in enumerate(dividers) if re.search(r'\btype\s+"none"',text)]
+        assert doubles == ([] if median_road or forward in (0,lanes) else [int(lanes/2)-1]), (eid, 'Direction separator paint does not match median coverage')
+        assert none == ([int(lanes/2)-1] if median_road else []), (eid,'Only the median centre slot may be hidden')
         for field, end in [('startJunction', 'from'), ('endJunction', 'to')]:
             nid = data['junctions'][road[end]]['world_id']
             assert node.get(field) == nid, (eid, field, nid)
@@ -177,10 +389,10 @@ def check():
         for field, end in [('startLine', 'from'), ('endLine', 'to')]:
             slots = node.get(field, [])
             kind = data['junctions'][road[end]]['kind']
-            if kind in ('roundabout_port', 'connection'):
+            if kind in ('roundabout_port', 'connection', 'lane_split'):
                 assert not any(slots), (eid, field, 'Continuous seam/roundabout mouth must have no stop paint')
             else:
-                incoming = list(range(int(lanes/2), int(lanes))) if field == 'startLine' else list(range(int(lanes/2)))
+                incoming = list(range(int(forward), int(lanes))) if field == 'startLine' else list(range(int(forward)))
                 assert len(slots) == lanes and [i for i, url in enumerate(slots) if 'stop_' in url] == incoming, (eid, field, 'Stop paint must cover every incoming lane')
             for url in slots:
                 assert not url or (ROOT/'protos/vendor/projects/objects/road/protos'/url).resolve().is_file(), url
@@ -191,6 +403,10 @@ def check():
         node = native_junctions[junction['world_id']]
         assert {p['edge'] for p in junction['ports']} == {eid for eid, e in roads.items() if nid in (e['from'], e['to'])}, (nid, 'Stale ports')
         if junction['kind'] == 'roundabout_port':
+            continue
+        if junction['kind'] == 'lane_split':
+            assert len(junction['ports'])==4 and not node.coords('shape'), (nid,'Lane split has no crossing surface')
+            assert all(abs(p['position'][0]-junction['position'][0])<EPS for p in junction['ports'])
             continue
         if junction['kind'] == 'connection':
             assert len(junction['ports']) == 2 and not node.coords('shape'), (nid, 'Logical bridge seam')
@@ -276,13 +492,17 @@ def check():
                 visited.add(lid); todo.extend(graph[lid])
         assert len(visited) == len(graph), ('Lane graph is not strongly connected', reverse, len(visited), len(graph))
     expansion_report = check_expansion(data, nodes, native_roads)
+    flyover_report = check_flyover(data,nodes,native_roads)
+    median_report = check_medians(data,nodes,native_roads,ring)
     report = {'roads_checked': len(native_roads), 'junctions_checked': len(native_junctions), 'road_mouths_checked': mouths_checked,
               'incident_road_curbs_checked': curbs_checked, 'road_triangles_checked': triangles_checked, 'footprint_radius_m': .186, 'lanes_checked': len(data['lanes']), 'outside_road': failures,
               'directed_strong_connectivity': True, 'ordinary_junction_u_turns': 0,
               'furniture': furniture_report,
+              'north_flyover':flyover_report,
+              'medians':median_report,
               'expansion': expansion_report,
               'world_sha256': hashlib.sha256(world_path.read_bytes()).hexdigest(), 'map_sha256': hashlib.sha256(map_path.read_bytes()).hexdigest(),
-              'note': 'Actual road/junction XY geometry and metadata QA; not vehicle dynamics or tunnel clearance verification.'}
+              'note': 'Actual road/junction XYZ, median colliders, compact bridge structure and routing QA; vehicle height/dynamics are not verified.'}
     (ROOT/'validation').mkdir(exist_ok=True)
     (ROOT/'validation/geometry.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
     print(json.dumps(report, indent=2))

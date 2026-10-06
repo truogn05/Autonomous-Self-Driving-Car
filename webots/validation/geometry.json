@@ -1,11 +1,11 @@
 {
   "roads_checked": 55,
-  "junctions_checked": 33,
-  "road_mouths_checked": 102,
-  "incident_road_curbs_checked": 204,
-  "road_triangles_checked": 2594,
+  "junctions_checked": 32,
+  "road_mouths_checked": 94,
+  "incident_road_curbs_checked": 184,
+  "road_triangles_checked": 2798,
   "footprint_radius_m": 0.186,
-  "lanes_checked": 1578,
+  "lanes_checked": 1594,
   "outside_road": [],
   "directed_strong_connectivity": true,
   "ordinary_junction_u_turns": 0,
@@ -13,16 +13,56 @@
     "sign_columns_checked": 16,
     "traffic_light_columns_checked": 4,
     "conservative_column_radius_m": 0.02,
-    "minimum_column_clearance_m": 0.166995
+    "minimum_column_clearance_m": 0.167
+  },
+  "north_flyover": {
+    "total_approach_lanes": 8,
+    "bridge_lanes_per_direction": 2,
+    "ground_lanes_per_direction": 2,
+    "split_lanes_checked": 8,
+    "deck_height_m": 0.38,
+    "maximum_ramp_grade": 0.18956,
+    "toe_distance_m": 13.5,
+    "crossing_length_m": 7.0,
+    "length_crossing_ratio": 1.928571,
+    "deck_clearance_m": 0.314,
+    "ramp_supports_checked": 2,
+    "ground_routes_clear": true,
+    "vehicle_height_verified": false
+  },
+  "medians": {
+    "groups_checked": 11,
+    "road_ids": [
+      "BLOCK_MID_TUNNEL",
+      "CENTRAL_1",
+      "CENTRAL_2",
+      "CENTRAL_3",
+      "EAST_EXTENSION",
+      "NORTH_FLYOVER",
+      "NORTH_MERGED_E",
+      "NORTH_MERGED_W",
+      "ROUNDABOUT_EAST",
+      "ROUNDABOUT_NORTH",
+      "ROUNDABOUT_SOUTH"
+    ],
+    "closed_collision_meshes": 11,
+    "crossing_gaps_checked": 3,
+    "crossing_gap_m": 0.45,
+    "roundabout_socket_extensions_checked": 4,
+    "socket_extension_m": 0.3,
+    "same_elevation_route_checks": 244,
+    "minimum_route_clearance_m": 0.036898,
+    "minimum_roundabout_clearance_m": 0.036898,
+    "vertical_separation_checked": true
   },
   "expansion": {
     "world_size_m": [
       96,
       78
     ],
-    "new_roads_checked": 26,
-    "new_roads_beyond_old_bounds": 26,
-    "new_waypoints_beyond_old_bounds": 769,
+    "new_roads_checked": 28,
+    "new_roads_beyond_old_bounds": 28,
+    "new_waypoints_beyond_old_bounds": 880,
     "middle_lanes_per_direction": 4,
     "northern_winding": {
       "NORTH_WINDING_W": {
@@ -43,7 +83,7 @@
       48.0
     ]
   },
-  "world_sha256": "ee89c2e2256d921878ec19be7c2a53cdc06bf098ee7726757ef9178f42e33edf",
-  "map_sha256": "8d26081eda2462257737e78ea438b93e7a1232c6bccec72b3c3a4b560ae8f91b",
-  "note": "Actual road/junction XY geometry and metadata QA; not vehicle dynamics or tunnel clearance verification."
+  "world_sha256": "7b2411e2c7f5c47a1de32ebfb3a0e89883c3671b1e8797b609bb36002ec81a77",
+  "map_sha256": "d9bd17037df258d2d0c78e9d9acfdf7907f4b620932acc064e26fcbc08a56ab8",
+  "note": "Actual road/junction XYZ, median colliders, compact bridge structure and routing QA; vehicle height/dynamics are not verified."
 }
