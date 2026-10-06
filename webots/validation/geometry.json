@@ -1,15 +1,49 @@
 {
-  "roads_checked": 29,
-  "junctions_checked": 19,
-  "road_mouths_checked": 50,
-  "incident_road_curbs_checked": 100,
-  "road_triangles_checked": 554,
+  "roads_checked": 55,
+  "junctions_checked": 33,
+  "road_mouths_checked": 102,
+  "incident_road_curbs_checked": 204,
+  "road_triangles_checked": 2594,
   "footprint_radius_m": 0.186,
-  "lanes_checked": 628,
+  "lanes_checked": 1578,
   "outside_road": [],
   "directed_strong_connectivity": true,
   "ordinary_junction_u_turns": 0,
-  "world_sha256": "2fadcdc0a0d5aedc868605f0dcedc516deb8903e09073be2ead2d57787679c69",
-  "map_sha256": "841d0a4e4e5c2fdc0342ac10880322dc6b9be42fd4716051ab72cb33c66d608b",
+  "furniture": {
+    "sign_columns_checked": 16,
+    "traffic_light_columns_checked": 4,
+    "conservative_column_radius_m": 0.02,
+    "minimum_column_clearance_m": 0.166995
+  },
+  "expansion": {
+    "world_size_m": [
+      96,
+      78
+    ],
+    "new_roads_checked": 26,
+    "new_roads_beyond_old_bounds": 26,
+    "new_waypoints_beyond_old_bounds": 769,
+    "middle_lanes_per_direction": 4,
+    "northern_winding": {
+      "NORTH_WINDING_W": {
+        "xy_turn_sign_changes": 3,
+        "height_range_m": 0.599998,
+        "maximum_grade": 0.144742
+      },
+      "NORTH_WINDING_E": {
+        "xy_turn_sign_changes": 3,
+        "height_range_m": 0.699998,
+        "maximum_grade": 0.146116
+      }
+    },
+    "physical_ground_bounds": [
+      -48.0,
+      -30.0,
+      48.0,
+      48.0
+    ]
+  },
+  "world_sha256": "ee89c2e2256d921878ec19be7c2a53cdc06bf098ee7726757ef9178f42e33edf",
+  "map_sha256": "8d26081eda2462257737e78ea438b93e7a1232c6bccec72b3c3a4b560ae8f91b",
   "note": "Actual road/junction XY geometry and metadata QA; not vehicle dynamics or tunnel clearance verification."
 }

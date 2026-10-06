@@ -30,8 +30,8 @@ const line = type => ({node_name: 'RoadLine', fields: {
 }});
 function expand(n, start, end, curved) {
   const values = {
-    width: 2.4, numberOfLanes: n, roadBorderHeight: .035, roadBorderWidth: [.14],
-    lines: ['dashed', 'double', 'dashed'].map(line), rightBorder: true, leftBorder: true,
+    width: n === 8 ? 4.8 : 2.4, numberOfLanes: n, roadBorderHeight: .035, roadBorderWidth: [.14],
+    lines: (n === 8 ? ['dashed','dashed','dashed','double','dashed','dashed','dashed'] : ['dashed', 'double', 'dashed']).map(line), rightBorder: true, leftBorder: true,
     rightBarrier: false, leftBarrier: false, bottom: false, road: true,
     roadBoundingObject: false, rightBorderBoundingObject: true, leftBorderBoundingObject: true,
     startingAngle: [], endingAngle: [], startLine: start, endLine: end, bottomTexture: [],
@@ -47,7 +47,7 @@ function points(block) {
   return data.trim().split(/\s+/).map(Number);
 }
 for (const curved of [false, true]) {
-  for (const n of [4,5,6,7]) {
+  for (const n of [4,5,6,7,8]) {
     const result = expand(n, [], [], curved);
     assert(!/NaN|undefined/.test(result));
     const dividers = result.split('# lines')[1].split('DEF LINES Solid').slice(1);
@@ -55,8 +55,9 @@ for (const curved of [false, true]) {
     dividers.forEach((block, i) => {
       const p = points(block);
       const width = Math.hypot(p[3]-p[0],p[4]-p[1]);
-      assert(Math.abs(width - (i === 1 ? .075 : .025)) < 1e-8);
-      if (i !== 1) assert(block.includes('line_base_color_dashed.png'));
+      const doubleIndex = n === 8 ? 3 : 1;
+      assert(Math.abs(width - (i === doubleIndex ? .075 : .025)) < 1e-8);
+      if (i !== doubleIndex) assert(block.includes('line_base_color_dashed.png'));
     });
   }
 }
@@ -73,10 +74,18 @@ for (const [start, end, count] of [
     assert(Math.abs(Math.hypot(p[3]-p[0],p[4]-p[1])-1.2) < 1e-8);
   }
 }
+const eightPaint = expand(8, ['', '', '', '', 'stop', 'stop', 'stop', 'stop'],
+  ['stop', 'stop', 'stop', 'stop', '', '', '', ''], false);
+const eightBlocks = [...eightPaint.matchAll(/geometry DEF (?:START|END)_ROAD_LINES_GEOMETRY([\s\S]*?)creaseAngle/g)];
+assert.equal(eightBlocks.length, 2);
+for (const block of eightBlocks) {
+  const p = points(block[1]);
+  assert(Math.abs(Math.hypot(p[3]-p[0], p[4]-p[1])-2.4) < 1e-8);
+}
 const straightValues = {length: 5, startingRoadTilt: 0, endingRoadTilt: 0,
   startingRoadBorderWidth: .14, endingRoadBorderWidth: .14};
 const straight = compileTemplate('StraightRoadSegment.proto')(
   Object.fromEntries(Object.entries(straightValues).map(([k,v]) => [k,{value:v,defaultValue:v}])));
 for (const field of ['id', 'startJunction', 'endJunction', 'numberOfForwardLanes'])
   assert(new RegExp(`\\b${field} IS ${field}\\b`).test(straight), `StraightRoadSegment must forward ${field}`);
-console.log('Road template OK: 4/5/6/7 lanes, straight/curved, endpoint markings, roundabout blanks and junction bindings.');
+console.log('Road template OK: 4/5/6/7/8 lanes, straight/curved, endpoint markings, roundabout blanks and junction bindings.');

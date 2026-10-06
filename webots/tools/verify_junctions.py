@@ -17,6 +17,40 @@ import tempfile
 import uuid
 
 
+RUNTIME_HELPERS = r"""
+def world_points(points, position, rotation):
+    x,y,z,angle = rotation
+    norm = math.sqrt(x*x+y*y+z*z)
+    if angle == 0:
+        return [[p[k]+position[k] for k in range(3)] for p in points]
+    assert norm > 0, 'Invalid road rotation axis'
+    axis = [x/norm,y/norm,z/norm]
+    c,s = math.cos(angle),math.sin(angle)
+    result = []
+    for p in points:
+        cross = [axis[1]*p[2]-axis[2]*p[1],axis[2]*p[0]-axis[0]*p[2],axis[0]*p[1]-axis[1]*p[0]]
+        dot = sum(axis[k]*p[k] for k in range(3))
+        result.append([position[k]+c*p[k]+s*cross[k]+(1-c)*dot*axis[k] for k in range(3)])
+    return result
+
+def peak_support(points):
+    assert len(points) >= 3, 'Raised winding road needs interior waypoints'
+    peak = max(p[2] for p in points[1:-1])
+    assert peak > .05, 'Winding road has no raised interior floor'
+    flat = [(a,b) for a,b in zip(points,points[1:]) if abs(a[2]-peak)<1e-6 and abs(b[2]-peak)<1e-6]
+    if flat:
+        a,b = max(flat,key=lambda pair:math.dist(pair[0],pair[1]))
+        return [(a[k]+b[k])/2 for k in range(3)]
+    return next(p for p in points[1:-1] if p[2] == peak)
+
+def overview_position(bounds, field_of_view=.85, aspect=16/9):
+    xmin,xmax,ymin,ymax = bounds
+    assert xmax > xmin and ymax > ymin, 'Invalid overview bounds'
+    height = max(xmax-xmin,(ymax-ymin)*aspect)/(2*math.tan(field_of_view/2))*1.15
+    return [(xmin+xmax)/2,(ymin+ymax)/2,height]
+"""
+
+
 CONTROLLER = r"""
 from controller import Supervisor
 from pathlib import Path
@@ -25,8 +59,11 @@ import json
 import math
 import traceback
 
+""" + RUNTIME_HELPERS + r"""
+
 root = Path(__file__).resolve().parents[2]
 manifest = json.loads((root/'junction-manifest.json').read_text(encoding='utf-8'))
+map_data = json.loads((root/'map.json').read_text(encoding='utf-8'))
 robot = Supervisor()
 dt = int(robot.getBasicTimeStep())
 children = robot.getRoot().getField('children')
@@ -46,6 +83,7 @@ def step(count):
 try:
     actual = hashlib.sha256((root/'worlds/my_world.wbt').read_bytes()).hexdigest()
     assert actual == manifest['snapshot_world_sha256'], 'Snapshot changed before load'
+    assert hashlib.sha256((root/'map.json').read_bytes()).hexdigest() == manifest['snapshot_map_sha256'], 'Snapshot map changed before load'
     step(2)
     roads, junctions = {}, {}
     for i in range(children.getCount()):
@@ -58,11 +96,24 @@ try:
         table = roads if kind in ('Road','StraightRoadSegment') else junctions
         assert nid not in table, 'Duplicate id '+nid
         table[nid] = node
-    assert len(roads) == 29, 'Expected 29 loaded road instances, got '+str(len(roads))
+    expected_roads = {road['id']:road for road in map_data['roads']}
+    assert len(expected_roads) == len(map_data['roads']), 'Duplicate map road IDs'
+    assert set(roads) == set(expected_roads), 'Loaded/map road IDs differ: '+str(set(roads)^set(expected_roads))
+    expected_junctions = {node['world_id'] for node in map_data['junctions'].values()}
+    assert set(junctions) == expected_junctions, 'Loaded/map junction IDs differ: '+str(set(junctions)^expected_junctions)
     for rid,node in roads.items():
         endpoints = [field(node,name).getSFString() for name in ('startJunction','endJunction')]
         assert all(endpoints), rid+' missing junction reference'
-        report['roads'].append({'id':rid,'type':node.getTypeName(),'startJunction':endpoints[0],'endJunction':endpoints[1]})
+        expected = expected_roads[rid]
+        assert endpoints == [map_data['junctions'][expected[key]]['world_id'] for key in ('from','to')], rid+' native junction endpoints differ from map'
+        lanes = field(node,'numberOfLanes').getSFInt32()
+        forward_lanes = field(node,'numberOfForwardLanes').getSFInt32()
+        width = field(node,'width').getSFFloat()
+        assert lanes == expected['number_of_lanes'], rid+' has wrong native lane count'
+        assert forward_lanes == expected['forward_lanes'], rid+' has wrong native forward lane count'
+        assert abs(width-expected['width']) < 1e-6, rid+' has wrong native road width'
+        report['roads'].append({'id':rid,'type':node.getTypeName(),'startJunction':endpoints[0],'endJunction':endpoints[1],
+                                'width':width,'numberOfLanes':lanes,'numberOfForwardLanes':forward_lanes})
         for jid in endpoints:
             assert jid in junctions, rid+' references missing '+jid
             links = field(junctions[jid],'connectedRoadIDs')
@@ -78,26 +129,37 @@ try:
             assert jid in [field(roads[rid],name).getSFString() for name in ('startJunction','endJunction')], jid+' has unrelated road '+rid
 
     tunnel, bridge = roads['BLOCK_MID_TUNNEL'], roads['RECONNECTED_BRIDGE']
+    bridge_position = field(bridge,'translation').getSFVec3f()
+    bridge_x,bridge_y,_ = bridge_position
     waypoints = field(tunnel,'wayPoints')
     points = [waypoints.getMFVec3f(i) for i in range(waypoints.getCount())]
     position = field(tunnel,'translation').getSFVec3f()
-    points = [[p[k]+position[k] for k in range(3)] for p in points]
+    points = world_points(points,position,field(tunnel,'rotation').getSFRotation())
     assert min(p[2] for p in points) < -.5, 'Tunnel is not below grade'
     floor = None
     for a,b in zip(points,points[1:]):
-        if min(a[0],b[0]) <= -17 <= max(a[0],b[0]) and a[0] != b[0]:
-            floor = a[2]+(b[2]-a[2])*(-17-a[0])/(b[0]-a[0])
+        if min(a[0],b[0]) <= bridge_x <= max(a[0],b[0]) and a[0] != b[0]:
+            floor = a[2]+(b[2]-a[2])*(bridge_x-a[0])/(b[0]-a[0])
             break
-    assert floor is not None and abs(floor+.55) < .015, 'Missing flat tunnel floor at x=-17'
-    bridge_position = field(bridge,'translation').getSFVec3f()
-    assert abs(bridge_position[0]+17) < .001, 'Bridge is not above the moved tunnel'
+    assert floor is not None and abs(floor+.55) < .015, 'Missing flat tunnel floor below bridge'
     assert abs(bridge_position[2]-.008) < .015, 'Unexpected bridge elevation'
     report['elevations'] = {'tunnel_floor_z':floor,'bridge_floor_z':bridge_position[2]}
     # ponytail: stationary boxes check support and side contacts, not vehicle
     # dynamics; add a driven robot only when validating traversal/steering.
-    probes = [('tunnel-north',[-17,.6,-.43],floor),('tunnel-south',[-17,-.6,-.43],floor),
-              ('bridge',[-17,0,.128],bridge_position[2])]
-    for i,(_,p,_) in enumerate(probes):
+    bridge_length = field(bridge,'length').getSFFloat()
+    bridge_angle = field(bridge,'rotation').getSFRotation()[3]
+    bridge_center = [bridge_x+bridge_length/2*math.cos(bridge_angle),bridge_y+bridge_length/2*math.sin(bridge_angle)]
+    probes = [('tunnel-north',[bridge_x,.6,floor+.12],floor,.02),('tunnel-south',[bridge_x,-.6,floor+.12],floor,.02),
+              ('bridge',[*bridge_center,bridge_position[2]+.12],bridge_position[2],.02)]
+    for rid in ('NORTH_WINDING_W','NORTH_WINDING_E'):
+        node = roads[rid]
+        waypoints = field(node,'wayPoints')
+        points = [waypoints.getMFVec3f(i) for i in range(waypoints.getCount())]
+        points = world_points(points,field(node,'translation').getSFVec3f(),field(node,'rotation').getSFRotation())
+        p = peak_support(points)
+        assert field(node,'roadBoundingObject').getSFBool(), rid+' raised floor has no collider'
+        probes.append((rid,[p[0],p[1],p[2]+.12],p[2],.04))
+    for i,(_,p,_,_) in enumerate(probes):
         children.importMFNodeFromString(-1, f'''DEF JUNCTION_PROBE_{i} Solid {{
           translation {p[0]} {p[1]} {p[2]} name "junction probe {i}"
           children [ Shape {{ geometry Box {{ size .16 .12 .08 }} }} ]
@@ -112,23 +174,28 @@ try:
             contacts = robot.getFromDef('JUNCTION_PROBE_'+str(i)).getContactPoints()
             if len(contacts) > len(recorded[i]):
                 recorded[i] = [list(c.point) for c in contacts]
-    for i,(name,initial,support) in enumerate(probes):
+    for i,(name,initial,support,tolerance) in enumerate(probes):
         node = robot.getFromDef('JUNCTION_PROBE_'+str(i))
         p = node.getPosition()
         contact_points = recorded[i]
         report['probes'].append({'name':name,'initial_position':initial,'position':p,
           'expected_center_z':support+.04,'contacts':contact_points})
         assert contact_points, name+' has no floor contact'
-        assert abs(p[2]-(support+.04)) < .02, name+' fell onto the wrong collider'
-        assert math.dist(p[:2],initial[:2]) < .03, name+' shifted into a side collider'
-        assert all(abs(c[2]-support) < .025 for c in contact_points), name+' has wall/roof contact'
+        assert abs(p[2]-(support+.04)) < tolerance, name+' fell onto the wrong collider'
+        assert math.dist(p[:2],initial[:2]) < (tolerance+.01), name+' shifted into a side collider'
+        assert all(abs(c[2]-support) < tolerance+.005 for c in contact_points), name+' has wall/roof contact'
         node.remove()
 
     view = robot.getFromDef('OVERVIEW')
     assert view is not None, 'OVERVIEW Viewpoint missing'
     field(view,'orientation').setSFRotation([-.577350269,.577350269,.577350269,2.094395102])
     robot.simulationSetMode(Supervisor.SIMULATION_MODE_REAL_TIME)
-    for name,p,fov in [('junction-overview.png',[-3,0,80],.85),('junction-west-detail.png',[-20,0,48],.8)]:
+    west_nodes = [node['position'] for name,node in map_data['junctions'].items() if name.startswith(('WEST_','BLOCK_'))]
+    assert west_nodes, 'Western junctions missing from map'
+    west_bounds = [min(p[0] for p in west_nodes)-4,max(p[0] for p in west_nodes)+4,
+                   min(p[1] for p in west_nodes)-4,max(p[1] for p in west_nodes)+4]
+    for name,p,fov in [('junction-overview.png',overview_position(map_data['bounds']),.85),
+                       ('junction-west-detail.png',overview_position(west_bounds,.8),.8)]:
         field(view,'position').setSFVec3f(p)
         field(view,'fieldOfView').setSFFloat(fov)
         step(16)
@@ -168,6 +235,16 @@ def main():
     args = parser.parse_args()
     if args.self_check:
         ast.parse(CONTROLLER)
+        import math
+        helpers = {'math':math}
+        exec(RUNTIME_HELPERS,helpers)
+        assert helpers['world_points']([[1,0,2]],[3,4,5],[0,0,1,0]) == [[4,4,7]]
+        rotated = helpers['world_points']([[1,0,2]],[3,4,5],[0,0,1,math.pi/2])[0]
+        assert math.dist(rotated,[3,5,7]) < 1e-9
+        assert helpers['peak_support']([[0,0,0],[1,0,.6],[2,0,.6],[3,0,0]]) == [1.5,0,.6]
+        assert helpers['peak_support']([[0,0,0],[1,0,.6],[2,0,0]]) == [1,0,.6]
+        overview = helpers['overview_position']([-48,48,-30,48])
+        assert overview[:2] == [0,9] and overview[2] > 170
         sample = 'DEF INSPECTOR Robot { name "world inspector" controller "world_inspector" supervisor TRUE }'
         assert check_world(sample) == sample.replace('"world_inspector"','"junction_probe"')
         try:
@@ -201,7 +278,8 @@ def main():
         sock.bind(('127.0.0.1',0))
         port = sock.getsockname()[1]
     manifest = {'nonce':uuid.uuid4().hex,'source_world_sha256':hashlib.sha256(source_bytes).hexdigest(),
-                'snapshot_world_sha256':digest(world),'scratch':str(scratch),'port':port}
+                'snapshot_world_sha256':digest(world),'snapshot_map_sha256':digest(scratch/'map.json'),
+                'scratch':str(scratch),'port':port}
     (scratch/'junction-manifest.json').write_text(json.dumps(manifest,indent=2),encoding='utf-8')
     print(json.dumps(manifest,indent=2),flush=True)
     if args.prepare_only:
@@ -228,7 +306,7 @@ def main():
                 proc.wait(timeout=15)
                 raise RuntimeError('Webots timeout; stopped only verification PID '+str(proc.pid))
         received = json.loads((scratch/'junction-runtime.json').read_text(encoding='utf-8'))
-        for key in ('nonce','source_world_sha256','snapshot_world_sha256'):
+        for key in ('nonce','source_world_sha256','snapshot_world_sha256','snapshot_map_sha256'):
             if received.get(key) != manifest[key]:
                 raise RuntimeError('Unauthenticated runtime report: '+key)
         if digest(source) != manifest['source_world_sha256']:

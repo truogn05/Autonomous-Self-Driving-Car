@@ -207,7 +207,7 @@ def scale_network():
         e['name'] = next_name('StraightRoad' if len(e['points']) == 2 else 'Road')
 
 
-def end_markings(nid, start):
+def end_markings(nid, start, count=4):
     # Road.proto resolves texture fields relative to itself, not to the WBT.
     prefix = '../../../../../../worlds/textures/'
     controlled = junctions[nid]['kind'] in ('T', 'X', 'Y')
@@ -215,8 +215,8 @@ def end_markings(nid, start):
     if not controlled and not crossing:
         return '[]'
     slots = []
-    for i in range(4):
-        incoming = i >= 2 if start else i < 2
+    for i in range(count):
+        incoming = i >= count/2 if start else i < count/2
         paint = ('stop_crossing' if crossing else 'stop_line') if incoming else ('crossing' if crossing else None)
         slots.append(prefix + paint + '.png' if paint else '')
     return '[ ' + ' '.join('"'+v+'"' for v in slots) + ' ]'
@@ -252,9 +252,10 @@ def draw_outer_barrier():
 
 def draw_edge(e):
     pts, name = e['points'], e['id']
-    common=f'''name "{e['name']}" id "{name}" width {ROAD_WIDTH}
-      numberOfLanes 4 numberOfForwardLanes 2 lines {ROAD_LINES}
-      startLine {end_markings(e['from'], True)} endLine {end_markings(e['to'], False)}
+    count, forward = e['number_of_lanes'], e['forward_lanes']
+    common=f'''name "{e['name']}" id "{name}" width {e['width']}
+      numberOfLanes {count} numberOfForwardLanes {forward} lines {ROAD_LINES}
+      startLine {end_markings(e['from'], True, count)} endLine {end_markings(e['to'], False, count)}
       appearance {ASPHALT} pavementAppearance {PAVEMENT}
       roadBorderHeight 0.035 roadBoundingObject FALSE
       rightBorderBoundingObject TRUE leftBorderBoundingObject TRUE'''
@@ -267,16 +268,16 @@ def draw_edge(e):
           splineSubdivision -1 roadBorderWidth [ .14 ] {common} }}''')
     for reverse in (False,True):
         seq=list(reversed(pts)) if reverse else pts
-        for index in (1,2):
+        for index in range(1, forward+1):
             lid=name+('_B' if reverse else '_F')+str(index)
             lane_graph[lid]={'from':e['to'] if reverse else e['from'], 'to':e['from'] if reverse else e['to'],
                 'points':offset(seq,-LANE_WIDTH*(index-.5)), 'lane_index':index,
-                'road_id': e['id'], 'successors':[], 'speed_limit_m_s':.5}
+                'road_id': e['id'], 'direction_lanes': forward, 'successors':[], 'speed_limit_m_s':.5}
     # Split at a shared on-road change zone; dashed dividers permit changing
     # lane before selecting a junction turn, rather than switching at the junction.
     for suffix in ('F','B'):
         zone='CHANGE_'+name+'_'+suffix
-        for index in (1,2):
+        for index in range(1, forward+1):
             lid=name+'_'+suffix+str(index)
             lane=lane_graph.pop(lid)
             points=lane['points']; total=length(points); gap=min(.8,total/4)
@@ -364,6 +365,8 @@ def furniture():
 
 
 def connectors():
+    def matching_lane(index, count, other, other_count):
+        return max((index-1)/count,(other-1)/other_count)<min(index/count,other/other_count)-1e-9
     original=list(lane_graph.items())
     for lid,lane in original:
         nid=lane['to']
@@ -377,31 +380,42 @@ def connectors():
                 continue
             if nid.startswith('R_') and lane.get('lane_index') != target.get('lane_index'):
                 continue
+            turn=0
             if not nid.startswith(('CHANGE_', 'R_')) and 'lane_index' in lane and 'lane_index' in target:
                 incoming=direction(lane['points'][-2],lane['points'][-1])
                 outgoing=direction(target['points'][0],target['points'][1])
                 turn=math.atan2(incoming[0]*outgoing[1]-incoming[1]*outgoing[0],incoming[0]*outgoing[0]+incoming[1]*outgoing[1])
-                if abs(turn)<.45:
-                    if lane['lane_index']!=target['lane_index']:
+                if abs(turn)<.65:
+                    if not matching_lane(lane['lane_index'],lane['direction_lanes'],target['lane_index'],target['direction_lanes']):
                         continue
-                elif lane['lane_index'] != (1 if turn>0 else 2) or target['lane_index']!=lane['lane_index']:
-                    continue
+                elif turn>0:
+                    count,other_count=math.ceil(lane['direction_lanes']/2),math.ceil(target['direction_lanes']/2)
+                    if lane['lane_index']>count or target['lane_index']>other_count or not matching_lane(lane['lane_index'],count,target['lane_index'],other_count):
+                        continue
+                else:
+                    index=lane['lane_index']-lane['direction_lanes']//2
+                    other_index=target['lane_index']-target['direction_lanes']//2
+                    if index<=0 or other_index<=0 or not matching_lane(index,math.ceil(lane['direction_lanes']/2),other_index,math.ceil(target['direction_lanes']/2)):
+                        continue
             a,d=lane['points'][-1],target['points'][0]
             if math.dist(a,d)<.001:
                 lane['successors'].append(other)
                 continue
             u=direction(lane['points'][-2],a)
             v=direction(d,target['points'][1])
-            # Native RoadIntersection has square inside corners; turn farther
-            # into the intersection so the robot footprint clears those corners.
-            reach=math.dist(a,d)*(.6 if nid=='SIGNAL_CROSS' else .45)
+            # Short handles keep modest diagonal joins inside their junction;
+            # larger turns need room for the robot footprint to clear the curbs.
+            reach=math.dist(a,d)*(.05 if .15<abs(turn)<.65 else .6 if nid=='SIGNAL_CROSS' else .45)
             cid=f'{lid}__{other}'
             lane_graph[cid]={'from':nid,'to':nid,'points':bezier(a,add(a,mul(u,reach)),add(d,mul(v,-reach)),d,16),
                              'successors':[other],'speed_limit_m_s':.25,'junction':nid}
+            if nid.startswith('CHANGE_'):
+                lane_graph[cid]['road_id'] = lane['road_id']
             lane['successors'].append(cid)
 
 
-def overview(bounds=(-24,24,-18,18)):
+def overview(bounds=(-24,24,-18,18), ring=None):
+    ring = ring or {'center':[12,0], 'inner_radius':2.4, 'outer_radius':4}
     xmin,xmax,ymin,ymax=bounds
     width,height=(xmax-xmin)*22.5+40,(ymax-ymin)*22.5+40
     def path(pts):
@@ -409,8 +423,9 @@ def overview(bounds=(-24,24,-18,18)):
     svg=[f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
          '<rect width="100%" height="100%" fill="#e9eddf"/>']
     for e in edges:
-        svg.append(f'<path d="{path(e["full_points"])}" fill="none" stroke="#343c42" stroke-width="54" stroke-linejoin="round"/>')
-    svg.append(f'<circle cx="{(12-xmin)*22.5+20}" cy="{20+ymax*22.5}" r="72" fill="none" stroke="#343c42" stroke-width="36"/>')
+        svg.append(f'<path d="{path(e["full_points"])}" fill="none" stroke="#343c42" stroke-width="{e["width"]*22.5}" stroke-linejoin="round"/>')
+    cx,cy=ring['center']; inner,outer=ring['inner_radius'],ring['outer_radius']
+    svg.append(f'<circle cx="{(cx-xmin)*22.5+20}" cy="{20+(ymax-cy)*22.5}" r="{(inner+outer)/2*22.5}" fill="none" stroke="#343c42" stroke-width="{(outer-inner)*22.5}"/>')
     for e in edges:
         svg.append(f'<path d="{path(e["points"])}" fill="none" stroke="#edc546" stroke-width="1.2"/>')
     for name,n in junctions.items():

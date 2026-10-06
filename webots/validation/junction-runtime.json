@@ -1,9 +1,10 @@
 {
-  "nonce": "696d7ea08cf7452b852839057058b2ea",
-  "source_world_sha256": "2fadcdc0a0d5aedc868605f0dcedc516deb8903e09073be2ead2d57787679c69",
-  "snapshot_world_sha256": "eeee89edc4dbeda425906cf114d5ebdbbe9ae8438c3b71cb56472814ed52c8b6",
-  "scratch": "C:\\Users\\nguye\\AppData\\Local\\Temp\\junction-verification-dmg0pulm",
-  "port": 57778,
+  "nonce": "32d0a1dad2c04cff9d9044fb62590c56",
+  "source_world_sha256": "ee89c2e2256d921878ec19be7c2a53cdc06bf098ee7726757ef9178f42e33edf",
+  "snapshot_world_sha256": "1e8bdc7e92eea166556eb9868130af6c115f9d6b0d3f738afcb2ac6999ac724e",
+  "snapshot_map_sha256": "8d26081eda2462257737e78ea438b93e7a1232c6bccec72b3c3a4b560ae8f91b",
+  "scratch": "C:\\Users\\nguye\\AppData\\Local\\Temp\\junction-verification-frc8p14u",
+  "port": 60644,
   "status": "passed",
   "errors": [],
   "roads": [
@@ -11,175 +12,496 @@
       "id": "OUTER_NW",
       "type": "Road",
       "startJunction": "J_WEST_UPPER",
-      "endJunction": "J_NORTH_WEST"
+      "endJunction": "J_NORTH_WEST",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
     },
     {
       "id": "NORTH_TRAINING",
       "type": "StraightRoadSegment",
       "startJunction": "J_NORTH_WEST",
-      "endJunction": "J_NORTH_MIDDLE"
+      "endJunction": "J_NORTH_MIDDLE",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
     },
     {
       "id": "NORTH_LINK",
       "type": "StraightRoadSegment",
       "startJunction": "J_NORTH_MIDDLE",
-      "endJunction": "J_NORTH_EAST"
+      "endJunction": "J_NORTH_EAST",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
     },
     {
       "id": "OUTER_NE",
       "type": "Road",
       "startJunction": "J_NORTH_EAST",
-      "endJunction": "J_EAST"
+      "endJunction": "J_EAST",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
     },
     {
       "id": "OUTER_SE",
       "type": "Road",
       "startJunction": "J_EAST",
-      "endJunction": "J_LOWER_EAST"
+      "endJunction": "J_LOWER_EAST",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
     },
     {
       "id": "S_CURVES",
       "type": "Road",
       "startJunction": "J_Y_SOUTH",
-      "endJunction": "J_LOWER_EAST"
+      "endJunction": "J_LOWER_EAST",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
     },
     {
       "id": "OUTER_SW",
       "type": "Road",
       "startJunction": "J_WEST_LOWER",
-      "endJunction": "J_Y_SOUTH"
+      "endJunction": "J_Y_SOUTH",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
     },
     {
       "id": "WEST_1",
       "type": "StraightRoadSegment",
       "startJunction": "J_WEST_UPPER",
-      "endJunction": "J_WEST_MIDDLE"
+      "endJunction": "J_WEST_MIDDLE",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
     },
     {
       "id": "WEST_2",
       "type": "StraightRoadSegment",
       "startJunction": "J_WEST_MIDDLE",
-      "endJunction": "J_WEST_LOWER"
+      "endJunction": "J_WEST_LOWER",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
     },
     {
       "id": "BLOCK_TOP_W",
       "type": "StraightRoadSegment",
       "startJunction": "J_WEST_UPPER",
-      "endJunction": "J_BLOCK_NORTH"
+      "endJunction": "J_BLOCK_NORTH",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
     },
     {
       "id": "BLOCK_TOP_E",
       "type": "StraightRoadSegment",
       "startJunction": "J_BLOCK_NORTH",
-      "endJunction": "J_INNER_NORTH"
+      "endJunction": "J_INNER_NORTH",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
     },
     {
       "id": "BLOCK_MID_TUNNEL",
       "type": "Road",
       "startJunction": "J_WEST_MIDDLE",
-      "endJunction": "SIGNAL_CROSS"
+      "endJunction": "SIGNAL_CROSS",
+      "width": 4.8,
+      "numberOfLanes": 8,
+      "numberOfForwardLanes": 4
     },
     {
       "id": "RECONNECTED_BRIDGE",
       "type": "StraightRoadSegment",
       "startJunction": "J_BRIDGE_N",
-      "endJunction": "J_BRIDGE_S"
+      "endJunction": "J_BRIDGE_S",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
     },
     {
       "id": "BLOCK_BOTTOM_W",
       "type": "StraightRoadSegment",
       "startJunction": "J_WEST_LOWER",
-      "endJunction": "J_BLOCK_SOUTH"
+      "endJunction": "J_BLOCK_SOUTH",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
     },
     {
       "id": "BLOCK_BOTTOM_E",
       "type": "StraightRoadSegment",
       "startJunction": "J_BLOCK_SOUTH",
-      "endJunction": "J_INNER_SOUTH"
+      "endJunction": "J_INNER_SOUTH",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
     },
     {
       "id": "RECONNECTED_NORTH",
       "type": "StraightRoadSegment",
       "startJunction": "J_BLOCK_NORTH",
-      "endJunction": "J_BRIDGE_N"
+      "endJunction": "J_BRIDGE_N",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
     },
     {
       "id": "RECONNECTED_SOUTH",
       "type": "StraightRoadSegment",
       "startJunction": "J_BRIDGE_S",
-      "endJunction": "J_BLOCK_SOUTH"
+      "endJunction": "J_BLOCK_SOUTH",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
     },
     {
       "id": "INNER_1",
       "type": "StraightRoadSegment",
       "startJunction": "J_NORTH_WEST",
-      "endJunction": "J_INNER_NORTH"
+      "endJunction": "J_INNER_NORTH",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
     },
     {
       "id": "INNER_2",
       "type": "StraightRoadSegment",
       "startJunction": "J_INNER_NORTH",
-      "endJunction": "SIGNAL_CROSS"
+      "endJunction": "SIGNAL_CROSS",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
     },
     {
       "id": "INNER_3",
       "type": "StraightRoadSegment",
       "startJunction": "SIGNAL_CROSS",
-      "endJunction": "J_INNER_SOUTH"
+      "endJunction": "J_INNER_SOUTH",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
     },
     {
       "id": "CENTRAL_1",
       "type": "StraightRoadSegment",
       "startJunction": "SIGNAL_CROSS",
-      "endJunction": "J_MID_BEND"
+      "endJunction": "J_MID_BEND",
+      "width": 4.8,
+      "numberOfLanes": 8,
+      "numberOfForwardLanes": 4
     },
     {
       "id": "CENTRAL_2",
       "type": "StraightRoadSegment",
       "startJunction": "J_MID_BEND",
-      "endJunction": "J_MID_AXIS"
+      "endJunction": "J_MID_AXIS",
+      "width": 4.8,
+      "numberOfLanes": 8,
+      "numberOfForwardLanes": 4
     },
     {
       "id": "CENTRAL_3",
       "type": "StraightRoadSegment",
       "startJunction": "J_MID_AXIS",
-      "endJunction": "ROUNDABOUT"
+      "endJunction": "ROUNDABOUT",
+      "width": 4.8,
+      "numberOfLanes": 8,
+      "numberOfForwardLanes": 4
     },
     {
       "id": "CENTRAL_AXIS",
       "type": "StraightRoadSegment",
       "startJunction": "J_MID_AXIS",
-      "endJunction": "J_NORTH_MIDDLE"
+      "endJunction": "J_NORTH_MIDDLE",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
     },
     {
       "id": "ROUNDABOUT_NORTH",
       "type": "StraightRoadSegment",
       "startJunction": "ROUNDABOUT",
-      "endJunction": "J_NORTH_EAST"
+      "endJunction": "J_NORTH_EAST",
+      "width": 4.8,
+      "numberOfLanes": 8,
+      "numberOfForwardLanes": 4
     },
     {
       "id": "ROUNDABOUT_EAST",
       "type": "StraightRoadSegment",
       "startJunction": "ROUNDABOUT",
-      "endJunction": "J_EAST"
+      "endJunction": "J_EAST",
+      "width": 4.8,
+      "numberOfLanes": 8,
+      "numberOfForwardLanes": 4
     },
     {
       "id": "ROUNDABOUT_SOUTH",
       "type": "StraightRoadSegment",
       "startJunction": "ROUNDABOUT",
-      "endJunction": "J_LOWER_EAST"
+      "endJunction": "J_LOWER_EAST",
+      "width": 4.8,
+      "numberOfLanes": 8,
+      "numberOfForwardLanes": 4
     },
     {
       "id": "Y_STEM",
-      "type": "Road",
+      "type": "StraightRoadSegment",
       "startJunction": "J_INNER_SOUTH",
-      "endJunction": "J_Y_SOUTH"
+      "endJunction": "J_Y_SOUTH",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
     },
     {
       "id": "INNER_CURVE",
       "type": "Road",
       "startJunction": "J_INNER_NORTH",
-      "endJunction": "J_MID_BEND"
+      "endJunction": "J_MID_BEND",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
+    },
+    {
+      "id": "OUTER_RING_NW",
+      "type": "Road",
+      "startJunction": "J_O_W_N",
+      "endJunction": "J_O_N_W",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
+    },
+    {
+      "id": "NORTH_WINDING_W",
+      "type": "Road",
+      "startJunction": "J_O_N_W",
+      "endJunction": "J_O_N_M",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
+    },
+    {
+      "id": "NORTH_WINDING_E",
+      "type": "Road",
+      "startJunction": "J_O_N_M",
+      "endJunction": "J_O_N_E",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
+    },
+    {
+      "id": "OUTER_RING_NE",
+      "type": "Road",
+      "startJunction": "J_O_N_E",
+      "endJunction": "J_O_E_M",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
+    },
+    {
+      "id": "OUTER_RING_SE",
+      "type": "Road",
+      "startJunction": "J_O_E_M",
+      "endJunction": "J_O_S_E",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
+    },
+    {
+      "id": "OUTER_RING_S",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_O_S_E",
+      "endJunction": "J_O_S_M",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
+    },
+    {
+      "id": "OUTER_RING_SW",
+      "type": "Road",
+      "startJunction": "J_O_S_M",
+      "endJunction": "J_O_W_S",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
+    },
+    {
+      "id": "OUTER_RING_W",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_O_W_S",
+      "endJunction": "J_O_W_N",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
+    },
+    {
+      "id": "WEST_EXTENSION_N",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_O_W_N",
+      "endJunction": "J_WEST_UPPER",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
+    },
+    {
+      "id": "WEST_EXTENSION_S",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_O_W_S",
+      "endJunction": "J_WEST_LOWER",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
+    },
+    {
+      "id": "EAST_EXTENSION",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_EAST",
+      "endJunction": "J_O_E_M",
+      "width": 4.8,
+      "numberOfLanes": 8,
+      "numberOfForwardLanes": 4
+    },
+    {
+      "id": "SOUTH_EXTENSION_E",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_LOWER_EAST",
+      "endJunction": "J_O_S_E",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
+    },
+    {
+      "id": "SOUTH_EXTENSION_M",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_Y_SOUTH",
+      "endJunction": "J_O_S_M",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
+    },
+    {
+      "id": "NORTH_ACCESS_W",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_NORTH_WEST",
+      "endJunction": "J_N1_W",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
+    },
+    {
+      "id": "NORTH_FAN_W",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_N1_W",
+      "endJunction": "J_N2_W",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
+    },
+    {
+      "id": "NORTH_OUTLET_W",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_N2_W",
+      "endJunction": "J_O_N_W",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
+    },
+    {
+      "id": "NORTH_ACCESS_M",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_NORTH_MIDDLE",
+      "endJunction": "J_N1_M",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
+    },
+    {
+      "id": "NORTH_FAN_M",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_N1_M",
+      "endJunction": "J_N2_M",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
+    },
+    {
+      "id": "NORTH_OUTLET_M",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_N2_M",
+      "endJunction": "J_O_N_M",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
+    },
+    {
+      "id": "NORTH_ACCESS_E",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_NORTH_EAST",
+      "endJunction": "J_N1_E",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
+    },
+    {
+      "id": "NORTH_FAN_E",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_N1_E",
+      "endJunction": "J_N2_E",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
+    },
+    {
+      "id": "NORTH_OUTLET_E",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_N2_E",
+      "endJunction": "J_O_N_E",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
+    },
+    {
+      "id": "N1_CROSS_W",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_N1_W",
+      "endJunction": "J_N1_M",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
+    },
+    {
+      "id": "N1_CROSS_E",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_N1_M",
+      "endJunction": "J_N1_E",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
+    },
+    {
+      "id": "N2_CROSS_W",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_N2_W",
+      "endJunction": "J_N2_M",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
+    },
+    {
+      "id": "N2_CROSS_E",
+      "type": "StraightRoadSegment",
+      "startJunction": "J_N2_M",
+      "endJunction": "J_N2_E",
+      "width": 2.4,
+      "numberOfLanes": 4,
+      "numberOfForwardLanes": 2
     }
   ],
   "junctions": [
@@ -189,7 +511,8 @@
       "connectedRoadIDs": [
         "OUTER_NW",
         "WEST_1",
-        "BLOCK_TOP_W"
+        "BLOCK_TOP_W",
+        "WEST_EXTENSION_N"
       ]
     },
     {
@@ -207,7 +530,8 @@
       "connectedRoadIDs": [
         "OUTER_SW",
         "WEST_2",
-        "BLOCK_BOTTOM_W"
+        "BLOCK_BOTTOM_W",
+        "WEST_EXTENSION_S"
       ]
     },
     {
@@ -216,7 +540,8 @@
       "connectedRoadIDs": [
         "OUTER_NW",
         "NORTH_TRAINING",
-        "INNER_1"
+        "INNER_1",
+        "NORTH_ACCESS_W"
       ]
     },
     {
@@ -225,7 +550,8 @@
       "connectedRoadIDs": [
         "NORTH_TRAINING",
         "NORTH_LINK",
-        "CENTRAL_AXIS"
+        "CENTRAL_AXIS",
+        "NORTH_ACCESS_M"
       ]
     },
     {
@@ -234,7 +560,8 @@
       "connectedRoadIDs": [
         "NORTH_LINK",
         "OUTER_NE",
-        "ROUNDABOUT_NORTH"
+        "ROUNDABOUT_NORTH",
+        "NORTH_ACCESS_E"
       ]
     },
     {
@@ -243,7 +570,8 @@
       "connectedRoadIDs": [
         "OUTER_NE",
         "OUTER_SE",
-        "ROUNDABOUT_EAST"
+        "ROUNDABOUT_EAST",
+        "EAST_EXTENSION"
       ]
     },
     {
@@ -252,7 +580,8 @@
       "connectedRoadIDs": [
         "OUTER_SE",
         "S_CURVES",
-        "ROUNDABOUT_SOUTH"
+        "ROUNDABOUT_SOUTH",
+        "SOUTH_EXTENSION_E"
       ]
     },
     {
@@ -285,7 +614,7 @@
     },
     {
       "id": "SIGNAL_CROSS",
-      "type": "RoadIntersection",
+      "type": "Crossroad",
       "connectedRoadIDs": [
         "BLOCK_MID_TUNNEL",
         "INNER_2",
@@ -326,7 +655,8 @@
       "connectedRoadIDs": [
         "S_CURVES",
         "OUTER_SW",
-        "Y_STEM"
+        "Y_STEM",
+        "SOUTH_EXTENSION_M"
       ]
     },
     {
@@ -354,51 +684,189 @@
         "RECONNECTED_BRIDGE",
         "RECONNECTED_SOUTH"
       ]
+    },
+    {
+      "id": "J_O_W_N",
+      "type": "Crossroad",
+      "connectedRoadIDs": [
+        "OUTER_RING_NW",
+        "OUTER_RING_W",
+        "WEST_EXTENSION_N"
+      ]
+    },
+    {
+      "id": "J_O_W_S",
+      "type": "Crossroad",
+      "connectedRoadIDs": [
+        "OUTER_RING_SW",
+        "OUTER_RING_W",
+        "WEST_EXTENSION_S"
+      ]
+    },
+    {
+      "id": "J_O_N_W",
+      "type": "Crossroad",
+      "connectedRoadIDs": [
+        "OUTER_RING_NW",
+        "NORTH_WINDING_W",
+        "NORTH_OUTLET_W"
+      ]
+    },
+    {
+      "id": "J_O_N_M",
+      "type": "Crossroad",
+      "connectedRoadIDs": [
+        "NORTH_WINDING_W",
+        "NORTH_WINDING_E",
+        "NORTH_OUTLET_M"
+      ]
+    },
+    {
+      "id": "J_O_N_E",
+      "type": "Crossroad",
+      "connectedRoadIDs": [
+        "NORTH_WINDING_E",
+        "OUTER_RING_NE",
+        "NORTH_OUTLET_E"
+      ]
+    },
+    {
+      "id": "J_O_E_M",
+      "type": "Crossroad",
+      "connectedRoadIDs": [
+        "OUTER_RING_NE",
+        "OUTER_RING_SE",
+        "EAST_EXTENSION"
+      ]
+    },
+    {
+      "id": "J_O_S_E",
+      "type": "Crossroad",
+      "connectedRoadIDs": [
+        "OUTER_RING_SE",
+        "OUTER_RING_S",
+        "SOUTH_EXTENSION_E"
+      ]
+    },
+    {
+      "id": "J_O_S_M",
+      "type": "Crossroad",
+      "connectedRoadIDs": [
+        "OUTER_RING_S",
+        "OUTER_RING_SW",
+        "SOUTH_EXTENSION_M"
+      ]
+    },
+    {
+      "id": "J_N1_W",
+      "type": "Crossroad",
+      "connectedRoadIDs": [
+        "NORTH_ACCESS_W",
+        "NORTH_FAN_W",
+        "N1_CROSS_W"
+      ]
+    },
+    {
+      "id": "J_N1_M",
+      "type": "Crossroad",
+      "connectedRoadIDs": [
+        "NORTH_ACCESS_M",
+        "NORTH_FAN_M",
+        "N1_CROSS_W",
+        "N1_CROSS_E"
+      ]
+    },
+    {
+      "id": "J_N1_E",
+      "type": "Crossroad",
+      "connectedRoadIDs": [
+        "NORTH_ACCESS_E",
+        "NORTH_FAN_E",
+        "N1_CROSS_E"
+      ]
+    },
+    {
+      "id": "J_N2_W",
+      "type": "Crossroad",
+      "connectedRoadIDs": [
+        "NORTH_FAN_W",
+        "NORTH_OUTLET_W",
+        "N2_CROSS_W"
+      ]
+    },
+    {
+      "id": "J_N2_M",
+      "type": "Crossroad",
+      "connectedRoadIDs": [
+        "NORTH_FAN_M",
+        "NORTH_OUTLET_M",
+        "N2_CROSS_W",
+        "N2_CROSS_E"
+      ]
+    },
+    {
+      "id": "J_N2_E",
+      "type": "Crossroad",
+      "connectedRoadIDs": [
+        "NORTH_FAN_E",
+        "NORTH_OUTLET_E",
+        "N2_CROSS_E"
+      ]
     }
   ],
   "probes": [
     {
       "name": "tunnel-north",
       "initial_position": [
-        -17,
+        -23.0,
         0.6,
-        -0.43
+        -0.43000000000000005
       ],
       "position": [
-        -17.0,
-        0.6,
-        -0.5100141608710728
+        -22.999998573845893,
+        0.5999999410624577,
+        -0.5100111701293026
       ],
       "expected_center_z": -0.51,
       "contacts": [
         [
-          -17.0,
-          0.6599999999999999,
+          -22.92000000003281,
+          0.5400000000006775,
+          -0.5503842099696962
+        ],
+        [
+          -22.92000000003191,
+          0.660000000000659,
+          -0.5503841430305486
+        ],
+        [
+          -23.023084451103063,
+          0.5399999997871382,
           -0.550000011920929
         ],
         [
-          -17.08,
-          0.54,
+          -23.01569194956576,
+          0.6599999997871014,
           -0.550000011920929
         ],
         [
-          -17.08,
-          0.6599999999999999,
+          -23.079999989652613,
+          0.539999999787567,
           -0.550000011920929
         ],
         [
-          -17.0,
-          0.54,
-          -0.550000011920929
+          -23.023084451089954,
+          0.5399999999998915,
+          -0.5503814090034285
         ],
         [
-          -16.92,
-          0.6599999999999999,
-          -0.550000011920929
+          -23.01569194955265,
+          0.6599999999999293,
+          -0.550381542930146
         ],
         [
-          -16.92,
-          0.5399999999999999,
+          -23.079999989653526,
+          0.6599999997875857,
           -0.550000011920929
         ]
       ]
@@ -406,102 +874,204 @@
     {
       "name": "tunnel-south",
       "initial_position": [
-        -17,
+        -23.0,
         -0.6,
-        -0.43
+        -0.43000000000000005
       ],
       "position": [
-        -17.0,
+        -23.0,
         -0.6,
-        -0.5100141424678599
+        -0.5100207221850207
       ],
       "expected_center_z": -0.51,
       "contacts": [
         [
-          -17.08,
+          -23.08,
+          -0.54,
+          -0.5704544
+        ],
+        [
+          -22.92,
+          -0.54,
+          -0.5704544
+        ],
+        [
+          -22.92,
           -0.6600000000000001,
-          -0.5500605759821109
+          -0.5704544
         ],
         [
-          -17.08,
-          -0.54,
-          -0.5500605759821109
-        ],
-        [
-          -16.92,
-          -0.6599999999999999,
-          -0.550000011920929
-        ],
-        [
-          -17.0,
+          -23.08,
           -0.6600000000000001,
-          -0.5500605759821109
-        ],
-        [
-          -17.0,
-          -0.5399999999999999,
-          -0.550000011920929
-        ],
-        [
-          -16.92,
-          -0.54,
-          -0.550000011920929
-        ],
-        [
-          -17.0,
-          -0.66,
-          -0.550000011920929
-        ],
-        [
-          -17.0,
-          -0.54,
-          -0.5500605759821109
+          -0.5704544
         ]
       ]
     },
     {
       "name": "bridge",
       "initial_position": [
-        -17,
-        0,
+        -22.99999908497429,
+        1.496580637194711e-13,
         0.128
       ],
       "position": [
-        -16.999999999999343,
-        1.658672771208409e-13,
+        -22.999999084972796,
+        3.6406595307556487e-13,
         0.047985851042303816
       ],
       "expected_center_z": 0.048,
       "contacts": [
         [
-          -17.04500001899898,
-          0.06000000000000005,
-          -0.012454400000000018
+          -23.07999908497429,
+          0.060000000000149656,
+          0.008
         ],
         [
-          -16.92,
-          0.06000000000000005,
-          -0.012454400000000018
+          -22.919999084974293,
+          0.06000000000014967,
+          0.008
         ],
         [
-          -16.92,
-          -0.06000000000000005,
-          -0.012454400000000018
+          -22.919999084974293,
+          -0.05999999999985034,
+          0.008
         ],
         [
-          -16.955000016763808,
-          -0.06000000000000005,
-          -0.012454400000000018
+          -23.07999908497429,
+          -0.05999999999985037,
+          0.008
         ],
         [
-          -17.08,
-          0.06000000000000005,
-          -0.012454400000000018
+          -23.02571337492151,
+          0.060000000000149656,
+          0.008
         ],
         [
-          -17.08,
-          -0.06000000000000005,
-          -0.012454400000000018
+          -22.974284754155306,
+          -0.05999999999985034,
+          0.008
+        ]
+      ]
+    },
+    {
+      "name": "NORTH_WINDING_W",
+      "initial_position": [
+        -6.500386,
+        40.000178,
+        0.727998
+      ],
+      "position": [
+        -6.500084683266984,
+        40.00003898174818,
+        0.6479576035861955
+      ],
+      "expected_center_z": 0.6479980000000001,
+      "contacts": [
+        [
+          -6.47272961685829,
+          40.060178020414845,
+          0.6079980134963989
+        ],
+        [
+          -6.528071012265749,
+          39.940178020414834,
+          0.6079980134963989
+        ],
+        [
+          -6.4203861129247,
+          40.06017805202238,
+          0.6075564074634414
+        ],
+        [
+          -6.5803861145022235,
+          39.940178052749296,
+          0.6075545426765874
+        ],
+        [
+          -6.420386184934284,
+          39.94097883210091,
+          0.6070926253117619
+        ],
+        [
+          -6.575649517523771,
+          40.06017808402668,
+          0.6071255699615141
+        ],
+        [
+          -6.580386182352983,
+          40.04990721309738,
+          0.6071255702829145
+        ],
+        [
+          -6.420755475099122,
+          39.94017808521714,
+          0.6070926253377655
+        ]
+      ]
+    },
+    {
+      "name": "NORTH_WINDING_E",
+      "initial_position": [
+        13.499645,
+        40.000148,
+        0.827998
+      ],
+      "position": [
+        13.499939814913937,
+        40.00002473749775,
+        0.7479621182830903
+      ],
+      "expected_center_z": 0.747998,
+      "contacts": [
+        [
+          13.524664360945378,
+          40.06014806582374,
+          0.7079979777336121
+        ],
+        [
+          13.524664360945378,
+          40.06014806582374,
+          0.7079979777336121
+        ],
+        [
+          13.579644487339365,
+          40.06014821389916,
+          0.7075582428937179
+        ],
+        [
+          13.459031761331554,
+          40.06014826314922,
+          0.7074711674827269
+        ],
+        [
+          13.474575676367289,
+          39.9401480658238,
+          0.7079979777336121
+        ],
+        [
+          13.474575676367289,
+          39.9401480658238,
+          0.7079979777336121
+        ],
+        [
+          13.419644446416527,
+          39.940148230975446,
+          0.7075570636878168
+        ],
+        [
+          13.419644369327676,
+          39.96578447477627,
+          0.7074711722312196
+        ],
+        [
+          13.556125698173998,
+          39.94014828545869,
+          0.7073457350391236
+        ],
+        [
+          13.579644315872411,
+          39.996491978231546,
+          0.7073457315287309
         ]
       ]
     }

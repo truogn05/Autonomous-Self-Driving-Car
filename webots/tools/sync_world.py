@@ -122,8 +122,9 @@ def main():
     data = json.loads((ROOT/'map.json').read_text(encoding='utf-8'))
     junctions = data['junctions']
     junctions.pop('BLOCK_CROSS', None)
-    for key, y in [('BRIDGE_N', 1.6), ('BRIDGE_S', -1.6)]:
-        junctions[key] = {'position': [-17, y], 'kind': 'connection', 'trim': 0}
+    bridge = next(n for n in nodes if n.get('id') == 'RECONNECTED_BRIDGE')
+    for key, p in zip(('BRIDGE_N', 'BRIDGE_S'), (bridge.road_points()[0], bridge.road_points()[-1])):
+        junctions[key] = {'position': p[:2], 'kind': 'connection', 'trim': 0}
     for n in junctions.values():
         n['ports'] = []
         n.pop('polygon', None)
@@ -165,7 +166,7 @@ def main():
         polygon = g.hull(vertices)
         n['polygon'] = polygon if n['kind'] != 'connection' else []
         if native_id(nid) not in by_id:
-            by_id[native_id(nid)] = Node('Crossroad', 'Crossroad {\n  name "BridgeSeam-'+nid+'"\n  id "'+native_id(nid)+'"\n  shape []\n}')
+            by_id[native_id(nid)] = Node('Crossroad', 'Crossroad {\n  name "Junction-'+nid+'"\n  id "'+native_id(nid)+'"\n  translation 0 0 0.008\n  appearance '+g.ASPHALT+'\n  shape []\n}')
             extras.append(by_id[native_id(nid)])
         node = by_id[native_id(nid)]
         node.set('connectedRoadIDs', json.dumps([p['edge'] for p in n['ports']]))
@@ -181,26 +182,51 @@ def main():
     g.edges[:] = roads
     g.junctions.clear()
     g.junctions.update(junctions)
-    g.draw_outer_barrier()
     barrier = next(n for n in nodes if n.type == 'CrashBarrier')
-    barrier.set('path', re.search(r'path (\[[^]]*\])', g.chunks[-1])[1])
+    if 'expansion' in data:
+        by_edge = {e['id']: e for e in roads}
+        outline_points = [p for eid in data['expansion']['perimeter'] for p in by_edge[eid]['points']]
+        outline = Polygon(outline_points).buffer(1.45, join_style=2)
+        assert outline.is_valid and outline.geom_type == 'Polygon'
+        border = list(outline.exterior.coords)
+        barrier.set('path', '[ '+' '.join(g.vec((*p, road_height(p, roads)-.008)) for p in border)+' ]')
+    else:
+        g.draw_outer_barrier()
+        barrier.set('path', re.search(r'path (\[[^]]*\])', g.chunks[-1])[1])
     world = re.sub(r'\n{3,}', '\n\n', rewrite(source, nodes).rstrip()) + '\n\n' + '\n\n'.join(n.text.strip() for n in extras) + '\n'
     g.lane_graph.clear()
     g.chunks.clear()
     for road in roads:
         g.draw_edge(road)  # Reuse routing geometry; emitted road text is discarded.
-    for index in (1, 2):
+    ring = data['roundabout']
+    for index in range(1, ring['ring_lanes']+1):
         for i, nid in enumerate(['R_E', 'R_N', 'R_W', 'R_S']):
             nxt = ['R_E', 'R_N', 'R_W', 'R_S'][(i+1) % 4]
             g.lane_graph[f'RING_{nid}_{index}'] = {'from': nid, 'to': nxt,
-                'points': g.arc((12, 0), 2.4+.8*(index-.5), i*math.pi/2, (i+1)*math.pi/2),
+                'points': g.arc(ring['center'], ring['inner_radius']+(ring['outer_radius']-ring['inner_radius'])/ring['ring_lanes']*(index-.5), i*math.pi/2, (i+1)*math.pi/2),
                 'lane_index': index, 'successors': [], 'speed_limit_m_s': .25}
     g.connectors()
+    for lane in g.lane_graph.values():
+        support = [e for e in roads if e['id'] == lane.get('road_id')]
+        lane['elevations'] = [road_height(p, support) if support else .008 for p in lane['points']]
     data.update(roads=roads, junctions=junctions, lanes=g.lane_graph)
     path.write_text(world, encoding='utf-8')
     (ROOT/'map.json').write_text(json.dumps(data, indent=2)+'\n', encoding='utf-8')
-    g.overview(data['bounds'])
+    g.overview(data['bounds'],data['roundabout'])
     print(f'Synchronized {len(roads)} roads, {len(junctions)} junctions/ports, {len(g.lane_graph)} lanes/connectors.')
+
+
+def road_height(point, roads):
+    best, height = math.inf, .008
+    for road in roads:
+        for i, (a, b) in enumerate(zip(road['points'], road['points'][1:])):
+            dx, dy = b[0]-a[0], b[1]-a[1]
+            t = max(0, min(1, ((point[0]-a[0])*dx+(point[1]-a[1])*dy)/(dx*dx+dy*dy)))
+            distance = (point[0]-a[0]-t*dx)**2+(point[1]-a[1]-t*dy)**2
+            if distance < best:
+                best = distance
+                height = road['elevations'][i]*(1-t)+road['elevations'][i+1]*t
+    return height
 
 
 if __name__ == '__main__':
