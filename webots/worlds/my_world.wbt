@@ -655,7 +655,6 @@ StraightRoadSegment {
   leftBorderBoundingObject TRUE
 }
 Road {
-  translation 0 0 0
   name "Road-BLOCK_MID_TUNNEL"
   id "BLOCK_MID_TUNNEL"
   width 2.4
@@ -682,17 +681,17 @@ Road {
     -19.4 0 0.008
     -18.6 0 0.006
     -17.8 0 -0.06
-    -17.0 0 -0.20
+    -17 0 -0.2
     -16.2 0 -0.38
     -15.5 0 -0.52
-    -15.0 0 -0.55
+    -15 0 -0.55
     -14.4 0 -0.55
-    -14.0 0 -0.55
+    -14 0 -0.55
     -13.6 0 -0.55
-    -13.0 0 -0.55
+    -13 0 -0.55
     -12.5 0 -0.52
     -11.8 0 -0.38
-    -11.0 0 -0.20
+    -11 0 -0.2
     -10.2 0 -0.06
     -9.6 0 0.008
   ]
@@ -758,12 +757,11 @@ StraightRoadSegment {
     roughness 1
     metalness 0
   }
+  roadBoundingObject TRUE
   rightBorderBoundingObject TRUE
   leftBorderBoundingObject TRUE
-  roadBoundingObject TRUE
 }
 Solid {
-  translation 0 0 0
   children [
     Pose {
       translation -14 0 -0.02
@@ -775,7 +773,7 @@ Solid {
             metalness 0
           }
           geometry Box {
-            size 3.0 2.8 0.05
+            size 3 2.8 0.05
           }
         }
       ]
@@ -786,7 +784,7 @@ Solid {
         Shape {
           appearance USE CONCRETE
           geometry DEF TUNNEL_WALL Box {
-            size 3.0 0.14 0.55
+            size 3 0.14 0.55
           }
         }
       ]
@@ -872,7 +870,7 @@ Solid {
         Shape {
           appearance USE CONCRETE
           geometry Box {
-            size 3.0 0.14 0.3
+            size 3 0.14 0.3
           }
         }
       ]
@@ -883,13 +881,13 @@ Solid {
         Shape {
           appearance USE CONCRETE
           geometry Box {
-            size 3.0 0.14 0.3
+            size 3 0.14 0.3
           }
         }
       ]
     }
     Pose {
-      translation -11.0 1.34 -0.15
+      translation -11 1.34 -0.15
       children [
         Shape {
           appearance USE CONCRETE
@@ -900,7 +898,7 @@ Solid {
       ]
     }
     Pose {
-      translation -11.0 -1.34 -0.15
+      translation -11 -1.34 -0.15
       children [
         Shape {
           appearance USE CONCRETE
@@ -933,12 +931,10 @@ Solid {
       ]
     }
     PointLight {
-      translation -14 0 -0.15
       ambientIntensity 0.3
+      color 1 0.95 0.8
       intensity 2.5
       radius 6
-      color 1 0.95 0.8
-      castShadows FALSE
     }
   ]
   name "Tunnel-Structure"
@@ -948,7 +944,7 @@ Solid {
         translation -14 1.34 -0.275
         children [
           Box {
-            size 3.0 0.14 0.55
+            size 3 0.14 0.55
           }
         ]
       }
@@ -956,7 +952,7 @@ Solid {
         translation -14 -1.34 -0.275
         children [
           Box {
-            size 3.0 0.14 0.55
+            size 3 0.14 0.55
           }
         ]
       }
@@ -996,7 +992,7 @@ Solid {
         translation -17.2 1.34 -0.15
         children [
           Box {
-            size 3.0 0.14 0.3
+            size 3 0.14 0.3
           }
         ]
       }
@@ -1004,12 +1000,12 @@ Solid {
         translation -17.2 -1.34 -0.15
         children [
           Box {
-            size 3.0 0.14 0.3
+            size 3 0.14 0.3
           }
         ]
       }
       Pose {
-        translation -11.0 1.34 -0.15
+        translation -11 1.34 -0.15
         children [
           Box {
             size 2.6 0.14 0.3
@@ -1017,7 +1013,7 @@ Solid {
         ]
       }
       Pose {
-        translation -11.0 -1.34 -0.15
+        translation -11 -1.34 -0.15
         children [
           Box {
             size 2.6 0.14 0.3
@@ -1826,8 +1822,8 @@ Crossroad {
   name "TJunction-1"
   id "J_WEST_UPPER"
   shape [
-    -7.0 22.2 0
-    -7.0 19.8 0
+    -7 22.2 0
+    -7 19.8 0
     -7.4 19.4 0
     -9.8 19.4 0
     -10.2 19.8 0
@@ -1866,8 +1862,8 @@ Crossroad {
     9.2 19.8 0
     8.8 19.4 0
     6.4 19.4 0
-    6.0 19.8 0
-    6.0 22.2 0
+    6 19.8 0
+    6 22.2 0
   ]
   appearance PBRAppearance {
     baseColor 0.12 0.14 0.16
@@ -1971,8 +1967,8 @@ Crossroad {
   id "J_BLOCK_NORTH"
   shape [
     -7.4 15.6 0
-    -7.0 15.2 0
-    -7.0 12.8 0
+    -7 15.2 0
+    -7 12.8 0
     -7.4 12.4 0
     -9.8 12.4 0
     -9.8 15.6 0
@@ -1991,8 +1987,8 @@ Crossroad {
     8.8 15.6 0
     8.8 12.4 0
     6.4 12.4 0
-    6.0 12.8 0
-    6.0 15.2 0
+    6 12.8 0
+    6 15.2 0
     6.4 15.6 0
   ]
   appearance PBRAppearance {
@@ -2007,8 +2003,8 @@ Crossroad {
   id "J_INNER_NORTH"
   shape [
     -7.4 9.6 0
-    -7.0 9.2 0
-    -7.0 6.8 0
+    -7 9.2 0
+    -7 6.8 0
     -7.4 6.4 0
     -9.8 6.4 0
     -10.2 6.8 0
@@ -2060,8 +2056,8 @@ Crossroad {
     8.8 9.6 0
     9.2 9.2 0
     9.2 6.8 0
-    6.0 6.8 0
-    6.0 9.2 0
+    6 6.8 0
+    6 9.2 0
     6.4 9.6 0
   ]
   boundingObject TRUE
@@ -2135,12 +2131,6 @@ Roundabout {
   borderHeight 0.04
   innerRadius 2.4
   outerRadius 4
-  numberOfLanes 2
-  lines [
-    RoadLine {
-      width 0.025
-    }
-  ]
   startRoadsLength [
     1.2
   ]
@@ -2169,6 +2159,12 @@ Roundabout {
     roughness 1
     metalness 0
   }
+  numberOfLanes 2
+  lines [
+    RoadLine {
+      width 0.025
+    }
+  ]
 }
 CrashBarrier {
   translation 0 0 -0.38
@@ -3369,6 +3365,7 @@ DEF SIGNAL_SYSTEM Robot {
                 baseColor 0.08 0.08 0.08
                 roughness 0.5
                 metalness 0
+                emissiveColor 1 0.550000011920929 0
                 emissiveIntensity 3
               }
               geometry Sphere {
@@ -3457,6 +3454,7 @@ DEF SIGNAL_SYSTEM Robot {
                 baseColor 0.08 0.08 0.08
                 roughness 0.5
                 metalness 0
+                emissiveColor 1 0 0
                 emissiveIntensity 3
               }
               geometry Sphere {
@@ -3563,6 +3561,7 @@ DEF SIGNAL_SYSTEM Robot {
                 baseColor 0.08 0.08 0.08
                 roughness 0.5
                 metalness 0
+                emissiveColor 1 0 0
                 emissiveIntensity 3
               }
               geometry Sphere {
@@ -3686,6 +3685,7 @@ DEF SIGNAL_SYSTEM Robot {
                 baseColor 0.08 0.08 0.08
                 roughness 0.5
                 metalness 0
+                emissiveColor 1 0.550000011920929 0
                 emissiveIntensity 3
               }
               geometry Sphere {
@@ -3725,6 +3725,7 @@ DEF SIGNAL_SYSTEM Robot {
   ]
   name "junction signals"
   controller "traffic_signals"
+  customData "{\"time\": 192.0, \"EW\": \"amber\", \"NS\": \"red\"}"
 }
 DEF INSPECTOR Robot {
   name "world inspector"
