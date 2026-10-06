@@ -2,3 +2,11 @@
 *docs/
 preference/
 .history
+
+// RULE
+.agents
+skills-lock.json
+
+AGENT.md
+GEMINI.md
+CLAUDE.md
