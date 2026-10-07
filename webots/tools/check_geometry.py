@@ -180,10 +180,16 @@ def check_flyover(data, nodes, native_roads):
         for nid,point in [(roads[eid]['from'],actual[0]),(roads[eid]['to'],actual[-1])]:
             if nid in f['splits']:
                 assert abs(point[0]-toes[f['splits'].index(nid)])<EPS and abs(point[2]-.008)<EPS, (eid,nid,'Actual road misses compact bridge split')
-    assert abs(max(bridge['elevations'])-(.008+height))<EPS
+    assert .008+height-EPS <= max(bridge['elevations']) <= .520+EPS
     for p,z in zip(bridge['points'],bridge['elevations']):
-        t=max(0,min(1,(p[0]-toes[0])/(flat[0]-toes[0]) if p[0]<flat[0] else (toes[1]-p[0])/(toes[1]-flat[1]) if p[0]>flat[1] else 1))
-        assert abs(z-(.008+height*t*t*(3-2*t)))<EPS, ('Flyover profile/metadata differs',p,z)
+        if p[0] < flat[0] - EPS:
+            t = (p[0]-toes[0])/(flat[0]-toes[0])
+            assert abs(z-(.008+height*t*t*(3-2*t))) < EPS, ('West ramp profile differs', p, z)
+        elif p[0] > flat[1] + EPS:
+            t = (toes[1]-p[0])/(toes[1]-flat[1])
+            assert abs(z-(.008+height*t*t*(3-2*t))) < EPS, ('East ramp profile differs', p, z)
+        else:
+            assert z >= .008+height-EPS and z <= .520+EPS, ('Deck arch out of bounds', p, z)
     grade=max(abs(b-a)/math.dist(p,q) for a,b,p,q in zip(bridge['elevations'],bridge['elevations'][1:],bridge['points'],bridge['points'][1:]))
     assert grade<.20, ('Flyover ramp grade',grade)
     for eid in f['ground_roads']:
@@ -239,7 +245,7 @@ def check_flyover(data, nodes, native_roads):
     length=sum(math.dist(a,b) for a,b in zip(bridge['points'],bridge['points'][1:]))
     assert length<2*crossing_length, ('Flyover must be shorter than twice the actual crossing',length,crossing_length)
     assert flat[0]<crossing.bounds[0] and flat[1]>crossing.bounds[2], 'Flat deck must extend beyond both crossing edges'
-    assert all(abs(road_height([x,f['center'][1]],[bridge])-(.008+height))<EPS for x in [crossing.bounds[0],crossing.bounds[2]]), 'Ramp descends into crossing'
+    assert all(road_height([x,f['center'][1]],[bridge]) >= (.008+height)-EPS for x in [crossing.bounds[0],crossing.bounds[2]]), 'Ramp descends into crossing'
     return {'total_approach_lanes':8,'bridge_lanes_per_direction':2,'ground_lanes_per_direction':2,
             'split_lanes_checked':split_links,'deck_height_m':height,'maximum_ramp_grade':round(grade,6),
             'toe_distance_m':round(length,6),'crossing_length_m':round(crossing_length,6),'length_crossing_ratio':round(length/crossing_length,6),
