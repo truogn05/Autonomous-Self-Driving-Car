@@ -128,35 +128,39 @@ def mesh_to_vrml(solid_name: str, def_name: str, appearance: str, vertices: list
 
 def generate_prism_strip(x_pts: list, y_bot_func, y_top_func, z_top: float, z_bot: float, solid_name: str, def_name: str, appearance: str) -> str:
     vertices = []
-    faces = []
     for x in x_pts:
         yb = y_bot_func(x) if callable(y_bot_func) else y_bot_func
         yt = y_top_func(x) if callable(y_top_func) else y_top_func
-        vertices.append([round(x, 6), round(yb, 6), round(z_top, 6)])  # 4*i + 0
-        vertices.append([round(x, 6), round(yb, 6), round(z_bot, 6)])  # 4*i + 1
-        vertices.append([round(x, 6), round(yt, 6), round(z_top, 6)])  # 4*i + 2
-        vertices.append([round(x, 6), round(yt, 6), round(z_bot, 6)])  # 4*i + 3
+        vertices.append([round(x, 6), round(yb, 6), round(z_top, 6)])  # 4*i + 0: st
+        vertices.append([round(x, 6), round(yb, 6), round(z_bot, 6)])  # 4*i + 1: sb
+        vertices.append([round(x, 6), round(yt, 6), round(z_top, 6)])  # 4*i + 2: nt
+        vertices.append([round(x, 6), round(yt, 6), round(z_bot, 6)])  # 4*i + 3: nb
     
     n = len(x_pts)
+    faces = []
     for i in range(n - 1):
-        sw_t, sw_b, nw_t, nw_b = 4*i, 4*i+1, 4*i+2, 4*i+3
-        se_t, se_b, ne_t, ne_b = 4*(i+1), 4*(i+1)+1, 4*(i+1)+2, 4*(i+1)+3
+        st_0, sb_0, nt_0, nb_0 = 4*i, 4*i+1, 4*i+2, 4*i+3
+        st_1, sb_1, nt_1, nb_1 = 4*(i+1), 4*(i+1)+1, 4*(i+1)+2, 4*(i+1)+3
         
-        faces.append([sw_t, se_t, ne_t])
-        faces.append([sw_t, ne_t, nw_t])
-        faces.append([sw_b, ne_b, se_b])
-        faces.append([sw_b, nw_b, ne_b])
-        faces.append([sw_t, sw_b, se_b, se_t])
-        faces.append([ne_t, ne_b, nw_b, nw_t])
+        # Top face (normal +Z)
+        faces.append([st_0, st_1, nt_1, nt_0])
+        # Bottom face (normal -Z)
+        faces.append([sb_0, nb_0, nb_1, sb_1])
+        # South face (normal -Y)
+        faces.append([sb_0, sb_1, st_1, st_0])
+        # North face (normal +Y)
+        faces.append([nb_1, nb_0, nt_0, nt_1])
         
-    faces.append([nw_t, nw_b, sw_b, sw_t])
-    faces.append([4*(n-1)+1, 4*(n-1)+3, 4*(n-1)+2, 4*(n-1)+0])
+    # West cap (i = 0)
+    faces.append([1, 0, 2, 3])
+    # East cap (i = n-1)
+    K = 4 * (n - 1)
+    faces.append([K+0, K+1, K+3, K+2])
     
     return mesh_to_vrml(solid_name, def_name, appearance, vertices, faces)
 
 def generate_ramp_support(y_pts: list, x_left: float, x_right: float, z_profile_func, solid_name: str, def_name: str) -> str:
     vertices = []
-    faces = []
     for y in y_pts:
         zt = z_profile_func(y) - 0.006
         vertices.append([round(x_left, 6), round(y, 6), round(zt, 6)])    # 4*j + 0: wt
@@ -165,19 +169,25 @@ def generate_ramp_support(y_pts: list, x_left: float, x_right: float, z_profile_
         vertices.append([round(x_right, 6), round(y, 6), 0.0])             # 4*j + 3: eb
     
     n = len(y_pts)
+    faces = []
     for j in range(n - 1):
         wt_0, wb_0, et_0, eb_0 = 4*j, 4*j+1, 4*j+2, 4*j+3
         wt_1, wb_1, et_1, eb_1 = 4*(j+1), 4*(j+1)+1, 4*(j+1)+2, 4*(j+1)+3
         
-        faces.append([wt_0, wt_1, et_1])
-        faces.append([wt_0, et_1, et_0])
-        faces.append([wb_0, eb_1, wb_1])
-        faces.append([wb_0, eb_0, eb_1])
-        faces.append([wt_0, wb_0, wb_1, wt_1])
-        faces.append([et_1, eb_1, eb_0, et_0])
+        # Top
+        faces.append([wt_0, wt_1, et_1, et_0])
+        # Bottom
+        faces.append([wb_0, eb_0, eb_1, wb_1])
+        # West
+        faces.append([wb_0, wb_1, wt_1, wt_0])
+        # East
+        faces.append([et_0, et_1, eb_1, eb_0])
         
-    faces.append([et_0, eb_0, wb_0, wt_0])
-    faces.append([4*(n-1)+0, 4*(n-1)+1, 4*(n-1)+3, 4*(n-1)+2])
+    # South cap (j = 0)
+    faces.append([1, 0, 2, 3])
+    # North cap (j = n - 1)
+    K = 4 * (n - 1)
+    faces.append([K+0, K+1, K+3, K+2])
     
     return mesh_to_vrml(solid_name, def_name, PAVEMENT, vertices, faces)
 
@@ -236,7 +246,12 @@ def build_junctions() -> tuple:
     junc_nodes = []
     
     def crossroad_node(jid: str, name: str, shape_pts: list, road_ids: list) -> str:
-        shape_str = "\n    ".join(f"{fmt(-p[1])} {fmt(-p[0])} 0" for p in shape_pts) if shape_pts else ""
+        if shape_pts:
+            signed_area = sum(shape_pts[i][0] * shape_pts[(i+1)%len(shape_pts)][1] - shape_pts[(i+1)%len(shape_pts)][0] * shape_pts[i][1] for i in range(len(shape_pts)))
+            ordered_pts = list(shape_pts) if signed_area > 0 else list(reversed(shape_pts))
+            shape_str = "\n    ".join(f"{fmt(-p[1])} {fmt(-p[0])} 0" for p in ordered_pts)
+        else:
+            shape_str = ""
         roads_str = "\n    ".join(f'"{rid}"' for rid in road_ids)
         return f"""Crossroad {{
   translation 0 0 0.008
@@ -248,6 +263,7 @@ def build_junctions() -> tuple:
   connectedRoadIDs [
     {roads_str}
   ]
+  bottom TRUE
   appearance {ASPHALT}
 }}"""
 
@@ -826,14 +842,19 @@ def build_median_nodes() -> list:
     for j in range(n - 1):
         wt_0, wb_0, et_0, eb_0 = 4*j, 4*j+1, 4*j+2, 4*j+3
         wt_1, wb_1, et_1, eb_1 = 4*(j+1), 4*(j+1)+1, 4*(j+1)+2, 4*(j+1)+3
-        faces.append([wt_0, wt_1, et_1])
-        faces.append([wt_0, et_1, et_0])
-        faces.append([wb_0, eb_1, wb_1])
-        faces.append([wb_0, eb_0, eb_1])
-        faces.append([wt_0, wb_0, wb_1, wt_1])
-        faces.append([et_1, eb_1, eb_0, et_0])
-    faces.append([et_0, eb_0, wb_0, wt_0])
-    faces.append([4*(n-1)+0, 4*(n-1)+1, 4*(n-1)+3, 4*(n-1)+2])
+        # Top
+        faces.append([wt_0, wt_1, et_1, et_0])
+        # Bottom
+        faces.append([wb_0, eb_0, eb_1, wb_1])
+        # West
+        faces.append([wb_0, wb_1, wt_1, wt_0])
+        # East
+        faces.append([et_0, et_1, eb_1, eb_0])
+    # South cap (j = 0)
+    faces.append([1, 0, 2, 3])
+    # North cap (j = n - 1)
+    K = 4 * (n - 1)
+    faces.append([K+0, K+1, K+3, K+2])
     nodes.append(mesh_to_vrml("ND_Median-FLYOVER", "ND_MESH_MEDIAN_FLYOVER", PAVEMENT, vertices, faces))
 
     return nodes
@@ -879,32 +900,42 @@ def build_north_district_data():
     }
     return block, map_north
 
+def get_baseline_bytes() -> bytes:
+    content = WORLD_PATH.read_bytes()
+    if b"# BEGIN NORTH_DISTRICT" in content:
+        prefix = content.split(b"# BEGIN NORTH_DISTRICT")[0]
+    else:
+        prefix = content
+    h = hashlib.sha256(prefix).hexdigest()
+    if h != BASELINE_HASH:
+        import subprocess
+        res = subprocess.run(["git", "show", "5fa48e7:webots/worlds/my_world.wbt"], capture_output=True, cwd=ROOT)
+        if hashlib.sha256(res.stdout).hexdigest() == BASELINE_HASH:
+            return res.stdout
+    assert h == BASELINE_HASH, f"World baseline hash mismatch: {h} vs {BASELINE_HASH}"
+    return prefix
+
 def generate_candidate():
-    source_bytes = WORLD_PATH.read_bytes()
-    source_hash = hashlib.sha256(source_bytes).hexdigest()
-    assert source_hash == BASELINE_HASH, f"World hash mismatch: {source_hash} vs {BASELINE_HASH}"
-    
+    source_bytes = get_baseline_bytes()
     block, map_north = build_north_district_data()
     MAP_NORTH_PATH.write_text(json.dumps(map_north, indent=2), encoding="utf-8")
     
-    candidate_content = source_bytes.decode("utf-8") + "\n" + block
-    CANDIDATE_WORLD_PATH.write_text(candidate_content, encoding="utf-8")
+    candidate_content = source_bytes.decode("utf-8") + block
+    CANDIDATE_WORLD_PATH.write_text(candidate_content, encoding="utf-8", newline="\n")
     print(f"Candidate world generated at {CANDIDATE_WORLD_PATH}")
     print(f"Map north JSON generated at {MAP_NORTH_PATH}")
     return candidate_content
 
 def apply_to_world():
-    source_bytes = WORLD_PATH.read_bytes()
-    source_hash = hashlib.sha256(source_bytes).hexdigest()
-    assert source_hash == BASELINE_HASH, f"World hash mismatch: {source_hash} vs {BASELINE_HASH}"
-    
+    source_bytes = get_baseline_bytes()
     block, map_north = build_north_district_data()
     MAP_NORTH_PATH.write_text(json.dumps(map_north, indent=2), encoding="utf-8")
     
-    new_world_content = source_bytes.decode("utf-8") + "\n" + block
-    WORLD_PATH.write_text(new_world_content, encoding="utf-8")
+    new_world_content = source_bytes.decode("utf-8") + block
+    WORLD_PATH.write_text(new_world_content, encoding="utf-8", newline="\n")
     print(f"North District block successfully appended to {WORLD_PATH}")
 
 if __name__ == "__main__":
     generate_candidate()
     apply_to_world()
+

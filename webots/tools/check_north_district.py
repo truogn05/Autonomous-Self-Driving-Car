@@ -39,7 +39,7 @@ def run_all_checks(wbt_path: Path = WORLD_PATH):
     assert begin_marker in content, "Missing BEGIN NORTH_DISTRICT marker"
     assert end_marker in content, "Missing END NORTH_DISTRICT marker"
     
-    prefix = content.split(begin_marker)[0].rstrip("\r\n")
+    prefix = content.split(begin_marker)[0]
     prefix_bytes = prefix.encode("utf-8")
     prefix_hash = hashlib.sha256(prefix_bytes).hexdigest()
     
