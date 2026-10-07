@@ -1,0 +1,1811 @@
+{
+  "units": "metres",
+  "coordinate_system": "ENU",
+  "traffic_side": "right",
+  "bounds": [
+    -52,
+    52,
+    48,
+    149
+  ],
+  "river": {
+    "s_formula": "51.5 + 2.0 * sin(2*pi*(x+52)/104)",
+    "w_formula": "13.0 + 2.0 * sin(4*pi*(x+52)/104 + pi/3)",
+    "water_elevation": -0.03,
+    "bed_elevation": -0.15
+  },
+  "flyover": {
+    "span_y": [
+      104.75,
+      118.25
+    ],
+    "plateau_y": [
+      107.75,
+      115.25
+    ],
+    "max_slope": 0.19,
+    "top_elevation": 0.388,
+    "deck_clearance": 0.314
+  },
+  "underpass": {
+    "span_y": [
+      97.5,
+      125.5
+    ],
+    "floor_y": [
+      105.5,
+      117.5
+    ],
+    "max_slope": 0.104625,
+    "floor_elevation": -0.55,
+    "roof_clearance": 0.49
+  },
+  "junctions": {
+    "ND_J_WM_T": {
+      "world_id": "ND_J_WM_T",
+      "position": [
+        -45.0,
+        111.5
+      ],
+      "kind": "T",
+      "shape": [
+        [
+          -46.2,
+          109.7
+        ],
+        [
+          -46.2,
+          113.3
+        ],
+        [
+          -43.8,
+          113.3
+        ],
+        [
+          -43.2,
+          112.7
+        ],
+        [
+          -43.2,
+          110.3
+        ],
+        [
+          -43.8,
+          109.7
+        ]
+      ],
+      "ports": [
+        {
+          "edge": "ND_OUTER_NW",
+          "position": [
+            -45.0,
+            113.3
+          ],
+          "outward": [
+            0.0,
+            1.0
+          ],
+          "width": 2.4
+        },
+        {
+          "edge": "ND_OUTER_W",
+          "position": [
+            -45.0,
+            109.7
+          ],
+          "outward": [
+            0.0,
+            -1.0
+          ],
+          "width": 2.4
+        },
+        {
+          "edge": "ND_ROUND_W",
+          "position": [
+            -43.2,
+            111.5
+          ],
+          "outward": [
+            1.0,
+            0.0
+          ],
+          "width": 2.4
+        }
+      ]
+    },
+    "ND_J_WA_T": {
+      "world_id": "ND_J_WA_T",
+      "position": [
+        -45.0,
+        95.5
+      ],
+      "kind": "T",
+      "shape": [
+        [
+          -46.2,
+          93.7
+        ],
+        [
+          -46.2,
+          97.3
+        ],
+        [
+          -43.8,
+          97.3
+        ],
+        [
+          -43.2,
+          96.1
+        ],
+        [
+          -43.2,
+          94.9
+        ],
+        [
+          -43.8,
+          93.7
+        ]
+      ],
+      "ports": [
+        {
+          "edge": "ND_OUTER_W",
+          "position": [
+            -45.0,
+            97.3
+          ],
+          "outward": [
+            0.0,
+            1.0
+          ],
+          "width": 2.4
+        },
+        {
+          "edge": "ND_OUTER_SW",
+          "position": [
+            -45.0,
+            93.7
+          ],
+          "outward": [
+            0.0,
+            -1.0
+          ],
+          "width": 2.4
+        },
+        {
+          "edge": "ND_LOCAL_W",
+          "position": [
+            -43.2,
+            95.5
+          ],
+          "outward": [
+            1.0,
+            0.0
+          ],
+          "width": 1.2
+        }
+      ]
+    },
+    "ND_J_WS_T": {
+      "world_id": "ND_J_WS_T",
+      "position": [
+        -17.5,
+        95.5
+      ],
+      "kind": "T",
+      "shape": [
+        [
+          -18.7,
+          97.3
+        ],
+        [
+          -16.3,
+          97.3
+        ],
+        [
+          -16.3,
+          93.7
+        ],
+        [
+          -18.7,
+          93.7
+        ],
+        [
+          -19.3,
+          94.9
+        ],
+        [
+          -19.3,
+          96.1
+        ]
+      ],
+      "ports": [
+        {
+          "edge": "ND_ROUND_S",
+          "position": [
+            -17.5,
+            97.3
+          ],
+          "outward": [
+            0.0,
+            1.0
+          ],
+          "width": 2.4
+        },
+        {
+          "edge": "ND_ROUND_SOUTH_LINK",
+          "position": [
+            -17.5,
+            93.7
+          ],
+          "outward": [
+            0.0,
+            -1.0
+          ],
+          "width": 2.4
+        },
+        {
+          "edge": "ND_LOCAL_W",
+          "position": [
+            -19.3,
+            95.5
+          ],
+          "outward": [
+            -1.0,
+            0.0
+          ],
+          "width": 1.2
+        }
+      ]
+    },
+    "ND_J_SW_T": {
+      "world_id": "ND_J_SW_T",
+      "position": [
+        -17.5,
+        72.4902
+      ],
+      "kind": "T",
+      "shape": [
+        [
+          -19.3,
+          71.2902
+        ],
+        [
+          -19.3,
+          73.6902
+        ],
+        [
+          -18.7,
+          74.2902
+        ],
+        [
+          -16.3,
+          74.2902
+        ],
+        [
+          -15.7,
+          73.6902
+        ],
+        [
+          -15.7,
+          71.2902
+        ]
+      ],
+      "ports": [
+        {
+          "edge": "ND_OUTER_SW",
+          "position": [
+            -19.3,
+            72.4902
+          ],
+          "outward": [
+            -1.0,
+            0.0
+          ],
+          "width": 2.4
+        },
+        {
+          "edge": "ND_SHORE_W",
+          "position": [
+            -15.7,
+            72.4902
+          ],
+          "outward": [
+            1.0,
+            0.0
+          ],
+          "width": 2.4
+        },
+        {
+          "edge": "ND_ROUND_SOUTH_LINK",
+          "position": [
+            -17.5,
+            74.2902
+          ],
+          "outward": [
+            0.0,
+            1.0
+          ],
+          "width": 2.4
+        }
+      ]
+    },
+    "ND_J_SL_T": {
+      "world_id": "ND_J_SL_T",
+      "position": [
+        0.0,
+        74.2321
+      ],
+      "kind": "T",
+      "shape": [
+        [
+          -1.8,
+          73.0321
+        ],
+        [
+          -1.8,
+          75.4321
+        ],
+        [
+          -0.6,
+          76.0321
+        ],
+        [
+          0.6,
+          76.0321
+        ],
+        [
+          1.8,
+          75.4321
+        ],
+        [
+          1.8,
+          73.0321
+        ]
+      ],
+      "ports": [
+        {
+          "edge": "ND_SHORE_W",
+          "position": [
+            -1.8,
+            74.2321
+          ],
+          "outward": [
+            -1.0,
+            0.0
+          ],
+          "width": 2.4
+        },
+        {
+          "edge": "ND_SHORE_M",
+          "position": [
+            1.8,
+            74.2321
+          ],
+          "outward": [
+            1.0,
+            0.0
+          ],
+          "width": 2.4
+        },
+        {
+          "edge": "ND_LOCAL_S",
+          "position": [
+            0.0,
+            76.0321
+          ],
+          "outward": [
+            0.0,
+            1.0
+          ],
+          "width": 1.2
+        }
+      ]
+    },
+    "ND_J_SC_T": {
+      "world_id": "ND_J_SC_T",
+      "position": [
+        17.5,
+        70.7177
+      ],
+      "kind": "T",
+      "shape": [
+        [
+          14.9,
+          69.5177
+        ],
+        [
+          14.9,
+          71.9177
+        ],
+        [
+          15.1,
+          73.3177
+        ],
+        [
+          19.9,
+          73.3177
+        ],
+        [
+          20.1,
+          71.9177
+        ],
+        [
+          20.1,
+          69.5177
+        ]
+      ],
+      "ports": [
+        {
+          "edge": "ND_SHORE_M",
+          "position": [
+            14.9,
+            70.7177
+          ],
+          "outward": [
+            -1.0,
+            0.0
+          ],
+          "width": 2.4
+        },
+        {
+          "edge": "ND_SHORE_E",
+          "position": [
+            20.1,
+            70.7177
+          ],
+          "outward": [
+            1.0,
+            0.0
+          ],
+          "width": 2.4
+        },
+        {
+          "edge": "ND_MAIN_S",
+          "position": [
+            17.5,
+            73.3177
+          ],
+          "outward": [
+            0.0,
+            1.0
+          ],
+          "width": 4.8
+        }
+      ]
+    },
+    "ND_J_ST_T": {
+      "world_id": "ND_J_ST_T",
+      "position": [
+        31.5,
+        68.6292
+      ],
+      "kind": "T",
+      "shape": [
+        [
+          29.7,
+          67.4292
+        ],
+        [
+          29.7,
+          69.8292
+        ],
+        [
+          30.3,
+          70.4292
+        ],
+        [
+          32.7,
+          70.4292
+        ],
+        [
+          33.3,
+          69.8292
+        ],
+        [
+          33.3,
+          67.4292
+        ]
+      ],
+      "ports": [
+        {
+          "edge": "ND_SHORE_E",
+          "position": [
+            29.7,
+            68.6292
+          ],
+          "outward": [
+            -1.0,
+            0.0
+          ],
+          "width": 2.4
+        },
+        {
+          "edge": "ND_OUTER_SE",
+          "position": [
+            33.3,
+            68.6292
+          ],
+          "outward": [
+            1.0,
+            0.0
+          ],
+          "width": 2.4
+        },
+        {
+          "edge": "ND_UNDERPASS",
+          "position": [
+            31.5,
+            70.4292
+          ],
+          "outward": [
+            0.0,
+            1.0
+          ],
+          "width": 2.4
+        }
+      ]
+    },
+    "ND_J_CM_X": {
+      "world_id": "ND_J_CM_X",
+      "position": [
+        0.0,
+        111.5
+      ],
+      "kind": "X",
+      "shape": [
+        [
+          -1.8,
+          110.3
+        ],
+        [
+          -1.8,
+          112.7
+        ],
+        [
+          -0.6,
+          113.3
+        ],
+        [
+          0.6,
+          113.3
+        ],
+        [
+          1.8,
+          112.7
+        ],
+        [
+          1.8,
+          110.3
+        ],
+        [
+          0.6,
+          109.7
+        ],
+        [
+          -0.6,
+          109.7
+        ]
+      ],
+      "ports": [
+        {
+          "edge": "ND_ROUND_E",
+          "position": [
+            -1.8,
+            111.5
+          ],
+          "outward": [
+            -1.0,
+            0.0
+          ],
+          "width": 2.4
+        },
+        {
+          "edge": "ND_MIDDLE_W",
+          "position": [
+            1.8,
+            111.5
+          ],
+          "outward": [
+            1.0,
+            0.0
+          ],
+          "width": 2.4
+        },
+        {
+          "edge": "ND_LOCAL_N",
+          "position": [
+            0.0,
+            113.3
+          ],
+          "outward": [
+            0.0,
+            1.0
+          ],
+          "width": 1.2
+        },
+        {
+          "edge": "ND_LOCAL_S",
+          "position": [
+            0.0,
+            109.7
+          ],
+          "outward": [
+            0.0,
+            -1.0
+          ],
+          "width": 1.2
+        }
+      ]
+    },
+    "ND_J_CN_T": {
+      "world_id": "ND_J_CN_T",
+      "position": [
+        0.0,
+        143.0
+      ],
+      "kind": "T",
+      "shape": [
+        [
+          -2.6,
+          145.4
+        ],
+        [
+          2.6,
+          145.4
+        ],
+        [
+          2.6,
+          140.6
+        ],
+        [
+          0.6,
+          140.4
+        ],
+        [
+          -0.6,
+          140.4
+        ],
+        [
+          -2.6,
+          140.6
+        ]
+      ],
+      "ports": [
+        {
+          "edge": "ND_NORTH_W",
+          "position": [
+            -2.6,
+            143.0
+          ],
+          "outward": [
+            -1.0,
+            0.0
+          ],
+          "width": 4.8
+        },
+        {
+          "edge": "ND_NORTH_M",
+          "position": [
+            2.6,
+            143.0
+          ],
+          "outward": [
+            1.0,
+            0.0
+          ],
+          "width": 4.8
+        },
+        {
+          "edge": "ND_LOCAL_N",
+          "position": [
+            0.0,
+            140.4
+          ],
+          "outward": [
+            0.0,
+            -1.0
+          ],
+          "width": 1.2
+        }
+      ]
+    },
+    "ND_J_NW_T": {
+      "world_id": "ND_J_NW_T",
+      "position": [
+        -17.5,
+        143.0
+      ],
+      "kind": "T",
+      "shape": [
+        [
+          -20.1,
+          144.2
+        ],
+        [
+          -14.9,
+          145.4
+        ],
+        [
+          -14.9,
+          140.6
+        ],
+        [
+          -16.3,
+          140.4
+        ],
+        [
+          -18.7,
+          140.4
+        ],
+        [
+          -20.1,
+          141.8
+        ]
+      ],
+      "ports": [
+        {
+          "edge": "ND_OUTER_NW",
+          "position": [
+            -20.1,
+            143.0
+          ],
+          "outward": [
+            -1.0,
+            0.0
+          ],
+          "width": 2.4
+        },
+        {
+          "edge": "ND_NORTH_W",
+          "position": [
+            -14.9,
+            143.0
+          ],
+          "outward": [
+            1.0,
+            0.0
+          ],
+          "width": 4.8
+        },
+        {
+          "edge": "ND_ROUND_N",
+          "position": [
+            -17.5,
+            140.4
+          ],
+          "outward": [
+            0.0,
+            -1.0
+          ],
+          "width": 2.4
+        }
+      ]
+    },
+    "ND_J_NC_T": {
+      "world_id": "ND_J_NC_T",
+      "position": [
+        17.5,
+        143.0
+      ],
+      "kind": "T",
+      "shape": [
+        [
+          14.9,
+          145.4
+        ],
+        [
+          20.1,
+          144.2
+        ],
+        [
+          20.1,
+          141.8
+        ],
+        [
+          19.9,
+          140.4
+        ],
+        [
+          15.1,
+          140.4
+        ],
+        [
+          14.9,
+          140.6
+        ]
+      ],
+      "ports": [
+        {
+          "edge": "ND_NORTH_M",
+          "position": [
+            14.9,
+            143.0
+          ],
+          "outward": [
+            -1.0,
+            0.0
+          ],
+          "width": 4.8
+        },
+        {
+          "edge": "ND_NORTH_E",
+          "position": [
+            20.1,
+            143.0
+          ],
+          "outward": [
+            1.0,
+            0.0
+          ],
+          "width": 2.4
+        },
+        {
+          "edge": "ND_MAIN_N",
+          "position": [
+            17.5,
+            140.4
+          ],
+          "outward": [
+            0.0,
+            -1.0
+          ],
+          "width": 4.8
+        }
+      ]
+    },
+    "ND_J_NT_T": {
+      "world_id": "ND_J_NT_T",
+      "position": [
+        31.5,
+        143.0
+      ],
+      "kind": "T",
+      "shape": [
+        [
+          29.7,
+          144.2
+        ],
+        [
+          33.3,
+          144.2
+        ],
+        [
+          33.3,
+          141.8
+        ],
+        [
+          32.7,
+          141.2
+        ],
+        [
+          30.3,
+          141.2
+        ],
+        [
+          29.7,
+          141.8
+        ]
+      ],
+      "ports": [
+        {
+          "edge": "ND_NORTH_E",
+          "position": [
+            29.7,
+            143.0
+          ],
+          "outward": [
+            -1.0,
+            0.0
+          ],
+          "width": 2.4
+        },
+        {
+          "edge": "ND_OUTER_NE",
+          "position": [
+            33.3,
+            143.0
+          ],
+          "outward": [
+            1.0,
+            0.0
+          ],
+          "width": 2.4
+        },
+        {
+          "edge": "ND_UNDERPASS",
+          "position": [
+            31.5,
+            141.2
+          ],
+          "outward": [
+            0.0,
+            -1.0
+          ],
+          "width": 2.4
+        }
+      ]
+    },
+    "ND_J_EM_T": {
+      "world_id": "ND_J_EM_T",
+      "position": [
+        45.0,
+        111.5
+      ],
+      "kind": "T",
+      "shape": [
+        [
+          43.2,
+          110.3
+        ],
+        [
+          43.2,
+          112.7
+        ],
+        [
+          43.8,
+          113.3
+        ],
+        [
+          46.2,
+          113.3
+        ],
+        [
+          46.2,
+          109.7
+        ],
+        [
+          43.8,
+          109.7
+        ]
+      ],
+      "ports": [
+        {
+          "edge": "ND_OUTER_NE",
+          "position": [
+            45.0,
+            113.3
+          ],
+          "outward": [
+            0.0,
+            1.0
+          ],
+          "width": 2.4
+        },
+        {
+          "edge": "ND_OUTER_SE",
+          "position": [
+            45.0,
+            109.7
+          ],
+          "outward": [
+            0.0,
+            -1.0
+          ],
+          "width": 2.4
+        },
+        {
+          "edge": "ND_MIDDLE_E",
+          "position": [
+            43.2,
+            111.5
+          ],
+          "outward": [
+            -1.0,
+            0.0
+          ],
+          "width": 2.4
+        }
+      ]
+    },
+    "ND_J_F_GROUND": {
+      "world_id": "ND_J_F_GROUND",
+      "position": [
+        17.5,
+        111.5
+      ],
+      "kind": "under_bridge",
+      "shape": [
+        [
+          15.1,
+          108.0
+        ],
+        [
+          15.0,
+          110.3
+        ],
+        [
+          15.0,
+          112.7
+        ],
+        [
+          15.1,
+          115.0
+        ],
+        [
+          16.3,
+          115.0
+        ],
+        [
+          18.7,
+          115.0
+        ],
+        [
+          19.9,
+          115.0
+        ],
+        [
+          20.0,
+          112.7
+        ],
+        [
+          20.0,
+          110.3
+        ],
+        [
+          19.9,
+          108.0
+        ],
+        [
+          18.7,
+          108.0
+        ],
+        [
+          16.3,
+          108.0
+        ]
+      ],
+      "ports": [
+        {
+          "edge": "ND_MIDDLE_W",
+          "position": [
+            15.0,
+            111.5
+          ],
+          "outward": [
+            -1.0,
+            0.0
+          ],
+          "width": 2.4
+        },
+        {
+          "edge": "ND_MIDDLE_E",
+          "position": [
+            20.0,
+            111.5
+          ],
+          "outward": [
+            1.0,
+            0.0
+          ],
+          "width": 2.4
+        },
+        {
+          "edge": "ND_GROUND_WS",
+          "position": [
+            15.7,
+            108.0
+          ],
+          "outward": [
+            0.0,
+            -1.0
+          ],
+          "width": 1.2
+        },
+        {
+          "edge": "ND_GROUND_ES",
+          "position": [
+            19.3,
+            108.0
+          ],
+          "outward": [
+            0.0,
+            -1.0
+          ],
+          "width": 1.2
+        },
+        {
+          "edge": "ND_GROUND_WN",
+          "position": [
+            15.7,
+            115.0
+          ],
+          "outward": [
+            0.0,
+            1.0
+          ],
+          "width": 1.2
+        },
+        {
+          "edge": "ND_GROUND_EN",
+          "position": [
+            19.3,
+            115.0
+          ],
+          "outward": [
+            0.0,
+            1.0
+          ],
+          "width": 1.2
+        }
+      ]
+    },
+    "ND_ROUND": {
+      "world_id": "ND_ROUND",
+      "position": [
+        -17.5,
+        111.5
+      ],
+      "kind": "roundabout",
+      "shape": [],
+      "ports": [
+        {
+          "edge": "ND_ROUND_W",
+          "position": [
+            -24.7,
+            111.5
+          ],
+          "outward": [
+            -1.0,
+            0.0
+          ],
+          "width": 2.4
+        },
+        {
+          "edge": "ND_ROUND_N",
+          "position": [
+            -17.5,
+            118.7
+          ],
+          "outward": [
+            0.0,
+            1.0
+          ],
+          "width": 2.4
+        },
+        {
+          "edge": "ND_ROUND_S",
+          "position": [
+            -17.5,
+            104.3
+          ],
+          "outward": [
+            0.0,
+            -1.0
+          ],
+          "width": 2.4
+        },
+        {
+          "edge": "ND_ROUND_E",
+          "position": [
+            -10.3,
+            111.5
+          ],
+          "outward": [
+            1.0,
+            0.0
+          ],
+          "width": 2.4
+        }
+      ]
+    },
+    "ND_SPLIT_S": {
+      "world_id": "ND_SPLIT_S",
+      "position": [
+        17.5,
+        104.75
+      ],
+      "kind": "lane_split",
+      "shape": [],
+      "ports": [
+        {
+          "edge": "ND_MAIN_S",
+          "position": [
+            17.5,
+            104.75
+          ],
+          "outward": [
+            0.0,
+            -1.0
+          ],
+          "width": 4.8
+        },
+        {
+          "edge": "ND_FLYOVER",
+          "position": [
+            17.5,
+            104.75
+          ],
+          "outward": [
+            0.0,
+            1.0
+          ],
+          "width": 2.4
+        },
+        {
+          "edge": "ND_GROUND_WS",
+          "position": [
+            15.7,
+            104.75
+          ],
+          "outward": [
+            0.0,
+            1.0
+          ],
+          "width": 1.2
+        },
+        {
+          "edge": "ND_GROUND_ES",
+          "position": [
+            19.3,
+            104.75
+          ],
+          "outward": [
+            0.0,
+            1.0
+          ],
+          "width": 1.2
+        }
+      ]
+    },
+    "ND_SPLIT_N": {
+      "world_id": "ND_SPLIT_N",
+      "position": [
+        17.5,
+        118.25
+      ],
+      "kind": "lane_split",
+      "shape": [],
+      "ports": [
+        {
+          "edge": "ND_MAIN_N",
+          "position": [
+            17.5,
+            118.25
+          ],
+          "outward": [
+            0.0,
+            1.0
+          ],
+          "width": 4.8
+        },
+        {
+          "edge": "ND_FLYOVER",
+          "position": [
+            17.5,
+            118.25
+          ],
+          "outward": [
+            0.0,
+            -1.0
+          ],
+          "width": 2.4
+        },
+        {
+          "edge": "ND_GROUND_WN",
+          "position": [
+            15.7,
+            118.25
+          ],
+          "outward": [
+            0.0,
+            -1.0
+          ],
+          "width": 1.2
+        },
+        {
+          "edge": "ND_GROUND_EN",
+          "position": [
+            19.3,
+            118.25
+          ],
+          "outward": [
+            0.0,
+            -1.0
+          ],
+          "width": 1.2
+        }
+      ]
+    }
+  },
+  "roads": [
+    {
+      "id": "ND_OUTER_NW",
+      "name": "Road-ND_OUTER_NW",
+      "from": "ND_J_WM_T",
+      "to": "ND_J_NW_T",
+      "number_of_lanes": 4,
+      "forward_lanes": 2,
+      "width": 2.4,
+      "points": [
+        [-45.0, 113.3],
+        [-45.0, 138.0],
+        [-44.755283, 139.545085],
+        [-44.045085, 140.938926],
+        [-42.938926, 142.045085],
+        [-41.545085, 142.755283],
+        [-40.0, 143.0],
+        [-20.1, 143.0]
+      ],
+      "elevations": [0.008, 0.008, 0.008, 0.008, 0.008, 0.008, 0.008, 0.008]
+    },
+    {
+      "id": "ND_OUTER_W",
+      "name": "Road-ND_OUTER_W",
+      "from": "ND_J_WM_T",
+      "to": "ND_J_WA_T",
+      "number_of_lanes": 4,
+      "forward_lanes": 2,
+      "width": 2.4,
+      "points": [
+        [-45.0, 109.7],
+        [-45.0, 97.3]
+      ],
+      "elevations": [0.008, 0.008]
+    },
+    {
+      "id": "ND_OUTER_SW",
+      "name": "Road-ND_OUTER_SW",
+      "from": "ND_J_WA_T",
+      "to": "ND_J_SW_T",
+      "number_of_lanes": 4,
+      "forward_lanes": 2,
+      "width": 2.4,
+      "points": [
+        [-45.0, 93.7],
+        [-45.0, 80.0277],
+        [-44.755283, 78.482615],
+        [-44.045085, 77.088774],
+        [-42.938926, 75.982615],
+        [-41.545085, 75.272417],
+        [-40.0, 75.0277],
+        [-35.0, 74.96023],
+        [-30.0, 74.52011],
+        [-25.0, 73.46824],
+        [-20.6, 72.4902],
+        [-19.3, 72.4902]
+      ],
+      "elevations": [0.008, 0.008, 0.008, 0.008, 0.008, 0.008, 0.008, 0.008, 0.008, 0.008, 0.008, 0.008]
+    },
+    {
+      "id": "ND_SHORE_W",
+      "name": "Road-ND_SHORE_W",
+      "from": "ND_J_SW_T",
+      "to": "ND_J_SL_T",
+      "number_of_lanes": 4,
+      "forward_lanes": 2,
+      "width": 2.4,
+      "points": [
+        [-15.7, 72.4902],
+        [-14.4, 72.4902],
+        [-11.575, 72.6371],
+        [-8.75, 73.36115],
+        [-5.925, 74.0852],
+        [-3.1, 74.2321],
+        [-1.8, 74.2321]
+      ],
+      "elevations": [0.008, 0.008, 0.008, 0.008, 0.008, 0.008, 0.008]
+    },
+    {
+      "id": "ND_SHORE_M",
+      "name": "Road-ND_SHORE_M",
+      "from": "ND_J_SL_T",
+      "to": "ND_J_SC_T",
+      "number_of_lanes": 4,
+      "forward_lanes": 2,
+      "width": 2.4,
+      "points": [
+        [1.8, 74.2321],
+        [3.1, 74.2321],
+        [5.925, 73.9358],
+        [8.75, 72.4749],
+        [11.575, 71.014],
+        [14.4, 70.7177],
+        [14.9, 70.7177]
+      ],
+      "elevations": [0.008, 0.008, 0.008, 0.008, 0.008, 0.008, 0.008]
+    },
+    {
+      "id": "ND_SHORE_E",
+      "name": "Road-ND_SHORE_E",
+      "from": "ND_J_SC_T",
+      "to": "ND_J_ST_T",
+      "number_of_lanes": 4,
+      "forward_lanes": 2,
+      "width": 2.4,
+      "points": [
+        [20.1, 70.7177],
+        [20.6, 70.7177],
+        [22.55, 70.5407],
+        [24.5, 69.67345],
+        [26.45, 68.8062],
+        [28.4, 68.6292],
+        [29.7, 68.6292]
+      ],
+      "elevations": [0.008, 0.008, 0.008, 0.008, 0.008, 0.008, 0.008]
+    },
+    {
+      "id": "ND_OUTER_SE",
+      "name": "Road-ND_OUTER_SE",
+      "from": "ND_J_ST_T",
+      "to": "ND_J_EM_T",
+      "number_of_lanes": 4,
+      "forward_lanes": 2,
+      "width": 2.4,
+      "points": [
+        [33.3, 68.6292],
+        [40.0, 68.6292],
+        [41.545085, 68.874483],
+        [42.938926, 69.584682],
+        [44.045085, 70.690841],
+        [44.755283, 72.084682],
+        [45.0, 73.6292],
+        [45.0, 109.7]
+      ],
+      "elevations": [0.008, 0.008, 0.008, 0.008, 0.008, 0.008, 0.008, 0.008]
+    },
+    {
+      "id": "ND_OUTER_NE",
+      "name": "Road-ND_OUTER_NE",
+      "from": "ND_J_EM_T",
+      "to": "ND_J_NT_T",
+      "number_of_lanes": 4,
+      "forward_lanes": 2,
+      "width": 2.4,
+      "points": [
+        [45.0, 113.3],
+        [45.0, 138.0],
+        [44.755283, 139.545085],
+        [44.045085, 140.938926],
+        [42.938926, 142.045085],
+        [41.545085, 142.755283],
+        [40.0, 143.0],
+        [33.3, 143.0]
+      ],
+      "elevations": [0.008, 0.008, 0.008, 0.008, 0.008, 0.008, 0.008, 0.008]
+    },
+    {
+      "id": "ND_NORTH_E",
+      "name": "Road-ND_NORTH_E",
+      "from": "ND_J_NT_T",
+      "to": "ND_J_NC_T",
+      "number_of_lanes": 4,
+      "forward_lanes": 2,
+      "width": 2.4,
+      "points": [
+        [29.7, 143.0],
+        [20.1, 143.0]
+      ],
+      "elevations": [0.008, 0.008]
+    },
+    {
+      "id": "ND_NORTH_M",
+      "name": "Road-ND_NORTH_M",
+      "from": "ND_J_NC_T",
+      "to": "ND_J_CN_T",
+      "number_of_lanes": 8,
+      "forward_lanes": 4,
+      "width": 4.8,
+      "points": [
+        [14.9, 143.0],
+        [2.6, 143.0]
+      ],
+      "elevations": [0.008, 0.008]
+    },
+    {
+      "id": "ND_NORTH_W",
+      "name": "Road-ND_NORTH_W",
+      "from": "ND_J_CN_T",
+      "to": "ND_J_NW_T",
+      "number_of_lanes": 8,
+      "forward_lanes": 4,
+      "width": 4.8,
+      "points": [
+        [-2.6, 143.0],
+        [-14.9, 143.0]
+      ],
+      "elevations": [0.008, 0.008]
+    },
+    {
+      "id": "ND_ROUND_W",
+      "name": "Road-ND_ROUND_W",
+      "from": "ND_ROUND",
+      "to": "ND_J_WM_T",
+      "number_of_lanes": 4,
+      "forward_lanes": 2,
+      "width": 2.4,
+      "points": [
+        [-24.7, 111.5],
+        [-43.2, 111.5]
+      ],
+      "elevations": [0.008, 0.008]
+    },
+    {
+      "id": "ND_ROUND_N",
+      "name": "Road-ND_ROUND_N",
+      "from": "ND_ROUND",
+      "to": "ND_J_NW_T",
+      "number_of_lanes": 4,
+      "forward_lanes": 2,
+      "width": 2.4,
+      "points": [
+        [-17.5, 118.7],
+        [-17.5, 140.4]
+      ],
+      "elevations": [0.008, 0.008]
+    },
+    {
+      "id": "ND_ROUND_S",
+      "name": "Road-ND_ROUND_S",
+      "from": "ND_ROUND",
+      "to": "ND_J_WS_T",
+      "number_of_lanes": 4,
+      "forward_lanes": 2,
+      "width": 2.4,
+      "points": [
+        [-17.5, 104.3],
+        [-17.5, 97.3]
+      ],
+      "elevations": [0.008, 0.008]
+    },
+    {
+      "id": "ND_ROUND_SOUTH_LINK",
+      "name": "Road-ND_ROUND_SOUTH_LINK",
+      "from": "ND_J_WS_T",
+      "to": "ND_J_SW_T",
+      "number_of_lanes": 4,
+      "forward_lanes": 2,
+      "width": 2.4,
+      "points": [
+        [-17.5, 93.7],
+        [-17.5, 74.2902]
+      ],
+      "elevations": [0.008, 0.008]
+    },
+    {
+      "id": "ND_ROUND_E",
+      "name": "Road-ND_ROUND_E",
+      "from": "ND_ROUND",
+      "to": "ND_J_CM_X",
+      "number_of_lanes": 4,
+      "forward_lanes": 2,
+      "width": 2.4,
+      "points": [
+        [-10.3, 111.5],
+        [-1.8, 111.5]
+      ],
+      "elevations": [0.008, 0.008]
+    },
+    {
+      "id": "ND_MIDDLE_W",
+      "name": "Road-ND_MIDDLE_W",
+      "from": "ND_J_CM_X",
+      "to": "ND_J_F_GROUND",
+      "number_of_lanes": 4,
+      "forward_lanes": 2,
+      "width": 2.4,
+      "points": [
+        [1.8, 111.5],
+        [15.0, 111.5]
+      ],
+      "elevations": [0.008, 0.008]
+    },
+    {
+      "id": "ND_MIDDLE_E",
+      "name": "Road-ND_MIDDLE_E",
+      "from": "ND_J_F_GROUND",
+      "to": "ND_J_EM_T",
+      "number_of_lanes": 4,
+      "forward_lanes": 2,
+      "width": 2.4,
+      "points": [
+        [20.0, 111.5],
+        [43.2, 111.5]
+      ],
+      "elevations": [0.008, 0.008]
+    },
+    {
+      "id": "ND_MAIN_S",
+      "name": "Road-ND_MAIN_S",
+      "from": "ND_J_SC_T",
+      "to": "ND_SPLIT_S",
+      "number_of_lanes": 8,
+      "forward_lanes": 4,
+      "width": 4.8,
+      "points": [
+        [17.5, 73.3177],
+        [17.5, 104.75]
+      ],
+      "elevations": [0.008, 0.008]
+    },
+    {
+      "id": "ND_MAIN_N",
+      "name": "Road-ND_MAIN_N",
+      "from": "ND_SPLIT_N",
+      "to": "ND_J_NC_T",
+      "number_of_lanes": 8,
+      "forward_lanes": 4,
+      "width": 4.8,
+      "points": [
+        [17.5, 118.25],
+        [17.5, 140.4]
+      ],
+      "elevations": [0.008, 0.008]
+    },
+    {
+      "id": "ND_FLYOVER",
+      "name": "Road-ND_FLYOVER",
+      "from": "ND_SPLIT_S",
+      "to": "ND_SPLIT_N",
+      "number_of_lanes": 4,
+      "forward_lanes": 2,
+      "width": 2.4,
+      "points": [
+        [17.5, 104.75],
+        [17.5, 105.5],
+        [17.5, 106.25],
+        [17.5, 107.0],
+        [17.5, 107.75],
+        [17.5, 109.0],
+        [17.5, 111.5],
+        [17.5, 114.0],
+        [17.5, 115.25],
+        [17.5, 116.0],
+        [17.5, 116.75],
+        [17.5, 117.5],
+        [17.5, 118.25]
+      ],
+      "elevations": [
+        0.008,
+        0.089852,
+        0.2315,
+        0.347296,
+        0.388,
+        0.388,
+        0.388,
+        0.388,
+        0.388,
+        0.347296,
+        0.2315,
+        0.089852,
+        0.008
+      ]
+    },
+    {
+      "id": "ND_GROUND_WS",
+      "name": "Road-ND_GROUND_WS",
+      "from": "ND_SPLIT_S",
+      "to": "ND_J_F_GROUND",
+      "number_of_lanes": 2,
+      "forward_lanes": 0,
+      "width": 1.2,
+      "points": [
+        [15.7, 104.75],
+        [15.7, 108.0]
+      ],
+      "elevations": [0.008, 0.008]
+    },
+    {
+      "id": "ND_GROUND_ES",
+      "name": "Road-ND_GROUND_ES",
+      "from": "ND_SPLIT_S",
+      "to": "ND_J_F_GROUND",
+      "number_of_lanes": 2,
+      "forward_lanes": 2,
+      "width": 1.2,
+      "points": [
+        [19.3, 104.75],
+        [19.3, 108.0]
+      ],
+      "elevations": [0.008, 0.008]
+    },
+    {
+      "id": "ND_GROUND_WN",
+      "name": "Road-ND_GROUND_WN",
+      "from": "ND_J_F_GROUND",
+      "to": "ND_SPLIT_N",
+      "number_of_lanes": 2,
+      "forward_lanes": 0,
+      "width": 1.2,
+      "points": [
+        [15.7, 115.0],
+        [15.7, 118.25]
+      ],
+      "elevations": [0.008, 0.008]
+    },
+    {
+      "id": "ND_GROUND_EN",
+      "name": "Road-ND_GROUND_EN",
+      "from": "ND_J_F_GROUND",
+      "to": "ND_SPLIT_N",
+      "number_of_lanes": 2,
+      "forward_lanes": 2,
+      "width": 1.2,
+      "points": [
+        [19.3, 115.0],
+        [19.3, 118.25]
+      ],
+      "elevations": [0.008, 0.008]
+    },
+    {
+      "id": "ND_UNDERPASS",
+      "name": "Road-ND_UNDERPASS",
+      "from": "ND_J_ST_T",
+      "to": "ND_J_NT_T",
+      "number_of_lanes": 4,
+      "forward_lanes": 2,
+      "width": 2.4,
+      "points": [
+        [31.5, 70.4292],
+        [31.5, 97.5],
+        [31.5, 99.5],
+        [31.5, 101.5],
+        [31.5, 103.5],
+        [31.5, 105.5],
+        [31.5, 111.5],
+        [31.5, 117.5],
+        [31.5, 119.5],
+        [31.5, 121.5],
+        [31.5, 123.5],
+        [31.5, 125.5],
+        [31.5, 141.2]
+      ],
+      "elevations": [
+        0.008,
+        0.008,
+        -0.079313,
+        -0.271,
+        -0.462688,
+        -0.55,
+        -0.55,
+        -0.55,
+        -0.462688,
+        -0.271,
+        -0.079313,
+        0.008,
+        0.008
+      ]
+    },
+    {
+      "id": "ND_LOCAL_W",
+      "name": "Road-ND_LOCAL_W",
+      "from": "ND_J_WA_T",
+      "to": "ND_J_WS_T",
+      "number_of_lanes": 2,
+      "forward_lanes": 1,
+      "width": 1.2,
+      "points": [
+        [-43.2, 95.5],
+        [-19.3, 95.5]
+      ],
+      "elevations": [0.008, 0.008]
+    },
+    {
+      "id": "ND_LOCAL_S",
+      "name": "Road-ND_LOCAL_S",
+      "from": "ND_J_SL_T",
+      "to": "ND_J_CM_X",
+      "number_of_lanes": 2,
+      "forward_lanes": 1,
+      "width": 1.2,
+      "points": [
+        [0.0, 76.0321],
+        [0.0, 109.7]
+      ],
+      "elevations": [0.008, 0.008]
+    },
+    {
+      "id": "ND_LOCAL_N",
+      "name": "Road-ND_LOCAL_N",
+      "from": "ND_J_CM_X",
+      "to": "ND_J_CN_T",
+      "number_of_lanes": 2,
+      "forward_lanes": 1,
+      "width": 1.2,
+      "points": [
+        [0.0, 113.3],
+        [0.0, 140.4]
+      ],
+      "elevations": [0.008, 0.008]
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "timestamp": "2026-10-07T07:06:00+07:00",
+  "audit_plan": "docs/audit-07-10-2026-00-02-42.md",
+  "rule_compliance": {
+    "agent_rule": "AGENT.md (RULE-AUTONOMOUS-WEBOTS-20261 v1.0.0)",
+    "gemini_entrypoint": "GEMINI.md",
+    "coordinate_system": "ENU (East: +X, North: +Y, Up: +Z)",
+    "traffic_side": "right",
+    "scale": "1:10 micro-city (lane width 0.60m, markings 0.025m)"
+  },
+  "baseline": {
+    "world_file": "webots/worlds/my_world.wbt",
+    "prefix_sha256": "43893716767c5eb3e68aa1f289f3386f2da89136b242d25497178550c6614da6",
+    "prefix_lines": 8609,
+    "prefix_preserved_byte_exact": true
+  },
+  "artifacts": [
+    {
+      "path": "webots/worlds/my_world.wbt",
+      "description": "Simulation world file with North District appended block (# BEGIN NORTH_DISTRICT ... # END NORTH_DISTRICT)",
+      "total_lines": 10733
+    },
+    {
+      "path": "webots/map-north.json",
+      "description": "Sidecar metadata JSON containing 29 roads, 17 junctions, bounds, river formulas, flyover/underpass profiles"
+    },
+    {
+      "path": "webots/tools/add_north_district.py",
+      "description": "Procedural generator script implementing full 3D geometry and mesh construction for North District"
+    },
+    {
+      "path": "webots/tools/check_north_district.py",
+      "description": "Independent validation test script verifying all 14 mandatory criteria from Section 13.2"
+    },
+    {
+      "path": "webots/validation/north-district/manifest.json",
+      "description": "Deployment manifest recording file hashes, criteria status, and metadata"
+    },
+    {
+      "path": "webots/validation/north-district/north_district_qa.json",
+      "description": "Structured QA test results verifying all 14 acceptance assertions"
+    },
+    {
+      "path": "webots/validation/north-district/report.md",
+      "description": "Detailed acceptance audit report summarizing North District implementation"
+    }
+  ]
+}

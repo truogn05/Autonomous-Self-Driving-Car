@@ -8606,3 +8606,2127 @@ Solid {
   name "Bridge-NORTH_FLYOVER-RampSupport-East"
   boundingObject USE NORTH_FLYOVER_RAMP_EAST
 }
+# BEGIN NORTH_DISTRICT
+
+# ==============================================================================
+# 1. NORTH DISTRICT TERRAIN & STRUCTURES
+# ==============================================================================
+
+Solid {
+  translation 0 25.4 -0.06
+  children [
+    Shape {
+      appearance DEF ND_GROUND_APP PBRAppearance {
+        baseColor 0.38 0.48 0.32
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 104 3 0.12
+      }
+    }
+  ]
+  name "ND_GROUND_SOUTH_STRIP"
+  boundingObject Box {
+    size 104 3 0.12
+  }
+}
+
+Solid {
+  translation 0 58.5 -0.15
+  children [
+    Shape {
+      appearance DEF ND_BED_APP PBRAppearance {
+        baseColor 0.65 0.67 0.62
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 104 18 0.1
+      }
+    }
+  ]
+  name "ND_RIVER_BED"
+  boundingObject Box {
+    size 104 18 0.1
+  }
+}
+
+Solid {
+  translation 0 58.5 -0.09
+  children [
+    Shape {
+      appearance DEF ND_WATER_APP PBRAppearance {
+        baseColor 0.1 0.35 0.65
+        roughness 0.2
+        metalness 0.1
+      }
+      geometry Box {
+        size 104 18 0.12
+      }
+    }
+  ]
+  name "ND_RIVER_WATER"
+  boundingObject Box {
+    size 104 18 0.12
+  }
+}
+
+Solid {
+  translation -20.25 108.5 -0.06
+  children [
+    Shape {
+      appearance USE ND_GROUND_APP
+      geometry Box {
+        size 63.5 81 0.12
+      }
+    }
+  ]
+  name "ND_GROUND_NORTH_WEST"
+  boundingObject Box {
+    size 63.5 81 0.12
+  }
+}
+
+Solid {
+  translation 42.55 108.5 -0.06
+  children [
+    Shape {
+      appearance USE ND_GROUND_APP
+      geometry Box {
+        size 18.9 81 0.12
+      }
+    }
+  ]
+  name "ND_GROUND_NORTH_EAST"
+  boundingObject Box {
+    size 18.9 81 0.12
+  }
+}
+
+Solid {
+  translation 31.5 82.75 -0.06
+  children [
+    Shape {
+      appearance USE ND_GROUND_APP
+      geometry Box {
+        size 3.2 29.5 0.12
+      }
+    }
+  ]
+  name "ND_GROUND_NORTH_MID_SOUTH"
+  boundingObject Box {
+    size 3.2 29.5 0.12
+  }
+}
+
+Solid {
+  translation 31.5 137.25 -0.06
+  children [
+    Shape {
+      appearance USE ND_GROUND_APP
+      geometry Box {
+        size 3.2 23.5 0.12
+      }
+    }
+  ]
+  name "ND_GROUND_NORTH_MID_NORTH"
+  boundingObject Box {
+    size 3.2 23.5 0.12
+  }
+}
+
+# --- Flyover Bridge Structure ---
+Solid {
+  translation 17.5 111.5 0.352
+  children [
+    Shape {
+      appearance DEF ND_PAVEMENT_APP PBRAppearance {
+        baseColor 0.65 0.67 0.62
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 2.4 7.5 0.06
+      }
+    }
+  ]
+  name "ND_Bridge-Deck"
+  boundingObject Box {
+    size 2.4 7.5 0.06
+  }
+}
+
+Solid {
+  translation 17.5 106.25 0.191
+  children [
+    Shape {
+      appearance USE ND_PAVEMENT_APP
+      geometry Box {
+        size 2.4 3 0.382
+      }
+    }
+  ]
+  name "ND_Bridge-RampSupport-South"
+  boundingObject Box {
+    size 2.4 3 0.382
+  }
+}
+
+Solid {
+  translation 17.5 116.75 0.191
+  children [
+    Shape {
+      appearance USE ND_PAVEMENT_APP
+      geometry Box {
+        size 2.4 3 0.382
+      }
+    }
+  ]
+  name "ND_Bridge-RampSupport-North"
+  boundingObject Box {
+    size 2.4 3 0.382
+  }
+}
+
+# --- Underpass Structure ---
+Solid {
+  translation 31.5 111.5 -0.03
+  children [
+    Shape {
+      appearance USE ND_PAVEMENT_APP
+      geometry Box {
+        size 3.2 5.6 0.06
+      }
+    }
+  ]
+  name "ND_Underpass-Roof"
+  boundingObject Box {
+    size 3.2 5.6 0.06
+  }
+}
+
+Solid {
+  translation 29.85 111.5 -0.275
+  children [
+    Shape {
+      appearance DEF ND_WALL_APP PBRAppearance {
+        baseColor 0.6 0.62 0.58
+        roughness 0.95
+        metalness 0
+      }
+      geometry Box {
+        size 0.1 28 0.55
+      }
+    }
+  ]
+  name "ND_Underpass-Wall-West"
+  boundingObject Box {
+    size 0.1 28 0.55
+  }
+}
+
+Solid {
+  translation 33.15 111.5 -0.275
+  children [
+    Shape {
+      appearance USE ND_WALL_APP
+      geometry Box {
+        size 0.1 28 0.55
+      }
+    }
+  ]
+  name "ND_Underpass-Wall-East"
+  boundingObject Box {
+    size 0.1 28 0.55
+  }
+}
+
+# ==============================================================================
+# 2. NORTH DISTRICT JUNCTIONS (17 NATIVE NODES, 20 PORTS)
+# ==============================================================================
+
+Crossroad {
+  translation 0 0 0.008
+  name "ND_Junction-WM_T"
+  id "ND_J_WM_T"
+  shape [
+    -109.7 46.2 0
+    -113.3 46.2 0
+    -113.3 43.8 0
+    -112.7 43.2 0
+    -110.3 43.2 0
+    -109.7 43.8 0
+  ]
+  connectedRoadIDs [
+    "ND_OUTER_NW"
+    "ND_OUTER_W"
+    "ND_ROUND_W"
+  ]
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+}
+
+Crossroad {
+  translation 0 0 0.008
+  name "ND_Junction-WA_T"
+  id "ND_J_WA_T"
+  shape [
+    -93.7 46.2 0
+    -97.3 46.2 0
+    -97.3 43.8 0
+    -96.1 43.2 0
+    -94.9 43.2 0
+    -93.7 43.8 0
+  ]
+  connectedRoadIDs [
+    "ND_OUTER_W"
+    "ND_OUTER_SW"
+    "ND_LOCAL_W"
+  ]
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+}
+
+Crossroad {
+  translation 0 0 0.008
+  name "ND_Junction-WS_T"
+  id "ND_J_WS_T"
+  shape [
+    -97.3 18.7 0
+    -97.3 16.3 0
+    -93.7 16.3 0
+    -93.7 18.7 0
+    -94.9 19.3 0
+    -96.1 19.3 0
+  ]
+  connectedRoadIDs [
+    "ND_ROUND_S"
+    "ND_ROUND_SOUTH_LINK"
+    "ND_LOCAL_W"
+  ]
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+}
+
+Crossroad {
+  translation 0 0 0.008
+  name "ND_Junction-SW_T"
+  id "ND_J_SW_T"
+  shape [
+    -71.2902 19.3 0
+    -73.6902 19.3 0
+    -74.2902 18.7 0
+    -74.2902 16.3 0
+    -73.6902 15.7 0
+    -71.2902 15.7 0
+  ]
+  connectedRoadIDs [
+    "ND_OUTER_SW"
+    "ND_SHORE_W"
+    "ND_ROUND_SOUTH_LINK"
+  ]
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+}
+
+Crossroad {
+  translation 0 0 0.008
+  name "ND_Junction-SL_T"
+  id "ND_J_SL_T"
+  shape [
+    -73.0321 1.8 0
+    -75.4321 1.8 0
+    -76.0321 0.6 0
+    -76.0321 -0.6 0
+    -75.4321 -1.8 0
+    -73.0321 -1.8 0
+  ]
+  connectedRoadIDs [
+    "ND_SHORE_W"
+    "ND_SHORE_M"
+    "ND_LOCAL_S"
+  ]
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+}
+
+Crossroad {
+  translation 0 0 0.008
+  name "ND_Junction-SC_T"
+  id "ND_J_SC_T"
+  shape [
+    -69.5177 -14.9 0
+    -71.9177 -14.9 0
+    -73.3177 -15.1 0
+    -73.3177 -19.9 0
+    -71.9177 -20.1 0
+    -69.5177 -20.1 0
+  ]
+  connectedRoadIDs [
+    "ND_SHORE_M"
+    "ND_SHORE_E"
+    "ND_MAIN_S"
+  ]
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+}
+
+Crossroad {
+  translation 0 0 0.008
+  name "ND_Junction-ST_T"
+  id "ND_J_ST_T"
+  shape [
+    -67.4292 -29.7 0
+    -69.8292 -29.7 0
+    -70.4292 -30.3 0
+    -70.4292 -32.7 0
+    -69.8292 -33.3 0
+    -67.4292 -33.3 0
+  ]
+  connectedRoadIDs [
+    "ND_SHORE_E"
+    "ND_OUTER_SE"
+    "ND_UNDERPASS"
+  ]
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+}
+
+Crossroad {
+  translation 0 0 0.008
+  name "ND_Junction-CM_X"
+  id "ND_J_CM_X"
+  shape [
+    -110.3 1.8 0
+    -112.7 1.8 0
+    -113.3 0.6 0
+    -113.3 -0.6 0
+    -112.7 -1.8 0
+    -110.3 -1.8 0
+    -109.7 -0.6 0
+    -109.7 0.6 0
+  ]
+  connectedRoadIDs [
+    "ND_ROUND_E"
+    "ND_MIDDLE_W"
+    "ND_LOCAL_N"
+    "ND_LOCAL_S"
+  ]
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+}
+
+Crossroad {
+  translation 0 0 0.008
+  name "ND_Junction-CN_T"
+  id "ND_J_CN_T"
+  shape [
+    -145.4 2.6 0
+    -145.4 -2.6 0
+    -140.6 -2.6 0
+    -140.4 -0.6 0
+    -140.4 0.6 0
+    -140.6 2.6 0
+  ]
+  connectedRoadIDs [
+    "ND_NORTH_W"
+    "ND_NORTH_M"
+    "ND_LOCAL_N"
+  ]
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+}
+
+Crossroad {
+  translation 0 0 0.008
+  name "ND_Junction-NW_T"
+  id "ND_J_NW_T"
+  shape [
+    -144.2 20.1 0
+    -145.4 14.9 0
+    -140.6 14.9 0
+    -140.4 16.3 0
+    -140.4 18.7 0
+    -141.8 20.1 0
+  ]
+  connectedRoadIDs [
+    "ND_OUTER_NW"
+    "ND_NORTH_W"
+    "ND_ROUND_N"
+  ]
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+}
+
+Crossroad {
+  translation 0 0 0.008
+  name "ND_Junction-NC_T"
+  id "ND_J_NC_T"
+  shape [
+    -145.4 -14.9 0
+    -144.2 -20.1 0
+    -141.8 -20.1 0
+    -140.4 -19.9 0
+    -140.4 -15.1 0
+    -140.6 -14.9 0
+  ]
+  connectedRoadIDs [
+    "ND_NORTH_M"
+    "ND_NORTH_E"
+    "ND_MAIN_N"
+  ]
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+}
+
+Crossroad {
+  translation 0 0 0.008
+  name "ND_Junction-NT_T"
+  id "ND_J_NT_T"
+  shape [
+    -144.2 -29.7 0
+    -144.2 -33.3 0
+    -141.8 -33.3 0
+    -141.2 -32.7 0
+    -141.2 -30.3 0
+    -141.8 -29.7 0
+  ]
+  connectedRoadIDs [
+    "ND_NORTH_E"
+    "ND_OUTER_NE"
+    "ND_UNDERPASS"
+  ]
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+}
+
+Crossroad {
+  translation 0 0 0.008
+  name "ND_Junction-EM_T"
+  id "ND_J_EM_T"
+  shape [
+    -110.3 -43.2 0
+    -112.7 -43.2 0
+    -113.3 -43.8 0
+    -113.3 -46.2 0
+    -109.7 -46.2 0
+    -109.7 -43.8 0
+  ]
+  connectedRoadIDs [
+    "ND_OUTER_NE"
+    "ND_OUTER_SE"
+    "ND_MIDDLE_E"
+  ]
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+}
+
+Crossroad {
+  translation 0 0 0.008
+  name "ND_Junction-F_GROUND"
+  id "ND_J_F_GROUND"
+  shape [
+    -108 -15.1 0
+    -110.3 -15 0
+    -112.7 -15 0
+    -115 -15.1 0
+    -115 -16.3 0
+    -115 -18.7 0
+    -115 -19.9 0
+    -112.7 -20 0
+    -110.3 -20 0
+    -108 -19.9 0
+    -108 -18.7 0
+    -108 -16.3 0
+  ]
+  connectedRoadIDs [
+    "ND_MIDDLE_W"
+    "ND_MIDDLE_E"
+    "ND_GROUND_WS"
+    "ND_GROUND_ES"
+    "ND_GROUND_WN"
+    "ND_GROUND_EN"
+  ]
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+}
+
+Roundabout {
+  translation -17.5 111.5 0.008
+  rotation 0 0 1 -0.7853981633974483
+  name "ND_Roundabout"
+  id "ND_ROUND"
+  connectedRoadIDs [
+    "ND_ROUND_W"
+    "ND_ROUND_N"
+    "ND_ROUND_E"
+    "ND_ROUND_S"
+  ]
+  subdivision 32
+  borderWidth 0.1
+  borderHeight 0.04
+  innerRadius 4.2
+  outerRadius 6
+  numberOfLanes 3
+  startRoadsLength [
+    1.2
+  ]
+  startRoadsWidth 2.4
+  startRoadsNumberOfLanes 4
+  startRoadsStartLine []
+  startRoadsLine [
+    RoadLine {
+      width 0.025
+    }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "double"
+      width 0.025
+    }
+    RoadLine {
+      width 0.025
+    }
+  ]
+  lines [
+    RoadLine {
+      type "dashed"
+      width 0.025
+    }
+    RoadLine {
+      type "dashed"
+      width 0.025
+    }
+  ]
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+}
+
+Crossroad {
+  translation 17.5 104.75 0.008
+  name "ND_Junction-SPLIT_S"
+  id "ND_SPLIT_S"
+  shape []
+  connectedRoadIDs [
+    "ND_MAIN_S"
+    "ND_GROUND_WS"
+    "ND_GROUND_ES"
+    "ND_FLYOVER"
+  ]
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+}
+
+Crossroad {
+  translation 17.5 118.25 0.008
+  name "ND_Junction-SPLIT_N"
+  id "ND_SPLIT_N"
+  shape []
+  connectedRoadIDs [
+    "ND_MAIN_N"
+    "ND_GROUND_WN"
+    "ND_GROUND_EN"
+    "ND_FLYOVER"
+  ]
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+}
+
+# ==============================================================================
+# 3. NORTH DISTRICT ROADS (PART 1: ROADS 1 TO 15)
+# ==============================================================================
+
+Road {
+  name "Road-ND_OUTER_NW"
+  id "ND_OUTER_NW"
+  startJunction "ND_J_WM_T"
+  endJunction "ND_J_NW_T"
+  width 2.4
+  numberOfLanes 4
+  numberOfForwardLanes 2
+  lines [
+    RoadLine { width 0.025 }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "double"
+      width 0.025
+    }
+    RoadLine { width 0.025 }
+  ]
+  rightBorder TRUE
+  leftBorder TRUE
+  roadBorderHeight 0.035
+  roadBorderWidth [ 0.14 ]
+  wayPoints [
+    -45 113.3 0.008, -45 138 0.008, -44.755283 139.545085 0.008, -44.045085 140.938926 0.008, -42.938926 142.045085 0.008, -41.545085 142.755283 0.008, -40 143 0.008, -20.1 143 0.008
+  ]
+  splineSubdivision -1
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  roadBoundingObject FALSE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+
+Road {
+  name "Road-ND_OUTER_W"
+  id "ND_OUTER_W"
+  startJunction "ND_J_WM_T"
+  endJunction "ND_J_WA_T"
+  width 2.4
+  numberOfLanes 4
+  numberOfForwardLanes 2
+  lines [
+    RoadLine { width 0.025 }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "double"
+      width 0.025
+    }
+    RoadLine { width 0.025 }
+  ]
+  rightBorder TRUE
+  leftBorder TRUE
+  roadBorderHeight 0.035
+  roadBorderWidth [ 0.14 ]
+  wayPoints [
+    -45 109.7 0.008, -45 97.3 0.008
+  ]
+  splineSubdivision -1
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  roadBoundingObject FALSE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+
+Road {
+  name "Road-ND_OUTER_SW"
+  id "ND_OUTER_SW"
+  startJunction "ND_J_WA_T"
+  endJunction "ND_J_SW_T"
+  width 2.4
+  numberOfLanes 4
+  numberOfForwardLanes 2
+  lines [
+    RoadLine { width 0.025 }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "double"
+      width 0.025
+    }
+    RoadLine { width 0.025 }
+  ]
+  rightBorder TRUE
+  leftBorder TRUE
+  roadBorderHeight 0.035
+  roadBorderWidth [ 0.14 ]
+  wayPoints [
+    -45 93.7 0.008, -45 80.0277 0.008, -44.755283 78.482615 0.008, -44.045085 77.088774 0.008, -42.938926 75.982615 0.008, -41.545085 75.272417 0.008, -40 75.0277 0.008, -35 74.96023 0.008, -30 74.52011 0.008, -25 73.46824 0.008, -20.6 72.4902 0.008, -19.3 72.4902 0.008
+  ]
+  splineSubdivision -1
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  roadBoundingObject FALSE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+
+Road {
+  name "Road-ND_SHORE_W"
+  id "ND_SHORE_W"
+  startJunction "ND_J_SW_T"
+  endJunction "ND_J_SL_T"
+  width 2.4
+  numberOfLanes 4
+  numberOfForwardLanes 2
+  lines [
+    RoadLine { width 0.025 }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "double"
+      width 0.025
+    }
+    RoadLine { width 0.025 }
+  ]
+  rightBorder TRUE
+  leftBorder TRUE
+  roadBorderHeight 0.035
+  roadBorderWidth [ 0.14 ]
+  wayPoints [
+    -15.7 72.4902 0.008, -14.4 72.4902 0.008, -11.575 72.6371 0.008, -8.75 73.36115 0.008, -5.925 74.0852 0.008, -3.1 74.2321 0.008, -1.8 74.2321 0.008
+  ]
+  splineSubdivision -1
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  roadBoundingObject FALSE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+
+Road {
+  name "Road-ND_SHORE_M"
+  id "ND_SHORE_M"
+  startJunction "ND_J_SL_T"
+  endJunction "ND_J_SC_T"
+  width 2.4
+  numberOfLanes 4
+  numberOfForwardLanes 2
+  lines [
+    RoadLine { width 0.025 }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "double"
+      width 0.025
+    }
+    RoadLine { width 0.025 }
+  ]
+  rightBorder TRUE
+  leftBorder TRUE
+  roadBorderHeight 0.035
+  roadBorderWidth [ 0.14 ]
+  wayPoints [
+    1.8 74.2321 0.008, 3.1 74.2321 0.008, 5.925 73.9358 0.008, 8.75 72.4749 0.008, 11.575 71.014 0.008, 14.4 70.7177 0.008, 14.9 70.7177 0.008
+  ]
+  splineSubdivision -1
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  roadBoundingObject FALSE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+
+Road {
+  name "Road-ND_SHORE_E"
+  id "ND_SHORE_E"
+  startJunction "ND_J_SC_T"
+  endJunction "ND_J_ST_T"
+  width 2.4
+  numberOfLanes 4
+  numberOfForwardLanes 2
+  lines [
+    RoadLine { width 0.025 }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "double"
+      width 0.025
+    }
+    RoadLine { width 0.025 }
+  ]
+  rightBorder TRUE
+  leftBorder TRUE
+  roadBorderHeight 0.035
+  roadBorderWidth [ 0.14 ]
+  wayPoints [
+    20.1 70.7177 0.008, 20.6 70.7177 0.008, 22.55 70.5407 0.008, 24.5 69.67345 0.008, 26.45 68.8062 0.008, 28.4 68.6292 0.008, 29.7 68.6292 0.008
+  ]
+  splineSubdivision -1
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  roadBoundingObject FALSE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+
+Road {
+  name "Road-ND_OUTER_SE"
+  id "ND_OUTER_SE"
+  startJunction "ND_J_ST_T"
+  endJunction "ND_J_EM_T"
+  width 2.4
+  numberOfLanes 4
+  numberOfForwardLanes 2
+  lines [
+    RoadLine { width 0.025 }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "double"
+      width 0.025
+    }
+    RoadLine { width 0.025 }
+  ]
+  rightBorder TRUE
+  leftBorder TRUE
+  roadBorderHeight 0.035
+  roadBorderWidth [ 0.14 ]
+  wayPoints [
+    33.3 68.6292 0.008, 40 68.6292 0.008, 41.545085 68.874483 0.008, 42.938926 69.584682 0.008, 44.045085 70.690841 0.008, 44.755283 72.084682 0.008, 45 73.6292 0.008, 45 109.7 0.008
+  ]
+  splineSubdivision -1
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  roadBoundingObject FALSE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+
+Road {
+  name "Road-ND_OUTER_NE"
+  id "ND_OUTER_NE"
+  startJunction "ND_J_EM_T"
+  endJunction "ND_J_NT_T"
+  width 2.4
+  numberOfLanes 4
+  numberOfForwardLanes 2
+  lines [
+    RoadLine { width 0.025 }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "double"
+      width 0.025
+    }
+    RoadLine { width 0.025 }
+  ]
+  rightBorder TRUE
+  leftBorder TRUE
+  roadBorderHeight 0.035
+  roadBorderWidth [ 0.14 ]
+  wayPoints [
+    45 113.3 0.008, 45 138 0.008, 44.755283 139.545085 0.008, 44.045085 140.938926 0.008, 42.938926 142.045085 0.008, 41.545085 142.755283 0.008, 40 143 0.008, 33.3 143 0.008
+  ]
+  splineSubdivision -1
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  roadBoundingObject FALSE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+
+Road {
+  name "Road-ND_NORTH_E"
+  id "ND_NORTH_E"
+  startJunction "ND_J_NT_T"
+  endJunction "ND_J_NC_T"
+  width 2.4
+  numberOfLanes 4
+  numberOfForwardLanes 2
+  lines [
+    RoadLine { width 0.025 }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "double"
+      width 0.025
+    }
+    RoadLine { width 0.025 }
+  ]
+  rightBorder TRUE
+  leftBorder TRUE
+  roadBorderHeight 0.035
+  roadBorderWidth [ 0.14 ]
+  wayPoints [
+    29.7 143 0.008, 20.1 143 0.008
+  ]
+  splineSubdivision -1
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  roadBoundingObject FALSE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+
+Road {
+  name "Road-ND_NORTH_M"
+  id "ND_NORTH_M"
+  startJunction "ND_J_NC_T"
+  endJunction "ND_J_CN_T"
+  width 4.8
+  numberOfLanes 8
+  numberOfForwardLanes 4
+  lines [
+    RoadLine { width 0.025 }
+    RoadLine { width 0.025 }
+    RoadLine { width 0.025 }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "none"
+      width 0.025
+    }
+    RoadLine { width 0.025 }
+    RoadLine { width 0.025 }
+    RoadLine { width 0.025 }
+  ]
+  rightBorder TRUE
+  leftBorder TRUE
+  roadBorderHeight 0.035
+  roadBorderWidth [ 0.14 ]
+  wayPoints [
+    14.9 143 0.008, 2.6 143 0.008
+  ]
+  splineSubdivision -1
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  roadBoundingObject FALSE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+
+Road {
+  name "Road-ND_NORTH_W"
+  id "ND_NORTH_W"
+  startJunction "ND_J_CN_T"
+  endJunction "ND_J_NW_T"
+  width 4.8
+  numberOfLanes 8
+  numberOfForwardLanes 4
+  lines [
+    RoadLine { width 0.025 }
+    RoadLine { width 0.025 }
+    RoadLine { width 0.025 }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "none"
+      width 0.025
+    }
+    RoadLine { width 0.025 }
+    RoadLine { width 0.025 }
+    RoadLine { width 0.025 }
+  ]
+  rightBorder TRUE
+  leftBorder TRUE
+  roadBorderHeight 0.035
+  roadBorderWidth [ 0.14 ]
+  wayPoints [
+    -2.6 143 0.008, -14.9 143 0.008
+  ]
+  splineSubdivision -1
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  roadBoundingObject FALSE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+
+Road {
+  name "Road-ND_ROUND_W"
+  id "ND_ROUND_W"
+  startJunction "ND_ROUND"
+  endJunction "ND_J_WM_T"
+  width 2.4
+  numberOfLanes 4
+  numberOfForwardLanes 2
+  lines [
+    RoadLine { width 0.025 }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "double"
+      width 0.025
+    }
+    RoadLine { width 0.025 }
+  ]
+  rightBorder TRUE
+  leftBorder TRUE
+  roadBorderHeight 0.035
+  roadBorderWidth [ 0.14 ]
+  wayPoints [
+    -24.7 111.5 0.008, -43.2 111.5 0.008
+  ]
+  splineSubdivision -1
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  roadBoundingObject FALSE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+
+Road {
+  name "Road-ND_ROUND_N"
+  id "ND_ROUND_N"
+  startJunction "ND_ROUND"
+  endJunction "ND_J_NW_T"
+  width 2.4
+  numberOfLanes 4
+  numberOfForwardLanes 2
+  lines [
+    RoadLine { width 0.025 }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "double"
+      width 0.025
+    }
+    RoadLine { width 0.025 }
+  ]
+  rightBorder TRUE
+  leftBorder TRUE
+  roadBorderHeight 0.035
+  roadBorderWidth [ 0.14 ]
+  wayPoints [
+    -17.5 118.7 0.008, -17.5 140.4 0.008
+  ]
+  splineSubdivision -1
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  roadBoundingObject FALSE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+
+Road {
+  name "Road-ND_ROUND_S"
+  id "ND_ROUND_S"
+  startJunction "ND_ROUND"
+  endJunction "ND_J_WS_T"
+  width 2.4
+  numberOfLanes 4
+  numberOfForwardLanes 2
+  lines [
+    RoadLine { width 0.025 }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "double"
+      width 0.025
+    }
+    RoadLine { width 0.025 }
+  ]
+  rightBorder TRUE
+  leftBorder TRUE
+  roadBorderHeight 0.035
+  roadBorderWidth [ 0.14 ]
+  wayPoints [
+    -17.5 104.3 0.008, -17.5 97.3 0.008
+  ]
+  splineSubdivision -1
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  roadBoundingObject FALSE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+
+Road {
+  name "Road-ND_ROUND_SOUTH_LINK"
+  id "ND_ROUND_SOUTH_LINK"
+  startJunction "ND_J_WS_T"
+  endJunction "ND_J_SW_T"
+  width 2.4
+  numberOfLanes 4
+  numberOfForwardLanes 2
+  lines [
+    RoadLine { width 0.025 }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "double"
+      width 0.025
+    }
+    RoadLine { width 0.025 }
+  ]
+  rightBorder TRUE
+  leftBorder TRUE
+  roadBorderHeight 0.035
+  roadBorderWidth [ 0.14 ]
+  wayPoints [
+    -17.5 93.7 0.008, -17.5 74.2902 0.008
+  ]
+  splineSubdivision -1
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  roadBoundingObject FALSE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+
+# ==============================================================================
+# 4. NORTH DISTRICT ROADS (PART 2: ROADS 16 TO 29)
+# ==============================================================================
+
+Road {
+  name "Road-ND_ROUND_E"
+  id "ND_ROUND_E"
+  startJunction "ND_ROUND"
+  endJunction "ND_J_CM_X"
+  width 2.4
+  numberOfLanes 4
+  numberOfForwardLanes 2
+  lines [
+    RoadLine { width 0.025 }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "double"
+      width 0.025
+    }
+    RoadLine { width 0.025 }
+  ]
+  rightBorder TRUE
+  leftBorder TRUE
+  roadBorderHeight 0.035
+  roadBorderWidth [ 0.14 ]
+  wayPoints [
+    -10.3 111.5 0.008, -1.8 111.5 0.008
+  ]
+  splineSubdivision -1
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  roadBoundingObject FALSE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+
+Road {
+  name "Road-ND_MIDDLE_W"
+  id "ND_MIDDLE_W"
+  startJunction "ND_J_CM_X"
+  endJunction "ND_J_F_GROUND"
+  width 2.4
+  numberOfLanes 4
+  numberOfForwardLanes 2
+  lines [
+    RoadLine { width 0.025 }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "double"
+      width 0.025
+    }
+    RoadLine { width 0.025 }
+  ]
+  rightBorder TRUE
+  leftBorder TRUE
+  roadBorderHeight 0.035
+  roadBorderWidth [ 0.14 ]
+  wayPoints [
+    1.8 111.5 0.008, 15 111.5 0.008
+  ]
+  splineSubdivision -1
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  roadBoundingObject FALSE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+
+Road {
+  name "Road-ND_MIDDLE_E"
+  id "ND_MIDDLE_E"
+  startJunction "ND_J_F_GROUND"
+  endJunction "ND_J_EM_T"
+  width 2.4
+  numberOfLanes 4
+  numberOfForwardLanes 2
+  lines [
+    RoadLine { width 0.025 }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "double"
+      width 0.025
+    }
+    RoadLine { width 0.025 }
+  ]
+  rightBorder TRUE
+  leftBorder TRUE
+  roadBorderHeight 0.035
+  roadBorderWidth [ 0.14 ]
+  wayPoints [
+    20 111.5 0.008, 43.2 111.5 0.008
+  ]
+  splineSubdivision -1
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  roadBoundingObject FALSE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+
+Road {
+  name "Road-ND_MAIN_S"
+  id "ND_MAIN_S"
+  startJunction "ND_J_SC_T"
+  endJunction "ND_SPLIT_S"
+  width 4.8
+  numberOfLanes 8
+  numberOfForwardLanes 4
+  lines [
+    RoadLine { width 0.025 }
+    RoadLine { width 0.025 }
+    RoadLine { width 0.025 }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "none"
+      width 0.025
+    }
+    RoadLine { width 0.025 }
+    RoadLine { width 0.025 }
+    RoadLine { width 0.025 }
+  ]
+  rightBorder TRUE
+  leftBorder TRUE
+  roadBorderHeight 0.035
+  roadBorderWidth [ 0.14 ]
+  wayPoints [
+    17.5 73.3177 0.008, 17.5 104.75 0.008
+  ]
+  splineSubdivision -1
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  roadBoundingObject FALSE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+
+Road {
+  name "Road-ND_MAIN_N"
+  id "ND_MAIN_N"
+  startJunction "ND_SPLIT_N"
+  endJunction "ND_J_NC_T"
+  width 4.8
+  numberOfLanes 8
+  numberOfForwardLanes 4
+  lines [
+    RoadLine { width 0.025 }
+    RoadLine { width 0.025 }
+    RoadLine { width 0.025 }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "none"
+      width 0.025
+    }
+    RoadLine { width 0.025 }
+    RoadLine { width 0.025 }
+    RoadLine { width 0.025 }
+  ]
+  rightBorder TRUE
+  leftBorder TRUE
+  roadBorderHeight 0.035
+  roadBorderWidth [ 0.14 ]
+  wayPoints [
+    17.5 118.25 0.008, 17.5 140.4 0.008
+  ]
+  splineSubdivision -1
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  roadBoundingObject FALSE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+
+Road {
+  name "Road-ND_FLYOVER"
+  id "ND_FLYOVER"
+  startJunction "ND_SPLIT_S"
+  endJunction "ND_SPLIT_N"
+  width 2.4
+  numberOfLanes 4
+  numberOfForwardLanes 2
+  lines [
+    RoadLine { width 0.025 }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "none"
+      width 0.025
+    }
+    RoadLine { width 0.025 }
+  ]
+  rightBorder TRUE
+  leftBorder TRUE
+  roadBorderHeight 0.1
+  roadBorderWidth [ 0.1 ]
+  wayPoints [
+    17.5 104.75 0.008, 17.5 105.5 0.089852, 17.5 106.25 0.2315, 17.5 107 0.347296, 17.5 107.75 0.388, 17.5 109 0.388, 17.5 111.5 0.388, 17.5 114 0.388, 17.5 115.25 0.388, 17.5 116 0.347296, 17.5 116.75 0.2315, 17.5 117.5 0.089852, 17.5 118.25 0.008
+  ]
+  splineSubdivision -1
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  roadBoundingObject TRUE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+
+Road {
+  name "Road-ND_GROUND_WS"
+  id "ND_GROUND_WS"
+  startJunction "ND_SPLIT_S"
+  endJunction "ND_J_F_GROUND"
+  width 1.2
+  numberOfLanes 2
+  numberOfForwardLanes 0
+  lines [
+    RoadLine { width 0.025 }
+  ]
+  rightBorder FALSE
+  leftBorder TRUE
+  roadBorderHeight 0.035
+  roadBorderWidth [ 0.14 ]
+  wayPoints [
+    15.7 104.75 0.008, 15.7 108 0.008
+  ]
+  splineSubdivision -1
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  roadBoundingObject FALSE
+  rightBorderBoundingObject FALSE
+  leftBorderBoundingObject TRUE
+}
+
+Road {
+  name "Road-ND_GROUND_ES"
+  id "ND_GROUND_ES"
+  startJunction "ND_SPLIT_S"
+  endJunction "ND_J_F_GROUND"
+  width 1.2
+  numberOfLanes 2
+  numberOfForwardLanes 2
+  lines [
+    RoadLine { width 0.025 }
+  ]
+  rightBorder TRUE
+  leftBorder FALSE
+  roadBorderHeight 0.035
+  roadBorderWidth [ 0.14 ]
+  wayPoints [
+    19.3 104.75 0.008, 19.3 108 0.008
+  ]
+  splineSubdivision -1
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  roadBoundingObject FALSE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject FALSE
+}
+
+Road {
+  name "Road-ND_GROUND_WN"
+  id "ND_GROUND_WN"
+  startJunction "ND_J_F_GROUND"
+  endJunction "ND_SPLIT_N"
+  width 1.2
+  numberOfLanes 2
+  numberOfForwardLanes 0
+  lines [
+    RoadLine { width 0.025 }
+  ]
+  rightBorder FALSE
+  leftBorder TRUE
+  roadBorderHeight 0.035
+  roadBorderWidth [ 0.14 ]
+  wayPoints [
+    15.7 115 0.008, 15.7 118.25 0.008
+  ]
+  splineSubdivision -1
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  roadBoundingObject FALSE
+  rightBorderBoundingObject FALSE
+  leftBorderBoundingObject TRUE
+}
+
+Road {
+  name "Road-ND_GROUND_EN"
+  id "ND_GROUND_EN"
+  startJunction "ND_J_F_GROUND"
+  endJunction "ND_SPLIT_N"
+  width 1.2
+  numberOfLanes 2
+  numberOfForwardLanes 2
+  lines [
+    RoadLine { width 0.025 }
+  ]
+  rightBorder TRUE
+  leftBorder FALSE
+  roadBorderHeight 0.035
+  roadBorderWidth [ 0.14 ]
+  wayPoints [
+    19.3 115 0.008, 19.3 118.25 0.008
+  ]
+  splineSubdivision -1
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  roadBoundingObject FALSE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject FALSE
+}
+
+Road {
+  name "Road-ND_UNDERPASS"
+  id "ND_UNDERPASS"
+  startJunction "ND_J_ST_T"
+  endJunction "ND_J_NT_T"
+  width 2.4
+  numberOfLanes 4
+  numberOfForwardLanes 2
+  lines [
+    RoadLine { width 0.025 }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "double"
+      width 0.025
+    }
+    RoadLine { width 0.025 }
+  ]
+  rightBorder TRUE
+  leftBorder TRUE
+  roadBorderHeight 0.035
+  roadBorderWidth [ 0.14 ]
+  wayPoints [
+    31.5 70.4292 0.008, 31.5 97.5 0.008, 31.5 99.5 -0.079313, 31.5 101.5 -0.271, 31.5 103.5 -0.462688, 31.5 105.5 -0.55, 31.5 111.5 -0.55, 31.5 117.5 -0.55, 31.5 119.5 -0.462688, 31.5 121.5 -0.271, 31.5 123.5 -0.079313, 31.5 125.5 0.008, 31.5 141.2 0.008
+  ]
+  splineSubdivision -1
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  roadBoundingObject TRUE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+
+Road {
+  name "Road-ND_LOCAL_W"
+  id "ND_LOCAL_W"
+  startJunction "ND_J_WA_T"
+  endJunction "ND_J_WS_T"
+  width 1.2
+  numberOfLanes 2
+  numberOfForwardLanes 1
+  lines [
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "double"
+      width 0.025
+    }
+  ]
+  rightBorder TRUE
+  leftBorder TRUE
+  roadBorderHeight 0.035
+  roadBorderWidth [ 0.14 ]
+  wayPoints [
+    -43.2 95.5 0.008, -19.3 95.5 0.008
+  ]
+  splineSubdivision -1
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  roadBoundingObject FALSE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+
+Road {
+  name "Road-ND_LOCAL_S"
+  id "ND_LOCAL_S"
+  startJunction "ND_J_SL_T"
+  endJunction "ND_J_CM_X"
+  width 1.2
+  numberOfLanes 2
+  numberOfForwardLanes 1
+  lines [
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "double"
+      width 0.025
+    }
+  ]
+  rightBorder TRUE
+  leftBorder TRUE
+  roadBorderHeight 0.035
+  roadBorderWidth [ 0.14 ]
+  wayPoints [
+    0 76.0321 0.008, 0 109.7 0.008
+  ]
+  splineSubdivision -1
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  roadBoundingObject FALSE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+
+Road {
+  name "Road-ND_LOCAL_N"
+  id "ND_LOCAL_N"
+  startJunction "ND_J_CM_X"
+  endJunction "ND_J_CN_T"
+  width 1.2
+  numberOfLanes 2
+  numberOfForwardLanes 1
+  lines [
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "double"
+      width 0.025
+    }
+  ]
+  rightBorder TRUE
+  leftBorder TRUE
+  roadBorderHeight 0.035
+  roadBorderWidth [ 0.14 ]
+  wayPoints [
+    0 113.3 0.008, 0 140.4 0.008
+  ]
+  splineSubdivision -1
+  appearance PBRAppearance {
+    baseColor 0.12 0.14 0.16
+    roughness 1
+    metalness 0
+  }
+  pavementAppearance PBRAppearance {
+    baseColor 0.65 0.67 0.62
+    roughness 1
+    metalness 0
+  }
+  roadBoundingObject FALSE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+
+
+# ==============================================================================
+# 5. NORTH DISTRICT CONCRETE MEDIANS (5 GROUPS, 11 SOLIDS)
+# ==============================================================================
+
+# Group 1: ND_NORTH_M (along Y=143, X in [2.6, 14.9])
+Solid {
+  translation 2.825 143 0.058
+  children [
+    Shape {
+      appearance USE ND_PAVEMENT_APP
+      geometry Box {
+        size 0.45 0.1 0.1
+      }
+    }
+  ]
+  name "ND_Median-NORTH_M-1"
+  boundingObject Box {
+    size 0.45 0.1 0.1
+  }
+}
+
+Solid {
+  translation 8.75 143 0.058
+  children [
+    Shape {
+      appearance USE ND_PAVEMENT_APP
+      geometry Box {
+        size 10.5 0.1 0.1
+      }
+    }
+  ]
+  name "ND_Median-NORTH_M-2"
+  boundingObject Box {
+    size 10.5 0.1 0.1
+  }
+}
+
+Solid {
+  translation 14.675 143 0.058
+  children [
+    Shape {
+      appearance USE ND_PAVEMENT_APP
+      geometry Box {
+        size 0.45 0.1 0.1
+      }
+    }
+  ]
+  name "ND_Median-NORTH_M-3"
+  boundingObject Box {
+    size 0.45 0.1 0.1
+  }
+}
+
+# Group 2: ND_NORTH_W (along Y=143, X in [-14.9, -2.6])
+Solid {
+  translation -14.675 143 0.058
+  children [
+    Shape {
+      appearance USE ND_PAVEMENT_APP
+      geometry Box {
+        size 0.45 0.1 0.1
+      }
+    }
+  ]
+  name "ND_Median-NORTH_W-1"
+  boundingObject Box {
+    size 0.45 0.1 0.1
+  }
+}
+
+Solid {
+  translation -8.75 143 0.058
+  children [
+    Shape {
+      appearance USE ND_PAVEMENT_APP
+      geometry Box {
+        size 10.5 0.1 0.1
+      }
+    }
+  ]
+  name "ND_Median-NORTH_W-2"
+  boundingObject Box {
+    size 10.5 0.1 0.1
+  }
+}
+
+Solid {
+  translation -2.825 143 0.058
+  children [
+    Shape {
+      appearance USE ND_PAVEMENT_APP
+      geometry Box {
+        size 0.45 0.1 0.1
+      }
+    }
+  ]
+  name "ND_Median-NORTH_W-3"
+  boundingObject Box {
+    size 0.45 0.1 0.1
+  }
+}
+
+# Group 3: ND_MAIN_S (along X=17.5, Y in [73.3177, 104.75])
+Solid {
+  translation 17.5 73.55885 0.058
+  children [
+    Shape {
+      appearance USE ND_PAVEMENT_APP
+      geometry Box {
+        size 0.1 0.4823 0.1
+      }
+    }
+  ]
+  name "ND_Median-MAIN_S-1"
+  boundingObject Box {
+    size 0.1 0.4823 0.1
+  }
+}
+
+Solid {
+  translation 17.5 89.5 0.058
+  children [
+    Shape {
+      appearance USE ND_PAVEMENT_APP
+      geometry Box {
+        size 0.1 30.5 0.1
+      }
+    }
+  ]
+  name "ND_Median-MAIN_S-2"
+  boundingObject Box {
+    size 0.1 30.5 0.1
+  }
+}
+
+# Group 4: ND_MAIN_N (along X=17.5, Y in [118.25, 140.4])
+Solid {
+  translation 17.5 128.85 0.058
+  children [
+    Shape {
+      appearance USE ND_PAVEMENT_APP
+      geometry Box {
+        size 0.1 21.2 0.1
+      }
+    }
+  ]
+  name "ND_Median-MAIN_N-1"
+  boundingObject Box {
+    size 0.1 21.2 0.1
+  }
+}
+
+Solid {
+  translation 17.5 140.15 0.058
+  children [
+    Shape {
+      appearance USE ND_PAVEMENT_APP
+      geometry Box {
+        size 0.1 0.5 0.1
+      }
+    }
+  ]
+  name "ND_Median-MAIN_N-2"
+  boundingObject Box {
+    size 0.1 0.5 0.1
+  }
+}
+
+# Group 5: ND_Median-FLYOVER (along X=17.5, Y in [104.75, 118.25], 3D elevation profile)
+Solid {
+  translation 0 0 0
+  rotation 0 0 1 0
+  children [
+    Shape {
+      appearance USE ND_PAVEMENT_APP
+      geometry DEF ND_MESH_MEDIAN_FLYOVER IndexedFaceSet {
+        coord Coordinate {
+          point [
+            17.45 104.75 0.108
+            17.45 104.75 0.008
+            17.55 104.75 0.108
+            17.55 104.75 0.008
+            17.45 105.5 0.189852
+            17.45 105.5 0.089852
+            17.55 105.5 0.189852
+            17.55 105.5 0.089852
+            17.45 106.25 0.3315
+            17.45 106.25 0.2315
+            17.55 106.25 0.3315
+            17.55 106.25 0.2315
+            17.45 107 0.447296
+            17.45 107 0.347296
+            17.55 107 0.447296
+            17.55 107 0.347296
+            17.45 107.75 0.488
+            17.45 107.75 0.388
+            17.55 107.75 0.488
+            17.55 107.75 0.388
+            17.45 109 0.488
+            17.45 109 0.388
+            17.55 109 0.488
+            17.55 109 0.388
+            17.45 111.5 0.488
+            17.45 111.5 0.388
+            17.55 111.5 0.488
+            17.55 111.5 0.388
+            17.45 114 0.488
+            17.45 114 0.388
+            17.55 114 0.488
+            17.55 114 0.388
+            17.45 115.25 0.488
+            17.45 115.25 0.388
+            17.55 115.25 0.488
+            17.55 115.25 0.388
+            17.45 116 0.447296
+            17.45 116 0.347296
+            17.55 116 0.447296
+            17.55 116 0.347296
+            17.45 116.75 0.3315
+            17.45 116.75 0.2315
+            17.55 116.75 0.3315
+            17.55 116.75 0.2315
+            17.45 117.5 0.189852
+            17.45 117.5 0.089852
+            17.55 117.5 0.189852
+            17.55 117.5 0.089852
+            17.45 118.25 0.108
+            17.45 118.25 0.008
+            17.55 118.25 0.108
+            17.55 118.25 0.008
+          ]
+        }
+        coordIndex [
+          0 4 6 2 -1
+          1 3 7 5 -1
+          1 5 4 0 -1
+          2 6 7 3 -1
+          4 8 10 6 -1
+          5 7 11 9 -1
+          5 9 8 4 -1
+          6 10 11 7 -1
+          8 12 14 10 -1
+          9 11 15 13 -1
+          9 13 12 8 -1
+          10 14 15 11 -1
+          12 16 18 14 -1
+          13 15 19 17 -1
+          13 17 16 12 -1
+          14 18 19 15 -1
+          16 20 22 18 -1
+          17 19 23 21 -1
+          17 21 20 16 -1
+          18 22 23 19 -1
+          20 24 26 22 -1
+          21 23 27 25 -1
+          21 25 24 20 -1
+          22 26 27 23 -1
+          24 28 30 26 -1
+          25 27 31 29 -1
+          25 29 28 24 -1
+          26 30 31 27 -1
+          28 32 34 30 -1
+          29 31 35 33 -1
+          29 33 32 28 -1
+          30 34 35 31 -1
+          32 36 38 34 -1
+          33 35 39 37 -1
+          33 37 36 32 -1
+          34 38 39 35 -1
+          36 40 42 38 -1
+          37 39 43 41 -1
+          37 41 40 36 -1
+          38 42 43 39 -1
+          40 44 46 42 -1
+          41 43 47 45 -1
+          41 45 44 40 -1
+          42 46 47 43 -1
+          44 48 50 46 -1
+          45 47 51 49 -1
+          45 49 48 44 -1
+          46 50 51 47 -1
+          1 0 2 3 -1
+          48 49 51 50 -1
+        ]
+      }
+    }
+  ]
+  name "ND_Median-FLYOVER"
+  boundingObject USE ND_MESH_MEDIAN_FLYOVER
+}
+
+# END NORTH_DISTRICT
