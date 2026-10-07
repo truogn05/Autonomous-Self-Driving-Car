@@ -584,6 +584,61 @@ def build_roads() -> tuple:
   ]"""
         return "[]"
 
+    def markings_for_road(rid: str, from_j: str, to_j: str, lanes: int, forward: int, is_oneway: bool, is_flyover: bool) -> tuple:
+        prefix = "../../../../../../worlds/textures/"
+        has_start_split = "SPLIT" in from_j
+        has_end_split = "SPLIT" in to_j
+        
+        crossings = {
+            ("ND_NORTH_M", "ND_J_CN_T"), ("ND_NORTH_M", "ND_J_NC_T"),
+            ("ND_NORTH_W", "ND_J_CN_T"), ("ND_NORTH_W", "ND_J_NW_T"),
+            ("ND_MAIN_S", "ND_J_SC_T"), ("ND_MAIN_N", "ND_J_NC_T")
+        }
+        
+        start_paint = None
+        end_paint = None
+        if not is_flyover and not has_start_split:
+            start_is_cross = (rid, from_j) in crossings
+            start_paint = "stop_crossing" if start_is_cross else "stop_line"
+            
+        if not is_flyover and not has_end_split:
+            end_is_cross = (rid, to_j) in crossings
+            end_paint = "stop_crossing" if end_is_cross else "stop_line"
+
+        start_slots = []
+        for i in range(lanes):
+            if is_oneway:
+                if forward == 0 and start_paint:
+                    start_slots.append(f'"{prefix}{start_paint}.png"')
+                else:
+                    start_slots.append('""')
+            else:
+                if i >= forward and start_paint:
+                    start_slots.append(f'"{prefix}{start_paint}.png"')
+                elif i < forward and start_paint == "stop_crossing":
+                    start_slots.append(f'"{prefix}crossing.png"')
+                else:
+                    start_slots.append('""')
+
+        end_slots = []
+        for i in range(lanes):
+            if is_oneway:
+                if forward == lanes and end_paint:
+                    end_slots.append(f'"{prefix}{end_paint}.png"')
+                else:
+                    end_slots.append('""')
+            else:
+                if i < forward and end_paint:
+                    end_slots.append(f'"{prefix}{end_paint}.png"')
+                elif i >= forward and end_paint == "stop_crossing":
+                    end_slots.append(f'"{prefix}crossing.png"')
+                else:
+                    end_slots.append('""')
+
+        start_str = "[\n    " + "\n    ".join(start_slots) + "\n  ]"
+        end_str = "[\n    " + "\n    ".join(end_slots) + "\n  ]"
+        return start_str, end_str
+
     def make_road(rid: str, from_j: str, to_j: str, lanes: int, forward: int, pts: list,
                   has_median: bool = False, is_oneway: bool = False,
                   left_border: bool = True, right_border: bool = True,
@@ -606,6 +661,7 @@ def build_roads() -> tuple:
         
         wp_str = ", ".join(f"{fmt(p[0])} {fmt(p[1])} {fmt(p[2])}" for p in pts)
         l_str = lines_str_for(lanes, has_median, is_oneway)
+        start_marks, end_marks = markings_for_road(rid, from_j, to_j, lanes, forward, is_oneway, is_flyover)
         
         b_height = "0.1" if is_flyover else "0.035"
         b_width = "[ 0.1 ]" if is_flyover else "[ 0.14 ]"
@@ -620,6 +676,8 @@ def build_roads() -> tuple:
   numberOfLanes {lanes}
   numberOfForwardLanes {forward}
   lines {l_str}
+  startLine {start_marks}
+  endLine {end_marks}
   rightBorder {"TRUE" if right_border else "FALSE"}
   leftBorder {"TRUE" if left_border else "FALSE"}
   roadBorderHeight {b_height}
@@ -859,15 +917,243 @@ def build_median_nodes() -> list:
 
     return nodes
 
+# --- Traffic Signs Generator ---
+def build_sign_nodes() -> list:
+    sign_nodes = []
+    def make_sign(name: str, desc: str, pos: tuple, rot_z: float, kind: str) -> str:
+        theta = rot_z
+        return f"""Solid {{
+  translation {fmt(pos[0])} {fmt(pos[1])} {fmt(pos[2])}
+  rotation 0 0 1 {fmt(theta)}
+  children [
+    Pose {{
+      translation 0 0 0.28
+      children [
+        Shape {{
+          appearance PBRAppearance {{
+            baseColor 0.55 0.58 0.6
+            roughness 0.5
+            metalness 0.5
+          }}
+          geometry Cylinder {{
+            height 0.56
+            radius 0.012
+          }}
+        }}
+      ]
+    }}
+    Pose {{
+      translation 0.016 0 0.51
+      children [
+        Shape {{
+          appearance PBRAppearance {{
+            baseColorMap ImageTexture {{
+              url [
+                "textures/{kind}.png"
+              ]
+            }}
+            roughness 1
+            metalness 0
+          }}
+          geometry IndexedFaceSet {{
+            coord Coordinate {{
+              point [
+                0 -0.13 -0.13
+                0 0.13 -0.13
+                0 0.13 0.13
+                0 -0.13 0.13
+              ]
+            }}
+            texCoord TextureCoordinate {{
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }}
+            coordIndex [
+              0 1 2 3 -1
+            ]
+          }}
+        }}
+      ]
+    }}
+  ]
+  name "{name}"
+  description "{desc}"
+  boundingObject Pose {{
+    translation 0 0 0.28
+    children [
+      Cylinder {{
+        height 0.56
+        radius 0.015
+      }}
+    ]
+  }}
+}}"""
+    # Roundabout signs (ND_ROUND at -17.5, 111.5)
+    # West entrance
+    sign_nodes.append(make_sign("ND_YieldSign-ROUND_W", "ND_YIELD_R_W", (-24.8, 110.05, 0.0), 0.0, "yield"))
+    sign_nodes.append(make_sign("ND_RoundaboutSign-ROUND_W", "ND_ROUND_R_W", (-25.3, 110.05, 0.0), 0.0, "roundabout"))
+    # East entrance
+    sign_nodes.append(make_sign("ND_YieldSign-ROUND_E", "ND_YIELD_R_E", (-10.2, 112.95, 0.0), math.pi, "yield"))
+    sign_nodes.append(make_sign("ND_RoundaboutSign-ROUND_E", "ND_ROUND_R_E", (-9.7, 112.95, 0.0), math.pi, "roundabout"))
+    # North entrance
+    sign_nodes.append(make_sign("ND_YieldSign-ROUND_N", "ND_YIELD_R_N", (-18.95, 118.8, 0.0), -math.pi/2.0, "yield"))
+    sign_nodes.append(make_sign("ND_RoundaboutSign-ROUND_N", "ND_ROUND_R_N", (-18.95, 119.3, 0.0), -math.pi/2.0, "roundabout"))
+    # South entrance
+    sign_nodes.append(make_sign("ND_YieldSign-ROUND_S", "ND_YIELD_R_S", (-16.05, 104.2, 0.0), math.pi/2.0, "yield"))
+    sign_nodes.append(make_sign("ND_RoundaboutSign-ROUND_S", "ND_ROUND_R_S", (-16.05, 103.7, 0.0), math.pi/2.0, "roundabout"))
+
+    # T-junction minor approach stop signs
+    sign_nodes.append(make_sign("ND_StopSign-WA_T", "ND_STOP_WA_T", (-43.0, 96.35, 0.0), math.pi, "stop"))
+    sign_nodes.append(make_sign("ND_StopSign-WS_T", "ND_STOP_WS_T", (-19.5, 94.65, 0.0), 0.0, "stop"))
+    sign_nodes.append(make_sign("ND_StopSign-SL_T", "ND_STOP_SL_T", (-0.85, 76.2, 0.0), -math.pi/2.0, "stop"))
+    sign_nodes.append(make_sign("ND_StopSign-CN_T", "ND_STOP_CN_T", (0.85, 141.0, 0.0), math.pi/2.0, "stop"))
+    sign_nodes.append(make_sign("ND_SpeedLimitSign-1", "ND_SPEED_LIMIT_1", (-46.45, 115.0, 0.0), math.pi/2.0, "speed"))
+    return sign_nodes
+
+# --- Detailed Lane Graph Generator ---
+def direction(a, b):
+    dx, dy = b[0] - a[0], b[1] - a[1]
+    L = math.hypot(dx, dy)
+    return (dx/L, dy/L) if L > 1e-9 else (1.0, 0.0)
+
+def normal(u):
+    return (-u[1], u[0])
+
+def offset_3d(pts, dist):
+    res_xy = []
+    res_z = []
+    n = len(pts)
+    for i in range(n):
+        p_prev = pts[max(0, i-1)]
+        p_next = pts[min(n-1, i+1)]
+        u = direction(p_prev, p_next)
+        norm = normal(u)
+        p = pts[i]
+        res_xy.append([round(p[0] + norm[0] * dist, 6), round(p[1] + norm[1] * dist, 6)])
+        res_z.append(round(p[2], 6))
+    return res_xy, res_z
+
+def generate_lanes(roads: list, junctions: dict) -> dict:
+    lanes = {}
+    for r in roads:
+        rid = r["id"]
+        pts = [[r["points"][i][0], r["points"][i][1], r["elevations"][i]] for i in range(len(r["points"]))]
+        width = r["width"]
+        total_lanes = r["number_of_lanes"]
+        forward = r["forward_lanes"]
+        
+        # Forward lanes
+        if forward > 0:
+            for idx in range(1, forward + 1):
+                lid = f"{rid}_F{idx}"
+                d = -width/2.0 + 0.6 * (forward - idx + 0.5)
+                xy, z = offset_3d(pts, d)
+                lanes[lid] = {
+                    "from": r["from"],
+                    "to": r["to"],
+                    "points": xy,
+                    "elevations": z,
+                    "lane_index": idx,
+                    "road_id": rid,
+                    "direction_lanes": forward,
+                    "speed_limit_m_s": 0.5,
+                    "successors": []
+                }
+                
+        # Reverse lanes
+        rev_count = total_lanes - forward
+        if rev_count > 0:
+            pts_rev = list(reversed(pts))
+            for idx in range(1, rev_count + 1):
+                lid = f"{rid}_B{idx}"
+                d = -width/2.0 + 0.6 * (rev_count - idx + 0.5)
+                xy, z = offset_3d(pts_rev, d)
+                lanes[lid] = {
+                    "from": r["to"],
+                    "to": r["from"],
+                    "points": xy,
+                    "elevations": z,
+                    "lane_index": idx,
+                    "road_id": rid,
+                    "direction_lanes": rev_count,
+                    "speed_limit_m_s": 0.5,
+                    "successors": []
+                }
+                
+    # Roundabout circulating ring lanes (ND_ROUND at -17.5, 111.5)
+    cx, cy = -17.5, 111.5
+    sectors = [
+        ("E_N", 0.0, math.pi / 2.0, "ND_ROUND_E", "ND_ROUND_N"),
+        ("N_W", math.pi / 2.0, math.pi, "ND_ROUND_N", "ND_ROUND_W"),
+        ("W_S", math.pi, 3.0 * math.pi / 2.0, "ND_ROUND_W", "ND_ROUND_S"),
+        ("S_E", 3.0 * math.pi / 2.0, 2.0 * math.pi, "ND_ROUND_S", "ND_ROUND_E")
+    ]
+    for sec_name, a_start, a_end, from_port, to_port in sectors:
+        for ring_idx, radius in enumerate([5.7, 5.1, 4.5], start=1):
+            lid = f"ND_RING_{sec_name}_L{ring_idx}"
+            pts_arc = []
+            z_arc = []
+            steps = 8
+            for s in range(steps + 1):
+                ang = a_start + s * (a_end - a_start) / steps
+                pts_arc.append([round(cx + radius * math.cos(ang), 6), round(cy + radius * math.sin(ang), 6)])
+                z_arc.append(0.008)
+            lanes[lid] = {
+                "from": from_port,
+                "to": to_port,
+                "points": pts_arc,
+                "elevations": z_arc,
+                "lane_index": ring_idx,
+                "road_id": "ND_ROUND",
+                "direction_lanes": 3,
+                "speed_limit_m_s": 0.35,
+                "successors": []
+            }
+            
+    # Connect ring lane successors
+    next_sec = {"E_N": "N_W", "N_W": "W_S", "W_S": "S_E", "S_E": "E_N"}
+    for sec_name, _, _, _, _ in sectors:
+        s_curr = sec_name
+        s_next = next_sec[s_curr]
+        for ring_idx in (1, 2, 3):
+            cur_lid = f"ND_RING_{s_curr}_L{ring_idx}"
+            nxt_lid = f"ND_RING_{s_next}_L{ring_idx}"
+            lanes[cur_lid]["successors"].append(nxt_lid)
+            
+    # Connect road lanes to successors at junctions
+    by_dest = {}
+    by_orig = {}
+    for lid, l in lanes.items():
+        if l["road_id"] == "ND_ROUND": continue
+        by_dest.setdefault(l["to"], []).append(lid)
+        by_orig.setdefault(l["from"], []).append(lid)
+        
+    for jid, incoming in by_dest.items():
+        outgoing = by_orig.get(jid, [])
+        for in_lid in incoming:
+            in_road = lanes[in_lid]["road_id"]
+            for out_lid in outgoing:
+                out_road = lanes[out_lid]["road_id"]
+                if in_road != out_road:
+                    lanes[in_lid]["successors"].append(out_lid)
+                    
+    return lanes
+
 # --- Main Assembler & Exporter ---
 def build_north_district_data():
     terrain_nodes = build_terrain_nodes()
     junc_data, junc_nodes = build_junctions()
     road_data, road_nodes = build_roads()
     median_nodes = build_median_nodes()
+    sign_nodes = build_sign_nodes()
+    lanes_data = generate_lanes(road_data, junc_data)
     
     # Assemble full block
-    all_nodes = terrain_nodes + junc_nodes + road_nodes + median_nodes
+    all_nodes = terrain_nodes + junc_nodes + road_nodes + median_nodes + sign_nodes
     block = "# BEGIN NORTH_DISTRICT\n\n" + "\n\n".join(all_nodes) + "\n\n# END NORTH_DISTRICT\n"
     
     map_north = {
@@ -896,7 +1182,8 @@ def build_north_district_data():
             "roof_clearance": 0.490
         },
         "junctions": junc_data,
-        "roads": road_data
+        "roads": road_data,
+        "lanes": lanes_data
     }
     return block, map_north
 

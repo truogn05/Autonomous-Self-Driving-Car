@@ -198,6 +198,49 @@ def run_all_checks(wbt_path: Path = WORLD_PATH):
         "status": "PASS" if len(median_solids) >= 10 else "FAIL"
     }
 
+    # 11. Road Stop Markings Check (startLine / endLine)
+    nd_roads = []
+    for m in re.finditer(r'Road\s*\{', nd_block):
+        depth = 0; idx = m.end() - 1
+        while idx < len(nd_block):
+            if nd_block[idx] == '{': depth += 1
+            elif nd_block[idx] == '}':
+                depth -= 1
+                if depth == 0: break
+            idx += 1
+        body = nd_block[m.start():idx+1]
+        id_m = re.search(r'id\s+"(ND_[^"]+)"', body)
+        if id_m:
+            nd_roads.append((id_m.group(1), body))
+    roads_with_sl = sum("startLine" in body for rid, body in nd_roads)
+    roads_with_el = sum("endLine" in body for rid, body in nd_roads)
+    roads_with_stop = sum("stop_line" in body or "stop_crossing" in body for rid, body in nd_roads)
+    results["10_road_markings"] = {
+        "roads_checked": len(nd_roads),
+        "roads_with_startLine": roads_with_sl,
+        "roads_with_endLine": roads_with_el,
+        "roads_with_stop_markings": roads_with_stop,
+        "status": "PASS" if roads_with_sl == 29 and roads_with_el == 29 and roads_with_stop >= 26 else "FAIL"
+    }
+
+    # 12. Traffic Signs Check
+    signs_found = re.findall(r'name\s*"(ND_[^"]*Sign[^"]*)"', nd_block)
+    results["11_traffic_signs"] = {
+        "signs_count": len(signs_found),
+        "signs": signs_found,
+        "status": "PASS" if len(signs_found) >= 12 else "FAIL"
+    }
+
+    # 13. Detailed Lane Graph Check
+    lanes_dict = map_north.get("lanes", {})
+    lanes_with_successors = sum(len(l.get("successors", [])) > 0 for l in lanes_dict.values())
+    results["12_lane_graph"] = {
+        "total_lanes": len(lanes_dict),
+        "lanes_with_successors": lanes_with_successors,
+        "connectivity_percent": round(lanes_with_successors / len(lanes_dict) * 100, 1) if lanes_dict else 0,
+        "status": "PASS" if len(lanes_dict) >= 118 and lanes_with_successors == len(lanes_dict) else "FAIL"
+    }
+
     all_pass = all(v.get("status") == "PASS" for v in results.values())
     results["overall_status"] = "PASS" if all_pass else "FAIL"
     return results

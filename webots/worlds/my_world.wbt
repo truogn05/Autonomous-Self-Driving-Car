@@ -16368,6 +16368,18 @@ Road {
     }
     RoadLine { width 0.025 }
   ]
+  startLine [
+    ""
+    ""
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+  ]
+  endLine [
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+    ""
+    ""
+  ]
   rightBorder TRUE
   leftBorder TRUE
   roadBorderHeight 0.035
@@ -16399,6 +16411,18 @@ Road {
       width 0.025
     }
     RoadLine { width 0.025 }
+  ]
+  startLine [
+    ""
+    ""
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+  ]
+  endLine [
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+    ""
+    ""
   ]
   rightBorder TRUE
   leftBorder TRUE
@@ -16432,6 +16456,18 @@ Road {
     }
     RoadLine { width 0.025 }
   ]
+  startLine [
+    ""
+    ""
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+  ]
+  endLine [
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+    ""
+    ""
+  ]
   rightBorder TRUE
   leftBorder TRUE
   roadBorderHeight 0.035
@@ -16463,6 +16499,18 @@ Road {
       width 0.025
     }
     RoadLine { width 0.025 }
+  ]
+  startLine [
+    ""
+    ""
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+  ]
+  endLine [
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+    ""
+    ""
   ]
   rightBorder TRUE
   leftBorder TRUE
@@ -16496,6 +16544,18 @@ Road {
     }
     RoadLine { width 0.025 }
   ]
+  startLine [
+    ""
+    ""
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+  ]
+  endLine [
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+    ""
+    ""
+  ]
   rightBorder TRUE
   leftBorder TRUE
   roadBorderHeight 0.035
@@ -16527,6 +16587,18 @@ Road {
       width 0.025
     }
     RoadLine { width 0.025 }
+  ]
+  startLine [
+    ""
+    ""
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+  ]
+  endLine [
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+    ""
+    ""
   ]
   rightBorder TRUE
   leftBorder TRUE
@@ -16560,6 +16632,18 @@ Road {
     }
     RoadLine { width 0.025 }
   ]
+  startLine [
+    ""
+    ""
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+  ]
+  endLine [
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+    ""
+    ""
+  ]
   rightBorder TRUE
   leftBorder TRUE
   roadBorderHeight 0.035
@@ -16592,6 +16676,18 @@ Road {
     }
     RoadLine { width 0.025 }
   ]
+  startLine [
+    ""
+    ""
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+  ]
+  endLine [
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+    ""
+    ""
+  ]
   rightBorder TRUE
   leftBorder TRUE
   roadBorderHeight 0.035
@@ -16623,6 +16719,18 @@ Road {
       width 0.025
     }
     RoadLine { width 0.025 }
+  ]
+  startLine [
+    ""
+    ""
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+  ]
+  endLine [
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+    ""
+    ""
   ]
   rightBorder TRUE
   leftBorder TRUE
@@ -16660,6 +16768,26 @@ Road {
     RoadLine { width 0.025 }
     RoadLine { width 0.025 }
   ]
+  startLine [
+    "../../../../../../worlds/textures/crossing.png"
+    "../../../../../../worlds/textures/crossing.png"
+    "../../../../../../worlds/textures/crossing.png"
+    "../../../../../../worlds/textures/crossing.png"
+    "../../../../../../worlds/textures/stop_crossing.png"
+    "../../../../../../worlds/textures/stop_crossing.png"
+    "../../../../../../worlds/textures/stop_crossing.png"
+    "../../../../../../worlds/textures/stop_crossing.png"
+  ]
+  endLine [
+    "../../../../../../worlds/textures/stop_crossing.png"
+    "../../../../../../worlds/textures/stop_crossing.png"
+    "../../../../../../worlds/textures/stop_crossing.png"
+    "../../../../../../worlds/textures/stop_crossing.png"
+    "../../../../../../worlds/textures/crossing.png"
+    "../../../../../../worlds/textures/crossing.png"
+    "../../../../../../worlds/textures/crossing.png"
+    "../../../../../../worlds/textures/crossing.png"
+  ]
   rightBorder TRUE
   leftBorder TRUE
   roadBorderHeight 0.035
@@ -16696,6 +16824,26 @@ Road {
     RoadLine { width 0.025 }
     RoadLine { width 0.025 }
   ]
+  startLine [
+    "../../../../../../worlds/textures/crossing.png"
+    "../../../../../../worlds/textures/crossing.png"
+    "../../../../../../worlds/textures/crossing.png"
+    "../../../../../../worlds/textures/crossing.png"
+    "../../../../../../worlds/textures/stop_crossing.png"
+    "../../../../../../worlds/textures/stop_crossing.png"
+    "../../../../../../worlds/textures/stop_crossing.png"
+    "../../../../../../worlds/textures/stop_crossing.png"
+  ]
+  endLine [
+    "../../../../../../worlds/textures/stop_crossing.png"
+    "../../../../../../worlds/textures/stop_crossing.png"
+    "../../../../../../worlds/textures/stop_crossing.png"
+    "../../../../../../worlds/textures/stop_crossing.png"
+    "../../../../../../worlds/textures/crossing.png"
+    "../../../../../../worlds/textures/crossing.png"
+    "../../../../../../worlds/textures/crossing.png"
+    "../../../../../../worlds/textures/crossing.png"
+  ]
   rightBorder TRUE
   leftBorder TRUE
   roadBorderHeight 0.035
@@ -16727,6 +16875,18 @@ Road {
       width 0.025
     }
     RoadLine { width 0.025 }
+  ]
+  startLine [
+    ""
+    ""
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+  ]
+  endLine [
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+    ""
+    ""
   ]
   rightBorder TRUE
   leftBorder TRUE
@@ -16760,6 +16920,18 @@ Road {
     }
     RoadLine { width 0.025 }
   ]
+  startLine [
+    ""
+    ""
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+  ]
+  endLine [
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+    ""
+    ""
+  ]
   rightBorder TRUE
   leftBorder TRUE
   roadBorderHeight 0.035
@@ -16791,6 +16963,18 @@ Road {
       width 0.025
     }
     RoadLine { width 0.025 }
+  ]
+  startLine [
+    ""
+    ""
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+  ]
+  endLine [
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+    ""
+    ""
   ]
   rightBorder TRUE
   leftBorder TRUE
@@ -16824,6 +17008,18 @@ Road {
     }
     RoadLine { width 0.025 }
   ]
+  startLine [
+    ""
+    ""
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+  ]
+  endLine [
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+    ""
+    ""
+  ]
   rightBorder TRUE
   leftBorder TRUE
   roadBorderHeight 0.035
@@ -16855,6 +17051,18 @@ Road {
       width 0.025
     }
     RoadLine { width 0.025 }
+  ]
+  startLine [
+    ""
+    ""
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+  ]
+  endLine [
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+    ""
+    ""
   ]
   rightBorder TRUE
   leftBorder TRUE
@@ -16888,6 +17096,18 @@ Road {
     }
     RoadLine { width 0.025 }
   ]
+  startLine [
+    ""
+    ""
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+  ]
+  endLine [
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+    ""
+    ""
+  ]
   rightBorder TRUE
   leftBorder TRUE
   roadBorderHeight 0.035
@@ -16919,6 +17139,18 @@ Road {
       width 0.025
     }
     RoadLine { width 0.025 }
+  ]
+  startLine [
+    ""
+    ""
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+  ]
+  endLine [
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+    ""
+    ""
   ]
   rightBorder TRUE
   leftBorder TRUE
@@ -16956,6 +17188,26 @@ Road {
     RoadLine { width 0.025 }
     RoadLine { width 0.025 }
   ]
+  startLine [
+    "../../../../../../worlds/textures/crossing.png"
+    "../../../../../../worlds/textures/crossing.png"
+    "../../../../../../worlds/textures/crossing.png"
+    "../../../../../../worlds/textures/crossing.png"
+    "../../../../../../worlds/textures/stop_crossing.png"
+    "../../../../../../worlds/textures/stop_crossing.png"
+    "../../../../../../worlds/textures/stop_crossing.png"
+    "../../../../../../worlds/textures/stop_crossing.png"
+  ]
+  endLine [
+    ""
+    ""
+    ""
+    ""
+    ""
+    ""
+    ""
+    ""
+  ]
   rightBorder TRUE
   leftBorder TRUE
   roadBorderHeight 0.035
@@ -16992,6 +17244,26 @@ Road {
     RoadLine { width 0.025 }
     RoadLine { width 0.025 }
   ]
+  startLine [
+    ""
+    ""
+    ""
+    ""
+    ""
+    ""
+    ""
+    ""
+  ]
+  endLine [
+    "../../../../../../worlds/textures/stop_crossing.png"
+    "../../../../../../worlds/textures/stop_crossing.png"
+    "../../../../../../worlds/textures/stop_crossing.png"
+    "../../../../../../worlds/textures/stop_crossing.png"
+    "../../../../../../worlds/textures/crossing.png"
+    "../../../../../../worlds/textures/crossing.png"
+    "../../../../../../worlds/textures/crossing.png"
+    "../../../../../../worlds/textures/crossing.png"
+  ]
   rightBorder TRUE
   leftBorder TRUE
   roadBorderHeight 0.035
@@ -17024,6 +17296,18 @@ Road {
     }
     RoadLine { width 0.025 }
   ]
+  startLine [
+    ""
+    ""
+    ""
+    ""
+  ]
+  endLine [
+    ""
+    ""
+    ""
+    ""
+  ]
   rightBorder TRUE
   leftBorder TRUE
   roadBorderHeight 0.1
@@ -17049,6 +17333,14 @@ Road {
   numberOfForwardLanes 0
   lines [
     RoadLine { width 0.025 }
+  ]
+  startLine [
+    ""
+    ""
+  ]
+  endLine [
+    ""
+    ""
   ]
   rightBorder FALSE
   leftBorder TRUE
@@ -17076,6 +17368,14 @@ Road {
   lines [
     RoadLine { width 0.025 }
   ]
+  startLine [
+    ""
+    ""
+  ]
+  endLine [
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+  ]
   rightBorder TRUE
   leftBorder FALSE
   roadBorderHeight 0.035
@@ -17102,6 +17402,14 @@ Road {
   lines [
     RoadLine { width 0.025 }
   ]
+  startLine [
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+  ]
+  endLine [
+    ""
+    ""
+  ]
   rightBorder FALSE
   leftBorder TRUE
   roadBorderHeight 0.035
@@ -17127,6 +17435,14 @@ Road {
   numberOfForwardLanes 2
   lines [
     RoadLine { width 0.025 }
+  ]
+  startLine [
+    ""
+    ""
+  ]
+  endLine [
+    ""
+    ""
   ]
   rightBorder TRUE
   leftBorder FALSE
@@ -17160,6 +17476,18 @@ Road {
     }
     RoadLine { width 0.025 }
   ]
+  startLine [
+    ""
+    ""
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+  ]
+  endLine [
+    "../../../../../../worlds/textures/stop_line.png"
+    "../../../../../../worlds/textures/stop_line.png"
+    ""
+    ""
+  ]
   rightBorder TRUE
   leftBorder TRUE
   roadBorderHeight 0.035
@@ -17189,6 +17517,14 @@ Road {
       type "double"
       width 0.025
     }
+  ]
+  startLine [
+    ""
+    "../../../../../../worlds/textures/stop_line.png"
+  ]
+  endLine [
+    "../../../../../../worlds/textures/stop_line.png"
+    ""
   ]
   rightBorder TRUE
   leftBorder TRUE
@@ -17220,6 +17556,14 @@ Road {
       width 0.025
     }
   ]
+  startLine [
+    ""
+    "../../../../../../worlds/textures/stop_line.png"
+  ]
+  endLine [
+    "../../../../../../worlds/textures/stop_line.png"
+    ""
+  ]
   rightBorder TRUE
   leftBorder TRUE
   roadBorderHeight 0.035
@@ -17249,6 +17593,14 @@ Road {
       type "double"
       width 0.025
     }
+  ]
+  startLine [
+    ""
+    "../../../../../../worlds/textures/stop_line.png"
+  ]
+  endLine [
+    "../../../../../../worlds/textures/stop_line.png"
+    ""
   ]
   rightBorder TRUE
   leftBorder TRUE
@@ -18313,6 +18665,929 @@ Solid {
   ]
   name "ND_Median-FLYOVER"
   boundingObject USE ND_MESH_MEDIAN_FLYOVER
+}
+
+Solid {
+  translation -24.8 110.05 0
+  rotation 0 0 1 0
+  children [
+    Pose {
+      translation 0 0 0.28
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.55 0.58 0.6
+            roughness 0.5
+            metalness 0.5
+          }
+          geometry Cylinder {
+            height 0.56
+            radius 0.012
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.016 0 0.51
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/yield.png"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                0 -0.13 -0.13
+                0 0.13 -0.13
+                0 0.13 0.13
+                0 -0.13 0.13
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              0 1 2 3 -1
+            ]
+          }
+        }
+      ]
+    }
+  ]
+  name "ND_YieldSign-ROUND_W"
+  description "ND_YIELD_R_W"
+  boundingObject Pose {
+    translation 0 0 0.28
+    children [
+      Cylinder {
+        height 0.56
+        radius 0.015
+      }
+    ]
+  }
+}
+
+Solid {
+  translation -25.3 110.05 0
+  rotation 0 0 1 0
+  children [
+    Pose {
+      translation 0 0 0.28
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.55 0.58 0.6
+            roughness 0.5
+            metalness 0.5
+          }
+          geometry Cylinder {
+            height 0.56
+            radius 0.012
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.016 0 0.51
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/roundabout.png"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                0 -0.13 -0.13
+                0 0.13 -0.13
+                0 0.13 0.13
+                0 -0.13 0.13
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              0 1 2 3 -1
+            ]
+          }
+        }
+      ]
+    }
+  ]
+  name "ND_RoundaboutSign-ROUND_W"
+  description "ND_ROUND_R_W"
+  boundingObject Pose {
+    translation 0 0 0.28
+    children [
+      Cylinder {
+        height 0.56
+        radius 0.015
+      }
+    ]
+  }
+}
+
+Solid {
+  translation -10.2 112.95 0
+  rotation 0 0 1 3.141593
+  children [
+    Pose {
+      translation 0 0 0.28
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.55 0.58 0.6
+            roughness 0.5
+            metalness 0.5
+          }
+          geometry Cylinder {
+            height 0.56
+            radius 0.012
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.016 0 0.51
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/yield.png"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                0 -0.13 -0.13
+                0 0.13 -0.13
+                0 0.13 0.13
+                0 -0.13 0.13
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              0 1 2 3 -1
+            ]
+          }
+        }
+      ]
+    }
+  ]
+  name "ND_YieldSign-ROUND_E"
+  description "ND_YIELD_R_E"
+  boundingObject Pose {
+    translation 0 0 0.28
+    children [
+      Cylinder {
+        height 0.56
+        radius 0.015
+      }
+    ]
+  }
+}
+
+Solid {
+  translation -9.7 112.95 0
+  rotation 0 0 1 3.141593
+  children [
+    Pose {
+      translation 0 0 0.28
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.55 0.58 0.6
+            roughness 0.5
+            metalness 0.5
+          }
+          geometry Cylinder {
+            height 0.56
+            radius 0.012
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.016 0 0.51
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/roundabout.png"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                0 -0.13 -0.13
+                0 0.13 -0.13
+                0 0.13 0.13
+                0 -0.13 0.13
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              0 1 2 3 -1
+            ]
+          }
+        }
+      ]
+    }
+  ]
+  name "ND_RoundaboutSign-ROUND_E"
+  description "ND_ROUND_R_E"
+  boundingObject Pose {
+    translation 0 0 0.28
+    children [
+      Cylinder {
+        height 0.56
+        radius 0.015
+      }
+    ]
+  }
+}
+
+Solid {
+  translation -18.95 118.8 0
+  rotation 0 0 1 -1.570796
+  children [
+    Pose {
+      translation 0 0 0.28
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.55 0.58 0.6
+            roughness 0.5
+            metalness 0.5
+          }
+          geometry Cylinder {
+            height 0.56
+            radius 0.012
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.016 0 0.51
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/yield.png"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                0 -0.13 -0.13
+                0 0.13 -0.13
+                0 0.13 0.13
+                0 -0.13 0.13
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              0 1 2 3 -1
+            ]
+          }
+        }
+      ]
+    }
+  ]
+  name "ND_YieldSign-ROUND_N"
+  description "ND_YIELD_R_N"
+  boundingObject Pose {
+    translation 0 0 0.28
+    children [
+      Cylinder {
+        height 0.56
+        radius 0.015
+      }
+    ]
+  }
+}
+
+Solid {
+  translation -18.95 119.3 0
+  rotation 0 0 1 -1.570796
+  children [
+    Pose {
+      translation 0 0 0.28
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.55 0.58 0.6
+            roughness 0.5
+            metalness 0.5
+          }
+          geometry Cylinder {
+            height 0.56
+            radius 0.012
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.016 0 0.51
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/roundabout.png"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                0 -0.13 -0.13
+                0 0.13 -0.13
+                0 0.13 0.13
+                0 -0.13 0.13
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              0 1 2 3 -1
+            ]
+          }
+        }
+      ]
+    }
+  ]
+  name "ND_RoundaboutSign-ROUND_N"
+  description "ND_ROUND_R_N"
+  boundingObject Pose {
+    translation 0 0 0.28
+    children [
+      Cylinder {
+        height 0.56
+        radius 0.015
+      }
+    ]
+  }
+}
+
+Solid {
+  translation -16.05 104.2 0
+  rotation 0 0 1 1.570796
+  children [
+    Pose {
+      translation 0 0 0.28
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.55 0.58 0.6
+            roughness 0.5
+            metalness 0.5
+          }
+          geometry Cylinder {
+            height 0.56
+            radius 0.012
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.016 0 0.51
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/yield.png"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                0 -0.13 -0.13
+                0 0.13 -0.13
+                0 0.13 0.13
+                0 -0.13 0.13
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              0 1 2 3 -1
+            ]
+          }
+        }
+      ]
+    }
+  ]
+  name "ND_YieldSign-ROUND_S"
+  description "ND_YIELD_R_S"
+  boundingObject Pose {
+    translation 0 0 0.28
+    children [
+      Cylinder {
+        height 0.56
+        radius 0.015
+      }
+    ]
+  }
+}
+
+Solid {
+  translation -16.05 103.7 0
+  rotation 0 0 1 1.570796
+  children [
+    Pose {
+      translation 0 0 0.28
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.55 0.58 0.6
+            roughness 0.5
+            metalness 0.5
+          }
+          geometry Cylinder {
+            height 0.56
+            radius 0.012
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.016 0 0.51
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/roundabout.png"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                0 -0.13 -0.13
+                0 0.13 -0.13
+                0 0.13 0.13
+                0 -0.13 0.13
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              0 1 2 3 -1
+            ]
+          }
+        }
+      ]
+    }
+  ]
+  name "ND_RoundaboutSign-ROUND_S"
+  description "ND_ROUND_R_S"
+  boundingObject Pose {
+    translation 0 0 0.28
+    children [
+      Cylinder {
+        height 0.56
+        radius 0.015
+      }
+    ]
+  }
+}
+
+Solid {
+  translation -43 96.35 0
+  rotation 0 0 1 3.141593
+  children [
+    Pose {
+      translation 0 0 0.28
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.55 0.58 0.6
+            roughness 0.5
+            metalness 0.5
+          }
+          geometry Cylinder {
+            height 0.56
+            radius 0.012
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.016 0 0.51
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/stop.png"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                0 -0.13 -0.13
+                0 0.13 -0.13
+                0 0.13 0.13
+                0 -0.13 0.13
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              0 1 2 3 -1
+            ]
+          }
+        }
+      ]
+    }
+  ]
+  name "ND_StopSign-WA_T"
+  description "ND_STOP_WA_T"
+  boundingObject Pose {
+    translation 0 0 0.28
+    children [
+      Cylinder {
+        height 0.56
+        radius 0.015
+      }
+    ]
+  }
+}
+
+Solid {
+  translation -19.5 94.65 0
+  rotation 0 0 1 0
+  children [
+    Pose {
+      translation 0 0 0.28
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.55 0.58 0.6
+            roughness 0.5
+            metalness 0.5
+          }
+          geometry Cylinder {
+            height 0.56
+            radius 0.012
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.016 0 0.51
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/stop.png"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                0 -0.13 -0.13
+                0 0.13 -0.13
+                0 0.13 0.13
+                0 -0.13 0.13
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              0 1 2 3 -1
+            ]
+          }
+        }
+      ]
+    }
+  ]
+  name "ND_StopSign-WS_T"
+  description "ND_STOP_WS_T"
+  boundingObject Pose {
+    translation 0 0 0.28
+    children [
+      Cylinder {
+        height 0.56
+        radius 0.015
+      }
+    ]
+  }
+}
+
+Solid {
+  translation -0.85 76.2 0
+  rotation 0 0 1 -1.570796
+  children [
+    Pose {
+      translation 0 0 0.28
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.55 0.58 0.6
+            roughness 0.5
+            metalness 0.5
+          }
+          geometry Cylinder {
+            height 0.56
+            radius 0.012
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.016 0 0.51
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/stop.png"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                0 -0.13 -0.13
+                0 0.13 -0.13
+                0 0.13 0.13
+                0 -0.13 0.13
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              0 1 2 3 -1
+            ]
+          }
+        }
+      ]
+    }
+  ]
+  name "ND_StopSign-SL_T"
+  description "ND_STOP_SL_T"
+  boundingObject Pose {
+    translation 0 0 0.28
+    children [
+      Cylinder {
+        height 0.56
+        radius 0.015
+      }
+    ]
+  }
+}
+
+Solid {
+  translation 0.85 141 0
+  rotation 0 0 1 1.570796
+  children [
+    Pose {
+      translation 0 0 0.28
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.55 0.58 0.6
+            roughness 0.5
+            metalness 0.5
+          }
+          geometry Cylinder {
+            height 0.56
+            radius 0.012
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.016 0 0.51
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/stop.png"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                0 -0.13 -0.13
+                0 0.13 -0.13
+                0 0.13 0.13
+                0 -0.13 0.13
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              0 1 2 3 -1
+            ]
+          }
+        }
+      ]
+    }
+  ]
+  name "ND_StopSign-CN_T"
+  description "ND_STOP_CN_T"
+  boundingObject Pose {
+    translation 0 0 0.28
+    children [
+      Cylinder {
+        height 0.56
+        radius 0.015
+      }
+    ]
+  }
+}
+
+Solid {
+  translation -46.45 115 0
+  rotation 0 0 1 1.570796
+  children [
+    Pose {
+      translation 0 0 0.28
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.55 0.58 0.6
+            roughness 0.5
+            metalness 0.5
+          }
+          geometry Cylinder {
+            height 0.56
+            radius 0.012
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.016 0 0.51
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/speed.png"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                0 -0.13 -0.13
+                0 0.13 -0.13
+                0 0.13 0.13
+                0 -0.13 0.13
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              0 1 2 3 -1
+            ]
+          }
+        }
+      ]
+    }
+  ]
+  name "ND_SpeedLimitSign-1"
+  description "ND_SPEED_LIMIT_1"
+  boundingObject Pose {
+    translation 0 0 0.28
+    children [
+      Cylinder {
+        height 0.56
+        radius 0.015
+      }
+    ]
+  }
 }
 
 # END NORTH_DISTRICT

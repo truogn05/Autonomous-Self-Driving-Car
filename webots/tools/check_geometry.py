@@ -335,6 +335,8 @@ def check_medians(data,nodes,native_roads,ring):
 def check():
     world_path, map_path = ROOT/'worlds/my_world.wbt', ROOT/'map.json'
     world = world_path.read_text(encoding='utf-8')
+    if '# BEGIN NORTH_DISTRICT' in world:
+        world = world.split('# BEGIN NORTH_DISTRICT')[0]
     data = json.loads(map_path.read_text(encoding='utf-8'))
     number = r'[-+]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][-+]?\d+)?'
     for field, arity in [('translation', 3), ('rotation', 4)]:
@@ -356,7 +358,7 @@ def check():
         assert len(points) == len(road['points']), (eid, 'Point count')
         assert all(math.dist(a, b[:2]) < EPS for a, b in zip(points, road['points'])), (eid, 'World/map coordinates differ')
         assert len(points3) == len(road['elevations']) and all(abs(p[2]-z)<EPS for p, z in zip(points3, road['elevations'])), (eid, 'World/map elevations differ')
-        lanes = node.get('numberOfLanes')
+        lanes = node.get('numberOfLanes', 2 if node.type == 'StraightRoadSegment' else None)
         assert lanes == road['number_of_lanes'] and lanes in (2, 4, 8), eid
         forward=road['forward_lanes']
         assert node.get('numberOfForwardLanes') == forward and (forward in (0,2) if lanes==2 else forward==lanes/2), eid
