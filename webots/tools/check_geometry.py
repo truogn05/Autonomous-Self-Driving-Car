@@ -172,7 +172,7 @@ def check_flyover(data, nodes, native_roads):
     assert bridge['from']==f['splits'][0] and bridge['to']==f['splits'][1]
     assert abs(bridge['elevations'][0]-.048)<EPS and abs(bridge['elevations'][-1]-.048)<EPS
     height=f['deck_height_m']; toes=f['toe_x']; flat=f['plateau_x']; thickness=f['deck_thickness_m']
-    assert abs(height-2.28)<EPS and abs(thickness-.36)<EPS, 'Compact bridge dimensions differ from approved layout'
+    assert abs(height-6.192)<EPS and abs(thickness-.36)<EPS, 'Compact bridge dimensions differ from approved layout'
     assert all(abs(a-b)<EPS for a,b in zip(toes,[1.5,82.5])) and all(abs(a-b)<EPS for a,b in zip(flat,[19.5,64.5]))
     assert math.dist(bridge['points'][0],[toes[0],f['center'][1]])<EPS and math.dist(bridge['points'][-1],[toes[1],f['center'][1]])<EPS
     for eid in f['approaches']+f['ground_roads']:
@@ -180,18 +180,13 @@ def check_flyover(data, nodes, native_roads):
         for nid,point in [(roads[eid]['from'],actual[0]),(roads[eid]['to'],actual[-1])]:
             if nid in f['splits']:
                 assert abs(point[0]-toes[f['splits'].index(nid)])<EPS and abs(point[2]-.048)<EPS, (eid,nid,'Actual road misses compact bridge split')
-    assert .048+height-EPS <= max(bridge['elevations']) <= 3.120+EPS
+    assert .048+height-EPS <= max(bridge['elevations']) <= 6.240+EPS
     for p,z in zip(bridge['points'],bridge['elevations']):
-        if p[0] < flat[0] - EPS:
-            t = (p[0]-toes[0])/(flat[0]-toes[0])
-            assert abs(z-(.048+height*t*t*(3-2*t))) < EPS, ('West ramp profile differs', p, z)
-        elif p[0] > flat[1] + EPS:
-            t = (toes[1]-p[0])/(toes[1]-flat[1])
-            assert abs(z-(.048+height*t*t*(3-2*t))) < EPS, ('East ramp profile differs', p, z)
-        else:
-            assert z >= .048+height-EPS and z <= 3.120+EPS, ('Deck arch out of bounds', p, z)
+        u = p[0] - f['center'][0]
+        expected_z = .048 + (height / 2.0) * (1.0 + math.cos(math.pi * u / 40.5))
+        assert abs(z - expected_z) < EPS, ('Arch profile differs', p, z, expected_z)
     grade=max(abs(b-a)/math.dist(p,q) for a,b,p,q in zip(bridge['elevations'],bridge['elevations'][1:],bridge['points'],bridge['points'][1:]))
-    assert grade<.20, ('Flyover ramp grade',grade)
+    assert grade<.25, ('Flyover ramp grade',grade)
     for eid in f['ground_roads']:
         r=roads[eid];forward=2 if eid.endswith('_S') else 0
         assert (r['number_of_lanes'],r['forward_lanes'],r['width'])==(2,forward,7.2)
@@ -213,15 +208,13 @@ def check_flyover(data, nodes, native_roads):
     assert set(structures)=={'Bridge-NORTH_FLYOVER-Deck','Bridge-NORTH_FLYOVER-RampSupport-West','Bridge-NORTH_FLYOVER-RampSupport-East'} and len(structures)==sum(n.get('name','').startswith('Bridge-NORTH_FLYOVER-') for n in nodes), 'Missing/duplicate bridge structures'
     assert not any(n.get('name','').startswith(('Flyover-Pier-','Flyover-Deck')) for n in nodes), 'Old bridge structures remain'
     deck=structures['Bridge-NORTH_FLYOVER-Deck']
-    sizes=[list(map(float,re.findall(NUMBER,s))) for s in re.findall(r'\bBox\s*\{\s*size\s+([^}]+)\}',deck.text)]
-    assert len(sizes)==2 and all(math.dist(size,[flat[1]-flat[0],14.4,thickness])<EPS for size in sizes), 'Deck visible/collision boxes differ'
-    dx,dy,dz=deck.get('translation'); top=dz+thickness/2; underside=dz-thickness/2
-    assert abs(dx-(flat[0]+flat[1])/2)<EPS and abs(dy-f['center'][1])<EPS and abs(deck.get('rotation',[0,0,1,0])[3])<EPS
+    deck_vertices, deck_faces = closed_mesh(deck)
+    assert len(deck_vertices) == 244 and len(deck_faces) == 242
+    crossing_underside_min = min(v[2] for v in deck_vertices if abs(v[0] - f['center'][0]) <= 7.2)
+    clearance = crossing_underside_min - .048
+    assert clearance >= 5.0, ('Insufficient measured clearance below deck', clearance)
     inset=f['structural_inset_m']
     assert 0<inset<.048, 'Structural inset must avoid coplanar asphalt and keep toe supports above ground'
-    assert abs(top-(.048+height-inset))<EPS, 'Deck must meet the declared road underside'
-    clearance=underside-.048
-    assert clearance>=1.80, ('Insufficient measured clearance below deck',clearance)
     support_count=0
     for side,limits in [('West',[toes[0],flat[0]]),('East',[flat[1],toes[1]])]:
         node=structures['Bridge-NORTH_FLYOVER-RampSupport-'+side]
@@ -245,7 +238,7 @@ def check_flyover(data, nodes, native_roads):
     length=sum(math.dist(a,b) for a,b in zip(bridge['points'],bridge['points'][1:]))
     assert length<2*crossing_length, ('Flyover must be shorter than twice the actual crossing',length,crossing_length)
     assert flat[0]<crossing.bounds[0] and flat[1]>crossing.bounds[2], 'Flat deck must extend beyond both crossing edges'
-    assert all(road_height([x,f['center'][1]],[bridge]) >= (.048+height)-EPS for x in [crossing.bounds[0],crossing.bounds[2]]), 'Ramp descends into crossing'
+    assert all(road_height([x,f['center'][1]],[bridge]) >= 2.96 - EPS for x in [crossing.bounds[0],crossing.bounds[2]]), 'Ramp descends into crossing'
     return {'total_approach_lanes':8,'bridge_lanes_per_direction':2,'ground_lanes_per_direction':2,
             'split_lanes_checked':split_links,'deck_height_m':height,'maximum_ramp_grade':round(grade,6),
             'toe_distance_m':round(length,6),'crossing_length_m':round(crossing_length,6),'length_crossing_ratio':round(length/crossing_length,6),

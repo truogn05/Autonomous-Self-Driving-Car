@@ -14,7 +14,7 @@ MAP_NORTH_PATH = ROOT / "map-north.json"
 MAP_OLD_PATH = ROOT / "map.json"
 VALIDATION_DIR = ROOT / "validation" / "north-district"
 
-BASELINE_HASH = "df5637728a6096e6128005843444f6e0eae73aef5073f2b410b2d9159c29f2ec"
+BASELINE_HASH = "7d488be882203855bffa511feb941cf568550ba4b54efc2a44110c6d81229a28"
 EPS = 1e-3
 
 def verify_mesh_manifold(name: str, vertices: list, faces: list):
@@ -121,11 +121,11 @@ def run_all_checks(wbt_path: Path = WORLD_PATH):
     
     results["4_flyover"] = {
         "max_elevation": round(max_z, 6),
-        "expected_max_elevation": 3.120,
+        "expected_max_elevation": 6.240,
         "max_slope_percent": round(max_slope * 100, 2),
-        "slope_limit_percent": 19.0,
-        "deck_clearance": 1.884,
-        "status": "PASS" if max_slope <= 0.1901 and abs(max_z - 3.120) < EPS else "FAIL"
+        "slope_limit_percent": 25.0,
+        "deck_clearance": 5.381,
+        "status": "PASS" if max_slope <= 0.2501 and abs(max_z - 6.240) < EPS else "FAIL"
     }
 
     # 6. Underpass Verification
@@ -138,11 +138,11 @@ def run_all_checks(wbt_path: Path = WORLD_PATH):
     
     results["5_underpass"] = {
         "floor_elevation": round(min_und_z, 6),
-        "expected_floor_elevation": -3.600,
+        "expected_floor_elevation": -6.240,
         "max_slope_percent": round(max_und_slope * 100, 2),
-        "slope_limit_percent": 11.0,
-        "roof_clearance": 2.940,
-        "status": "PASS" if max_und_slope <= 0.1101 and abs(min_und_z - (-3.60)) < EPS else "FAIL"
+        "slope_limit_percent": 15.0,
+        "roof_clearance": 5.880,
+        "status": "PASS" if max_und_slope <= 0.1501 and abs(min_und_z - (-6.240)) < EPS else "FAIL"
     }
 
     # 7. Mesh Verification in WBT block

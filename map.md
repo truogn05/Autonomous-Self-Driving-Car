@@ -13,9 +13,9 @@
 Bản đồ mô phỏng là môi trường đô thị 3D quy mô thực tế 1:1 phục vụ thử nghiệm toàn diện hệ thống xe tự lái (Autonomous Driving Stack), bao gồm định vị (Localization), lập kế hoạch đường đi (Global/Local Planning), điều khiển bám làn (Control), và nhận diện biển báo/tín hiệu giao thông (Perception). Toàn bộ bản đồ đã được đồng bộ chuẩn hóa tỷ lệ phóng to $6.0\times$, đáp ứng hoàn hảo kích thước của các dòng xe thực tế (như BMW X5, robot tự hành thực tế với bề rộng xe chiếm khoảng 50% - 75% một làn đường tiêu chuẩn $3.60\,\text{m}$).
 
 Bản đồ hiện tại bao gồm **3 phân vùng liên hoàn**:
-1. **Khu Nam (South District - Đô thị Trung tâm):** Khu vực đô thị với mạng lưới đường bàn cờ dày đặc, vòng xuyến trung tâm (tâm $X=72.0\,\text{m}, Y=0.0\,\text{m}$), cầu vượt vòm cong đỉnh $Z=+3.120\,\text{m}$, trục hầm ngầm kéo dài sâu $Z=-3.720\,\text{m}$ (chiều dài $132.12\,\text{m}$) và trục tây tịnh tiến $X=-225.0\,\text{m}$.
+1. **Khu Nam (South District - Đô thị Trung tâm):** Khu vực đô thị với mạng lưới đường bàn cờ dày đặc, vòng xuyến trung tâm (tâm $X=72.0\,\text{m}, Y=0.0\,\text{m}$), cầu vượt vòm cong đỉnh nâng gấp đôi **$Z=+6.240\,\text{m}$** (tĩnh không gầm cầu $\ge 5.381\,\text{m}$), trục hầm ngầm kéo dài hạ sâu tương đương cầu **$Z=-6.240\,\text{m}$** (tĩnh không lọt lòng hầm $5.970\,\text{m}$) và trục tây tịnh tiến $X=-225.0\,\text{m}$.
 2. **Dải sông & Vùng đệm tự nhiên (River & Shoreline Buffer):** Dải sông xanh uốn lượn tự nhiên ngăn cách hai phân khu (chiều rộng $66.0\,\text{m} - 90.0\,\text{m}$), kết cấu mesh kín khép góc 100% 2-manifold không khe hở.
-3. **Khu Bắc (North District - Đô thị Mở rộng):** Khu đô thị mở rộng hiện đại với đại lộ 8 làn ($28.8\,\text{m}$), trục hầm chui ngầm dài $424.62\,\text{m}$ sâu $Z=-3.600\,\text{m}$ được bịt kín hoàn toàn vách tường chắn, cầu vượt đúc vòm cong đỉnh $Z=+3.120\,\text{m}$, vòng xuyến phía Tây (tâm $X=-105.0\,\text{m}, Y=669.0\,\text{m}$) và đường vành đai uốn theo bờ sông.
+3. **Khu Bắc (North District - Đô thị Mở rộng):** Khu đô thị mở rộng hiện đại với đại lộ 8 làn ($28.8\,\text{m}$), trục hầm chui ngầm dài $424.62\,\text{m}$ hạ sâu tương đương cầu **$Z=-6.240\,\text{m}$** (tĩnh không lọt lòng hầm $5.880\,\text{m}$) được bịt kín hoàn toàn vách tường chắn cao $6.6\,\text{m}$, cầu vượt đúc vòm cong đỉnh nâng gấp đôi **$Z=+6.240\,\text{m}$**, vòng xuyến phía Tây (tâm $X=-105.0\,\text{m}, Y=669.0\,\text{m}$) và đường vành đai uốn theo bờ sông.
 
 ```mermaid
 graph TD
@@ -24,8 +24,8 @@ graph TD
         subgraph KHU_BAC ["Khu Bắc (North District): Y in [363.6, 894.0]"]
             NB_ROADS["29 Tuyến đường (8/4/2 làn: 28.8m / 14.4m / 7.2m)"]
             NB_JUNCS["17 Nút giao & 1 Vòng xuyến (R_cổng = 43.2m)"]
-            NB_SPECIAL["Cầu vượt vòm cong (Z=+3.120m) & Hầm chui (Z=-3.600m, kín cạnh)"]
-            NB_SIGNS["13 Biển báo & 11 Dải phân cách bê tông"]
+            NB_SPECIAL["Cầu vượt vòm tròn (Z=+6.240m) & Hầm chui sâu đối xứng (Z=-6.240m, hở >=5.88m)"]
+            NB_SIGNS["13 Biển báo chuẩn 1.56m & 11 Dải phân cách bê tông"]
         end
         
         subgraph SONG ["Dải Sông Ngăn Cách & Vùng Đệm: Y in [288.0, 403.2]"]
@@ -37,8 +37,8 @@ graph TD
         subgraph KHU_NAM ["Khu Nam (South District): Y in [-180.0, 288.0]"]
             SB_ROADS["55 Tuyến đường (8/4/2 làn, trục Tây X=-225.0m)"]
             SB_JUNCS["32 Nút giao & 1 Vòng xuyến"]
-            SB_SPECIAL["Cầu vượt vòm cong Y=129.0m (Z=+3.120m) & Hầm kéo dài (Z=-3.720m, 132.12m)"]
-            SB_SIGNS["16 Biển báo, 4 Đèn tín hiệu & 11 Dải phân cách bê tông"]
+            SB_SPECIAL["Cầu vượt vòm tròn (Z=+6.240m) & Hầm sâu đối xứng (Z=-6.240m, hở >=5.97m)"]
+            SB_SIGNS["16 Biển báo chuẩn 1.56m, 4 Đèn tín hiệu & 11 Dải phân cách"]
         end
     end
     
@@ -57,14 +57,14 @@ graph TD
 | **Bề rộng làn đường chuẩn** | $3.60\,\text{m}$ | N/A | $3.60\,\text{m}$ | **$3.60\,\text{m}$** |
 | **Số nút giao (Junctions)** | 32 (35 cổng logic) | 0 | 17 (20 cổng logic) | **49 nút (55 cổng logic)** |
 | **Số vòng xuyến (Roundabouts)** | 1 (tâm $72.0, 0.0$) | 0 | 1 (tâm $-105.0, 669.0$) | **2 vòng xuyến** |
-| **Cầu vượt (Flyovers)** | 1 (vòm cong đỉnh $Z=+3.120\,\text{m}$) | 0 | 1 (vòm cong đỉnh $Z=+3.120\,\text{m}$) | **2 cầu vượt vòm cong** |
-| **Hầm chui ngầm (Underpasses)**| 1 (sâu $Z=-3.720\,\text{m}$, dài $132.12\,\text{m}$) | 0 | 1 (sâu $Z=-3.600\,\text{m}$, bịt kín cạnh) | **2 hầm chui cải tiến** |
+| **Cầu vượt (Flyovers)** | 1 (vòm cong đỉnh $Z=+6.240\,\text{m}$) | 0 | 1 (vòm cong đỉnh $Z=+6.240\,\text{m}$) | **2 cầu vượt vòm cong cao gấp đôi** |
+| **Hầm chui ngầm (Underpasses)**| 1 (sâu $Z=-6.240\,\text{m}$, dài $132.12\,\text{m}$) | 0 | 1 (sâu $Z=-6.240\,\text{m}$, tường cao 6.6m) | **2 hầm chui sâu tương đương cầu** |
 | **Số làn đường trong JSON** | 1.594 làn | 0 | 130 làn | **1.724 làn** |
 | **Tỷ lệ kết nối Làn (Successor)** | 100% | N/A | 100% | **100%** |
 | **Dải phân cách bê tông (Medians)**| 11 nhóm Solid | 0 | 11 nhóm Solid | **22 nhóm** |
-| **Biển báo giao thông tĩnh** | 16 biển | 0 | 13 biển | **29 biển báo** |
+| **Biển báo giao thông tĩnh** | 16 biển (chuẩn 1.56m) | 0 | 13 biển (chuẩn 1.56m) | **29 biển báo (100% scale 6x)** |
 | **Cột đèn tín hiệu giao thông** | 4 cột (`SIGNAL_SYSTEM`) | 0 | 0 | **4 cột (1 hệ thống 4 pha)** |
-| **Khối Mesh tùy biến (IFS)** | 13 mesh | 3 mesh | 7 mesh | **23 khối kín 2-manifold** |
+| **Khối Mesh tùy biến (IFS)** | 14 mesh | 3 mesh | 11 mesh | **28 khối kín 2-manifold** |
 
 ---
 
@@ -102,14 +102,18 @@ Theo quy định chuẩn Webots R2022a+ và [`AGENT.md`](file:///d:/Truong/Code/
   - Các nút giao `WEST_UPPER`, `WEST_MIDDLE`, `WEST_LOWER` được tịnh tiến tương ứng tới $X = -225.0\,\text{m}$.
   - Cung chuyển tiếp `OUTER_NW` và `OUTER_SW` được nội suy $C^1$ Hermite mượt mà, giữ góc vuông cổng nút giao và loại bỏ hoàn toàn tam giác ngược.
 - **Hầm ngầm Khu Nam (`BLOCK_MID_TUNNEL`):**
-  - Chiều sâu đáy hạ xuống **$-3.720\,\text{m}$**.
-  - Đáy hầm cong võng êm thuận, chỉ giữ phẳng $6.0\,\text{m}$ ở tâm ($X \in [-141.0, -135.0]$).
-  - Vách hầm `Tunnel-Structure` kéo dài liên tục $120.0\,\text{m}$, vách bê tông dày $1.2\,\text{m}$ tại $Y = \pm 15.24\,\text{m}$, kèm bản đáy đệm tại $Z = -4.08\,\text{m}$ triệt tiêu hoàn toàn khe hở viền.
+  - Chiều sâu đáy hạ xuống đối xứng tương đương cầu **$Z = -6.240\,\text{m}$**.
+  - Đáy hầm cong võng êm thuận (Cosine S-curve), giữ phẳng $6.0\,\text{m}$ ở tâm ($X \in [-141.0, -135.0]$) dưới dầm cầu `RECONNECTED_BRIDGE`.
+  - Tĩnh không lọt lòng hầm đạt **$5.970\,\text{m}$** (tăng từ $3.450\,\text{m}$ cũ).
+  - Vách hầm `Tunnel-Structure` kéo dài liên tục $120.0\,\text{m}$, vách bê tông nâng cao lên $6.6\,\text{m}$ (đáy hạ xuống $Z = -6.54\,\text{m}$), kèm bản đáy đệm tại $Z = -6.60\,\text{m}$ triệt tiêu hoàn toàn khe hở viền.
+  - Dải phân cách `CentreMedian-BLOCK_MID_TUNNEL` bám sát đường cong trắc dọc hạ sâu $-6.240\,\text{m}$, đúc kín 100% 2-manifold.
 - **Cầu vượt Khu Nam (`NORTH_FLYOVER`):**
-  - Trục ngang $Y = 129.0\,\text{m}$, uốn cong vòm liên tục từ $Z = 2.328\,\text{m}$ lên đỉnh **$Z = 3.120\,\text{m}$**.
-  - Chỉ giữ phẳng $6.0\,\text{m}$ tại tâm ($X \in [39.0, 45.0]$).
-  - Độ dốc cực đại $\le 18.96\% \le 19.0\%$.
-  - Dải phân cách `CentreMedian-NORTH_FLYOVER` bám sát đường cong trắc dọc.
+  - Trục ngang $Y = 129.0\,\text{m}$, chiều dài nhịp $L = 81.0\,\text{m}$ ($X \in [1.5, 82.5]\,\text{m}$), tâm cầu tại $X = 42.0\,\text{m}$.
+  - Trắc dọc vòm cong tròn/cosin toàn dải mượt mà: $Z(u) = 0.048 + \frac{6.192}{2}\left(1 + \cos\frac{\pi u}{40.5}\right)$ với $u = X - 42.0 \in [-40.5, 40.5]$.
+  - Cao độ đỉnh cầu nâng gấp đôi lên: **$Z = +6.240\,\text{m}$** (độ vươn nhịp $h = 6.192\,\text{m}$ so với mặt đường).
+  - Độ dốc cực đại: **$24.0\%$** ($\le 25.0\%$, góc dốc $13.5^\circ$), êm dịu triệt tiêu độ dốc tại chân cầu ($0.0\%$) và đỉnh cầu ($0.0\%$).
+  - Tĩnh không gầm cầu giao cắt bên dưới: **$5.381\,\text{m} - 5.796\,\text{m}$** (vượt trội hoàn toàn so với chiều cao $3.2\,\text{m}$ của xe buýt tiêu chuẩn `BusSimple`).
+  - Toàn bộ kết cấu dầm sàn cong `NORTH_FLYOVER_DECK` (244 đỉnh, 242 mặt), mố dốc `NORTH_FLYOVER_RAMP_WEST`/`EAST` (100 đỉnh, 98 mặt) và dải phân cách `CentreMedian-NORTH_FLYOVER` (436 đỉnh, 434 mặt) đều là khối đúc 3D `IndexedFaceSet` kín nước 100% 2-manifold.
 
 ---
 
@@ -199,31 +203,30 @@ Toàn bộ 29 tuyến đường đều được tạo dựng bằng node `Road` 
 ## 6. CHI TIẾT CÁC CÔNG TRÌNH HẠ TẦNG ĐẶC BIỆT ĐƯỢC NÂNG CẤP (CHUẨN 1:1)
 
 ### 6.1. Cầu Vượt Trung Tâm Khu Bắc (`ND_FLYOVER`)
-- **Vị trí tuyến:** Trục $X = 105.0\,\text{m}$, từ $Y = 628.50\,\text{m}$ đến $Y = 709.50\,\text{m}$ (chiều dài $81.0\,\text{m}$).
-- **Trắc dọc vòm cong cải tiến:**
-  - Thay thế đỉnh mặt phẳng dài $45.0\,\text{m}$ bằng đường cong vòm S-curve mượt mà.
-  - Cao độ đỉnh cầu: **$Z = 3.120\,\text{m}$**.
-  - Độ dài đoạn phẳng ở đỉnh: **chính xác $6.0\,\text{m}$** tại tâm ($Y \in [666.0, 672.0]$).
-  - Độ dốc cực đại đoạn dốc nối: **$18.96\% \le 19.00\%$** (bảo toàn độ dốc tiêu chuẩn thiết kế).
-  - Tĩnh không gầm cầu dưới: **$1.884\,\text{m}$**.
-- **Kết cấu kiến trúc:**
-  - Sàn cầu `ND_Bridge-Deck`.
-  - Mố cầu đúc kín 2-manifold: `ND_Bridge-RampSupport-South` & `North`.
-  - Dải phân cách vòm cong `ND_MESH_MEDIAN_FLYOVER`.
+- **Vị trí tuyến:** Trục $X = 105.0\,\text{m}$, từ $Y = 628.50\,\text{m}$ đến $Y = 709.50\,\text{m}$ (chiều dài nhịp $L = 81.0\,\text{m}$), tâm cầu tại $Y = 669.0\,\text{m}$.
+- **Trắc dọc vòm cong tròn/cosin toàn dải gấp đôi chiều cao:**
+  - Thiết kế vòm cong đều mượt mà dạng cung tròn/cosin theo hàm: $Z(u) = 0.048 + \frac{6.192}{2}\left(1 + \cos\frac{\pi u}{40.5}\right)$ với $u = Y - 669.0 \in [-40.5, 40.5]$.
+  - Cao độ đỉnh cầu nâng gấp đôi lên: **$Z = +6.240\,\text{m}$** (độ vươn nhịp $h = 6.192\,\text{m}$ so với mặt đường).
+  - Độ dốc cực đại: **$24.0\%$** ($\le 25.0\%$, góc dốc $13.5^\circ$), độ dốc tại chân cầu và đỉnh cầu triệt tiêu về $0.0\%$.
+  - Tĩnh không gầm cầu nút giao bên dưới: **$5.381\,\text{m} - 5.796\,\text{m}$** (dư biên độ an toàn $> 2.18\,\text{m}$ cho xe buýt `BusSimple` cao $3.2\,\text{m}$ chạy qua thông suốt không va chạm).
+- **Kết cấu kiến trúc đúc 3D 100% 2-manifold:**
+  - Sàn dầm cong `ND_Bridge-Deck` (`ND_DECK`, 244 đỉnh, 242 mặt).
+  - Mố dốc chân cầu đúc kín `ND_Bridge-RampSupport-South` & `North` (`ND_RAMP_SUPPORT_*`, 100 đỉnh, 98 mặt).
+  - Dải phân cách bê tông uốn cong theo trắc dọc vòm `ND_Median-FLYOVER` (`ND_MESH_MEDIAN_FLYOVER`, 436 đỉnh, 434 mặt).
 
 ### 6.2. Hầm Chui Ngầm Khu Bắc (`ND_UNDERPASS`)
 - **Vị trí tuyến:** Trục $X = 189.0\,\text{m}$, từ $Y = 411.78\,\text{m}$ đến $Y = 858.0\,\text{m}$ (chiều dài $424.62\,\text{m}$).
 - **Khắc phục khe hở viền & trắc dọc đáy hầm:**
-  - **Bịt kín hoàn toàn khe hở viền:** 2 bức tường chắn bê tông liên tục `ND_Underpass-Wall-West` ($X = 180.0\,\text{m}$) và `ND_Underpass-Wall-East` ($X = 198.0\,\text{m}$) dài $168.0\,\text{m}$, dày $1.2\,\text{m}$, cao $3.9\,\text{m}$, liên kết kín khít vào nắp hầm `ND_Underpass-Roof`.
-  - **Đáy hầm uốn cong võng:** Cao độ hạ dốc êm thuận xuống sâu **$Z = -3.600\,\text{m}$**, đoạn phẳng đáy rút ngắn từ $72.0\,\text{m}$ xuống **$6.0\,\text{m}$** tại tâm ($Y \in [666.0, 672.0]$).
-  - Độ dốc hạ dốc: $10.41\% \le 11.0\%$.
-  - Tĩnh không đứng lọt lòng: **$2.940\,\text{m}$**.
+  - **Bịt kín hoàn toàn khe hở viền:** 2 bức tường chắn bê tông liên tục `ND_Underpass-Wall-West` ($X = 180.0\,\text{m}$) và `ND_Underpass-Wall-East` ($X = 198.0\,\text{m}$) dài $168.0\,\text{m}$, dày $1.2\,\text{m}$, nâng chiều cao lên $6.6\,\text{m}$ (từ $Z = 0.0\,\text{m}$ xuống $Z = -6.6\,\text{m}$), liên kết kín khít vào nắp hầm `ND_Underpass-Roof`.
+  - **Đáy hầm uốn cong võng sâu đối xứng với cầu:** Cao độ hạ dốc êm thuận xuống sâu **$Z = -6.240\,\text{m}$** (độ sâu đối xứng tuyệt đối với đỉnh cầu $Z = +6.240\,\text{m}$), đoạn phẳng đáy dài $6.0\,\text{m}$ tại tâm ($Y \in [666.0, 672.0]$).
+  - Độ dốc hạ dốc: $12.19\% \le 15.0\%$.
+  - Tĩnh không đứng lọt lòng: **$5.880\,\text{m}$** (thoải mái cho xe buýt 2 tầng, xe tải container, LiDAR nóc xe chạy qua không va chạm).
 
 ---
 
 ## 7. HỆ THỐNG CÔNG CỤ KIỂM ĐỊNH TỰ ĐỘNG (QA & VERIFICATION SUITE)
 
-Hệ thống được bảo đảm chất lượng bởi 3 công cụ kiểm thử tự động, tất cả đều đạt **100% PASS**:
+Hệ thống được bảo đảm chất lượng bởi các công cụ kiểm thử tự động, tất cả đều đạt **100% PASS**:
 
 ### 7.1. Kiểm Tra Hình Học Tĩnh (`check_geometry.py`)
 ```powershell
@@ -238,6 +241,7 @@ python webots/tools/check_geometry.py
   - `lanes_checked`: 1594
   - `outside_road`: [] (0 lỗi)
   - `directed_strong_connectivity`: True
+  - `north_flyover`: deck height $6.192\,\text{m}$, max grade $24.0\%$, clearance $5.381\,\text{m}$
   - `medians`: 11 nhóm mesh kín 2-manifold
   - `furniture`: 16 biển báo, 4 đèn tín hiệu đảm bảo khoảng sáng an toàn $\ge 1.002\,\text{m} > 0.90\,\text{m}$.
 
@@ -249,14 +253,14 @@ python webots/tools/check_north_district.py
   1. `1_old_district_preservation`: Checksum prefix khớp baseline cập nhật (`PASS`).
   2. `2_road_network`: Đủ 29 tuyến đường (`PASS`).
   3. `3_junctions_and_ports`: 17 nút giao, 58 cổng kết nối (`PASS`).
-  4. `4_flyover`: Cao độ đỉnh $3.120\,\text{m}$, dốc $18.96\% \le 19.0\%$ (`PASS`).
-  5. `5_underpass`: Cao độ đáy $-3.600\,\text{m}$, dốc $10.41\% \le 11.0\%$ (`PASS`).
-  6. `6_custom_meshes_manifold`: 10 khối mesh 2-manifold kín nước (`PASS`).
+  4. `4_flyover`: Cao độ đỉnh $6.240\,\text{m}$, dốc $24.0\% \le 25.0\%$, tĩnh không $5.381\,\text{m}$ (`PASS`).
+  5. `5_underpass`: Cao độ đáy $-6.240\,\text{m}$, dốc $12.19\% \le 15.0\%$, tĩnh không nóc $5.880\,\text{m}$ (`PASS`).
+  6. `6_custom_meshes_manifold`: 11 khối mesh 2-manifold kín nước (`PASS`).
   7. `7_roundabout`: Vòng xuyến 4 nhánh chuẩn bán kính cổng $43.2\,\text{m}$ (`PASS`).
   8. `8_split_geometry`: Tách/nhập làn cầu vượt chuẩn (`PASS`).
   9. `9_concrete_medians`: 11 dải phân cách bê tông (`PASS`).
   10. `10_road_markings`: 29 tuyến có vạch dừng hợp lệ (`PASS`).
-  11. `11_traffic_signs`: 13 biển báo giao thông đúng chuẩn (`PASS`).
+  11. `11_traffic_signs`: 13 biển báo giao thông đúng chuẩn $1.56\,\text{m}$ (`PASS`).
   12. `12_lane_graph`: 130 làn đường, kết nối $100.0\%$ (`PASS`).
 
 ### 7.3. Kiểm Tra Cấu Trúc Nút Giao & Runtime (`verify_junctions.py --self-check`)
@@ -271,7 +275,9 @@ python webots/tools/verify_junctions.py --self-check
 
 Bản đồ `my_world.wbt` đã được nâng cấp hoàn chỉnh theo đúng yêu cầu:
 1. **Quy mô đô thị thực tế 1:1:** Phóng đại đồng bộ hệ số $6.0\times$, làn đường $3.60\,\text{m}$ vừa vặn xe ô tô thực (như BMW X5) và các tác tử xe tự hành.
-2. **Cầu vượt vòm cong tự nhiên:** Cả hai cầu vượt đạt đỉnh cao độ $Z = +3.120\,\text{m}$, chỉ phẳng $6.0\,\text{m}$ tại tâm và bảo toàn độ dốc cực đại $\le 19.0\%$.
-3. **Hầm chui ngầm:** Đáy hầm sâu $Z = -3.600\,\text{m}$ (Khu Bắc) và $Z = -3.720\,\text{m}$ (Khu Nam), tường chắn bê tông bịt kín 100% khe hở viền.
-4. **Trục Tây Khu Nam:** Kéo dài hầm lên $132.12\,\text{m}$, tịnh tiến sang $X = -225.0\,\text{m}$ với nội suy chuyển tiếp Hermite trơn tru.
-5. **Hệ thống kiểm thử QA Suite:** Đạt 100% PASS trên tất cả các công cụ kiểm định.
+2. **Cầu vượt cong tròn cao gấp đôi:** Cả 2 cầu vượt (`NORTH_FLYOVER` và `ND_FLYOVER`) uốn cong vòm liên tục như cung tròn/cosin toàn nhịp $81.0\,\text{m}$, nâng đỉnh lên **$Z = +6.240\,\text{m}$** (gấp đôi $3.120\,\text{m}$), tĩnh không gầm cầu đạt **$5.381\,\text{m} - 5.796\,\text{m}$**, cho phép xe buýt (`BusSimple` cao $3.2\,\text{m}$) chui lọt thoải mái với biên độ $> 2.18\,\text{m}$.
+3. **Hầm chui ngầm sâu đối xứng với cầu:** Cả 2 hầm chui (`ND_UNDERPASS` và `BLOCK_MID_TUNNEL`) được hạ sâu xuống đáy **$Z = -6.240\,\text{m}$** (đối xứng hoàn hảo với độ cao đỉnh cầu $Z = +6.240\,\text{m}$), tĩnh không nóc hầm mở rộng đạt $\ge 5.880\,\text{m}$, tường chắn bê tông sâu $6.6\,\text{m}$ bịt kín 100% khe hở.
+4. **Vạch kẻ đường & biển báo chuẩn 1:1:** Vạch dừng (`startLine`/`endLine`) và vạch đi bộ qua đường được scale từ $0.4\,\text{m}$ lên $2.40\,\text{m}$ trong `Road.proto`. Toàn bộ 29 biển báo giao thông trên toàn map được nâng kích thước lên $1.56\,\text{m} \times 1.56\,\text{m}$ đúng chuẩn đồ họa và tầm nhìn thị giác máy tính.
+5. **Trục Tây Khu Nam:** Kéo dài hầm lên $132.12\,\text{m}$, tịnh tiến sang $X = -225.0\,\text{m}$ với nội suy chuyển tiếp Hermite trơn tru.
+6. **Hệ thống kiểm thử QA Suite:** Đạt 100% PASS trên tất cả các công cụ kiểm định (`check_geometry.py`, `check_north_district.py`, `verify_junctions.py`, `sync_world.py`).
+

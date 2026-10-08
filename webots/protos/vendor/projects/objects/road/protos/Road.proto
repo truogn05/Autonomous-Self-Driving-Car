@@ -303,18 +303,18 @@ PROTO Road [
               geometry DEF START_ROAD_LINES_GEOMETRY IndexedFaceSet {
                 coord Coordinate {
                   point [
-                    %< let heightDiff = 0.4 * (wayPoints[1].z - wayPoints[0].z) /  wbvector2.distance({x: wayPoints[0].y, y: wayPoints[0].x }, {x: wayPoints[1].y, y: wayPoints[1].x }); >%
+                    %< let heightDiff = 2.4 * (wayPoints[1].z - wayPoints[0].z) /  wbvector2.distance({x: wayPoints[0].y, y: wayPoints[0].x }, {x: wayPoints[1].y, y: wayPoints[1].x }); >%
                     %<= (i / numberOfLanes - 0.5)          * Math.sin(angle[0]) * width + wayPoints[0].x >% %<= (i / numberOfLanes - 0.5)          * Math.cos(angle[0]) * width + wayPoints[0].y >%                             %<= wayPoints[0].z + (i / numberOfLanes - 0.5)          * Math.sin(tilt[0]) * width + heightOffset >%
                     %<= ((i + size) / numberOfLanes - 0.5) * Math.sin(angle[0]) * width + wayPoints[0].x >% %<= ((i + size) / numberOfLanes - 0.5) * Math.cos(angle[0]) * width + wayPoints[0].y >%                             %<= wayPoints[0].z + ((i + size) / numberOfLanes - 0.5) * Math.sin(tilt[0]) * width + heightOffset >%
-                    %<= ((i + size) / numberOfLanes - 0.5) * Math.sin(angle[0]) * width + wayPoints[0].x + 0.4 * Math.cos(angle[0]) >% %<= ((i + size) / numberOfLanes - 0.5) * Math.cos(angle[0]) * width + wayPoints[0].y + 0.4 * Math.sin(-angle[0]) >% %<= wayPoints[0].z + ((i + size) / numberOfLanes - 0.5) * Math.sin(tilt[0]) * width + heightOffset + heightDiff >%
-                    %<= (i / numberOfLanes - 0.5)          * Math.sin(angle[0]) * width + wayPoints[0].x + 0.4 * Math.cos(angle[0]) >% %<= (i / numberOfLanes - 0.5)          * Math.cos(angle[0]) * width + wayPoints[0].y + 0.4 * Math.sin(-angle[0]) >% %<= wayPoints[0].z + (i / numberOfLanes - 0.5)          * Math.sin(tilt[0]) * width + heightOffset + heightDiff >%
+                    %<= ((i + size) / numberOfLanes - 0.5) * Math.sin(angle[0]) * width + wayPoints[0].x + 2.4 * Math.cos(angle[0]) >% %<= ((i + size) / numberOfLanes - 0.5) * Math.cos(angle[0]) * width + wayPoints[0].y + 2.4 * Math.sin(-angle[0]) >% %<= wayPoints[0].z + ((i + size) / numberOfLanes - 0.5) * Math.sin(tilt[0]) * width + heightOffset + heightDiff >%
+                    %<= (i / numberOfLanes - 0.5)          * Math.sin(angle[0]) * width + wayPoints[0].x + 2.4 * Math.cos(angle[0]) >% %<= (i / numberOfLanes - 0.5)          * Math.cos(angle[0]) * width + wayPoints[0].y + 2.4 * Math.sin(-angle[0]) >% %<= wayPoints[0].z + (i / numberOfLanes - 0.5)          * Math.sin(tilt[0]) * width + heightOffset + heightDiff >%
                   ]
                 }
                 texCoord TextureCoordinate {
                   point [
                     0 0
-                    %<= size * width / (0.4 * numberOfLanes) >% 0
-                    %<= size * width / (0.4 * numberOfLanes) >% 1
+                    %<= size * width / (2.4 * numberOfLanes) >% 0
+                    %<= size * width / (2.4 * numberOfLanes) >% 1
                     0 1
                   ]
                 }
@@ -366,18 +366,18 @@ PROTO Road [
               geometry DEF END_ROAD_LINES_GEOMETRY IndexedFaceSet {
                 coord Coordinate {
                   point [
-                    %< let heightDiff = 0.4 * (wayPoints[nbWayPoint-2].z - wayPoints[nbWayPoint-1].z) /  wbvector2.distance({x: wayPoints[nbWayPoint-2].y, y: wayPoints[nbWayPoint-2].x}, {x: wayPoints[nbWayPoint-1].y, y: wayPoints[nbWayPoint-1].x }); >%
+                    %< let heightDiff = 2.4 * (wayPoints[nbWayPoint-2].z - wayPoints[nbWayPoint-1].z) /  wbvector2.distance({x: wayPoints[nbWayPoint-2].y, y: wayPoints[nbWayPoint-2].x}, {x: wayPoints[nbWayPoint-1].y, y: wayPoints[nbWayPoint-1].x }); >%
                     %<= (i / numberOfLanes - 0.5)          * Math.sin(angle[nbWayPoint-2]) * width + wayPoints[nbWayPoint-1].x >%                                       %<= (i / numberOfLanes - 0.5)          * Math.cos(angle[nbWayPoint-2]) * width + wayPoints[nbWayPoint-1].y >%                                        %<= wayPoints[nbWayPoint-1].z + (i / numberOfLanes - 0.5)          * Math.sin(tilt[nbWayPoint-1]) * width + heightOffset >%
                     %<= ((i + size) / numberOfLanes - 0.5) * Math.sin(angle[nbWayPoint-2]) * width + wayPoints[nbWayPoint-1].x >%                                       %<= ((i + size) / numberOfLanes - 0.5) * Math.cos(angle[nbWayPoint-2]) * width + wayPoints[nbWayPoint-1].y >%                                        %<= wayPoints[nbWayPoint-1].z + ((i + size) / numberOfLanes - 0.5) * Math.sin(tilt[nbWayPoint-1]) * width + heightOffset >%
-                    %<= ((i + size) / numberOfLanes - 0.5) * Math.sin(angle[nbWayPoint-2]) * width + wayPoints[nbWayPoint-1].x - 0.4 * Math.cos(angle[nbWayPoint-2]) >% %<= ((i + size) / numberOfLanes - 0.5) * Math.cos(angle[nbWayPoint-2]) * width + wayPoints[nbWayPoint-1].y - 0.4 * Math.sin(-angle[nbWayPoint-2]) >% %<= wayPoints[nbWayPoint-1].z + ((i + size) / numberOfLanes - 0.5) * Math.sin(tilt[nbWayPoint-1]) * width + heightOffset + heightDiff >%
-                    %<= (i / numberOfLanes - 0.5)          * Math.sin(angle[nbWayPoint-2]) * width + wayPoints[nbWayPoint-1].x - 0.4 * Math.cos(angle[nbWayPoint-2]) >% %<= (i / numberOfLanes - 0.5)          * Math.cos(angle[nbWayPoint-2]) * width + wayPoints[nbWayPoint-1].y - 0.4 * Math.sin(-angle[nbWayPoint-2]) >% %<= wayPoints[nbWayPoint-1].z + (i / numberOfLanes - 0.5)          * Math.sin(tilt[nbWayPoint-1]) * width + heightOffset + heightDiff >%
+                    %<= ((i + size) / numberOfLanes - 0.5) * Math.sin(angle[nbWayPoint-2]) * width + wayPoints[nbWayPoint-1].x - 2.4 * Math.cos(angle[nbWayPoint-2]) >% %<= ((i + size) / numberOfLanes - 0.5) * Math.cos(angle[nbWayPoint-2]) * width + wayPoints[nbWayPoint-1].y - 2.4 * Math.sin(-angle[nbWayPoint-2]) >% %<= wayPoints[nbWayPoint-1].z + ((i + size) / numberOfLanes - 0.5) * Math.sin(tilt[nbWayPoint-1]) * width + heightOffset + heightDiff >%
+                    %<= (i / numberOfLanes - 0.5)          * Math.sin(angle[nbWayPoint-2]) * width + wayPoints[nbWayPoint-1].x - 2.4 * Math.cos(angle[nbWayPoint-2]) >% %<= (i / numberOfLanes - 0.5)          * Math.cos(angle[nbWayPoint-2]) * width + wayPoints[nbWayPoint-1].y - 2.4 * Math.sin(-angle[nbWayPoint-2]) >% %<= wayPoints[nbWayPoint-1].z + (i / numberOfLanes - 0.5)          * Math.sin(tilt[nbWayPoint-1]) * width + heightOffset + heightDiff >%
                   ]
                 }
                 texCoord TextureCoordinate {
                   point [
                     0 0
-                    %<= size * width / (0.4 * numberOfLanes) >% 0
-                    %<= size * width / (0.4 * numberOfLanes) >% 1
+                    %<= size * width / (2.4 * numberOfLanes) >% 0
+                    %<= size * width / (2.4 * numberOfLanes) >% 1
                     0 1
                   ]
                 }
