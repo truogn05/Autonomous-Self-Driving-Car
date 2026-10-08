@@ -14,7 +14,7 @@ MAP_NORTH_PATH = ROOT / "map-north.json"
 MAP_OLD_PATH = ROOT / "map.json"
 VALIDATION_DIR = ROOT / "validation" / "north-district"
 
-BASELINE_HASH = "c1e6b53a428455abef8ad0c029c26620b9336419874f530abd323a264f17b697"
+BASELINE_HASH = "df5637728a6096e6128005843444f6e0eae73aef5073f2b410b2d9159c29f2ec"
 EPS = 1e-3
 
 def verify_mesh_manifold(name: str, vertices: list, faces: list):
@@ -67,7 +67,7 @@ def run_all_checks(wbt_path: Path = WORLD_PATH):
         lanes = r["number_of_lanes"]
         width = r["width"]
         assert lanes in (2, 4, 8), f"Invalid lane count: {lanes}"
-        assert abs(width - lanes * 0.6) < EPS, f"Width mismatch for {r['id']}"
+        assert abs(width - lanes * 3.6) < EPS, f"Width mismatch for {r['id']}"
         pts = r["points"]
         elev = r["elevations"]
         assert len(pts) == len(elev) and len(pts) >= 2, f"Invalid waypoints for {r['id']}"
@@ -121,11 +121,11 @@ def run_all_checks(wbt_path: Path = WORLD_PATH):
     
     results["4_flyover"] = {
         "max_elevation": round(max_z, 6),
-        "expected_max_elevation": 0.520,
+        "expected_max_elevation": 3.120,
         "max_slope_percent": round(max_slope * 100, 2),
         "slope_limit_percent": 19.0,
-        "deck_clearance": 0.314,
-        "status": "PASS" if max_slope <= 0.1901 and abs(max_z - 0.520) < EPS else "FAIL"
+        "deck_clearance": 1.884,
+        "status": "PASS" if max_slope <= 0.1901 and abs(max_z - 3.120) < EPS else "FAIL"
     }
 
     # 6. Underpass Verification
@@ -138,11 +138,11 @@ def run_all_checks(wbt_path: Path = WORLD_PATH):
     
     results["5_underpass"] = {
         "floor_elevation": round(min_und_z, 6),
-        "expected_floor_elevation": -0.600,
+        "expected_floor_elevation": -3.600,
         "max_slope_percent": round(max_und_slope * 100, 2),
         "slope_limit_percent": 11.0,
-        "roof_clearance": 0.490,
-        "status": "PASS" if max_und_slope <= 0.1101 and abs(min_und_z - (-0.60)) < EPS else "FAIL"
+        "roof_clearance": 2.940,
+        "status": "PASS" if max_und_slope <= 0.1101 and abs(min_und_z - (-3.60)) < EPS else "FAIL"
     }
 
     # 7. Mesh Verification in WBT block
@@ -175,9 +175,9 @@ def run_all_checks(wbt_path: Path = WORLD_PATH):
     assert roundabout["kind"] == "roundabout"
     assert len(roundabout["ports"]) == 4
     results["7_roundabout"] = {
-        "center": [-17.5, 111.5],
+        "center": [-105.0, 669.0],
         "branch_count": 4,
-        "port_radius": 7.2,
+        "port_radius": 43.2,
         "status": "PASS"
     }
 
