@@ -2046,7 +2046,7 @@ Solid {
       ]
     }
     Pose {
-      translation 0.096 0 3.06
+      translation 0.082 0 3.06
       children [
         Shape {
           appearance PBRAppearance {
@@ -2061,10 +2061,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0.015 -0.78 -0.78
-                0.015 0.78 -0.78
-                0.015 0.78 0.78
-                0.015 -0.78 0.78
+                0.005 -0.78 -0.78
+                0.005 0.78 -0.78
+                0.005 0.78 0.78
+                0.005 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -2082,12 +2082,34 @@ Solid {
         }
         Shape {
           appearance PBRAppearance {
-            baseColor 0.5 0.52 0.55
+            baseColorMap ImageTexture {
+              url [
+                "textures/sign_back_octagon.png"
+              ]
+            }
             roughness 0.6
-            metalness 0.5
+            metalness 0.4
           }
-          geometry Box {
-            size 0.03 1.58 1.58
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.005 -0.78 -0.78
+                -0.005 0.78 -0.78
+                -0.005 0.78 0.78
+                -0.005 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              3, 2, 1, 0, -1
+            ]
           }
         }
       ]
@@ -2107,7 +2129,7 @@ Solid {
 }
 Solid {
   translation 24.902496 152.784804 0
-  rotation 0 0 1 1.905346
+  rotation 0.0 0.0 1.0 1.905346
   children [
     Pose {
       translation 0 0 1.68
@@ -2126,7 +2148,7 @@ Solid {
       ]
     }
     Pose {
-      translation 0.096 0 3.06
+      translation 0.082 0 3.06
       children [
         Shape {
           appearance PBRAppearance {
@@ -2141,10 +2163,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0.015 -0.78 -0.78
-                0.015 0.78 -0.78
-                0.015 0.78 0.78
-                0.015 -0.78 0.78
+                0.005 -0.78 -0.78
+                0.005 0.78 -0.78
+                0.005 0.78 0.78
+                0.005 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -2162,12 +2184,34 @@ Solid {
         }
         Shape {
           appearance PBRAppearance {
-            baseColor 0.5 0.52 0.55
+            baseColorMap ImageTexture {
+              url [
+                "textures/sign_back_octagon.png"
+              ]
+            }
             roughness 0.6
-            metalness 0.5
+            metalness 0.4
           }
-          geometry Box {
-            size 0.03 1.58 1.58
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.005 -0.78 -0.78
+                -0.005 0.78 -0.78
+                -0.005 0.78 0.78
+                -0.005 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              3, 2, 1, 0, -1
+            ]
           }
         }
       ]
@@ -2187,7 +2231,7 @@ Solid {
 }
 Solid {
   translation 127.665696 152.486886 0
-  rotation 0 0 1 1.396572
+  rotation 0.0 0.0 1.0 1.396572
   children [
     Pose {
       translation 0 0 1.68
@@ -2206,7 +2250,7 @@ Solid {
       ]
     }
     Pose {
-      translation 0.096 0 3.06
+      translation 0.082 0 3.06
       children [
         Shape {
           appearance PBRAppearance {
@@ -2221,10 +2265,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0.015 -0.78 -0.78
-                0.015 0.78 -0.78
-                0.015 0.78 0.78
-                0.015 -0.78 0.78
+                0.005 -0.78 -0.78
+                0.005 0.78 -0.78
+                0.005 0.78 0.78
+                0.005 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -2242,12 +2286,34 @@ Solid {
         }
         Shape {
           appearance PBRAppearance {
-            baseColor 0.5 0.52 0.55
+            baseColorMap ImageTexture {
+              url [
+                "textures/sign_back_triangle.png"
+              ]
+            }
             roughness 0.6
-            metalness 0.5
+            metalness 0.4
           }
-          geometry Box {
-            size 0.03 1.58 1.58
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.005 -0.78 -0.78
+                -0.005 0.78 -0.78
+                -0.005 0.78 0.78
+                -0.005 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              3, 2, 1, 0, -1
+            ]
           }
         }
       ]
@@ -2267,7 +2333,7 @@ Solid {
 }
 Solid {
   translation -129.66 52.68 0
-  rotation 0 0 1 -1.570796
+  rotation 0.0 0.0 1.0 -1.570796
   children [
     Pose {
       translation 0 0 1.68
@@ -2286,7 +2352,7 @@ Solid {
       ]
     }
     Pose {
-      translation 0.096 0 3.06
+      translation 0.082 0 3.06
       children [
         Shape {
           appearance PBRAppearance {
@@ -2301,10 +2367,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0.015 -0.78 -0.78
-                0.015 0.78 -0.78
-                0.015 0.78 0.78
-                0.015 -0.78 0.78
+                0.005 -0.78 -0.78
+                0.005 0.78 -0.78
+                0.005 0.78 0.78
+                0.005 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -2322,12 +2388,34 @@ Solid {
         }
         Shape {
           appearance PBRAppearance {
-            baseColor 0.5 0.52 0.55
+            baseColorMap ImageTexture {
+              url [
+                "textures/sign_back_octagon.png"
+              ]
+            }
             roughness 0.6
-            metalness 0.5
+            metalness 0.4
           }
-          geometry Box {
-            size 0.03 1.58 1.58
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.005 -0.78 -0.78
+                -0.005 0.78 -0.78
+                -0.005 0.78 0.78
+                -0.005 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              3, 2, 1, 0, -1
+            ]
           }
         }
       ]
@@ -2347,7 +2435,7 @@ Solid {
 }
 Solid {
   translation -146.34 -52.68 0
-  rotation 0 0 1 1.570796
+  rotation 0.0 0.0 1.0 1.570796
   children [
     Pose {
       translation 0 0 1.68
@@ -2366,7 +2454,7 @@ Solid {
       ]
     }
     Pose {
-      translation 0.096 0 3.06
+      translation 0.082 0 3.06
       children [
         Shape {
           appearance PBRAppearance {
@@ -2381,10 +2469,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0.015 -0.78 -0.78
-                0.015 0.78 -0.78
-                0.015 0.78 0.78
-                0.015 -0.78 0.78
+                0.005 -0.78 -0.78
+                0.005 0.78 -0.78
+                0.005 0.78 0.78
+                0.005 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -2402,12 +2490,34 @@ Solid {
         }
         Shape {
           appearance PBRAppearance {
-            baseColor 0.5 0.52 0.55
+            baseColorMap ImageTexture {
+              url [
+                "textures/sign_back_octagon.png"
+              ]
+            }
             roughness 0.6
-            metalness 0.5
+            metalness 0.4
           }
-          geometry Box {
-            size 0.03 1.58 1.58
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.005 -0.78 -0.78
+                -0.005 0.78 -0.78
+                -0.005 0.78 0.78
+                -0.005 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              3, 2, 1, 0, -1
+            ]
           }
         }
       ]
@@ -2427,7 +2537,7 @@ Solid {
 }
 Solid {
   translation -57.278034 -68.927424 0
-  rotation 0 0 1 -0.785398
+  rotation 0.0 0.0 1.0 -0.785398
   children [
     Pose {
       translation 0 0 1.68
@@ -2446,7 +2556,7 @@ Solid {
       ]
     }
     Pose {
-      translation 0.096 0 3.06
+      translation 0.082 0 3.06
       children [
         Shape {
           appearance PBRAppearance {
@@ -2461,10 +2571,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0.015 -0.78 -0.78
-                0.015 0.78 -0.78
-                0.015 0.78 0.78
-                0.015 -0.78 0.78
+                0.005 -0.78 -0.78
+                0.005 0.78 -0.78
+                0.005 0.78 0.78
+                0.005 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -2482,12 +2592,34 @@ Solid {
         }
         Shape {
           appearance PBRAppearance {
-            baseColor 0.5 0.52 0.55
+            baseColorMap ImageTexture {
+              url [
+                "textures/sign_back_octagon.png"
+              ]
+            }
             roughness 0.6
-            metalness 0.5
+            metalness 0.4
           }
-          geometry Box {
-            size 0.03 1.58 1.58
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.005 -0.78 -0.78
+                -0.005 0.78 -0.78
+                -0.005 0.78 0.78
+                -0.005 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              3, 2, 1, 0, -1
+            ]
           }
         }
       ]
@@ -2507,7 +2639,7 @@ Solid {
 }
 Solid {
   translation -58.62684 -91.167702 0
-  rotation 0 0 1 2.356194
+  rotation 0.0 0.0 1.0 2.356194
   children [
     Pose {
       translation 0 0 1.68
@@ -2526,7 +2658,7 @@ Solid {
       ]
     }
     Pose {
-      translation 0.096 0 3.06
+      translation 0.082 0 3.06
       children [
         Shape {
           appearance PBRAppearance {
@@ -2541,10 +2673,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0.015 -0.78 -0.78
-                0.015 0.78 -0.78
-                0.015 0.78 0.78
-                0.015 -0.78 0.78
+                0.005 -0.78 -0.78
+                0.005 0.78 -0.78
+                0.005 0.78 0.78
+                0.005 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -2562,12 +2694,34 @@ Solid {
         }
         Shape {
           appearance PBRAppearance {
-            baseColor 0.5 0.52 0.55
+            baseColorMap ImageTexture {
+              url [
+                "textures/sign_back_triangle.png"
+              ]
+            }
             roughness 0.6
-            metalness 0.5
+            metalness 0.4
           }
-          geometry Box {
-            size 0.03 1.58 1.58
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.005 -0.78 -0.78
+                -0.005 0.78 -0.78
+                -0.005 0.78 0.78
+                -0.005 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              3, 2, 1, 0, -1
+            ]
           }
         }
       ]
@@ -2605,7 +2759,7 @@ Solid {
       ]
     }
     Pose {
-      translation 0.096 0 3.06
+      translation 0.082 0 3.06
       children [
         Shape {
           appearance PBRAppearance {
@@ -2620,10 +2774,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0.015 -0.78 -0.78
-                0.015 0.78 -0.78
-                0.015 0.78 0.78
-                0.015 -0.78 0.78
+                0.005 -0.78 -0.78
+                0.005 0.78 -0.78
+                0.005 0.78 0.78
+                0.005 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -2641,12 +2795,34 @@ Solid {
         }
         Shape {
           appearance PBRAppearance {
-            baseColor 0.5 0.52 0.55
+            baseColorMap ImageTexture {
+              url [
+                "textures/sign_back_triangle.png"
+              ]
+            }
             roughness 0.6
-            metalness 0.5
+            metalness 0.4
           }
-          geometry Box {
-            size 0.03 1.58 1.58
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.005 -0.78 -0.78
+                -0.005 0.78 -0.78
+                -0.005 0.78 0.78
+                -0.005 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              3, 2, 1, 0, -1
+            ]
           }
         }
       ]
@@ -2684,7 +2860,7 @@ Solid {
       ]
     }
     Pose {
-      translation 0.096 0 3.06
+      translation 0.082 0 3.06
       children [
         Shape {
           appearance PBRAppearance {
@@ -2699,10 +2875,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0.015 -0.78 -0.78
-                0.015 0.78 -0.78
-                0.015 0.78 0.78
-                0.015 -0.78 0.78
+                0.005 -0.78 -0.78
+                0.005 0.78 -0.78
+                0.005 0.78 0.78
+                0.005 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -2720,12 +2896,34 @@ Solid {
         }
         Shape {
           appearance PBRAppearance {
-            baseColor 0.5 0.52 0.55
+            baseColorMap ImageTexture {
+              url [
+                "textures/sign_back_circle.png"
+              ]
+            }
             roughness 0.6
-            metalness 0.5
+            metalness 0.4
           }
-          geometry Box {
-            size 0.03 1.58 1.58
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.005 -0.78 -0.78
+                -0.005 0.78 -0.78
+                -0.005 0.78 0.78
+                -0.005 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              3, 2, 1, 0, -1
+            ]
           }
         }
       ]
@@ -2745,7 +2943,7 @@ Solid {
 }
 Solid {
   translation 116.4 37.5 0
-  rotation 0 0 1 1.570796
+  rotation 0.0 0.0 1.0 1.570796
   children [
     Pose {
       translation 0 0 1.68
@@ -2764,7 +2962,7 @@ Solid {
       ]
     }
     Pose {
-      translation 0.096 0 3.06
+      translation 0.082 0 3.06
       children [
         Shape {
           appearance PBRAppearance {
@@ -2779,10 +2977,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0.015 -0.78 -0.78
-                0.015 0.78 -0.78
-                0.015 0.78 0.78
-                0.015 -0.78 0.78
+                0.005 -0.78 -0.78
+                0.005 0.78 -0.78
+                0.005 0.78 0.78
+                0.005 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -2800,12 +2998,34 @@ Solid {
         }
         Shape {
           appearance PBRAppearance {
-            baseColor 0.5 0.52 0.55
+            baseColorMap ImageTexture {
+              url [
+                "textures/sign_back_triangle.png"
+              ]
+            }
             roughness 0.6
-            metalness 0.5
+            metalness 0.4
           }
-          geometry Box {
-            size 0.03 1.58 1.58
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.005 -0.78 -0.78
+                -0.005 0.78 -0.78
+                -0.005 0.78 0.78
+                -0.005 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              3, 2, 1, 0, -1
+            ]
           }
         }
       ]
@@ -2825,7 +3045,7 @@ Solid {
 }
 Solid {
   translation 116.4 39.3 0
-  rotation 0 0 1 1.570796
+  rotation 0.0 0.0 1.0 1.570796
   children [
     Pose {
       translation 0 0 1.68
@@ -2844,7 +3064,7 @@ Solid {
       ]
     }
     Pose {
-      translation 0.096 0 3.06
+      translation 0.082 0 3.06
       children [
         Shape {
           appearance PBRAppearance {
@@ -2859,10 +3079,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0.015 -0.78 -0.78
-                0.015 0.78 -0.78
-                0.015 0.78 0.78
-                0.015 -0.78 0.78
+                0.005 -0.78 -0.78
+                0.005 0.78 -0.78
+                0.005 0.78 0.78
+                0.005 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -2880,12 +3100,34 @@ Solid {
         }
         Shape {
           appearance PBRAppearance {
-            baseColor 0.5 0.52 0.55
+            baseColorMap ImageTexture {
+              url [
+                "textures/sign_back_circle.png"
+              ]
+            }
             roughness 0.6
-            metalness 0.5
+            metalness 0.4
           }
-          geometry Box {
-            size 0.03 1.58 1.58
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.005 -0.78 -0.78
+                -0.005 0.78 -0.78
+                -0.005 0.78 0.78
+                -0.005 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              3, 2, 1, 0, -1
+            ]
           }
         }
       ]
@@ -2905,7 +3147,7 @@ Solid {
 }
 Solid {
   translation 94.5 -15.6 0
-  rotation 0 0 1 3.141593
+  rotation 0.0 0.0 1.0 3.141593
   children [
     Pose {
       translation 0 0 1.68
@@ -2924,7 +3166,7 @@ Solid {
       ]
     }
     Pose {
-      translation 0.096 0 3.06
+      translation 0.082 0 3.06
       children [
         Shape {
           appearance PBRAppearance {
@@ -2939,10 +3181,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0.015 -0.78 -0.78
-                0.015 0.78 -0.78
-                0.015 0.78 0.78
-                0.015 -0.78 0.78
+                0.005 -0.78 -0.78
+                0.005 0.78 -0.78
+                0.005 0.78 0.78
+                0.005 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -2960,12 +3202,34 @@ Solid {
         }
         Shape {
           appearance PBRAppearance {
-            baseColor 0.5 0.52 0.55
+            baseColorMap ImageTexture {
+              url [
+                "textures/sign_back_triangle.png"
+              ]
+            }
             roughness 0.6
-            metalness 0.5
+            metalness 0.4
           }
-          geometry Box {
-            size 0.03 1.58 1.58
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.005 -0.78 -0.78
+                -0.005 0.78 -0.78
+                -0.005 0.78 0.78
+                -0.005 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              3, 2, 1, 0, -1
+            ]
           }
         }
       ]
@@ -2985,7 +3249,7 @@ Solid {
 }
 Solid {
   translation 92.7 -15.6 0
-  rotation 0 0 1 3.141593
+  rotation 0.0 0.0 1.0 3.141593
   children [
     Pose {
       translation 0 0 1.68
@@ -3004,7 +3268,7 @@ Solid {
       ]
     }
     Pose {
-      translation 0.096 0 3.06
+      translation 0.082 0 3.06
       children [
         Shape {
           appearance PBRAppearance {
@@ -3019,10 +3283,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0.015 -0.78 -0.78
-                0.015 0.78 -0.78
-                0.015 0.78 0.78
-                0.015 -0.78 0.78
+                0.005 -0.78 -0.78
+                0.005 0.78 -0.78
+                0.005 0.78 0.78
+                0.005 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -3040,12 +3304,34 @@ Solid {
         }
         Shape {
           appearance PBRAppearance {
-            baseColor 0.5 0.52 0.55
+            baseColorMap ImageTexture {
+              url [
+                "textures/sign_back_circle.png"
+              ]
+            }
             roughness 0.6
-            metalness 0.5
+            metalness 0.4
           }
-          geometry Box {
-            size 0.03 1.58 1.58
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.005 -0.78 -0.78
+                -0.005 0.78 -0.78
+                -0.005 0.78 0.78
+                -0.005 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              3, 2, 1, 0, -1
+            ]
           }
         }
       ]
@@ -3065,7 +3351,7 @@ Solid {
 }
 Solid {
   translation 147.6 -37.5 0
-  rotation 0 0 1 -1.570796
+  rotation 0.0 0.0 1.0 -1.570796
   children [
     Pose {
       translation 0 0 1.68
@@ -3084,7 +3370,7 @@ Solid {
       ]
     }
     Pose {
-      translation 0.096 0 3.06
+      translation 0.082 0 3.06
       children [
         Shape {
           appearance PBRAppearance {
@@ -3099,10 +3385,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0.015 -0.78 -0.78
-                0.015 0.78 -0.78
-                0.015 0.78 0.78
-                0.015 -0.78 0.78
+                0.005 -0.78 -0.78
+                0.005 0.78 -0.78
+                0.005 0.78 0.78
+                0.005 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -3120,12 +3406,34 @@ Solid {
         }
         Shape {
           appearance PBRAppearance {
-            baseColor 0.5 0.52 0.55
+            baseColorMap ImageTexture {
+              url [
+                "textures/sign_back_triangle.png"
+              ]
+            }
             roughness 0.6
-            metalness 0.5
+            metalness 0.4
           }
-          geometry Box {
-            size 0.03 1.58 1.58
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.005 -0.78 -0.78
+                -0.005 0.78 -0.78
+                -0.005 0.78 0.78
+                -0.005 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              3, 2, 1, 0, -1
+            ]
           }
         }
       ]
@@ -3145,7 +3453,7 @@ Solid {
 }
 Solid {
   translation 147.6 -39.3 0
-  rotation 0 0 1 -1.570796
+  rotation 0.0 0.0 1.0 -1.570796
   children [
     Pose {
       translation 0 0 1.68
@@ -3164,7 +3472,7 @@ Solid {
       ]
     }
     Pose {
-      translation 0.096 0 3.06
+      translation 0.082 0 3.06
       children [
         Shape {
           appearance PBRAppearance {
@@ -3179,10 +3487,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0.015 -0.78 -0.78
-                0.015 0.78 -0.78
-                0.015 0.78 0.78
-                0.015 -0.78 0.78
+                0.005 -0.78 -0.78
+                0.005 0.78 -0.78
+                0.005 0.78 0.78
+                0.005 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -3200,12 +3508,34 @@ Solid {
         }
         Shape {
           appearance PBRAppearance {
-            baseColor 0.5 0.52 0.55
+            baseColorMap ImageTexture {
+              url [
+                "textures/sign_back_circle.png"
+              ]
+            }
             roughness 0.6
-            metalness 0.5
+            metalness 0.4
           }
-          geometry Box {
-            size 0.03 1.58 1.58
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.005 -0.78 -0.78
+                -0.005 0.78 -0.78
+                -0.005 0.78 0.78
+                -0.005 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              3, 2, 1, 0, -1
+            ]
           }
         }
       ]
@@ -3225,7 +3555,7 @@ Solid {
 }
 Solid {
   translation -96 103.8 0
-  rotation 0 0 1 -1.570796
+  rotation 0.0 0.0 1.0 -1.570796
   children [
     Pose {
       translation 0 0 1.68
@@ -3244,7 +3574,7 @@ Solid {
       ]
     }
     Pose {
-      translation 0.096 0 3.06
+      translation 0.082 0 3.06
       children [
         Shape {
           appearance PBRAppearance {
@@ -3259,10 +3589,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0.015 -0.78 -0.78
-                0.015 0.78 -0.78
-                0.015 0.78 0.78
-                0.015 -0.78 0.78
+                0.005 -0.78 -0.78
+                0.005 0.78 -0.78
+                0.005 0.78 0.78
+                0.005 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -3280,12 +3610,34 @@ Solid {
         }
         Shape {
           appearance PBRAppearance {
-            baseColor 0.5 0.52 0.55
+            baseColorMap ImageTexture {
+              url [
+                "textures/sign_back_circle.png"
+              ]
+            }
             roughness 0.6
-            metalness 0.5
+            metalness 0.4
           }
-          geometry Box {
-            size 0.03 1.58 1.58
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.005 -0.78 -0.78
+                -0.005 0.78 -0.78
+                -0.005 0.78 0.78
+                -0.005 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              3, 2, 1, 0, -1
+            ]
           }
         }
       ]
@@ -5186,6 +5538,11 @@ StraightRoadSegment {
   endJunction "J_NORTH_MIDDLE"
   width 7.2
   numberOfForwardLanes 2
+  lines [
+    RoadLine {
+      width 0.15
+    }
+  ]
   roadBorderHeight 0.21
   startingRoadBorderWidth 0.84
   endingRoadBorderWidth 0.84
@@ -5215,6 +5572,11 @@ StraightRoadSegment {
   endJunction "J_FLYOVER_E"
   width 7.2
   numberOfForwardLanes 2
+  lines [
+    RoadLine {
+      width 0.15
+    }
+  ]
   roadBorderHeight 0.21
   startingRoadBorderWidth 0.84
   endingRoadBorderWidth 0.84
@@ -5244,6 +5606,11 @@ StraightRoadSegment {
   endJunction "J_NORTH_MIDDLE"
   width 7.2
   numberOfForwardLanes 0
+  lines [
+    RoadLine {
+      width 0.15
+    }
+  ]
   roadBorderHeight 0.21
   startingRoadBorderWidth 0.84
   endingRoadBorderWidth 0.84
@@ -5273,6 +5640,11 @@ StraightRoadSegment {
   endJunction "J_FLYOVER_E"
   width 7.2
   numberOfForwardLanes 0
+  lines [
+    RoadLine {
+      width 0.15
+    }
+  ]
   roadBorderHeight 0.21
   startingRoadBorderWidth 0.84
   endingRoadBorderWidth 0.84
@@ -8354,6 +8726,7 @@ Solid {
   name "Bridge-NORTH_FLYOVER-RampSupport-East"
   boundingObject USE NORTH_FLYOVER_RAMP_EAST
 }
+# BEGIN NORTH_DISTRICT
 Solid {
   children [
     Shape {
@@ -9790,8 +10163,8 @@ Road {
   startLine [
     ""
     ""
-    "../../../../../../worlds/textures/stop_line.png"
-    "../../../../../../worlds/textures/stop_line.png"
+    ""
+    ""
   ]
   endLine [
     "../../../../../../worlds/textures/stop_line.png"
@@ -9842,8 +10215,8 @@ Road {
   startLine [
     ""
     ""
-    "../../../../../../worlds/textures/stop_line.png"
-    "../../../../../../worlds/textures/stop_line.png"
+    ""
+    ""
   ]
   endLine [
     "../../../../../../worlds/textures/stop_line.png"
@@ -9894,8 +10267,8 @@ Road {
   startLine [
     ""
     ""
-    "../../../../../../worlds/textures/stop_line.png"
-    "../../../../../../worlds/textures/stop_line.png"
+    ""
+    ""
   ]
   endLine [
     "../../../../../../worlds/textures/stop_line.png"
@@ -9998,8 +10371,8 @@ Road {
   startLine [
     ""
     ""
-    "../../../../../../worlds/textures/stop_line.png"
-    "../../../../../../worlds/textures/stop_line.png"
+    ""
+    ""
   ]
   endLine [
     "../../../../../../worlds/textures/stop_line.png"
@@ -10678,7 +11051,7 @@ Solid {
   }
 }
 Solid {
-  translation 105 534.81 0.348
+  translation 105 536.3031 0.348
   children [
     Shape {
       appearance PBRAppearance {
@@ -10687,17 +11060,17 @@ Solid {
         metalness 0
       }
       geometry Box {
-        size 0.6 184.38 0.6
+        size 0.6 184.3938 0.6
       }
     }
   ]
   name "ND_Median-MAIN_S"
   boundingObject Box {
-    size 0.6 184.38 0.6
+    size 0.6 184.3938 0.6
   }
 }
 Solid {
-  translation 105 775.35 0.348
+  translation 105 773.85 0.348
   children [
     Shape {
       appearance PBRAppearance {
@@ -10730,8 +11103,8 @@ Solid {
           ]
         }
         coordIndex [
-          0, 4, 6, 2, -1, 1, 3, 7, 5, -1, 1, 5, 4, 0, -1, 2, 6, 7, 3, -1, 4, 8, 10, 6, -1, 5, 7, 11, 9, -1, 5, 9, 8, 4, -1, 6, 10, 11, 7, -1, 8, 12, 14, 10, -1, 9, 11, 15, 13, -1, 9, 13, 12, 8, -1, 10, 14, 15, 11, -1, 12, 16, 18, 14, -1, 13, 15, 19, 17, -1, 13, 17, 16, 12, -1, 14, 18, 19, 15, -1, 16, 20, 22, 18, -1, 17, 19, 23, 21, -1, 17, 21, 20, 16, -1, 18, 22, 23, 19, -1, 20, 24, 26, 22, -1, 21, 23, 27, 25, -1, 21, 25, 24, 20, -1, 22, 26, 27, 23, -1, 24, 28, 30, 26, -1, 25, 27, 31, 29, -1, 25, 29, 28, 24, -1, 26, 30, 31, 27, -1, 28, 32, 34, 30, -1, 29, 31, 35, 33, -1, 29, 33, 32, 28, -1, 30, 34, 35, 31, -1, 32, 36, 38, 34, -1, 33, 35, 39, 37, -1, 33, 37, 36, 32, -1, 34, 38, 39, 35, -1, 36, 40, 42, 38, -1, 37, 39, 43, 41, -1, 37, 41, 40, 36, -1, 38, 42, 43, 39, -1, 40, 44, 46, 42, -1, 41, 43, 47, 45, -1, 41, 45, 44, 40, -1, 42, 46, 47, 43, -1, 44, 48, 50, 46, -1, 45, 47, 51, 49, -1, 45, 49, 48, 44, -1, 46, 50, 51, 47, -1, 48, 52, 54, 50, -1, 49, 51, 55, 53, -1, 49, 53, 52, 48, -1, 50, 54, 55, 51, -1, 52, 56, 58, 54, -1, 53, 55, 59, 57, -1, 53, 57, 56, 52, -1, 54, 58, 59, 55, -1, 56, 60, 62, 58, -1, 57, 59, 63, 61, -1, 57, 61, 60, 56, -1, 58, 62, 63, 59, -1, 60, 64, 66, 62, -1, 61, 63, 67, 65, -1, 61, 65, 64, 60, -1, 62, 66, 67, 63, -1, 64, 68, 70, 66, -1, 65, 67, 71, 69, -1, 65, 69, 68, 64, -1, 66, 70, 71, 67, -1, 68, 72, 74, 70, -1, 69, 71, 75, 73, -1, 69, 73, 72, 68, -1, 70, 74, 75, 71, -1, 72, 76, 78, 74, -1, 73, 75, 79, 77, -1, 73, 77, 76, 72, -1, 74, 78, 79, 75, -1, 76, 80, 82, 78, -1, 77, 79, 83, 81, -1, 77, 81, 80, 76, -1, 78, 82, 83, 79, -1, 80, 84, 86, 82, -1, 81, 83, 87, 85, -1, 81, 85, 84, 80, -1, 82, 86, 87, 83, -1, 84, 88, 90, 86, -1, 85, 87, 91, 89, -1, 85, 89, 88, 84, -1, 86, 90, 91, 87, -1, 88, 92, 94, 90, -1, 89, 91, 95, 93, -1, 89, 93, 92, 88, -1, 90, 94, 95, 91, -1, 92, 96, 98, 94, -1, 93, 95, 99, 97, -1, 93, 97, 96, 92, -1, 94, 98, 99, 95, -1, 96, 100, 102, 98, -1, 97, 99, 103, 101, -1, 97, 101, 100, 96, -1, 98, 102, 103, 99, -1, 100, 104, 106, 102, -1, 101, 103, 107, 105, -1, 101, 105, 104, 100, -1, 102, 106, 107, 103, -1, 104, 108, 110, 106, -1, 105, 107, 111, 109, -1, 105, 109, 108, 104, -1, 106, 110, 111, 107, -1, 108, 112, 114, 110, -1, 109, 111, 115, 113, -1, 109, 113, 112, 108, -1, 110, 114, 115, 111, -1, 112, 116, 118, 114, -1, 113, 115, 119, 117, -1, 113, 117, 116, 112, -1, 114, 118, 119, 115, -1, 116, 120, 122, 118, -1, 117, 119, 123, 121, -1, 117, 121, 120, 116, -1, 118, 122, 123, 119, -1, 120, 124, 126, 122, -1, 121, 123, 127, 125, -1, 121, 125, 124, 120, -1, 122, 126, 127, 123, -1, 124, 128, 130, 126, -1, 125, 127, 131, 129, -1, 125, 129, 128, 124, -1, 126, 130, 131, 127, -1, 128, 132, 134, 130, -1, 129, 131, 135, 133, -1, 129, 133, 132, 128, -1, 130, 134, 135, 131, -1, 132, 136, 138, 134, -1, 133, 135, 139, 137, -1, 133, 137, 136, 132, -1, 134, 138, 139, 135, -1, 136, 140, 142, 138, -1, 137, 139, 143, 141, -1, 137, 141, 140, 136, -1, 138, 142, 143, 139, -1, 140, 144, 146, 142, -1, 141, 143, 147, 145, -1, 141, 145, 144, 140, -1, 142, 146, 147, 143, -1, 144, 148, 150, 146, -1, 145, 147, 151, 149, -1, 145, 149, 148, 144, -1, 146, 150, 151, 147, -1, 148, 152, 154, 150, -1, 149, 151, 155, 153, -1, 149, 153, 152, 148, -1, 150, 154, 155, 151, -1, 152, 156, 158, 154, -1, 153, 155, 159, 157, -1, 153, 157, 156, 152, -1, 154, 158, 159, 155, -1, 156, 160, 162, 158, -1, 157, 159, 163, 161, -1, 157, 161, 160, 156, -1, 158, 162, 163, 159, -1, 160, 164, 166, 162, -1, 161, 163, 167, 165, -1, 161, 165, 164, 160, -1, 162, 166, 167, 163, -1, 164, 168, 170, 166, -1, 165, 167, 171, 169, -1, 165, 169, 168, 164, -1, 166, 170, 171, 167, -1, 168, 172, 174, 170, -1, 169, 171, 175, 173, -1, 169, 173, 172, 168, -1, 170, 174, 175, 171, -1, 172, 176, 178, 174, -1, 173, 175, 179, 177, -1, 173, 177, 176, 172, -1, 174, 178, 179, 175, -1, 176, 180, 182, 178, -1, 177, 179, 183, 181, -1, 177, 181, 180, 176, -1, 178, 182, 183, 179, -1, 180, 184, 186, 182, -1, 181, 183, 187, 185, -1, 181, 185, 184, 180, -1, 182, 186, 187, 183, -1, 184, 188, 190, 186, -1, 185, 187, 191, 189, -1, 185, 189, 188, 184, -1, 186, 190, 191, 187, -1, 188, 192, 194, 190, -1, 189, 191, 195, 193, -1, 189, 193, 192, 188, -1, 190, 194, 195, 191, -1, 192, 196, 198, 194, -1, 193, 195, 199, 197, -1, 193, 197, 196, 192, -1, 194, 198, 199, 195, -1, 196, 200, 202, 198, -1, 197, 199, 203, 201, -1, 197, 201, 200, 196, -1, 198, 202, 203, 199, -1, 200, 204, 206, 202, -1, 201, 203, 207, 205, -1, 201, 205, 204, 200, -1, 202, 206, 207, 203, -1, 204, 208, 210, 206, -1, 205, 207, 211, 209, -1, 205, 209, 208, 204, -1, 206, 210, 211, 207, -1, 208, 212, 214, 210, -1, 209, 211, 215, 213, -1, 209, 213, 212, 208, -1, 210, 214, 215, 211, -1, 212, 216, 218, 214, -1, 213, 215, 219, 217, -1, 213, 217, 216, 212, -1, 214, 218, 219, 215, -1, 216, 220, 222, 218, -1, 217, 219, 223, 221, -1, 217, 221, 220, 216, -1, 218, 222, 223, 219, -1, 220, 224, 226, 222, -1, 221, 223, 227, 225, -1, 221, 225, 224, 220, -1, 222, 226, 227, 223, -1, 224, 228, 230, 226, -1, 225, 227, 231, 229, -1, 225, 229, 228, 224, -1, 226, 230, 231, 227, -1, 228, 232, 234, 230, -1, 229, 231, 235, 233, -1, 229, 233, 232, 228, -1, 230, 234, 235, 231, -1, 232, 236, 238, 234, -1, 233, 235, 239, 237, -1, 233, 237, 236, 232, -1, 234, 238, 239, 235, -1, 236, 240, 242, 238, -1, 237, 239, 243, 241, -1, 237, 241, 240, 236, -1, 238, 242, 243, 239, -1, 240, 244, 246, 242, -1, 241, 243, 247, 245, -1, 241, 245, 244, 240, -1, 242, 246, 247, 243, -1, 244, 248, 250, 246, -1, 245, 247, 251, 249, -1, 245, 249, 248, 244, -1, 246, 250, 251, 247, -1, 248, 252, 254, 250, -1, 249, 251, 255, 253, -1, 249, 253, 252, 248, -1, 250, 254, 255, 251, -1, 252, 256, 258, 254, -1, 253, 255, 259, 257, -1, 253, 257, 256, 252, -1, 254, 258, 259, 255, -1, 256, 260, 262, 258, -1, 257, 259, 263, 261, -1, 257, 261, 260, 256, -1, 258, 262, 263, 259, -1, 260, 264, 266, 262, -1, 261, 263, 267, 265, -1, 261, 265, 264, 260, -1, 262, 266, 267, 263, -1, 264, 268, 270, 266, -1, 265, 267, 271, 269, -1, 265, 269, 268, 264, -1, 266, 270, 271, 267, -1, 268, 272, 274, 270, -1, 269, 271, 275, 273, -1, 269, 273, 272, 268, -1, 270, 274, 275, 271, -1, 272, 276, 278, 274, -1, 273, 275, 279, 277, -1, 273, 277, 276, 272, -1, 274, 278, 279, 275, -1, 276, 280, 282, 278, -1, 277, 279, 283, 281, -1, 277, 281, 280, 276, -1, 278, 282, 283, 279, -1, 280, 284, 286, 282, -1, 281, 283, 287, 285, -1, 281, 285, 284, 280, -1, 282, 286, 287, 283, -1, 284, 288, 290, 286, -1, 285, 287, 291, 289, -1, 285, 289, 288, 284, -1, 286, 290, 291, 287, -1, 288, 292, 294, 290, -1, 289, 291, 295, 293, -1, 289, 293, 292, 288, -1, 290, 294, 295, 291, -1, 292, 296, 298, 294, -1, 293, 295, 299, 297, -1, 293, 297, 296, 292, -1, 294, 298, 299, 295, -1, 296, 300, 302, 298, -1, 297, 299, 303, 301, -1, 297, 301, 300, 296, -1, 298, 302, 303, 299, -1, 300, 304, 306, 302, -1, 301, 303, 307, 305, -1, 301, 305, 304, 300, -1, 302, 306, 307, 303, -1, 304, 308, 310, 306, -1, 305, 307, 311, 309, -1, 305, 309, 308, 304, -1, 306, 310, 311, 307, -1, 308, 312, 314, 310, -1, 309, 311, 315, 313, -1, 309, 313, 312, 308, -1, 310, 314, 315, 311, -1, 312, 316, 318, 314, -1, 313, 315, 319, 317, -1, 313, 317, 316, 312, -1, 314, 318, 319, 315, -1, 316, 320, 322, 318, -1, 317, 319, 323, 321, -1, 317, 321, 320, 316, -1, 318, 322, 323, 319, -1, 320, 324, 326, 322, -1, 321, 323, 327, 325, -1, 321, 325, 324, 320, -1, 322, 326, 327, 323, -1, 324, 328, 330, 326, -1, 325, 327, 331, 329, -1, 325, 329, 328, 324, -1, 326, 330, 331, 327, -1, 328, 332, 334, 330, -1, 329, 331, 335, 333, -1, 329, 333, 332, 328, -1, 330, 334, 335, 331, -1, 332, 336, 338, 334, -1, 333, 335, 339, 337, -1, 333, 337, 336, 332, -1, 334, 338, 339, 335, -1, 336, 340, 342, 338, -1, 337, 339, 343, 341, -1, 337, 341, 340, 336, -1, 338, 342, 343, 339, -1, 340, 344, 346, 342, -1, 341, 343, 347, 345, -1, 341, 345, 344, 340, -1, 342, 346, 347, 343, -1, 344, 348, 350, 346, -1, 345, 347, 351, 349, -1, 345, 349, 348, 344, -1, 346, 350, 351, 347, -1, 348, 352, 354, 350, -1, 349, 351, 355, 353, -1, 349, 353, 352, 348, -1, 350, 354, 355, 351, -1, 352, 356, 358, 354, -1, 353, 355, 359, 357, -1, 353, 357, 356, 352, -1, 354, 358, 359, 355, -1, 356, 360, 362, 358, -1, 357, 359, 363, 361, -1, 357, 361, 360, 356, -1, 358, 362, 363, 359, -1, 360, 364, 366, 362, -1, 361, 363, 367, 365, -1, 361, 365, 364, 360, -1, 362, 366, 367, 363, -1, 364, 368, 370, 366, -1, 365, 367, 371, 369, -1, 365, 369, 368, 364, -1, 366, 370, 371, 367, -1, 368, 372, 374, 370, -1, 369, 371, 375, 373, -1, 369, 373, 372, 368, -1, 370, 374, 375, 371, -1, 372, 376, 378, 374, -1, 373, 375, 379, 377, -1, 373, 377, 376, 372, -1, 374, 378, 379, 375, -1, 376, 380, 382, 378, -1, 377, 379, 383, 381, -1, 377, 381, 380, 376, -1, 378, 382, 383, 379, -1, 380, 384, 386, 382, -1, 381, 383, 387, 385, -1, 381, 385, 384, 380, -1, 382, 386, 387, 383, -1, 384, 388, 390, 386, -1, 385, 387, 391, 389, -1, 385, 389, 388, 384, -1, 386, 390, 391, 387, -1, 388, 392, 394, 390, -1, 389, 391, 395, 393, -1, 389, 393, 392, 388, -1, 390, 394, 395, 391, -1, 392, 396, 398, 394, -1, 393, 395, 399, 397, -1, 393, 397, 396, 392, -1, 394, 398, 399, 395, -1, 396, 400, 402, 398, -1, 397, 399, 403, 401, -1, 397, 401, 400, 396, -1, 398, 402, 403, 399, -1, 400, 404, 406, 402, -1, 401, 403, 407, 405, -1, 401, 405, 404, 400, -1, 402, 406, 407, 403, -1, 404, 408, 410, 406, -1, 405, 407, 411, 409, -1, 405, 409, 408, 404, -1, 406, 410, 411, 407, -1, 408, 412, 414, 410, -1, 409, 411, 415, 413, -1, 409, 413, 412, 408, -1, 410, 414, 415, 411, -1, 412, 416, 418, 414, -1, 413, 415, 419, 417, -1, 413, 417, 416, 412, -1, 414, 418, 419, 415, -1, 416, 420, 422, 418, -1, 417, 419, 423, 421, -1, 417, 421, 420, 416, -1, 418, 422, 423, 419, -1, 420, 424, 426, 422, -1, 421, 423, 427, 425, -1, 421, 425, 424, 420, -1, 422, 426, 427, 423, -1, 424, 428, 430, 426, -1, 425, 427, 431, 429, -1, 425, 429, 428, 424, -1, 426, 430, 431, 427, -1, 428, 432, 434, 430, -1, 429, 431, 435, 433, -1, 429, 433, 432, 428, -1, 430, 434, 435, 431, -1, 1, 0, 2, 3, -1, 432, 433, 435, 434, -1
-        ]
+            2, 6, 4, 0, -1, 5, 7, 3, 1, -1, 0, 4, 5, 1, -1, 3, 7, 6, 2, -1, 6, 10, 8, 4, -1, 9, 11, 7, 5, -1, 4, 8, 9, 5, -1, 7, 11, 10, 6, -1, 10, 14, 12, 8, -1, 13, 15, 11, 9, -1, 8, 12, 13, 9, -1, 11, 15, 14, 10, -1, 14, 18, 16, 12, -1, 17, 19, 15, 13, -1, 12, 16, 17, 13, -1, 15, 19, 18, 14, -1, 18, 22, 20, 16, -1, 21, 23, 19, 17, -1, 16, 20, 21, 17, -1, 19, 23, 22, 18, -1, 22, 26, 24, 20, -1, 25, 27, 23, 21, -1, 20, 24, 25, 21, -1, 23, 27, 26, 22, -1, 26, 30, 28, 24, -1, 29, 31, 27, 25, -1, 24, 28, 29, 25, -1, 27, 31, 30, 26, -1, 30, 34, 32, 28, -1, 33, 35, 31, 29, -1, 28, 32, 33, 29, -1, 31, 35, 34, 30, -1, 34, 38, 36, 32, -1, 37, 39, 35, 33, -1, 32, 36, 37, 33, -1, 35, 39, 38, 34, -1, 38, 42, 40, 36, -1, 41, 43, 39, 37, -1, 36, 40, 41, 37, -1, 39, 43, 42, 38, -1, 42, 46, 44, 40, -1, 45, 47, 43, 41, -1, 40, 44, 45, 41, -1, 43, 47, 46, 42, -1, 46, 50, 48, 44, -1, 49, 51, 47, 45, -1, 44, 48, 49, 45, -1, 47, 51, 50, 46, -1, 50, 54, 52, 48, -1, 53, 55, 51, 49, -1, 48, 52, 53, 49, -1, 51, 55, 54, 50, -1, 54, 58, 56, 52, -1, 57, 59, 55, 53, -1, 52, 56, 57, 53, -1, 55, 59, 58, 54, -1, 58, 62, 60, 56, -1, 61, 63, 59, 57, -1, 56, 60, 61, 57, -1, 59, 63, 62, 58, -1, 62, 66, 64, 60, -1, 65, 67, 63, 61, -1, 60, 64, 65, 61, -1, 63, 67, 66, 62, -1, 66, 70, 68, 64, -1, 69, 71, 67, 65, -1, 64, 68, 69, 65, -1, 67, 71, 70, 66, -1, 70, 74, 72, 68, -1, 73, 75, 71, 69, -1, 68, 72, 73, 69, -1, 71, 75, 74, 70, -1, 74, 78, 76, 72, -1, 77, 79, 75, 73, -1, 72, 76, 77, 73, -1, 75, 79, 78, 74, -1, 78, 82, 80, 76, -1, 81, 83, 79, 77, -1, 76, 80, 81, 77, -1, 79, 83, 82, 78, -1, 82, 86, 84, 80, -1, 85, 87, 83, 81, -1, 80, 84, 85, 81, -1, 83, 87, 86, 82, -1, 86, 90, 88, 84, -1, 89, 91, 87, 85, -1, 84, 88, 89, 85, -1, 87, 91, 90, 86, -1, 90, 94, 92, 88, -1, 93, 95, 91, 89, -1, 88, 92, 93, 89, -1, 91, 95, 94, 90, -1, 94, 98, 96, 92, -1, 97, 99, 95, 93, -1, 92, 96, 97, 93, -1, 95, 99, 98, 94, -1, 98, 102, 100, 96, -1, 101, 103, 99, 97, -1, 96, 100, 101, 97, -1, 99, 103, 102, 98, -1, 102, 106, 104, 100, -1, 105, 107, 103, 101, -1, 100, 104, 105, 101, -1, 103, 107, 106, 102, -1, 106, 110, 108, 104, -1, 109, 111, 107, 105, -1, 104, 108, 109, 105, -1, 107, 111, 110, 106, -1, 110, 114, 112, 108, -1, 113, 115, 111, 109, -1, 108, 112, 113, 109, -1, 111, 115, 114, 110, -1, 114, 118, 116, 112, -1, 117, 119, 115, 113, -1, 112, 116, 117, 113, -1, 115, 119, 118, 114, -1, 118, 122, 120, 116, -1, 121, 123, 119, 117, -1, 116, 120, 121, 117, -1, 119, 123, 122, 118, -1, 122, 126, 124, 120, -1, 125, 127, 123, 121, -1, 120, 124, 125, 121, -1, 123, 127, 126, 122, -1, 126, 130, 128, 124, -1, 129, 131, 127, 125, -1, 124, 128, 129, 125, -1, 127, 131, 130, 126, -1, 130, 134, 132, 128, -1, 133, 135, 131, 129, -1, 128, 132, 133, 129, -1, 131, 135, 134, 130, -1, 134, 138, 136, 132, -1, 137, 139, 135, 133, -1, 132, 136, 137, 133, -1, 135, 139, 138, 134, -1, 138, 142, 140, 136, -1, 141, 143, 139, 137, -1, 136, 140, 141, 137, -1, 139, 143, 142, 138, -1, 142, 146, 144, 140, -1, 145, 147, 143, 141, -1, 140, 144, 145, 141, -1, 143, 147, 146, 142, -1, 146, 150, 148, 144, -1, 149, 151, 147, 145, -1, 144, 148, 149, 145, -1, 147, 151, 150, 146, -1, 150, 154, 152, 148, -1, 153, 155, 151, 149, -1, 148, 152, 153, 149, -1, 151, 155, 154, 150, -1, 154, 158, 156, 152, -1, 157, 159, 155, 153, -1, 152, 156, 157, 153, -1, 155, 159, 158, 154, -1, 158, 162, 160, 156, -1, 161, 163, 159, 157, -1, 156, 160, 161, 157, -1, 159, 163, 162, 158, -1, 162, 166, 164, 160, -1, 165, 167, 163, 161, -1, 160, 164, 165, 161, -1, 163, 167, 166, 162, -1, 166, 170, 168, 164, -1, 169, 171, 167, 165, -1, 164, 168, 169, 165, -1, 167, 171, 170, 166, -1, 170, 174, 172, 168, -1, 173, 175, 171, 169, -1, 168, 172, 173, 169, -1, 171, 175, 174, 170, -1, 174, 178, 176, 172, -1, 177, 179, 175, 173, -1, 172, 176, 177, 173, -1, 175, 179, 178, 174, -1, 178, 182, 180, 176, -1, 181, 183, 179, 177, -1, 176, 180, 181, 177, -1, 179, 183, 182, 178, -1, 182, 186, 184, 180, -1, 185, 187, 183, 181, -1, 180, 184, 185, 181, -1, 183, 187, 186, 182, -1, 186, 190, 188, 184, -1, 189, 191, 187, 185, -1, 184, 188, 189, 185, -1, 187, 191, 190, 186, -1, 190, 194, 192, 188, -1, 193, 195, 191, 189, -1, 188, 192, 193, 189, -1, 191, 195, 194, 190, -1, 194, 198, 196, 192, -1, 197, 199, 195, 193, -1, 192, 196, 197, 193, -1, 195, 199, 198, 194, -1, 198, 202, 200, 196, -1, 201, 203, 199, 197, -1, 196, 200, 201, 197, -1, 199, 203, 202, 198, -1, 202, 206, 204, 200, -1, 205, 207, 203, 201, -1, 200, 204, 205, 201, -1, 203, 207, 206, 202, -1, 206, 210, 208, 204, -1, 209, 211, 207, 205, -1, 204, 208, 209, 205, -1, 207, 211, 210, 206, -1, 210, 214, 212, 208, -1, 213, 215, 211, 209, -1, 208, 212, 213, 209, -1, 211, 215, 214, 210, -1, 214, 218, 216, 212, -1, 217, 219, 215, 213, -1, 212, 216, 217, 213, -1, 215, 219, 218, 214, -1, 218, 222, 220, 216, -1, 221, 223, 219, 217, -1, 216, 220, 221, 217, -1, 219, 223, 222, 218, -1, 222, 226, 224, 220, -1, 225, 227, 223, 221, -1, 220, 224, 225, 221, -1, 223, 227, 226, 222, -1, 226, 230, 228, 224, -1, 229, 231, 227, 225, -1, 224, 228, 229, 225, -1, 227, 231, 230, 226, -1, 230, 234, 232, 228, -1, 233, 235, 231, 229, -1, 228, 232, 233, 229, -1, 231, 235, 234, 230, -1, 234, 238, 236, 232, -1, 237, 239, 235, 233, -1, 232, 236, 237, 233, -1, 235, 239, 238, 234, -1, 238, 242, 240, 236, -1, 241, 243, 239, 237, -1, 236, 240, 241, 237, -1, 239, 243, 242, 238, -1, 242, 246, 244, 240, -1, 245, 247, 243, 241, -1, 240, 244, 245, 241, -1, 243, 247, 246, 242, -1, 246, 250, 248, 244, -1, 249, 251, 247, 245, -1, 244, 248, 249, 245, -1, 247, 251, 250, 246, -1, 250, 254, 252, 248, -1, 253, 255, 251, 249, -1, 248, 252, 253, 249, -1, 251, 255, 254, 250, -1, 254, 258, 256, 252, -1, 257, 259, 255, 253, -1, 252, 256, 257, 253, -1, 255, 259, 258, 254, -1, 258, 262, 260, 256, -1, 261, 263, 259, 257, -1, 256, 260, 261, 257, -1, 259, 263, 262, 258, -1, 262, 266, 264, 260, -1, 265, 267, 263, 261, -1, 260, 264, 265, 261, -1, 263, 267, 266, 262, -1, 266, 270, 268, 264, -1, 269, 271, 267, 265, -1, 264, 268, 269, 265, -1, 267, 271, 270, 266, -1, 270, 274, 272, 268, -1, 273, 275, 271, 269, -1, 268, 272, 273, 269, -1, 271, 275, 274, 270, -1, 274, 278, 276, 272, -1, 277, 279, 275, 273, -1, 272, 276, 277, 273, -1, 275, 279, 278, 274, -1, 278, 282, 280, 276, -1, 281, 283, 279, 277, -1, 276, 280, 281, 277, -1, 279, 283, 282, 278, -1, 282, 286, 284, 280, -1, 285, 287, 283, 281, -1, 280, 284, 285, 281, -1, 283, 287, 286, 282, -1, 286, 290, 288, 284, -1, 289, 291, 287, 285, -1, 284, 288, 289, 285, -1, 287, 291, 290, 286, -1, 290, 294, 292, 288, -1, 293, 295, 291, 289, -1, 288, 292, 293, 289, -1, 291, 295, 294, 290, -1, 294, 298, 296, 292, -1, 297, 299, 295, 293, -1, 292, 296, 297, 293, -1, 295, 299, 298, 294, -1, 298, 302, 300, 296, -1, 301, 303, 299, 297, -1, 296, 300, 301, 297, -1, 299, 303, 302, 298, -1, 302, 306, 304, 300, -1, 305, 307, 303, 301, -1, 300, 304, 305, 301, -1, 303, 307, 306, 302, -1, 306, 310, 308, 304, -1, 309, 311, 307, 305, -1, 304, 308, 309, 305, -1, 307, 311, 310, 306, -1, 310, 314, 312, 308, -1, 313, 315, 311, 309, -1, 308, 312, 313, 309, -1, 311, 315, 314, 310, -1, 314, 318, 316, 312, -1, 317, 319, 315, 313, -1, 312, 316, 317, 313, -1, 315, 319, 318, 314, -1, 318, 322, 320, 316, -1, 321, 323, 319, 317, -1, 316, 320, 321, 317, -1, 319, 323, 322, 318, -1, 322, 326, 324, 320, -1, 325, 327, 323, 321, -1, 320, 324, 325, 321, -1, 323, 327, 326, 322, -1, 326, 330, 328, 324, -1, 329, 331, 327, 325, -1, 324, 328, 329, 325, -1, 327, 331, 330, 326, -1, 330, 334, 332, 328, -1, 333, 335, 331, 329, -1, 328, 332, 333, 329, -1, 331, 335, 334, 330, -1, 334, 338, 336, 332, -1, 337, 339, 335, 333, -1, 332, 336, 337, 333, -1, 335, 339, 338, 334, -1, 338, 342, 340, 336, -1, 341, 343, 339, 337, -1, 336, 340, 341, 337, -1, 339, 343, 342, 338, -1, 342, 346, 344, 340, -1, 345, 347, 343, 341, -1, 340, 344, 345, 341, -1, 343, 347, 346, 342, -1, 346, 350, 348, 344, -1, 349, 351, 347, 345, -1, 344, 348, 349, 345, -1, 347, 351, 350, 346, -1, 350, 354, 352, 348, -1, 353, 355, 351, 349, -1, 348, 352, 353, 349, -1, 351, 355, 354, 350, -1, 354, 358, 356, 352, -1, 357, 359, 355, 353, -1, 352, 356, 357, 353, -1, 355, 359, 358, 354, -1, 358, 362, 360, 356, -1, 361, 363, 359, 357, -1, 356, 360, 361, 357, -1, 359, 363, 362, 358, -1, 362, 366, 364, 360, -1, 365, 367, 363, 361, -1, 360, 364, 365, 361, -1, 363, 367, 366, 362, -1, 366, 370, 368, 364, -1, 369, 371, 367, 365, -1, 364, 368, 369, 365, -1, 367, 371, 370, 366, -1, 370, 374, 372, 368, -1, 373, 375, 371, 369, -1, 368, 372, 373, 369, -1, 371, 375, 374, 370, -1, 374, 378, 376, 372, -1, 377, 379, 375, 373, -1, 372, 376, 377, 373, -1, 375, 379, 378, 374, -1, 378, 382, 380, 376, -1, 381, 383, 379, 377, -1, 376, 380, 381, 377, -1, 379, 383, 382, 378, -1, 382, 386, 384, 380, -1, 385, 387, 383, 381, -1, 380, 384, 385, 381, -1, 383, 387, 386, 382, -1, 386, 390, 388, 384, -1, 389, 391, 387, 385, -1, 384, 388, 389, 385, -1, 387, 391, 390, 386, -1, 390, 394, 392, 388, -1, 393, 395, 391, 389, -1, 388, 392, 393, 389, -1, 391, 395, 394, 390, -1, 394, 398, 396, 392, -1, 397, 399, 395, 393, -1, 392, 396, 397, 393, -1, 395, 399, 398, 394, -1, 398, 402, 400, 396, -1, 401, 403, 399, 397, -1, 396, 400, 401, 397, -1, 399, 403, 402, 398, -1, 402, 406, 404, 400, -1, 405, 407, 403, 401, -1, 400, 404, 405, 401, -1, 403, 407, 406, 402, -1, 406, 410, 408, 404, -1, 409, 411, 407, 405, -1, 404, 408, 409, 405, -1, 407, 411, 410, 406, -1, 410, 414, 412, 408, -1, 413, 415, 411, 409, -1, 408, 412, 413, 409, -1, 411, 415, 414, 410, -1, 414, 418, 416, 412, -1, 417, 419, 415, 413, -1, 412, 416, 417, 413, -1, 415, 419, 418, 414, -1, 418, 422, 420, 416, -1, 421, 423, 419, 417, -1, 416, 420, 421, 417, -1, 419, 423, 422, 418, -1, 422, 426, 424, 420, -1, 425, 427, 423, 421, -1, 420, 424, 425, 421, -1, 423, 427, 426, 422, -1, 426, 430, 428, 424, -1, 429, 431, 427, 425, -1, 424, 428, 429, 425, -1, 427, 431, 430, 426, -1, 430, 434, 432, 428, -1, 433, 435, 431, 429, -1, 428, 432, 433, 429, -1, 431, 435, 434, 430, -1, 3, 2, 0, 1, -1, 434, 435, 433, 432, -1
+          ]
       }
     }
   ]
@@ -10740,7 +11113,7 @@ Solid {
 }
 Solid {
   translation -148.8 660.3 0
-  rotation 0 0 1 3.141593
+  rotation 0.0 0.0 1.0 3.141593
   children [
     Pose {
       translation 0 0 1.68
@@ -10759,7 +11132,7 @@ Solid {
       ]
     }
     Pose {
-      translation 0.096 0 3.06
+      translation 0.082 0 3.06
       children [
         Shape {
           appearance PBRAppearance {
@@ -10774,10 +11147,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0.015 -0.78 -0.78
-                0.015 0.78 -0.78
-                0.015 0.78 0.78
-                0.015 -0.78 0.78
+                0.005 -0.78 -0.78
+                0.005 0.78 -0.78
+                0.005 0.78 0.78
+                0.005 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -10795,12 +11168,34 @@ Solid {
         }
         Shape {
           appearance PBRAppearance {
-            baseColor 0.5 0.52 0.55
+            baseColorMap ImageTexture {
+              url [
+                "textures/sign_back_triangle.png"
+              ]
+            }
             roughness 0.6
-            metalness 0.5
+            metalness 0.4
           }
-          geometry Box {
-            size 0.03 1.58 1.58
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.005 -0.78 -0.78
+                -0.005 0.78 -0.78
+                -0.005 0.78 0.78
+                -0.005 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              3, 2, 1, 0, -1
+            ]
           }
         }
       ]
@@ -10820,7 +11215,7 @@ Solid {
 }
 Solid {
   translation -151.8 660.3 0
-  rotation 0 0 1 3.141593
+  rotation 0.0 0.0 1.0 3.141593
   children [
     Pose {
       translation 0 0 1.68
@@ -10839,7 +11234,7 @@ Solid {
       ]
     }
     Pose {
-      translation 0.096 0 3.06
+      translation 0.082 0 3.06
       children [
         Shape {
           appearance PBRAppearance {
@@ -10854,10 +11249,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0.015 -0.78 -0.78
-                0.015 0.78 -0.78
-                0.015 0.78 0.78
-                0.015 -0.78 0.78
+                0.005 -0.78 -0.78
+                0.005 0.78 -0.78
+                0.005 0.78 0.78
+                0.005 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -10875,12 +11270,34 @@ Solid {
         }
         Shape {
           appearance PBRAppearance {
-            baseColor 0.5 0.52 0.55
+            baseColorMap ImageTexture {
+              url [
+                "textures/sign_back_circle.png"
+              ]
+            }
             roughness 0.6
-            metalness 0.5
+            metalness 0.4
           }
-          geometry Box {
-            size 0.03 1.58 1.58
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.005 -0.78 -0.78
+                -0.005 0.78 -0.78
+                -0.005 0.78 0.78
+                -0.005 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              3, 2, 1, 0, -1
+            ]
           }
         }
       ]
@@ -10918,7 +11335,7 @@ Solid {
       ]
     }
     Pose {
-      translation 0.096 0 3.06
+      translation 0.082 0 3.06
       children [
         Shape {
           appearance PBRAppearance {
@@ -10933,10 +11350,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0.015 -0.78 -0.78
-                0.015 0.78 -0.78
-                0.015 0.78 0.78
-                0.015 -0.78 0.78
+                0.005 -0.78 -0.78
+                0.005 0.78 -0.78
+                0.005 0.78 0.78
+                0.005 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -10954,12 +11371,34 @@ Solid {
         }
         Shape {
           appearance PBRAppearance {
-            baseColor 0.5 0.52 0.55
+            baseColorMap ImageTexture {
+              url [
+                "textures/sign_back_triangle.png"
+              ]
+            }
             roughness 0.6
-            metalness 0.5
+            metalness 0.4
           }
-          geometry Box {
-            size 0.03 1.58 1.58
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.005 -0.78 -0.78
+                -0.005 0.78 -0.78
+                -0.005 0.78 0.78
+                -0.005 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              3, 2, 1, 0, -1
+            ]
           }
         }
       ]
@@ -10997,7 +11436,7 @@ Solid {
       ]
     }
     Pose {
-      translation 0.096 0 3.06
+      translation 0.082 0 3.06
       children [
         Shape {
           appearance PBRAppearance {
@@ -11012,10 +11451,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0.015 -0.78 -0.78
-                0.015 0.78 -0.78
-                0.015 0.78 0.78
-                0.015 -0.78 0.78
+                0.005 -0.78 -0.78
+                0.005 0.78 -0.78
+                0.005 0.78 0.78
+                0.005 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -11033,12 +11472,34 @@ Solid {
         }
         Shape {
           appearance PBRAppearance {
-            baseColor 0.5 0.52 0.55
+            baseColorMap ImageTexture {
+              url [
+                "textures/sign_back_circle.png"
+              ]
+            }
             roughness 0.6
-            metalness 0.5
+            metalness 0.4
           }
-          geometry Box {
-            size 0.03 1.58 1.58
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.005 -0.78 -0.78
+                -0.005 0.78 -0.78
+                -0.005 0.78 0.78
+                -0.005 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              3, 2, 1, 0, -1
+            ]
           }
         }
       ]
@@ -11058,7 +11519,7 @@ Solid {
 }
 Solid {
   translation -113.7 712.8 0
-  rotation 0 0 1 1.570796
+  rotation 0.0 0.0 1.0 1.570796
   children [
     Pose {
       translation 0 0 1.68
@@ -11077,7 +11538,7 @@ Solid {
       ]
     }
     Pose {
-      translation 0.096 0 3.06
+      translation 0.082 0 3.06
       children [
         Shape {
           appearance PBRAppearance {
@@ -11092,10 +11553,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0.015 -0.78 -0.78
-                0.015 0.78 -0.78
-                0.015 0.78 0.78
-                0.015 -0.78 0.78
+                0.005 -0.78 -0.78
+                0.005 0.78 -0.78
+                0.005 0.78 0.78
+                0.005 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -11113,12 +11574,34 @@ Solid {
         }
         Shape {
           appearance PBRAppearance {
-            baseColor 0.5 0.52 0.55
+            baseColorMap ImageTexture {
+              url [
+                "textures/sign_back_triangle.png"
+              ]
+            }
             roughness 0.6
-            metalness 0.5
+            metalness 0.4
           }
-          geometry Box {
-            size 0.03 1.58 1.58
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.005 -0.78 -0.78
+                -0.005 0.78 -0.78
+                -0.005 0.78 0.78
+                -0.005 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              3, 2, 1, 0, -1
+            ]
           }
         }
       ]
@@ -11138,7 +11621,7 @@ Solid {
 }
 Solid {
   translation -113.7 715.8 0
-  rotation 0 0 1 1.570796
+  rotation 0.0 0.0 1.0 1.570796
   children [
     Pose {
       translation 0 0 1.68
@@ -11157,7 +11640,7 @@ Solid {
       ]
     }
     Pose {
-      translation 0.096 0 3.06
+      translation 0.082 0 3.06
       children [
         Shape {
           appearance PBRAppearance {
@@ -11172,10 +11655,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0.015 -0.78 -0.78
-                0.015 0.78 -0.78
-                0.015 0.78 0.78
-                0.015 -0.78 0.78
+                0.005 -0.78 -0.78
+                0.005 0.78 -0.78
+                0.005 0.78 0.78
+                0.005 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -11193,12 +11676,34 @@ Solid {
         }
         Shape {
           appearance PBRAppearance {
-            baseColor 0.5 0.52 0.55
+            baseColorMap ImageTexture {
+              url [
+                "textures/sign_back_circle.png"
+              ]
+            }
             roughness 0.6
-            metalness 0.5
+            metalness 0.4
           }
-          geometry Box {
-            size 0.03 1.58 1.58
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.005 -0.78 -0.78
+                -0.005 0.78 -0.78
+                -0.005 0.78 0.78
+                -0.005 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              3, 2, 1, 0, -1
+            ]
           }
         }
       ]
@@ -11218,7 +11723,7 @@ Solid {
 }
 Solid {
   translation -96.3 625.2 0
-  rotation 0 0 1 -1.570796
+  rotation 0.0 0.0 1.0 -1.570796
   children [
     Pose {
       translation 0 0 1.68
@@ -11237,7 +11742,7 @@ Solid {
       ]
     }
     Pose {
-      translation 0.096 0 3.06
+      translation 0.082 0 3.06
       children [
         Shape {
           appearance PBRAppearance {
@@ -11252,10 +11757,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0.015 -0.78 -0.78
-                0.015 0.78 -0.78
-                0.015 0.78 0.78
-                0.015 -0.78 0.78
+                0.005 -0.78 -0.78
+                0.005 0.78 -0.78
+                0.005 0.78 0.78
+                0.005 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -11273,12 +11778,34 @@ Solid {
         }
         Shape {
           appearance PBRAppearance {
-            baseColor 0.5 0.52 0.55
+            baseColorMap ImageTexture {
+              url [
+                "textures/sign_back_triangle.png"
+              ]
+            }
             roughness 0.6
-            metalness 0.5
+            metalness 0.4
           }
-          geometry Box {
-            size 0.03 1.58 1.58
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.005 -0.78 -0.78
+                -0.005 0.78 -0.78
+                -0.005 0.78 0.78
+                -0.005 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              3, 2, 1, 0, -1
+            ]
           }
         }
       ]
@@ -11298,7 +11825,7 @@ Solid {
 }
 Solid {
   translation -96.3 622.2 0
-  rotation 0 0 1 -1.570796
+  rotation 0.0 0.0 1.0 -1.570796
   children [
     Pose {
       translation 0 0 1.68
@@ -11317,7 +11844,7 @@ Solid {
       ]
     }
     Pose {
-      translation 0.096 0 3.06
+      translation 0.082 0 3.06
       children [
         Shape {
           appearance PBRAppearance {
@@ -11332,10 +11859,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0.015 -0.78 -0.78
-                0.015 0.78 -0.78
-                0.015 0.78 0.78
-                0.015 -0.78 0.78
+                0.005 -0.78 -0.78
+                0.005 0.78 -0.78
+                0.005 0.78 0.78
+                0.005 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -11353,12 +11880,34 @@ Solid {
         }
         Shape {
           appearance PBRAppearance {
-            baseColor 0.5 0.52 0.55
+            baseColorMap ImageTexture {
+              url [
+                "textures/sign_back_circle.png"
+              ]
+            }
             roughness 0.6
-            metalness 0.5
+            metalness 0.4
           }
-          geometry Box {
-            size 0.03 1.58 1.58
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.005 -0.78 -0.78
+                -0.005 0.78 -0.78
+                -0.005 0.78 0.78
+                -0.005 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              3, 2, 1, 0, -1
+            ]
           }
         }
       ]
@@ -11377,7 +11926,7 @@ Solid {
   }
 }
 Solid {
-  translation -255 578.1 0
+  translation -255.0 578.1 0
   children [
     Pose {
       translation 0 0 1.68
@@ -11396,7 +11945,7 @@ Solid {
       ]
     }
     Pose {
-      translation 0.096 0 3.06
+      translation 0.082 0 3.06
       children [
         Shape {
           appearance PBRAppearance {
@@ -11411,10 +11960,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0.015 -0.78 -0.78
-                0.015 0.78 -0.78
-                0.015 0.78 0.78
-                0.015 -0.78 0.78
+                0.005 -0.78 -0.78
+                0.005 0.78 -0.78
+                0.005 0.78 0.78
+                0.005 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -11432,12 +11981,34 @@ Solid {
         }
         Shape {
           appearance PBRAppearance {
-            baseColor 0.5 0.52 0.55
+            baseColorMap ImageTexture {
+              url [
+                "textures/sign_back_octagon.png"
+              ]
+            }
             roughness 0.6
-            metalness 0.5
+            metalness 0.4
           }
-          geometry Box {
-            size 0.03 1.58 1.58
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.005 -0.78 -0.78
+                -0.005 0.78 -0.78
+                -0.005 0.78 0.78
+                -0.005 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              3, 2, 1, 0, -1
+            ]
           }
         }
       ]
@@ -11456,8 +12027,8 @@ Solid {
   }
 }
 Solid {
-  translation -120 567.9 0
-  rotation 0 0 1 3.141593
+  translation -120.0 567.9 0
+  rotation 0.0 0.0 1.0 3.141593
   children [
     Pose {
       translation 0 0 1.68
@@ -11476,7 +12047,7 @@ Solid {
       ]
     }
     Pose {
-      translation 0.096 0 3.06
+      translation 0.082 0 3.06
       children [
         Shape {
           appearance PBRAppearance {
@@ -11491,10 +12062,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0.015 -0.78 -0.78
-                0.015 0.78 -0.78
-                0.015 0.78 0.78
-                0.015 -0.78 0.78
+                0.005 -0.78 -0.78
+                0.005 0.78 -0.78
+                0.005 0.78 0.78
+                0.005 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -11512,12 +12083,34 @@ Solid {
         }
         Shape {
           appearance PBRAppearance {
-            baseColor 0.5 0.52 0.55
+            baseColorMap ImageTexture {
+              url [
+                "textures/sign_back_octagon.png"
+              ]
+            }
             roughness 0.6
-            metalness 0.5
+            metalness 0.4
           }
-          geometry Box {
-            size 0.03 1.58 1.58
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.005 -0.78 -0.78
+                -0.005 0.78 -0.78
+                -0.005 0.78 0.78
+                -0.005 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              3, 2, 1, 0, -1
+            ]
           }
         }
       ]
@@ -11536,8 +12129,8 @@ Solid {
   }
 }
 Solid {
-  translation -4.8 460 0
-  rotation 0 0 1 1.570796
+  translation -4.8 460.0 0
+  rotation 0.0 0.0 1.0 1.570796
   children [
     Pose {
       translation 0 0 1.68
@@ -11556,7 +12149,7 @@ Solid {
       ]
     }
     Pose {
-      translation 0.096 0 3.06
+      translation 0.082 0 3.06
       children [
         Shape {
           appearance PBRAppearance {
@@ -11571,10 +12164,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0.015 -0.78 -0.78
-                0.015 0.78 -0.78
-                0.015 0.78 0.78
-                0.015 -0.78 0.78
+                0.005 -0.78 -0.78
+                0.005 0.78 -0.78
+                0.005 0.78 0.78
+                0.005 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -11592,12 +12185,34 @@ Solid {
         }
         Shape {
           appearance PBRAppearance {
-            baseColor 0.5 0.52 0.55
+            baseColorMap ImageTexture {
+              url [
+                "textures/sign_back_octagon.png"
+              ]
+            }
             roughness 0.6
-            metalness 0.5
+            metalness 0.4
           }
-          geometry Box {
-            size 0.03 1.58 1.58
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.005 -0.78 -0.78
+                -0.005 0.78 -0.78
+                -0.005 0.78 0.78
+                -0.005 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              3, 2, 1, 0, -1
+            ]
           }
         }
       ]
@@ -11617,7 +12232,7 @@ Solid {
 }
 Solid {
   translation 4.8 838.2 0
-  rotation 0 0 1 -1.570796
+  rotation 0.0 0.0 1.0 -1.570796
   children [
     Pose {
       translation 0 0 1.68
@@ -11636,7 +12251,7 @@ Solid {
       ]
     }
     Pose {
-      translation 0.096 0 3.06
+      translation 0.082 0 3.06
       children [
         Shape {
           appearance PBRAppearance {
@@ -11651,10 +12266,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0.015 -0.78 -0.78
-                0.015 0.78 -0.78
-                0.015 0.78 0.78
-                0.015 -0.78 0.78
+                0.005 -0.78 -0.78
+                0.005 0.78 -0.78
+                0.005 0.78 0.78
+                0.005 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -11672,12 +12287,34 @@ Solid {
         }
         Shape {
           appearance PBRAppearance {
-            baseColor 0.5 0.52 0.55
+            baseColorMap ImageTexture {
+              url [
+                "textures/sign_back_octagon.png"
+              ]
+            }
             roughness 0.6
-            metalness 0.5
+            metalness 0.4
           }
-          geometry Box {
-            size 0.03 1.58 1.58
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.005 -0.78 -0.78
+                -0.005 0.78 -0.78
+                -0.005 0.78 0.78
+                -0.005 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              3, 2, 1, 0, -1
+            ]
           }
         }
       ]
@@ -11696,8 +12333,8 @@ Solid {
   }
 }
 Solid {
-  translation -278.7 690 0
-  rotation 0 0 1 1.570796
+  translation -278.7 690.0 0
+  rotation 0.0 0.0 1.0 1.570796
   children [
     Pose {
       translation 0 0 1.68
@@ -11716,7 +12353,7 @@ Solid {
       ]
     }
     Pose {
-      translation 0.096 0 3.06
+      translation 0.082 0 3.06
       children [
         Shape {
           appearance PBRAppearance {
@@ -11731,10 +12368,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0.015 -0.78 -0.78
-                0.015 0.78 -0.78
-                0.015 0.78 0.78
-                0.015 -0.78 0.78
+                0.005 -0.78 -0.78
+                0.005 0.78 -0.78
+                0.005 0.78 0.78
+                0.005 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -11752,12 +12389,34 @@ Solid {
         }
         Shape {
           appearance PBRAppearance {
-            baseColor 0.5 0.52 0.55
+            baseColorMap ImageTexture {
+              url [
+                "textures/sign_back_circle.png"
+              ]
+            }
             roughness 0.6
-            metalness 0.5
+            metalness 0.4
           }
-          geometry Box {
-            size 0.03 1.58 1.58
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.005 -0.78 -0.78
+                -0.005 0.78 -0.78
+                -0.005 0.78 0.78
+                -0.005 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              3, 2, 1, 0, -1
+            ]
           }
         }
       ]
@@ -11775,3 +12434,4 @@ Solid {
     ]
   }
 }
+# END NORTH_DISTRICT

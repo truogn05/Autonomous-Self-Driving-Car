@@ -14,7 +14,7 @@ MAP_NORTH_PATH = ROOT / "map-north.json"
 MAP_OLD_PATH = ROOT / "map.json"
 VALIDATION_DIR = ROOT / "validation" / "north-district"
 
-BASELINE_HASH = "73233df96ee84bbf60047ff52bde66565566283d19f18b67cc1790c3861b01b8"
+BASELINE_HASH = "fca558f23a934ca6089c406083b90680729f81b7c14b845be8cab3775f589bb0"
 EPS = 1e-3
 
 def verify_mesh_manifold(name: str, vertices: list, faces: list):
@@ -27,6 +27,16 @@ def verify_mesh_manifold(name: str, vertices: list, faces: list):
         raise AssertionError(f"{name}: Mesh is open or inconsistently oriented ({len(open_edges)} bad edges, sample: {open_edges[:5]})")
     used_v = set(v for f in faces for v in f)
     assert used_v == set(range(len(vertices))), f"{name}: Unused vertices in {name}"
+    vol = 0.0
+    for f in faces:
+        v0 = vertices[f[0]]
+        for k in range(1, len(f) - 1):
+            v1, v2 = vertices[f[k]], vertices[f[k + 1]]
+            cx = v1[1] * v2[2] - v1[2] * v2[1]
+            cy = v1[2] * v2[0] - v1[0] * v2[2]
+            cz = v1[0] * v2[1] - v1[1] * v2[0]
+            vol += (v0[0] * cx + v0[1] * cy + v0[2] * cz) / 6.0
+    assert vol > 0.0, f"{name}: Mesh face normals are inverted (signed_vol={vol:.2f})"
     return True
 
 def run_all_checks(wbt_path: Path = WORLD_PATH):
@@ -215,12 +225,19 @@ def run_all_checks(wbt_path: Path = WORLD_PATH):
     roads_with_sl = sum("startLine" in body for rid, body in nd_roads)
     roads_with_el = sum("endLine" in body for rid, body in nd_roads)
     roads_with_stop = sum("stop_line" in body or "stop_crossing" in body for rid, body in nd_roads)
+    roundabout_stop_violations = []
+    for rid, body in nd_roads:
+        if rid in ("ND_ROUND_W", "ND_ROUND_E", "ND_ROUND_N", "ND_ROUND_S"):
+            sl_m = re.search(r'startLine\s*\[(.*?)\]', body, re.DOTALL)
+            if sl_m and "stop" in sl_m.group(1):
+                roundabout_stop_violations.append(rid)
     results["10_road_markings"] = {
         "roads_checked": len(nd_roads),
         "roads_with_startLine": roads_with_sl,
         "roads_with_endLine": roads_with_el,
         "roads_with_stop_markings": roads_with_stop,
-        "status": "PASS" if roads_with_sl == 29 and roads_with_el == 29 and roads_with_stop >= 26 else "FAIL"
+        "roundabout_stop_violations": roundabout_stop_violations,
+        "status": "PASS" if (roads_with_sl == 29 and roads_with_el == 29 and roads_with_stop >= 26 and not roundabout_stop_violations) else "FAIL"
     }
 
     # 12. Traffic Signs Check
