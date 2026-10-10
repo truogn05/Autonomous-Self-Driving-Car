@@ -13,8 +13,8 @@ WorldInfo {
 }
 DEF OVERVIEW Viewpoint {
   fieldOfView 0.85
-  orientation -0.1359625565351918 -0.06208281255810478 0.9887668621092081 3.989794341434517
-  position 299.117687522283 899.350605103712 74.57611288650295
+  orientation -0.140260710885829 -0.1137784760331308 0.983555484644044 4.488473794047877
+  position -70.36859435451714 36.852004240105465 2.233868772699514
   description "Town overview - north up"
 }
 Background {
@@ -2061,10 +2061,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0 -0.78 -0.78
-                0 0.78 -0.78
-                0 0.78 0.78
-                0 -0.78 0.78
+                0.015 -0.78 -0.78
+                0.015 0.78 -0.78
+                0.015 0.78 0.78
+                0.015 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -2078,6 +2078,16 @@ Solid {
             coordIndex [
               0, 1, 2, 3, -1
             ]
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.5 0.52 0.55
+            roughness 0.6
+            metalness 0.5
+          }
+          geometry Box {
+            size 0.03 1.58 1.58
           }
         }
       ]
@@ -2131,10 +2141,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0 -0.78 -0.78
-                0 0.78 -0.78
-                0 0.78 0.78
-                0 -0.78 0.78
+                0.015 -0.78 -0.78
+                0.015 0.78 -0.78
+                0.015 0.78 0.78
+                0.015 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -2148,6 +2158,16 @@ Solid {
             coordIndex [
               0, 1, 2, 3, -1
             ]
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.5 0.52 0.55
+            roughness 0.6
+            metalness 0.5
+          }
+          geometry Box {
+            size 0.03 1.58 1.58
           }
         }
       ]
@@ -2201,10 +2221,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0 -0.78 -0.78
-                0 0.78 -0.78
-                0 0.78 0.78
-                0 -0.78 0.78
+                0.015 -0.78 -0.78
+                0.015 0.78 -0.78
+                0.015 0.78 0.78
+                0.015 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -2218,6 +2238,16 @@ Solid {
             coordIndex [
               0, 1, 2, 3, -1
             ]
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.5 0.52 0.55
+            roughness 0.6
+            metalness 0.5
+          }
+          geometry Box {
+            size 0.03 1.58 1.58
           }
         }
       ]
@@ -2271,10 +2301,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0 -0.78 -0.78
-                0 0.78 -0.78
-                0 0.78 0.78
-                0 -0.78 0.78
+                0.015 -0.78 -0.78
+                0.015 0.78 -0.78
+                0.015 0.78 0.78
+                0.015 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -2288,6 +2318,16 @@ Solid {
             coordIndex [
               0, 1, 2, 3, -1
             ]
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.5 0.52 0.55
+            roughness 0.6
+            metalness 0.5
+          }
+          geometry Box {
+            size 0.03 1.58 1.58
           }
         }
       ]
@@ -2341,10 +2381,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0 -0.78 -0.78
-                0 0.78 -0.78
-                0 0.78 0.78
-                0 -0.78 0.78
+                0.015 -0.78 -0.78
+                0.015 0.78 -0.78
+                0.015 0.78 0.78
+                0.015 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -2358,6 +2398,16 @@ Solid {
             coordIndex [
               0, 1, 2, 3, -1
             ]
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.5 0.52 0.55
+            roughness 0.6
+            metalness 0.5
+          }
+          geometry Box {
+            size 0.03 1.58 1.58
           }
         }
       ]
@@ -2411,10 +2461,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0 -0.78 -0.78
-                0 0.78 -0.78
-                0 0.78 0.78
-                0 -0.78 0.78
+                0.015 -0.78 -0.78
+                0.015 0.78 -0.78
+                0.015 0.78 0.78
+                0.015 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -2428,6 +2478,16 @@ Solid {
             coordIndex [
               0, 1, 2, 3, -1
             ]
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.5 0.52 0.55
+            roughness 0.6
+            metalness 0.5
+          }
+          geometry Box {
+            size 0.03 1.58 1.58
           }
         }
       ]
@@ -2481,10 +2541,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0 -0.78 -0.78
-                0 0.78 -0.78
-                0 0.78 0.78
-                0 -0.78 0.78
+                0.015 -0.78 -0.78
+                0.015 0.78 -0.78
+                0.015 0.78 0.78
+                0.015 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -2498,6 +2558,16 @@ Solid {
             coordIndex [
               0, 1, 2, 3, -1
             ]
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.5 0.52 0.55
+            roughness 0.6
+            metalness 0.5
+          }
+          geometry Box {
+            size 0.03 1.58 1.58
           }
         }
       ]
@@ -2550,10 +2620,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0 -0.78 -0.78
-                0 0.78 -0.78
-                0 0.78 0.78
-                0 -0.78 0.78
+                0.015 -0.78 -0.78
+                0.015 0.78 -0.78
+                0.015 0.78 0.78
+                0.015 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -2567,6 +2637,16 @@ Solid {
             coordIndex [
               0, 1, 2, 3, -1
             ]
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.5 0.52 0.55
+            roughness 0.6
+            metalness 0.5
+          }
+          geometry Box {
+            size 0.03 1.58 1.58
           }
         }
       ]
@@ -2619,10 +2699,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0 -0.78 -0.78
-                0 0.78 -0.78
-                0 0.78 0.78
-                0 -0.78 0.78
+                0.015 -0.78 -0.78
+                0.015 0.78 -0.78
+                0.015 0.78 0.78
+                0.015 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -2636,6 +2716,16 @@ Solid {
             coordIndex [
               0, 1, 2, 3, -1
             ]
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.5 0.52 0.55
+            roughness 0.6
+            metalness 0.5
+          }
+          geometry Box {
+            size 0.03 1.58 1.58
           }
         }
       ]
@@ -2655,7 +2745,7 @@ Solid {
 }
 Solid {
   translation 116.4 37.5 0
-  rotation 0 0 1 1.5707963267948966
+  rotation 0 0 1 1.570796
   children [
     Pose {
       translation 0 0 1.68
@@ -2689,10 +2779,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0 -0.78 -0.78
-                0 0.78 -0.78
-                0 0.78 0.78
-                0 -0.78 0.78
+                0.015 -0.78 -0.78
+                0.015 0.78 -0.78
+                0.015 0.78 0.78
+                0.015 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -2706,6 +2796,16 @@ Solid {
             coordIndex [
               0, 1, 2, 3, -1
             ]
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.5 0.52 0.55
+            roughness 0.6
+            metalness 0.5
+          }
+          geometry Box {
+            size 0.03 1.58 1.58
           }
         }
       ]
@@ -2725,7 +2825,7 @@ Solid {
 }
 Solid {
   translation 116.4 39.3 0
-  rotation 0 0 1 1.5707963267948966
+  rotation 0 0 1 1.570796
   children [
     Pose {
       translation 0 0 1.68
@@ -2759,10 +2859,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0 -0.78 -0.78
-                0 0.78 -0.78
-                0 0.78 0.78
-                0 -0.78 0.78
+                0.015 -0.78 -0.78
+                0.015 0.78 -0.78
+                0.015 0.78 0.78
+                0.015 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -2776,6 +2876,16 @@ Solid {
             coordIndex [
               0, 1, 2, 3, -1
             ]
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.5 0.52 0.55
+            roughness 0.6
+            metalness 0.5
+          }
+          geometry Box {
+            size 0.03 1.58 1.58
           }
         }
       ]
@@ -2795,7 +2905,7 @@ Solid {
 }
 Solid {
   translation 94.5 -15.6 0
-  rotation 0 0 1 3.141592653589793
+  rotation 0 0 1 3.141593
   children [
     Pose {
       translation 0 0 1.68
@@ -2829,10 +2939,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0 -0.78 -0.78
-                0 0.78 -0.78
-                0 0.78 0.78
-                0 -0.78 0.78
+                0.015 -0.78 -0.78
+                0.015 0.78 -0.78
+                0.015 0.78 0.78
+                0.015 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -2846,6 +2956,16 @@ Solid {
             coordIndex [
               0, 1, 2, 3, -1
             ]
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.5 0.52 0.55
+            roughness 0.6
+            metalness 0.5
+          }
+          geometry Box {
+            size 0.03 1.58 1.58
           }
         }
       ]
@@ -2865,7 +2985,7 @@ Solid {
 }
 Solid {
   translation 92.7 -15.6 0
-  rotation 0 0 1 3.141592653589793
+  rotation 0 0 1 3.141593
   children [
     Pose {
       translation 0 0 1.68
@@ -2899,10 +3019,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0 -0.78 -0.78
-                0 0.78 -0.78
-                0 0.78 0.78
-                0 -0.78 0.78
+                0.015 -0.78 -0.78
+                0.015 0.78 -0.78
+                0.015 0.78 0.78
+                0.015 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -2916,6 +3036,16 @@ Solid {
             coordIndex [
               0, 1, 2, 3, -1
             ]
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.5 0.52 0.55
+            roughness 0.6
+            metalness 0.5
+          }
+          geometry Box {
+            size 0.03 1.58 1.58
           }
         }
       ]
@@ -2935,7 +3065,7 @@ Solid {
 }
 Solid {
   translation 147.6 -37.5 0
-  rotation 0 0 1 -1.5707963267948966
+  rotation 0 0 1 -1.570796
   children [
     Pose {
       translation 0 0 1.68
@@ -2969,10 +3099,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0 -0.78 -0.78
-                0 0.78 -0.78
-                0 0.78 0.78
-                0 -0.78 0.78
+                0.015 -0.78 -0.78
+                0.015 0.78 -0.78
+                0.015 0.78 0.78
+                0.015 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -2986,6 +3116,16 @@ Solid {
             coordIndex [
               0, 1, 2, 3, -1
             ]
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.5 0.52 0.55
+            roughness 0.6
+            metalness 0.5
+          }
+          geometry Box {
+            size 0.03 1.58 1.58
           }
         }
       ]
@@ -3005,7 +3145,7 @@ Solid {
 }
 Solid {
   translation 147.6 -39.3 0
-  rotation 0 0 1 -1.5707963267948966
+  rotation 0 0 1 -1.570796
   children [
     Pose {
       translation 0 0 1.68
@@ -3039,10 +3179,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0 -0.78 -0.78
-                0 0.78 -0.78
-                0 0.78 0.78
-                0 -0.78 0.78
+                0.015 -0.78 -0.78
+                0.015 0.78 -0.78
+                0.015 0.78 0.78
+                0.015 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -3056,6 +3196,16 @@ Solid {
             coordIndex [
               0, 1, 2, 3, -1
             ]
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.5 0.52 0.55
+            roughness 0.6
+            metalness 0.5
+          }
+          geometry Box {
+            size 0.03 1.58 1.58
           }
         }
       ]
@@ -3075,7 +3225,7 @@ Solid {
 }
 Solid {
   translation -96 103.8 0
-  rotation 0 0 1 -1.5707963267948966
+  rotation 0 0 1 -1.570796
   children [
     Pose {
       translation 0 0 1.68
@@ -3109,10 +3259,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0 -0.78 -0.78
-                0 0.78 -0.78
-                0 0.78 0.78
-                0 -0.78 0.78
+                0.015 -0.78 -0.78
+                0.015 0.78 -0.78
+                0.015 0.78 0.78
+                0.015 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -3126,6 +3276,16 @@ Solid {
             coordIndex [
               0, 1, 2, 3, -1
             ]
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.5 0.52 0.55
+            roughness 0.6
+            metalness 0.5
+          }
+          geometry Box {
+            size 0.03 1.58 1.58
           }
         }
       ]
@@ -3236,6 +3396,7 @@ DEF SIGNAL_SYSTEM Robot {
                 baseColor 0.08 0.08 0.08
                 roughness 0.5
                 metalness 0
+                emissiveColor 0 1 0.18000000715255737
                 emissiveIntensity 3
               }
               geometry Sphere {
@@ -3303,6 +3464,7 @@ DEF SIGNAL_SYSTEM Robot {
                 baseColor 0.08 0.08 0.08
                 roughness 0.5
                 metalness 0
+                emissiveColor 1 0 0
                 emissiveIntensity 3
               }
               geometry Sphere {
@@ -3409,6 +3571,7 @@ DEF SIGNAL_SYSTEM Robot {
                 baseColor 0.08 0.08 0.08
                 roughness 0.5
                 metalness 0
+                emissiveColor 1 0 0
                 emissiveIntensity 3
               }
               geometry Sphere {
@@ -3553,6 +3716,7 @@ DEF SIGNAL_SYSTEM Robot {
                 baseColor 0.08 0.08 0.08
                 roughness 0.5
                 metalness 0
+                emissiveColor 0 1 0.18000000715255737
                 emissiveIntensity 3
               }
               geometry Sphere {
@@ -3571,7 +3735,7 @@ DEF SIGNAL_SYSTEM Robot {
   ]
   name "junction signals"
   controller "traffic_signals"
-  customData "{\"time\": 1274.016, \"EW\": \"green\", \"NS\": \"red\"}"
+  customData "{\"time\": 156.0, \"EW\": \"green\", \"NS\": \"red\"}"
 }
 DEF INSPECTOR Robot {
   name "world inspector"
@@ -10476,25 +10640,6 @@ Road {
   leftBorderBoundingObject TRUE
 }
 Solid {
-  translation 16.95 858 0.348
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0.65 0.67 0.62
-        roughness 1
-        metalness 0
-      }
-      geometry Box {
-        size 2.7 0.6 0.6
-      }
-    }
-  ]
-  name "ND_Median-NORTH_M-1"
-  boundingObject Box {
-    size 2.7 0.6 0.6
-  }
-}
-Solid {
   translation 52.5 858 0.348
   children [
     Shape {
@@ -10504,51 +10649,13 @@ Solid {
         metalness 0
       }
       geometry Box {
-        size 63 0.6 0.6
+        size 65.4 0.6 0.6
       }
     }
   ]
-  name "ND_Median-NORTH_M-2"
+  name "ND_Median-NORTH_M"
   boundingObject Box {
-    size 63 0.6 0.6
-  }
-}
-Solid {
-  translation 88.05 858 0.348
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0.65 0.67 0.62
-        roughness 1
-        metalness 0
-      }
-      geometry Box {
-        size 2.7 0.6 0.6
-      }
-    }
-  ]
-  name "ND_Median-NORTH_M-3"
-  boundingObject Box {
-    size 2.7 0.6 0.6
-  }
-}
-Solid {
-  translation -88.05 858 0.348
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0.65 0.67 0.62
-        roughness 1
-        metalness 0
-      }
-      geometry Box {
-        size 2.7 0.6 0.6
-      }
-    }
-  ]
-  name "ND_Median-NORTH_W-1"
-  boundingObject Box {
-    size 2.7 0.6 0.6
+    size 65.4 0.6 0.6
   }
 }
 Solid {
@@ -10561,17 +10668,17 @@ Solid {
         metalness 0
       }
       geometry Box {
-        size 63 0.6 0.6
+        size 65.4 0.6 0.6
       }
     }
   ]
-  name "ND_Median-NORTH_W-2"
+  name "ND_Median-NORTH_W"
   boundingObject Box {
-    size 63 0.6 0.6
+    size 65.4 0.6 0.6
   }
 }
 Solid {
-  translation -16.95 858 0.348
+  translation 105 534.81 0.348
   children [
     Shape {
       appearance PBRAppearance {
@@ -10580,17 +10687,17 @@ Solid {
         metalness 0
       }
       geometry Box {
-        size 2.7 0.6 0.6
+        size 0.6 184.38 0.6
       }
     }
   ]
-  name "ND_Median-NORTH_W-3"
+  name "ND_Median-MAIN_S"
   boundingObject Box {
-    size 2.7 0.6 0.6
+    size 0.6 184.38 0.6
   }
 }
 Solid {
-  translation 105 441.3531 0.348
+  translation 105 775.35 0.348
   children [
     Shape {
       appearance PBRAppearance {
@@ -10599,70 +10706,13 @@ Solid {
         metalness 0
       }
       geometry Box {
-        size 0.6 2.8938 0.6
+        size 0.6 128.7 0.6
       }
     }
   ]
-  name "ND_Median-MAIN_S-1"
+  name "ND_Median-MAIN_N"
   boundingObject Box {
-    size 0.6 2.8938 0.6
-  }
-}
-Solid {
-  translation 105 537 0.348
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0.65 0.67 0.62
-        roughness 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.6 183 0.6
-      }
-    }
-  ]
-  name "ND_Median-MAIN_S-2"
-  boundingObject Box {
-    size 0.6 183 0.6
-  }
-}
-Solid {
-  translation 105 773.1 0.348
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0.65 0.67 0.62
-        roughness 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.6 127.2 0.6
-      }
-    }
-  ]
-  name "ND_Median-MAIN_N-1"
-  boundingObject Box {
-    size 0.6 127.2 0.6
-  }
-}
-Solid {
-  translation 105 840.9 0.348
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0.65 0.67 0.62
-        roughness 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.6 3 0.6
-      }
-    }
-  ]
-  name "ND_Median-MAIN_N-2"
-  boundingObject Box {
-    size 0.6 3 0.6
+    size 0.6 128.7 0.6
   }
 }
 Solid {
@@ -10690,6 +10740,7 @@ Solid {
 }
 Solid {
   translation -148.8 660.3 0
+  rotation 0 0 1 3.141593
   children [
     Pose {
       translation 0 0 1.68
@@ -10723,10 +10774,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0 -0.78 -0.78
-                0 0.78 -0.78
-                0 0.78 0.78
-                0 -0.78 0.78
+                0.015 -0.78 -0.78
+                0.015 0.78 -0.78
+                0.015 0.78 0.78
+                0.015 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -10740,6 +10791,16 @@ Solid {
             coordIndex [
               0, 1, 2, 3, -1
             ]
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.5 0.52 0.55
+            roughness 0.6
+            metalness 0.5
+          }
+          geometry Box {
+            size 0.03 1.58 1.58
           }
         }
       ]
@@ -10759,6 +10820,7 @@ Solid {
 }
 Solid {
   translation -151.8 660.3 0
+  rotation 0 0 1 3.141593
   children [
     Pose {
       translation 0 0 1.68
@@ -10792,10 +10854,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0 -0.78 -0.78
-                0 0.78 -0.78
-                0 0.78 0.78
-                0 -0.78 0.78
+                0.015 -0.78 -0.78
+                0.015 0.78 -0.78
+                0.015 0.78 0.78
+                0.015 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -10809,6 +10871,16 @@ Solid {
             coordIndex [
               0, 1, 2, 3, -1
             ]
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.5 0.52 0.55
+            roughness 0.6
+            metalness 0.5
+          }
+          geometry Box {
+            size 0.03 1.58 1.58
           }
         }
       ]
@@ -10828,7 +10900,6 @@ Solid {
 }
 Solid {
   translation -61.2 677.7 0
-  rotation 0 0 1 3.141593
   children [
     Pose {
       translation 0 0 1.68
@@ -10862,10 +10933,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0 -0.78 -0.78
-                0 0.78 -0.78
-                0 0.78 0.78
-                0 -0.78 0.78
+                0.015 -0.78 -0.78
+                0.015 0.78 -0.78
+                0.015 0.78 0.78
+                0.015 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -10879,6 +10950,16 @@ Solid {
             coordIndex [
               0, 1, 2, 3, -1
             ]
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.5 0.52 0.55
+            roughness 0.6
+            metalness 0.5
+          }
+          geometry Box {
+            size 0.03 1.58 1.58
           }
         }
       ]
@@ -10898,7 +10979,6 @@ Solid {
 }
 Solid {
   translation -58.2 677.7 0
-  rotation 0 0 1 3.141593
   children [
     Pose {
       translation 0 0 1.68
@@ -10932,10 +11012,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0 -0.78 -0.78
-                0 0.78 -0.78
-                0 0.78 0.78
-                0 -0.78 0.78
+                0.015 -0.78 -0.78
+                0.015 0.78 -0.78
+                0.015 0.78 0.78
+                0.015 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -10949,6 +11029,16 @@ Solid {
             coordIndex [
               0, 1, 2, 3, -1
             ]
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.5 0.52 0.55
+            roughness 0.6
+            metalness 0.5
+          }
+          geometry Box {
+            size 0.03 1.58 1.58
           }
         }
       ]
@@ -10968,7 +11058,7 @@ Solid {
 }
 Solid {
   translation -113.7 712.8 0
-  rotation 0 0 1 -1.570796
+  rotation 0 0 1 1.570796
   children [
     Pose {
       translation 0 0 1.68
@@ -11002,10 +11092,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0 -0.78 -0.78
-                0 0.78 -0.78
-                0 0.78 0.78
-                0 -0.78 0.78
+                0.015 -0.78 -0.78
+                0.015 0.78 -0.78
+                0.015 0.78 0.78
+                0.015 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -11019,6 +11109,16 @@ Solid {
             coordIndex [
               0, 1, 2, 3, -1
             ]
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.5 0.52 0.55
+            roughness 0.6
+            metalness 0.5
+          }
+          geometry Box {
+            size 0.03 1.58 1.58
           }
         }
       ]
@@ -11038,6 +11138,166 @@ Solid {
 }
 Solid {
   translation -113.7 715.8 0
+  rotation 0 0 1 1.570796
+  children [
+    Pose {
+      translation 0 0 1.68
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.55 0.58 0.6
+            roughness 0.5
+            metalness 0.5
+          }
+          geometry Cylinder {
+            height 3.36
+            radius 0.072
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.096 0 3.06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/roundabout.png"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                0.015 -0.78 -0.78
+                0.015 0.78 -0.78
+                0.015 0.78 0.78
+                0.015 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              0, 1, 2, 3, -1
+            ]
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.5 0.52 0.55
+            roughness 0.6
+            metalness 0.5
+          }
+          geometry Box {
+            size 0.03 1.58 1.58
+          }
+        }
+      ]
+    }
+  ]
+  name "ND_RoundaboutSign-ROUND_N"
+  description "ND_ROUND_R_N"
+  boundingObject Pose {
+    translation 0 0 1.68
+    children [
+      Cylinder {
+        height 3.36
+        radius 0.09
+      }
+    ]
+  }
+}
+Solid {
+  translation -96.3 625.2 0
+  rotation 0 0 1 -1.570796
+  children [
+    Pose {
+      translation 0 0 1.68
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.55 0.58 0.6
+            roughness 0.5
+            metalness 0.5
+          }
+          geometry Cylinder {
+            height 3.36
+            radius 0.072
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.096 0 3.06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/yield.png"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                0.015 -0.78 -0.78
+                0.015 0.78 -0.78
+                0.015 0.78 0.78
+                0.015 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              0, 1, 2, 3, -1
+            ]
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.5 0.52 0.55
+            roughness 0.6
+            metalness 0.5
+          }
+          geometry Box {
+            size 0.03 1.58 1.58
+          }
+        }
+      ]
+    }
+  ]
+  name "ND_YieldSign-ROUND_S"
+  description "ND_YIELD_R_S"
+  boundingObject Pose {
+    translation 0 0 1.68
+    children [
+      Cylinder {
+        height 3.36
+        radius 0.09
+      }
+    ]
+  }
+}
+Solid {
+  translation -96.3 622.2 0
   rotation 0 0 1 -1.570796
   children [
     Pose {
@@ -11072,10 +11332,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0 -0.78 -0.78
-                0 0.78 -0.78
-                0 0.78 0.78
-                0 -0.78 0.78
+                0.015 -0.78 -0.78
+                0.015 0.78 -0.78
+                0.015 0.78 0.78
+                0.015 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -11091,144 +11351,14 @@ Solid {
             ]
           }
         }
-      ]
-    }
-  ]
-  name "ND_RoundaboutSign-ROUND_N"
-  description "ND_ROUND_R_N"
-  boundingObject Pose {
-    translation 0 0 1.68
-    children [
-      Cylinder {
-        height 3.36
-        radius 0.09
-      }
-    ]
-  }
-}
-Solid {
-  translation -96.3 625.2 0
-  rotation 0 0 1 1.570796
-  children [
-    Pose {
-      translation 0 0 1.68
-      children [
         Shape {
           appearance PBRAppearance {
-            baseColor 0.55 0.58 0.6
-            roughness 0.5
+            baseColor 0.5 0.52 0.55
+            roughness 0.6
             metalness 0.5
           }
-          geometry Cylinder {
-            height 3.36
-            radius 0.072
-          }
-        }
-      ]
-    }
-    Pose {
-      translation 0.096 0 3.06
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "textures/yield.png"
-              ]
-            }
-            roughness 1
-            metalness 0
-          }
-          geometry IndexedFaceSet {
-            coord Coordinate {
-              point [
-                0 -0.78 -0.78
-                0 0.78 -0.78
-                0 0.78 0.78
-                0 -0.78 0.78
-              ]
-            }
-            texCoord TextureCoordinate {
-              point [
-                0 0
-                1 0
-                1 1
-                0 1
-              ]
-            }
-            coordIndex [
-              0, 1, 2, 3, -1
-            ]
-          }
-        }
-      ]
-    }
-  ]
-  name "ND_YieldSign-ROUND_S"
-  description "ND_YIELD_R_S"
-  boundingObject Pose {
-    translation 0 0 1.68
-    children [
-      Cylinder {
-        height 3.36
-        radius 0.09
-      }
-    ]
-  }
-}
-Solid {
-  translation -96.3 622.2 0
-  rotation 0 0 1 1.570796
-  children [
-    Pose {
-      translation 0 0 1.68
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColor 0.55 0.58 0.6
-            roughness 0.5
-            metalness 0.5
-          }
-          geometry Cylinder {
-            height 3.36
-            radius 0.072
-          }
-        }
-      ]
-    }
-    Pose {
-      translation 0.096 0 3.06
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "textures/roundabout.png"
-              ]
-            }
-            roughness 1
-            metalness 0
-          }
-          geometry IndexedFaceSet {
-            coord Coordinate {
-              point [
-                0 -0.78 -0.78
-                0 0.78 -0.78
-                0 0.78 0.78
-                0 -0.78 0.78
-              ]
-            }
-            texCoord TextureCoordinate {
-              point [
-                0 0
-                1 0
-                1 1
-                0 1
-              ]
-            }
-            coordIndex [
-              0, 1, 2, 3, -1
-            ]
+          geometry Box {
+            size 0.03 1.58 1.58
           }
         }
       ]
@@ -11247,7 +11377,86 @@ Solid {
   }
 }
 Solid {
-  translation -258 578.1 0
+  translation -255 578.1 0
+  children [
+    Pose {
+      translation 0 0 1.68
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.55 0.58 0.6
+            roughness 0.5
+            metalness 0.5
+          }
+          geometry Cylinder {
+            height 3.36
+            radius 0.072
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.096 0 3.06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/stop.png"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                0.015 -0.78 -0.78
+                0.015 0.78 -0.78
+                0.015 0.78 0.78
+                0.015 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              0, 1, 2, 3, -1
+            ]
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.5 0.52 0.55
+            roughness 0.6
+            metalness 0.5
+          }
+          geometry Box {
+            size 0.03 1.58 1.58
+          }
+        }
+      ]
+    }
+  ]
+  name "ND_StopSign-WA_T"
+  description "ND_STOP_WA_T"
+  boundingObject Pose {
+    translation 0 0 1.68
+    children [
+      Cylinder {
+        height 3.36
+        radius 0.09
+      }
+    ]
+  }
+}
+Solid {
+  translation -120 567.9 0
   rotation 0 0 1 3.141593
   children [
     Pose {
@@ -11282,10 +11491,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0 -0.78 -0.78
-                0 0.78 -0.78
-                0 0.78 0.78
-                0 -0.78 0.78
+                0.015 -0.78 -0.78
+                0.015 0.78 -0.78
+                0.015 0.78 0.78
+                0.015 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -11301,73 +11510,14 @@ Solid {
             ]
           }
         }
-      ]
-    }
-  ]
-  name "ND_StopSign-WA_T"
-  description "ND_STOP_WA_T"
-  boundingObject Pose {
-    translation 0 0 1.68
-    children [
-      Cylinder {
-        height 3.36
-        radius 0.09
-      }
-    ]
-  }
-}
-Solid {
-  translation -117 567.9 0
-  children [
-    Pose {
-      translation 0 0 1.68
-      children [
         Shape {
           appearance PBRAppearance {
-            baseColor 0.55 0.58 0.6
-            roughness 0.5
+            baseColor 0.5 0.52 0.55
+            roughness 0.6
             metalness 0.5
           }
-          geometry Cylinder {
-            height 3.36
-            radius 0.072
-          }
-        }
-      ]
-    }
-    Pose {
-      translation 0.096 0 3.06
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "textures/stop.png"
-              ]
-            }
-            roughness 1
-            metalness 0
-          }
-          geometry IndexedFaceSet {
-            coord Coordinate {
-              point [
-                0 -0.78 -0.78
-                0 0.78 -0.78
-                0 0.78 0.78
-                0 -0.78 0.78
-              ]
-            }
-            texCoord TextureCoordinate {
-              point [
-                0 0
-                1 0
-                1 1
-                0 1
-              ]
-            }
-            coordIndex [
-              0, 1, 2, 3, -1
-            ]
+          geometry Box {
+            size 0.03 1.58 1.58
           }
         }
       ]
@@ -11386,77 +11536,7 @@ Solid {
   }
 }
 Solid {
-  translation -5.1 457.2 0
-  rotation 0 0 1 -1.570796
-  children [
-    Pose {
-      translation 0 0 1.68
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColor 0.55 0.58 0.6
-            roughness 0.5
-            metalness 0.5
-          }
-          geometry Cylinder {
-            height 3.36
-            radius 0.072
-          }
-        }
-      ]
-    }
-    Pose {
-      translation 0.096 0 3.06
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "textures/stop.png"
-              ]
-            }
-            roughness 1
-            metalness 0
-          }
-          geometry IndexedFaceSet {
-            coord Coordinate {
-              point [
-                0 -0.78 -0.78
-                0 0.78 -0.78
-                0 0.78 0.78
-                0 -0.78 0.78
-              ]
-            }
-            texCoord TextureCoordinate {
-              point [
-                0 0
-                1 0
-                1 1
-                0 1
-              ]
-            }
-            coordIndex [
-              0, 1, 2, 3, -1
-            ]
-          }
-        }
-      ]
-    }
-  ]
-  name "ND_StopSign-SL_T"
-  description "ND_STOP_SL_T"
-  boundingObject Pose {
-    translation 0 0 1.68
-    children [
-      Cylinder {
-        height 3.36
-        radius 0.09
-      }
-    ]
-  }
-}
-Solid {
-  translation 5.1 846 0
+  translation -4.8 460 0
   rotation 0 0 1 1.570796
   children [
     Pose {
@@ -11491,10 +11571,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0 -0.78 -0.78
-                0 0.78 -0.78
-                0 0.78 0.78
-                0 -0.78 0.78
+                0.015 -0.78 -0.78
+                0.015 0.78 -0.78
+                0.015 0.78 0.78
+                0.015 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -11508,6 +11588,96 @@ Solid {
             coordIndex [
               0, 1, 2, 3, -1
             ]
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.5 0.52 0.55
+            roughness 0.6
+            metalness 0.5
+          }
+          geometry Box {
+            size 0.03 1.58 1.58
+          }
+        }
+      ]
+    }
+  ]
+  name "ND_StopSign-SL_T"
+  description "ND_STOP_SL_T"
+  boundingObject Pose {
+    translation 0 0 1.68
+    children [
+      Cylinder {
+        height 3.36
+        radius 0.09
+      }
+    ]
+  }
+}
+Solid {
+  translation 4.8 838.2 0
+  rotation 0 0 1 -1.570796
+  children [
+    Pose {
+      translation 0 0 1.68
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.55 0.58 0.6
+            roughness 0.5
+            metalness 0.5
+          }
+          geometry Cylinder {
+            height 3.36
+            radius 0.072
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.096 0 3.06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/stop.png"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                0.015 -0.78 -0.78
+                0.015 0.78 -0.78
+                0.015 0.78 0.78
+                0.015 -0.78 0.78
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                1 0
+                1 1
+                0 1
+              ]
+            }
+            coordIndex [
+              0, 1, 2, 3, -1
+            ]
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.5 0.52 0.55
+            roughness 0.6
+            metalness 0.5
+          }
+          geometry Box {
+            size 0.03 1.58 1.58
           }
         }
       ]
@@ -11561,10 +11731,10 @@ Solid {
           geometry IndexedFaceSet {
             coord Coordinate {
               point [
-                0 -0.78 -0.78
-                0 0.78 -0.78
-                0 0.78 0.78
-                0 -0.78 0.78
+                0.015 -0.78 -0.78
+                0.015 0.78 -0.78
+                0.015 0.78 0.78
+                0.015 -0.78 0.78
               ]
             }
             texCoord TextureCoordinate {
@@ -11578,6 +11748,16 @@ Solid {
             coordIndex [
               0, 1, 2, 3, -1
             ]
+          }
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.5 0.52 0.55
+            roughness 0.6
+            metalness 0.5
+          }
+          geometry Box {
+            size 0.03 1.58 1.58
           }
         }
       ]

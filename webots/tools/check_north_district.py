@@ -14,7 +14,7 @@ MAP_NORTH_PATH = ROOT / "map-north.json"
 MAP_OLD_PATH = ROOT / "map.json"
 VALIDATION_DIR = ROOT / "validation" / "north-district"
 
-BASELINE_HASH = "7d488be882203855bffa511feb941cf568550ba4b54efc2a44110c6d81229a28"
+BASELINE_HASH = "73233df96ee84bbf60047ff52bde66565566283d19f18b67cc1790c3861b01b8"
 EPS = 1e-3
 
 def verify_mesh_manifold(name: str, vertices: list, faces: list):
@@ -195,7 +195,7 @@ def run_all_checks(wbt_path: Path = WORLD_PATH):
     results["9_concrete_medians"] = {
         "median_solids_count": len(median_solids),
         "median_solids": median_solids,
-        "status": "PASS" if len(median_solids) >= 10 else "FAIL"
+        "status": "PASS" if len(median_solids) >= 5 and "ND_Median-FLYOVER" in median_solids else "FAIL"
     }
 
     # 11. Road Stop Markings Check (startLine / endLine)

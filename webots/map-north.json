@@ -16207,5 +16207,283 @@
         "ND_RING_E_N_L3"
       ]
     }
-  }
+  },
+  "traffic_signs": [
+    {
+      "id": "ND_YieldSign-ROUND_W",
+      "description": "ND_YIELD_R_W",
+      "type": "yield",
+      "position": [
+        -148.8,
+        660.3,
+        0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        1.0,
+        3.141593
+      ]
+    },
+    {
+      "id": "ND_RoundaboutSign-ROUND_W",
+      "description": "ND_ROUND_R_W",
+      "type": "roundabout",
+      "position": [
+        -151.8,
+        660.3,
+        0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        1.0,
+        3.141593
+      ]
+    },
+    {
+      "id": "ND_YieldSign-ROUND_E",
+      "description": "ND_YIELD_R_E",
+      "type": "yield",
+      "position": [
+        -61.2,
+        677.7,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "ND_RoundaboutSign-ROUND_E",
+      "description": "ND_ROUND_R_E",
+      "type": "roundabout",
+      "position": [
+        -58.2,
+        677.7,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "ND_YieldSign-ROUND_N",
+      "description": "ND_YIELD_R_N",
+      "type": "yield",
+      "position": [
+        -113.7,
+        712.8,
+        0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        1.0,
+        1.570796
+      ]
+    },
+    {
+      "id": "ND_RoundaboutSign-ROUND_N",
+      "description": "ND_ROUND_R_N",
+      "type": "roundabout",
+      "position": [
+        -113.7,
+        715.8,
+        0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        1.0,
+        1.570796
+      ]
+    },
+    {
+      "id": "ND_YieldSign-ROUND_S",
+      "description": "ND_YIELD_R_S",
+      "type": "yield",
+      "position": [
+        -96.3,
+        625.2,
+        0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        1.0,
+        -1.570796
+      ]
+    },
+    {
+      "id": "ND_RoundaboutSign-ROUND_S",
+      "description": "ND_ROUND_R_S",
+      "type": "roundabout",
+      "position": [
+        -96.3,
+        622.2,
+        0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        1.0,
+        -1.570796
+      ]
+    },
+    {
+      "id": "ND_StopSign-WA_T",
+      "description": "ND_STOP_WA_T",
+      "type": "stop",
+      "position": [
+        -255.0,
+        578.1,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "ND_StopSign-WS_T",
+      "description": "ND_STOP_WS_T",
+      "type": "stop",
+      "position": [
+        -120.0,
+        567.9,
+        0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        1.0,
+        3.141593
+      ]
+    },
+    {
+      "id": "ND_StopSign-SL_T",
+      "description": "ND_STOP_SL_T",
+      "type": "stop",
+      "position": [
+        -4.8,
+        460.0,
+        0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        1.0,
+        1.570796
+      ]
+    },
+    {
+      "id": "ND_StopSign-CN_T",
+      "description": "ND_STOP_CN_T",
+      "type": "stop",
+      "position": [
+        4.8,
+        838.2,
+        0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        1.0,
+        -1.570796
+      ]
+    },
+    {
+      "id": "ND_SpeedLimitSign-1",
+      "description": "ND_SPEED_LIMIT_1",
+      "type": "speed",
+      "position": [
+        -278.7,
+        690.0,
+        0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        1.0,
+        1.570796
+      ]
+    }
+  ],
+  "medians": [
+    {
+      "id": "ND_Median-NORTH_M",
+      "road": "ND_NORTH_M",
+      "position": [
+        52.5,
+        858.0,
+        0.348
+      ],
+      "size": [
+        65.4,
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "id": "ND_Median-NORTH_W",
+      "road": "ND_NORTH_W",
+      "position": [
+        -52.5,
+        858.0,
+        0.348
+      ],
+      "size": [
+        65.4,
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "id": "ND_Median-MAIN_S",
+      "road": "ND_MAIN_S",
+      "position": [
+        105.0,
+        534.81,
+        0.348
+      ],
+      "size": [
+        0.6,
+        184.38,
+        0.6
+      ]
+    },
+    {
+      "id": "ND_Median-MAIN_N",
+      "road": "ND_MAIN_N",
+      "position": [
+        105.0,
+        775.35,
+        0.348
+      ],
+      "size": [
+        0.6,
+        128.7,
+        0.6
+      ]
+    },
+    {
+      "id": "ND_Median-FLYOVER",
+      "road": "ND_FLYOVER",
+      "position": [
+        105.0,
+        669.0,
+        0.348
+      ],
+      "type": "custom_mesh"
+    }
+  ]
 }
