@@ -250,9 +250,9 @@ def check_medians(data,nodes,native_roads,ring):
     roads={r['id']:r for r in data['roads']}
     expected={r['id'] for r in data['roads'] if r['number_of_lanes']==8}|{data['north_flyover']['road']}
     medians=data['medians']; by_id={m['road_id']:m for m in medians}
-    assert len(medians)==len(by_id)==11 and set(by_id)==expected, 'Median coverage must include every 8-lane road and the northern bridge'
+    assert len(medians)==len(by_id)==len(expected) and set(by_id)==expected, 'Median coverage must include every 8-lane road and the northern bridge'
     groups=[n for n in nodes if n.get('name','').startswith('CentreMedian-')]
-    assert len(groups)==11 and {n.get('name') for n in groups}=={'CentreMedian-'+eid for eid in expected}, 'Missing or duplicated median groups'
+    assert len(groups)==len(expected) and {n.get('name') for n in groups}=={'CentreMedian-'+eid for eid in expected}, 'Missing or duplicated median groups'
     groups={n.get('name')[13:]:n for n in groups}
     dividers=re.findall(r'\bRoadLine\s*\{([^{}]*)\}',ring.get('startRoadsLine',''),re.S)
     assert ring.get('startRoadsNumberOfLanes')==8 and len(dividers)==7 and re.search(r'\btype\s+"none"',dividers[3]), 'Roundabout centre paint remains'

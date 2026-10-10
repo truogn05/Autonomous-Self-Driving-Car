@@ -14,7 +14,7 @@ MAP_NORTH_PATH = ROOT / "map-north.json"
 MAP_OLD_PATH = ROOT / "map.json"
 VALIDATION_DIR = ROOT / "validation" / "north-district"
 
-BASELINE_HASH = "fca558f23a934ca6089c406083b90680729f81b7c14b845be8cab3775f589bb0"
+BASELINE_HASH = "4a7fb263d40f7b77e6218bb921b6792f186c677e35a251f18edf505cd93ecec9"
 EPS = 1e-3
 
 def verify_mesh_manifold(name: str, vertices: list, faces: list):
@@ -67,10 +67,10 @@ def run_all_checks(wbt_path: Path = WORLD_PATH):
     roads = map_north["roads"]
     junctions = map_north["junctions"]
     
-    # 3. Roads Check (29 roads)
+    # 3. Roads Check (35 roads)
     road_ids = [r["id"] for r in roads]
-    assert len(road_ids) == 29, f"Expected 29 roads, got {len(road_ids)}"
-    assert len(set(road_ids)) == 29, "Duplicate road IDs"
+    assert len(road_ids) == 35, f"Expected 35 roads, got {len(road_ids)}"
+    assert len(set(road_ids)) == 35, "Duplicate road IDs"
     
     road_checks = []
     for r in roads:
@@ -85,13 +85,13 @@ def run_all_checks(wbt_path: Path = WORLD_PATH):
     
     results["2_road_network"] = {
         "road_count": len(roads),
-        "all_29_present": True,
+        "all_35_present": True,
         "status": "PASS"
     }
 
-    # 4. Junctions Check (17 nodes, 20 ports)
+    # 4. Junctions Check (21 nodes)
     junc_keys = list(junctions.keys())
-    assert len(junc_keys) == 17, f"Expected 17 junction nodes, got {len(junc_keys)}"
+    assert len(junc_keys) == 21, f"Expected 21 junction nodes, got {len(junc_keys)}"
     total_ports = sum(len(j["ports"]) for j in junctions.values())
     
     # Port matching check
@@ -194,18 +194,24 @@ def run_all_checks(wbt_path: Path = WORLD_PATH):
     # 9. Split Geometry Check
     split_s = junctions["ND_SPLIT_S"]
     split_n = junctions["ND_SPLIT_N"]
+    split_river_e = junctions["ND_SPLIT_RIVER_E"]
+    split_river_w = junctions["ND_SPLIT_RIVER_W"]
     results["8_split_geometry"] = {
         "split_s_ports": len(split_s["ports"]),
         "split_n_ports": len(split_n["ports"]),
-        "status": "PASS"
+        "split_river_e_ports": len(split_river_e["ports"]),
+        "split_river_w_ports": len(split_river_w["ports"]),
+        "status": "PASS" if (len(split_s["ports"]) == 4 and len(split_n["ports"]) == 4 and len(split_river_e["ports"]) == 4 and len(split_river_w["ports"]) == 4) else "FAIL"
     }
 
     # 10. Medians Check
     median_solids = re.findall(r'name\s*"(ND_Median-[^"]+)"', content)
+    column_groups = re.findall(r'name\s*"(ND_MedianColumns-[^"]+)"', content)
     results["9_concrete_medians"] = {
         "median_solids_count": len(median_solids),
         "median_solids": median_solids,
-        "status": "PASS" if len(median_solids) >= 5 and "ND_Median-FLYOVER" in median_solids else "FAIL"
+        "column_groups": column_groups,
+        "status": "PASS" if len(median_solids) >= 8 and "ND_Median-FLYOVER" in median_solids and len(column_groups) == 2 else "FAIL"
     }
 
     # 11. Road Stop Markings Check (startLine / endLine)
@@ -237,7 +243,7 @@ def run_all_checks(wbt_path: Path = WORLD_PATH):
         "roads_with_endLine": roads_with_el,
         "roads_with_stop_markings": roads_with_stop,
         "roundabout_stop_violations": roundabout_stop_violations,
-        "status": "PASS" if (roads_with_sl == 29 and roads_with_el == 29 and roads_with_stop >= 26 and not roundabout_stop_violations) else "FAIL"
+        "status": "PASS" if (roads_with_sl == 35 and roads_with_el == 35 and roads_with_stop >= 26 and not roundabout_stop_violations) else "FAIL"
     }
 
     # 12. Traffic Signs Check
@@ -255,7 +261,37 @@ def run_all_checks(wbt_path: Path = WORLD_PATH):
         "total_lanes": len(lanes_dict),
         "lanes_with_successors": lanes_with_successors,
         "connectivity_percent": round(lanes_with_successors / len(lanes_dict) * 100, 1) if lanes_dict else 0,
-        "status": "PASS" if len(lanes_dict) >= 118 and lanes_with_successors == len(lanes_dict) else "FAIL"
+        "status": "PASS" if len(lanes_dict) >= 134 and lanes_with_successors == len(lanes_dict) else "FAIL"
+    }
+
+    # 14. River Bridges Verification
+    rb_report = {}
+    rb_ok = True
+    for rbid in ("ND_RIVER_BRIDGE_E", "ND_RIVER_BRIDGE_W"):
+        rb = roads_dict[rbid]
+        pts = rb["points"]
+        elev = rb["elevations"]
+        max_rb_z = max(elev)
+        slopes = [abs(elev[i+1] - elev[i]) / math.hypot(pts[i+1][0] - pts[i][0], pts[i+1][1] - pts[i][1]) for i in range(len(pts)-1)]
+        max_rb_slope = max(slopes)
+        if rb["number_of_lanes"] != 4 or abs(rb["width"] - 14.4) > EPS or abs(max_rb_z - 7.500) > EPS or max_rb_slope > 0.2501:
+            rb_ok = False
+        rb_report[rbid] = {
+            "lanes": rb["number_of_lanes"],
+            "width": rb["width"],
+            "max_elevation": round(max_rb_z, 4),
+            "max_slope_percent": round(max_rb_slope * 100, 2)
+        }
+    parapets_found = re.findall(r'name\s*"(ND_RiverBridge[EW]-Parapet-(?:West|East))"', nd_block)
+    piers_found = re.findall(r'name\s*"(ND_RiverBridge[EW]-Piers)"', nd_block)
+    if len(parapets_found) != 4 or len(piers_found) != 2:
+        rb_ok = False
+    results["13_river_bridges"] = {
+        "bridges": rb_report,
+        "parapets": parapets_found,
+        "piers": piers_found,
+        "column_medians": column_groups,
+        "status": "PASS" if rb_ok else "FAIL"
     }
 
     all_pass = all(v.get("status") == "PASS" for v in results.values())
