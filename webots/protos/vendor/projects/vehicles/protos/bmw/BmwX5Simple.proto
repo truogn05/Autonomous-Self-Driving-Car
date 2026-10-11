@@ -6,19 +6,19 @@
 # Simple kinematic model of the BMW X5 to be moved with a Supervisor.
 # This model was sponsored by the [CTI project RO2IVSim](http://transport.epfl.ch/simulator-for-mobile-robots-and-intelligent-vehicles).
 
-EXTERNPROTO "BmwX5Wheel.proto"
-EXTERNPROTO "BmwX5FrontLight.proto"
-EXTERNPROTO "BmwX5RightIndicator.proto"
-EXTERNPROTO "BmwX5LeftIndicator.proto"
-EXTERNPROTO "BmwX5AntiFogLight.proto"
-EXTERNPROTO "BmwX5RearLight.proto"
-EXTERNPROTO "BmwX5BrakingLight.proto"
-EXTERNPROTO "BmwX5BackwardsLight.proto"
-EXTERNPROTO "BmwX5RightWiper.proto"
-EXTERNPROTO "BmwX5LeftWiper.proto"
-EXTERNPROTO "BmwX5Mesh.proto"
-EXTERNPROTO "BmwX5RightWingMirror.proto"
-EXTERNPROTO "BmwX5LeftWingMirror.proto"
+EXTERNPROTO "BmwNode/BmwX5Wheel.proto"
+EXTERNPROTO "BmwNode/BmwX5FrontLight.proto"
+EXTERNPROTO "BmwNode/BmwX5RightIndicator.proto"
+EXTERNPROTO "BmwNode/BmwX5LeftIndicator.proto"
+EXTERNPROTO "BmwNode/BmwX5AntiFogLight.proto"
+EXTERNPROTO "BmwNode/BmwX5RearLight.proto"
+EXTERNPROTO "BmwNode/BmwX5BrakingLight.proto"
+EXTERNPROTO "BmwNode/BmwX5BackwardsLight.proto"
+EXTERNPROTO "BmwNode/BmwX5RightWiper.proto"
+EXTERNPROTO "BmwNode/BmwX5LeftWiper.proto"
+EXTERNPROTO "BmwNode/BmwX5Mesh.proto"
+EXTERNPROTO "BmwNode/BmwX5RightWingMirror.proto"
+EXTERNPROTO "BmwNode/BmwX5LeftWingMirror.proto"
 
 PROTO BmwX5Simple [
   field       SFVec3f    translation         0 0 0.4           # Is `Robot.translation`.

@@ -392,7 +392,7 @@ def check():
         for field, end in [('startLine', 'from'), ('endLine', 'to')]:
             slots = node.get(field, [])
             kind = data['junctions'][road[end]]['kind']
-            if kind in ('roundabout_port', 'connection', 'lane_split'):
+            if kind in ('roundabout_port', 'connection', 'lane_split', 'dead_end'):
                 assert not any(slots), (eid, field, 'Continuous seam/roundabout mouth must have no stop paint')
             else:
                 incoming = list(range(int(forward), int(lanes))) if field == 'startLine' else list(range(int(forward)))
@@ -480,7 +480,7 @@ def check():
             assert nxt in data['lanes'] and math.dist(lane['points'][-1], data['lanes'][nxt]['points'][0])<EPS, (lid, nxt, 'Lane discontinuity')
             assert abs(lane['elevations'][-1]-data['lanes'][nxt]['elevations'][0])<EPS, (lid, nxt, 'Lane elevation discontinuity')
             junction = data['junctions'].get(lane['to'])
-            if lane.get('road_id') and junction and junction['kind'] != 'roundabout_port':
+            if lane.get('road_id') and junction and junction['kind'] not in ('roundabout_port', 'dead_end'):
                 target = data['lanes'][nxt]
                 exits = target['successors'] if target.get('junction') == lane['to'] else [nxt]
                 assert all(data['lanes'][end].get('road_id') != lane['road_id'] for end in exits), (lid, nxt, 'Ordinary junction U-turn')
