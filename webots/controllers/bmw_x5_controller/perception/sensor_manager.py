@@ -46,6 +46,7 @@ class SensorManager:
         self.lidar_period = self.timestep * 2  # Run 16-layer 3D LiDAR at half rate for high FPS
         self.stale_steps = 0
         self.step_count = 0
+        self.last_lidar_front_min_m = 100.0
 
         self.camera = self._enable_device("front_camera", self.timestep)
         if self.camera is not None and hasattr(self.camera, "hasRecognition") and self.camera.hasRecognition():
@@ -157,26 +158,29 @@ class SensorManager:
                 )
                 telemetry.radar_nearest_m = float(nearest)
 
-        # 7. Roof 3D LiDAR (sample horizontal layer 8 for forward obstacle distance)
+        # 7. Roof 3D LiDAR (sample horizontal middle layer every 2 steps, bypassing R2025a getLayerRangeImage typo)
         if self.lidar is not None:
             active += 1
-            try:
-                mid_layer = max(0, self.lidar.getNumberOfLayers() // 2)
-                scan = self.lidar.getLayerRangeImage(mid_layer)
-                if scan:
-                    n = len(scan)
-                    # Forward sector is the center 20% of the range image
-                    c0 = int(n * 0.40)
-                    c1 = int(n * 0.60)
-                    valid = [
-                        float(d)
-                        for d in scan[c0:c1]
-                        if math.isfinite(d) and 0.6 < d < 100.0
-                    ]
-                    if valid:
-                        telemetry.lidar_front_min_m = min(valid)
-            except Exception:
-                pass
+            if self.step_count % 2 == 0 or self.step_count == 1:
+                try:
+                    from controller.wb import wb
+
+                    n_layers = max(1, int(self.lidar.getNumberOfLayers()))
+                    mid_layer = n_layers // 2
+                    h_res = max(1, int(self.lidar.getHorizontalResolution()))
+                    ptr = wb.wb_lidar_get_layer_range_image(self.lidar._tag, mid_layer)
+                    if ptr:
+                        c0 = int(h_res * 0.40)
+                        c1 = int(h_res * 0.60)
+                        valid = [
+                            float(ptr[i])
+                            for i in range(c0, c1)
+                            if math.isfinite(ptr[i]) and 0.6 < ptr[i] < 100.0
+                        ]
+                        self.last_lidar_front_min_m = min(valid) if valid else 100.0
+                except Exception:
+                    pass
+            telemetry.lidar_front_min_m = self.last_lidar_front_min_m
 
         # 8. Front Camera + Recognition
         if self.camera is not None:

@@ -10,6 +10,19 @@ EXTERNPROTO "../protos/vendor/projects/vehicles/protos/bmw/BmwX5.proto"
 
 WorldInfo {
   title "My World - connected traffic practice town"
+  ERP 0.6
+  basicTimeStep 32
+  contactProperties [
+    ContactProperties {
+      coulombFriction [
+        8
+      ]
+      softCFM 1e-05
+      bumpSound ""
+      rollSound ""
+      slideSound ""
+    }
+  ]
   randomSeed 7
 }
 DEF OVERVIEW Viewpoint {
@@ -20197,7 +20210,7 @@ Solid {
 # END NORTH_DISTRICT
 # BEGIN EGO_VEHICLE_BMWX5
 DEF EGO_VEHICLE BmwX5 {
-  translation 273 1.8 0.4
+  translation 273 1.8 0.42
   rotation 0 0 1 3.141593
   color 0.12 0.28 0.58
   engineSound ""
@@ -20281,8 +20294,8 @@ DEF EGO_VEHICLE BmwX5 {
       rotation 0 1 0 0.08
       name "front_camera"
       fieldOfView 1.0472
-      width 640
-      height 360
+      width 320
+      height 180
       near 0.2
       far 180
       recognition Recognition {
@@ -20292,10 +20305,10 @@ DEF EGO_VEHICLE BmwX5 {
     DEF TOP_LIDAR Lidar {
       translation 0 0 0.18
       name "top_lidar"
-      horizontalResolution 360
+      horizontalResolution 180
       fieldOfView 6.283185
       verticalFieldOfView 0.523599
-      numberOfLayers 16
+      numberOfLayers 4
       minRange 0.6
       maxRange 100
     }

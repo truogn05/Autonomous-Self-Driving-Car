@@ -95,6 +95,10 @@ PROTO BmwX5 [
     engineMaxRPM 6500
     brakeCoefficient 1800  # calibrated for braking from 100 to 0km/h in 36.5m
     engineFunctionCoefficients 34.11 0.136 -0.00001461
+    suspensionFrontSpringConstant 200000
+    suspensionFrontDampingConstant 6000
+    suspensionRearSpringConstant 200000
+    suspensionRearDampingConstant 6000
     wheelsDampingConstant 2
     gearRatio   [-12.5 12.5 8 5.35 4.3 4]
     wheelFrontLeft BmwX5Wheel {

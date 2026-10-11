@@ -425,7 +425,7 @@ PROTO VehicleWheel [
           children [
             Cylinder {
               height %<= thickness >%
-              radius %<= tireRadius >%
+              radius %<= tireRadius + 0.048 >%
               subdivision %<= subdivision >%
             }
           ]

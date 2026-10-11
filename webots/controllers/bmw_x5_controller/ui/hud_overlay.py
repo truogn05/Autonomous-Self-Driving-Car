@@ -13,6 +13,9 @@ class HudOverlay:
         self.display = display
         self.width = display.getWidth() if display is not None else 320
         self.height = display.getHeight() if display is not None else 140
+        if self.display is not None:
+            # Set font ONCE at initialization; calling setFont() every frame leaks memory in Webots R2025a
+            self.display.setFont("Lucida Console", 9, True)
 
     def render(
         self,
@@ -37,7 +40,6 @@ class HudOverlay:
         d.setColor(0x1E293B)
         d.fillRectangle(0, 0, w, 24)
         d.setColor(0x38BDF8)
-        d.setFont("Lucida Console", 10, True)
         d.drawText("BMW X5 ADAS TELEHUD", 8, 6)
 
         # Gear badge (D / N / R)
@@ -49,11 +51,9 @@ class HudOverlay:
 
         # Speed & Target Speed
         d.setColor(0xF8FAFC)
-        d.setFont("Lucida Console", 12, True)
-        d.drawText(f"SPD: {measured_speed_kmh:+5.1f} km/h", 8, 30)
-        d.setFont("Lucida Console", 9, True)
+        d.drawText(f"SPD: {measured_speed_kmh:+5.1f} km/h", 8, 31)
         d.setColor(0x94A3B8)
-        d.drawText(f"TGT: {lon_out.target_speed_kmh:+5.1f} km/h", 185, 32)
+        d.drawText(f"TGT: {lon_out.target_speed_kmh:+5.1f} km/h", 185, 31)
 
         # Steering angle & visual center-zero bar
         steer_deg = math.degrees(lat_out.steering_angle_rad)
