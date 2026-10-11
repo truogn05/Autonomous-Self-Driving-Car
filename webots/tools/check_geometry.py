@@ -347,7 +347,7 @@ def check():
     assert len(native_roads) == sum(n.type in ('Road', 'StraightRoadSegment') for n in nodes), 'Duplicate road IDs'
     assert len(native_junctions) == sum(n.type in ('Crossroad', 'RoadIntersection', 'Roundabout') for n in nodes), 'Duplicate junction IDs'
     assert set(native_roads) == {e['id'] for e in data['roads']}, 'World/map road IDs differ'
-    assert set(native_junctions) == {n['world_id'] for n in data['junctions'].values()}, 'World/map junction IDs differ'
+    assert set(native_junctions) == {n['world_id'] for n in data['junctions'].values() if not n.get('no_world_node')}, 'World/map junction IDs differ'
     roads = {e['id']: e for e in data['roads']}
     surfaces, actual_points, triangles_checked = [], {}, 0
     expected = {nid: set() for nid in native_junctions}
@@ -374,9 +374,11 @@ def check():
         assert doubles == ([] if median_road or forward in (0,lanes) else [int(lanes/2)-1]), (eid, 'Direction separator paint does not match median coverage')
         assert none == ([int(lanes/2)-1] if median_road else []), (eid,'Only the median centre slot may be hidden')
         for field, end in [('startJunction', 'from'), ('endJunction', 'to')]:
-            nid = data['junctions'][road[end]]['world_id']
+            junc = data['junctions'][road[end]]
+            nid = junc['world_id']
             assert node.get(field) == nid, (eid, field, nid)
-            expected[nid].add(eid)
+            if not junc.get('no_world_node'):
+                expected[nid].add(eid)
         half = road['width']/2
         left, right = offset(points, half), offset(points, -half)
         for i in range(len(points)-1):
@@ -401,13 +403,14 @@ def check():
         assert set(node.get('connectedRoadIDs', [])) == expected[nid], (nid, 'Nonreciprocal road links')
     mouths_checked, curbs_checked = 0, 0
     for nid, junction in data['junctions'].items():
-        node = native_junctions[junction['world_id']]
+        node = native_junctions.get(junction['world_id'])
         assert {p['edge'] for p in junction['ports']} == {eid for eid, e in roads.items() if nid in (e['from'], e['to'])}, (nid, 'Stale ports')
         if junction['kind'] == 'roundabout_port':
             continue
         if junction['kind'] == 'lane_split':
-            assert len(junction['ports'])==4 and not node.coords('shape'), (nid,'Lane split has no crossing surface')
-            assert all(abs(p['position'][0]-junction['position'][0])<EPS for p in junction['ports'])
+            assert len(junction['ports']) in (3, 4) and (node is None or not node.coords('shape')), (nid,'Lane split has no crossing surface')
+            if not junction.get('no_world_node'):
+                assert all(abs(p['position'][0]-junction['position'][0])<EPS for p in junction['ports'])
             continue
         if junction['kind'] == 'connection':
             assert len(junction['ports']) == 2 and not node.coords('shape'), (nid, 'Logical bridge seam')

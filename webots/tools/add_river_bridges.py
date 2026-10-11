@@ -1,5 +1,7 @@
-"""Add 2 River-Crossing Bridges (4 lanes, column center medians, 1.50m high side parapets)
-and widen the 4 approach corridors to 8 lanes (4 inner bridge lanes + 4 outer ground lanes to T-junctions).
+"""Add 2 River-Crossing Bridges (4 lanes, column center medians, 1.50m high side parapets),
+widen the 4 approach corridors to 8 lanes (4 inner bridge lanes + 4 outer ground lanes),
+delete N2_CROSS_W, N2_CROSS_E, NORTH_OUTLET_M, and J_N2_W/M/E Crossroads,
+and straighten all 3 North-South corridors (West, Middle, East) into continuous straight lines.
 
 Complies strictly with AGENT.md and GEMINI.md.
 """
@@ -46,6 +48,10 @@ def direction_2d(a, b):
     dx, dy = b[0] - a[0], b[1] - a[1]
     L = math.hypot(dx, dy)
     return (dx / L, dy / L) if L > 1e-9 else (0.0, 1.0)
+
+
+def pt_along(p0, u, n_left, s, lat=0.0):
+    return [round(p0[0] + s * u[0] + lat * n_left[0], 6), round(p0[1] + s * u[1] + lat * n_left[1], 6)]
 
 
 def verify_mesh_manifold(name: str, vertices: list, faces: list):
@@ -140,31 +146,52 @@ def smooth_ramp_z(t: float) -> float:
     return 1.0 - 3.125 * u * u
 
 
-def river_bridge_profile(y_start, y_end, x_south, x_north, y_curve_start, y_curve_end, y_plat_s, y_plat_n, num_pts=85):
-    pts = []
+def hermite_xy(p0, p1, m0, m1, t):
+    h00 = 2 * t ** 3 - 3 * t ** 2 + 1
+    h10 = t ** 3 - 2 * t ** 2 + t
+    h01 = -2 * t ** 3 + 3 * t ** 2
+    h11 = t ** 3 - t ** 2
+    x = h00 * p0[0] + h10 * m0[0] + h01 * p1[0] + h11 * m1[0]
+    y = h00 * p0[1] + h10 * m0[1] + h01 * p1[1] + h11 * m1[1]
+    return [x, y]
+
+
+def make_bridge_waypoints(p_start, u_start, s_ramp_s, p_north_ramp_start, p_end, n_south=8, n_mid=50, n_north=8):
+    """Build 3D waypoints for a river bridge whose South ramp is collinear with u_start
+    and whose North ramp is collinear with (0, 1).
+    """
     z_road = 0.048
     z_plat = 5.648
-    z_arch_extra = 1.852
-    for i in range(num_pts):
-        y = y_start + (y_end - y_start) * i / (num_pts - 1)
-        if y <= y_curve_start:
-            x = x_south
-        elif y >= y_curve_end:
-            x = x_north
-        else:
-            t_x = (y - y_curve_start) / (y_curve_end - y_curve_start)
-            x = x_south + (x_north - x_south) * 0.5 * (1.0 - math.cos(math.pi * t_x))
-        if y <= y_start or y >= y_end:
-            z = z_road
-        elif y < y_plat_s:
-            t_z = (y - y_start) / (y_plat_s - y_start)
-            z = z_road + (z_plat - z_road) * smooth_ramp_z(t_z)
-        elif y > y_plat_n:
-            t_z = (y_end - y) / (y_end - y_plat_n)
-            z = z_road + (z_plat - z_road) * smooth_ramp_z(t_z)
-        else:
-            t_m = (y - y_plat_s) / (y_plat_n - y_plat_s)
-            z = z_plat + z_arch_extra * math.sin(math.pi * t_m)
+    z_arch = 1.852
+    pts = []
+    # Segment 1: straight South ramp along u_start (length s_ramp_s)
+    for i in range(n_south):
+        t = i / n_south
+        s = t * s_ramp_s
+        x = p_start[0] + s * u_start[0]
+        y = p_start[1] + s * u_start[1]
+        z = z_road + (z_plat - z_road) * smooth_ramp_z(t)
+        pts.append([round(x, 6), round(y, 6), round(z, 6)])
+
+    p_curve_0 = [p_start[0] + s_ramp_s * u_start[0], p_start[1] + s_ramp_s * u_start[1]]
+    p_curve_1 = p_north_ramp_start
+    dist_c = math.dist(p_curve_0, p_curve_1)
+    m0 = [u_start[0] * dist_c * 0.85, u_start[1] * dist_c * 0.85]
+    m1 = [0.0, 1.0 * dist_c * 0.85]
+
+    # Segment 2: elevated curved river span (j = n_south .. n_south + n_mid)
+    for i in range(n_mid + 1):
+        t = i / n_mid
+        x, y = hermite_xy(p_curve_0, p_curve_1, m0, m1, t)
+        z = z_plat + z_arch * math.sin(math.pi * t)
+        pts.append([round(x, 6), round(y, 6), round(z, 6)])
+
+    # Segment 3: straight North ramp from p_north_ramp_start to p_end along (0, 1)
+    for i in range(1, n_north + 1):
+        t = i / n_north
+        x = p_north_ramp_start[0] + t * (p_end[0] - p_north_ramp_start[0])
+        y = p_north_ramp_start[1] + t * (p_end[1] - p_north_ramp_start[1])
+        z = z_road + (z_plat - z_road) * smooth_ramp_z(1.0 - t)
         pts.append([round(x, 6), round(y, 6), round(z, 6)])
     return pts
 
@@ -173,7 +200,6 @@ def build_column_median_solid(solid_name: str, pts_3d: list) -> str:
     """Build center median columns spaced along the 3D centerline of a river bridge."""
     shape_poses = []
     bo_poses = []
-    # Place columns at every 2nd waypoint from j=2 to j=len(pts_3d)-3
     for j in range(2, len(pts_3d) - 2, 2):
         x, y, z = pts_3d[j]
         zc_body = round(z + 0.14 + 0.55, 6)
@@ -312,14 +338,11 @@ def build_south_median_solid(median: dict) -> str:
 }}"""
 
 
-def build_south_curb_solid(nid: str, n: dict, extra_caps: list = None) -> str:
+def build_south_curb_solid(nid: str, n: dict) -> str:
     from shapely.geometry import LineString, Polygon
     from shapely.ops import unary_union
     boundary = Polygon(n["polygon"]).boundary
     cap_lines = [LineString(mouth(p["position"], p["outward"], p["width"])).buffer(0.0002) for p in n["ports"]]
-    if extra_caps:
-        for ec in extra_caps:
-            cap_lines.append(LineString(mouth(ec["position"], ec["outward"], ec["width"])).buffer(0.0002))
     caps = unary_union(cap_lines)
     parts = boundary.difference(caps)
     parts = [parts] if parts.geom_type == "LineString" else list(parts.geoms)
@@ -514,19 +537,15 @@ def generate_north_lanes(roads: list) -> dict:
 
 
 def main():
-    for p in (WBT_PATH, MAP_S_PATH, MAP_N_PATH, CHK_GEO_PATH, CHK_ND_PATH):
-        bak = p.with_suffix(p.suffix + ".bak_pre_river_bridges")
-        if not bak.exists():
-            shutil.copy2(p, bak)
-            print(f"Created backup: {bak.name}")
-
-    wbt_full = WBT_PATH.read_text(encoding="utf-8")
+    import subprocess
+    repo_root = ROOT.parent
+    wbt_full = subprocess.check_output(["git", "show", "7f64b2c:webots/worlds/my_world.wbt"], cwd=repo_root).decode("utf-8")
     assert "# BEGIN NORTH_DISTRICT" in wbt_full and "# END NORTH_DISTRICT" in wbt_full
     prefix_str, rest_str = wbt_full.split("# BEGIN NORTH_DISTRICT", 1)
     nd_str, suffix_str = rest_str.split("# END NORTH_DISTRICT", 1)
 
-    map_s = json.loads(MAP_S_PATH.read_text(encoding="utf-8"))
-    map_n = json.loads(MAP_N_PATH.read_text(encoding="utf-8"))
+    map_s = json.loads(subprocess.check_output(["git", "show", "7f64b2c:webots/map.json"], cwd=repo_root).decode("utf-8"))
+    map_n = json.loads(subprocess.check_output(["git", "show", "7f64b2c:webots/map-north.json"], cwd=repo_root).decode("utf-8"))
 
     # =========================================================================
     # PART 1: UPDATE SOUTH DISTRICT (map.json & prefix_str)
@@ -534,45 +553,127 @@ def main():
     roads_s = {r["id"]: r for r in map_s["roads"]}
     juncs_s = map_s["junctions"]
 
-    # 1. Widen NORTH_FAN_W and NORTH_FAN_E to 8 lanes (28.8m)
-    for rid in ("NORTH_FAN_W", "NORTH_FAN_E"):
-        roads_s[rid]["number_of_lanes"] = 8
-        roads_s[rid]["forward_lanes"] = 4
-        roads_s[rid]["width"] = 28.8
+    # 1. Compute Straight Corridor Axes (West, Middle, East)
+    # West Axis: NORTH_WEST (-72, 129) -> O_N_W (-97.5, 240)
+    p_nw = [-72.0, 129.0]
+    p_onw = [-97.5, 240.0]
+    L_w = math.dist(p_nw, p_onw)
+    u_w = direction_2d(p_nw, p_onw)
+    n_w = (-u_w[1], u_w[0])
+    s_w_start, s_w_split = 19.8, 72.0
+    s_ww_end, s_we_end = L_w - 9.5, L_w - 14.0
+    pt_w_start = pt_along(p_nw, u_w, n_w, s_w_start, 0.0)
+    pt_w_split = pt_along(p_nw, u_w, n_w, s_w_split, 0.0)
+    pt_ww_start = pt_along(p_nw, u_w, n_w, s_w_split, +10.8)
+    pt_ww_end = pt_along(p_nw, u_w, n_w, s_ww_end, +10.8)
+    pt_we_start = pt_along(p_nw, u_w, n_w, s_w_split, -10.8)
+    pt_we_end = pt_along(p_nw, u_w, n_w, s_we_end, -10.8)
 
-    # 2. Trim N2_CROSS_W and N2_CROSS_E at N2_W and N2_E
-    roads_s["N2_CROSS_W"]["points"][0][0] = -75.0
-    roads_s["N2_CROSS_W"]["full_points"] = [juncs_s["N2_W"]["position"]] + roads_s["N2_CROSS_W"]["points"] + [juncs_s["N2_M"]["position"]]
-    roads_s["N2_CROSS_E"]["points"][-1][0] = 126.0
-    roads_s["N2_CROSS_E"]["full_points"] = [juncs_s["N2_M"]["position"]] + roads_s["N2_CROSS_E"]["points"] + [juncs_s["N2_E"]["position"]]
+    # Middle Axis: NORTH_MIDDLE (42, 129) -> O_N_M (18, 240)
+    p_nm = [42.0, 129.0]
+    p_onm = [18.0, 240.0]
+    L_m = math.dist(p_nm, p_onm)
+    u_m = direction_2d(p_nm, p_onm)
+    n_m = (-u_m[1], u_m[0])
+    s_m_start, s_m_end = 24.5, L_m - 12.0
+    pt_m_start = pt_along(p_nm, u_m, n_m, s_m_start, 0.0)
+    pt_m_end = pt_along(p_nm, u_m, n_m, s_m_end, 0.0)
 
-    # 3. Trim OUTER_RING_NW, NORTH_WINDING_W, NORTH_WINDING_E, OUTER_RING_NE at O_N_W and O_N_E
-    if len(roads_s["OUTER_RING_NW"]["points"]) == 168:
-        roads_s["OUTER_RING_NW"]["points"] = roads_s["OUTER_RING_NW"]["points"][:-3]
-        roads_s["OUTER_RING_NW"]["elevations"] = roads_s["OUTER_RING_NW"]["elevations"][:-3]
-        roads_s["OUTER_RING_NW"]["full_points"] = [juncs_s["O_W_N"]["position"]] + roads_s["OUTER_RING_NW"]["points"] + [juncs_s["O_N_W"]["position"]]
-    if len(roads_s["NORTH_WINDING_W"]["points"]) == 55:
-        roads_s["NORTH_WINDING_W"]["points"] = roads_s["NORTH_WINDING_W"]["points"][2:]
-        roads_s["NORTH_WINDING_W"]["elevations"] = roads_s["NORTH_WINDING_W"]["elevations"][2:]
-        roads_s["NORTH_WINDING_W"]["full_points"] = [juncs_s["O_N_W"]["position"]] + roads_s["NORTH_WINDING_W"]["points"] + [juncs_s["O_N_M"]["position"]]
-    if len(roads_s["NORTH_WINDING_E"]["points"]) == 61:
-        roads_s["NORTH_WINDING_E"]["points"] = roads_s["NORTH_WINDING_E"]["points"][:-4]
-        roads_s["NORTH_WINDING_E"]["elevations"] = roads_s["NORTH_WINDING_E"]["elevations"][:-4]
-        roads_s["NORTH_WINDING_E"]["full_points"] = [juncs_s["O_N_M"]["position"]] + roads_s["NORTH_WINDING_E"]["points"] + [juncs_s["O_N_E"]["position"]]
-    if len(roads_s["OUTER_RING_NE"]["points"]) == 174:
-        roads_s["OUTER_RING_NE"]["points"] = roads_s["OUTER_RING_NE"]["points"][3:]
-        roads_s["OUTER_RING_NE"]["elevations"] = roads_s["OUTER_RING_NE"]["elevations"][3:]
-        roads_s["OUTER_RING_NE"]["full_points"] = [juncs_s["O_N_E"]["position"]] + roads_s["OUTER_RING_NE"]["points"] + [juncs_s["O_E_M"]["position"]]
+    # East Axis: NORTH_EAST (132, 129) -> O_N_E (144, 240)
+    p_ne = [132.0, 129.0]
+    p_one = [144.0, 240.0]
+    L_e = math.dist(p_ne, p_one)
+    u_e = direction_2d(p_ne, p_one)
+    n_e = (-u_e[1], u_e[0])
+    s_e_start, s_e_split = 19.5, 71.0
+    s_ew_end, s_ee_end = L_e - 12.5, L_e - 10.5
+    pt_e_start = pt_along(p_ne, u_e, n_e, s_e_start, 0.0)
+    pt_e_split = pt_along(p_ne, u_e, n_e, s_e_split, 0.0)
+    pt_ew_start = pt_along(p_ne, u_e, n_e, s_e_split, +10.8)
+    pt_ew_end = pt_along(p_ne, u_e, n_e, s_ew_end, +10.8)
+    pt_ee_start = pt_along(p_ne, u_e, n_e, s_e_split, -10.8)
+    pt_ee_end = pt_along(p_ne, u_e, n_e, s_ee_end, -10.8)
 
-    # 4. Replace NORTH_OUTLET_W & NORTH_OUTLET_E with 4 outer 2-lane ground roads
-    roads_s.pop("NORTH_OUTLET_W", None)
-    roads_s.pop("NORTH_OUTLET_E", None)
+    # 2. Delete N2_CROSS_W, N2_CROSS_E, NORTH_OUTLET_M, NORTH_OUTLET_W, NORTH_OUTLET_E & junction N2_M
+    for del_rid in ("N2_CROSS_W", "N2_CROSS_E", "NORTH_OUTLET_M", "NORTH_OUTLET_W", "NORTH_OUTLET_E"):
+        roads_s.pop(del_rid, None)
+    juncs_s.pop("N2_M", None)
 
+    # Update N2_W and N2_E to virtual lane_split junctions (no_world_node = True)
+    juncs_s["N2_W"] = {
+        "position": pt_w_split,
+        "kind": "lane_split",
+        "no_world_node": True,
+        "trim": 0,
+        "ports": [],
+        "world_id": "J_N2_W",
+        "polygon": [],
+    }
+    juncs_s["N2_E"] = {
+        "position": pt_e_split,
+        "kind": "lane_split",
+        "no_world_node": True,
+        "trim": 0,
+        "ports": [],
+        "world_id": "J_N2_E",
+        "polygon": [],
+    }
+
+    # 3. Update NORTH_FAN_W, NORTH_FAN_M, NORTH_FAN_E
+    roads_s["NORTH_FAN_W"].update({
+        "from": "NORTH_WEST",
+        "to": "N2_W",
+        "points": [pt_w_start, pt_w_split],
+        "elevations": [0.048, 0.048],
+        "full_points": [p_nw, pt_w_start, pt_w_split, pt_w_split],
+        "number_of_lanes": 8,
+        "forward_lanes": 4,
+        "width": 28.8,
+    })
+    roads_s["NORTH_FAN_M"].update({
+        "from": "NORTH_MIDDLE",
+        "to": "O_N_M",
+        "points": [pt_m_start, pt_m_end],
+        "elevations": [0.048, 0.048],
+        "full_points": [p_nm, pt_m_start, pt_m_end, p_onm],
+        "number_of_lanes": 4,
+        "forward_lanes": 2,
+        "width": 14.4,
+    })
+    roads_s["NORTH_FAN_E"].update({
+        "from": "NORTH_EAST",
+        "to": "N2_E",
+        "points": [pt_e_start, pt_e_split],
+        "elevations": [0.048, 0.048],
+        "full_points": [p_ne, pt_e_start, pt_e_split, pt_e_split],
+        "number_of_lanes": 8,
+        "forward_lanes": 4,
+        "width": 28.8,
+    })
+
+    # 4. Trim OUTER_RING_NW, NORTH_WINDING_W, NORTH_WINDING_E, OUTER_RING_NE at O_N_W, O_N_M, O_N_E
+    roads_s["OUTER_RING_NW"]["points"] = roads_s["OUTER_RING_NW"]["points"][:-3]
+    roads_s["OUTER_RING_NW"]["elevations"] = roads_s["OUTER_RING_NW"]["elevations"][:-3]
+    roads_s["OUTER_RING_NW"]["full_points"] = [juncs_s["O_W_N"]["position"]] + roads_s["OUTER_RING_NW"]["points"] + [p_onw]
+
+    roads_s["NORTH_WINDING_W"]["points"] = roads_s["NORTH_WINDING_W"]["points"][2:-1]
+    roads_s["NORTH_WINDING_W"]["elevations"] = roads_s["NORTH_WINDING_W"]["elevations"][2:-1]
+    roads_s["NORTH_WINDING_W"]["full_points"] = [p_onw] + roads_s["NORTH_WINDING_W"]["points"] + [p_onm]
+
+    roads_s["NORTH_WINDING_E"]["points"] = roads_s["NORTH_WINDING_E"]["points"][1:-4]
+    roads_s["NORTH_WINDING_E"]["elevations"] = roads_s["NORTH_WINDING_E"]["elevations"][1:-4]
+    roads_s["NORTH_WINDING_E"]["full_points"] = [p_onm] + roads_s["NORTH_WINDING_E"]["points"] + [p_one]
+
+    roads_s["OUTER_RING_NE"]["points"] = roads_s["OUTER_RING_NE"]["points"][3:]
+    roads_s["OUTER_RING_NE"]["elevations"] = roads_s["OUTER_RING_NE"]["elevations"][3:]
+    roads_s["OUTER_RING_NE"]["full_points"] = [p_one] + roads_s["OUTER_RING_NE"]["points"] + [juncs_s["O_E_M"]["position"]]
+
+    # 5. Add 4 outer 2-lane ground roads collinear with NORTH_FAN_W and NORTH_FAN_E
     outlet_specs = [
-        ("NORTH_OUTLET_W_W", "N2_W", "O_N_W", [[-106.8, 202.44], [-106.8, 229.56]], 0),
-        ("NORTH_OUTLET_W_E", "N2_W", "O_N_W", [[-85.2, 202.44], [-85.2, 229.56]], 2),
-        ("NORTH_OUTLET_E_W", "N2_E", "O_N_E", [[133.2, 202.44], [133.2, 229.557696]], 0),
-        ("NORTH_OUTLET_E_E", "N2_E", "O_N_E", [[154.8, 202.44], [154.8, 229.557696]], 2),
+        ("NORTH_OUTLET_W_W", "N2_W", "O_N_W", [pt_ww_start, pt_ww_end], 0),
+        ("NORTH_OUTLET_W_E", "N2_W", "O_N_W", [pt_we_start, pt_we_end], 2),
+        ("NORTH_OUTLET_E_W", "N2_E", "O_N_E", [pt_ew_start, pt_ew_end], 0),
+        ("NORTH_OUTLET_E_E", "N2_E", "O_N_E", [pt_ee_start, pt_ee_end], 2),
     ]
     for rid, fj, tj, pts, fwd in outlet_specs:
         roads_s[rid] = {
@@ -592,26 +693,26 @@ def main():
     # Update map_s['roads'] order
     new_roads_list_s = []
     for r in map_s["roads"]:
-        if r["id"] == "NORTH_OUTLET_W":
+        rid = r["id"]
+        if rid == "NORTH_OUTLET_W":
             new_roads_list_s.append(roads_s["NORTH_OUTLET_W_W"])
             new_roads_list_s.append(roads_s["NORTH_OUTLET_W_E"])
-        elif r["id"] == "NORTH_OUTLET_E":
+        elif rid == "NORTH_OUTLET_E":
             new_roads_list_s.append(roads_s["NORTH_OUTLET_E_W"])
             new_roads_list_s.append(roads_s["NORTH_OUTLET_E_E"])
-        elif r["id"] in roads_s:
-            new_roads_list_s.append(roads_s[r["id"]])
-    for rid in ("NORTH_OUTLET_W_W", "NORTH_OUTLET_W_E", "NORTH_OUTLET_E_W", "NORTH_OUTLET_E_E"):
-        if not any(r["id"] == rid for r in new_roads_list_s):
+        elif rid in roads_s:
             new_roads_list_s.append(roads_s[rid])
     map_s["roads"] = new_roads_list_s
 
     # Update expansion['new_road_ids']
-    exp_ids = [eid for eid in map_s["expansion"]["new_road_ids"] if eid not in ("NORTH_OUTLET_W", "NORTH_OUTLET_E", "NORTH_OUTLET_W_W", "NORTH_OUTLET_W_E", "NORTH_OUTLET_E_W", "NORTH_OUTLET_E_E")]
+    removed_ids = {"N2_CROSS_W", "N2_CROSS_E", "NORTH_OUTLET_M", "NORTH_OUTLET_W", "NORTH_OUTLET_E",
+                   "NORTH_OUTLET_W_W", "NORTH_OUTLET_W_E", "NORTH_OUTLET_E_W", "NORTH_OUTLET_E_E"}
+    exp_ids = [eid for eid in map_s["expansion"]["new_road_ids"] if eid not in removed_ids]
     exp_ids.extend(["NORTH_OUTLET_W_W", "NORTH_OUTLET_W_E", "NORTH_OUTLET_E_W", "NORTH_OUTLET_E_E"])
     map_s["expansion"]["new_road_ids"] = exp_ids
 
     # Update junctions ports & polygons for modified South junctions
-    mod_juncs_s = ("NORTH_WEST", "N2_W", "O_N_W", "NORTH_EAST", "N2_E", "O_N_E")
+    mod_juncs_s = ("NORTH_WEST", "NORTH_MIDDLE", "NORTH_EAST", "N2_W", "N2_E", "O_N_W", "O_N_M", "O_N_E")
     for jid in mod_juncs_s:
         juncs_s[jid]["ports"] = []
     for r in map_s["roads"]:
@@ -626,8 +727,11 @@ def main():
                     "width": r["width"],
                 })
     for jid in mod_juncs_s:
-        verts = [pt for port in juncs_s[jid]["ports"] for pt in mouth(port["position"], port["outward"], port["width"])]
-        juncs_s[jid]["polygon"] = [[round(x, 6), round(y, 6)] for x, y in g.hull(verts)]
+        if juncs_s[jid]["kind"] == "lane_split":
+            juncs_s[jid]["polygon"] = []
+        else:
+            verts = [pt for port in juncs_s[jid]["ports"] for pt in mouth(port["position"], port["outward"], port["width"])]
+            juncs_s[jid]["polygon"] = [[round(x, 6), round(y, 6)] for x, y in g.hull(verts)]
 
     # Update medians in map_s
     medians_s = [m for m in map_s["medians"] if m["road_id"] not in ("NORTH_FAN_W", "NORTH_FAN_E")]
@@ -659,6 +763,16 @@ def main():
                 "speed_limit_m_s": 0.25,
             }
 
+    # Trim inner bridge lanes (F1, F2, B1, B2) at N2_W and N2_E back by 6.2m so connectors stay > 1.116m from CentreMedian
+    for r_fan in ("NORTH_FAN_W", "NORTH_FAN_E"):
+        for idx in (1, 2):
+            f_lane = lane_graph_s[f"{r_fan}_F{idx}_exit"]
+            f_pts = f_lane["points"]
+            f_lane["points"] = [[round(x, 6), round(y, 6)] for x, y in g.cut(f_pts, 0, 6.2)]
+            b_lane = lane_graph_s[f"{r_fan}_B{idx}_entry"]
+            b_pts = b_lane["points"]
+            b_lane["points"] = [[round(x, 6), round(y, 6)] for x, y in g.cut(b_pts, 6.2, 0)]
+
     def matching_lane(index, count, other, other_count):
         return max((index - 1) / count, (other - 1) / other_count) < min(index / count, other / other_count) - 1e-9
 
@@ -679,8 +793,39 @@ def main():
             if (lane.get("road_id"), target.get("road_id")) in paired_outlets:
                 continue
             if juncs_s.get(nid, {}).get("kind") == "lane_split":
-                if math.dist(lane["points"][-1], target["points"][0]) < 0.01:
+                if math.dist(lane["points"][-1], target["points"][0]) < 0.05:
                     lane["successors"].append(other)
+                elif nid in ("N2_W", "N2_E"):
+                    if lane["lane_index"] in (1, 2) and target["lane_index"] == 1:
+                        a, d = lane["points"][-1], target["points"][0]
+                        u = g.direction(lane["points"][-2], a)
+                        v = g.direction(d, target["points"][1])
+                        reach = 4.0
+                        cid = f"{lid}__{other}"
+                        lane_graph_s[cid] = {
+                            "from": nid,
+                            "to": nid,
+                            "points": [[round(x, 6), round(y, 6)] for x, y in g.bezier(a, g.add(a, g.mul(u, reach)), g.add(d, g.mul(v, -reach)), d, 12)],
+                            "successors": [other],
+                            "speed_limit_m_s": 0.25,
+                            "junction": nid,
+                        }
+                        lane["successors"].append(cid)
+                    elif lane["lane_index"] == 1 and lane["direction_lanes"] == 2 and target["lane_index"] in (1, 2) and target["direction_lanes"] == 4:
+                        a, d = lane["points"][-1], target["points"][0]
+                        u = g.direction(lane["points"][-2], a)
+                        v = g.direction(d, target["points"][1])
+                        reach = 4.0
+                        cid = f"{lid}__{other}"
+                        lane_graph_s[cid] = {
+                            "from": nid,
+                            "to": nid,
+                            "points": [[round(x, 6), round(y, 6)] for x, y in g.bezier(a, g.add(a, g.mul(u, reach)), g.add(d, g.mul(v, -reach)), d, 12)],
+                            "successors": [other],
+                            "speed_limit_m_s": 0.25,
+                            "junction": nid,
+                        }
+                        lane["successors"].append(cid)
                 continue
             if nid.startswith("R_") and not (lid.startswith("RING_") or other.startswith("RING_")):
                 continue
@@ -781,14 +926,6 @@ def main():
     "{tex}"
   ]
   endLine [
-    "{tex}"
-    "{tex}"
-    "{tex}"
-    "{tex}"
-    ""
-    ""
-    ""
-    ""
   ]
   appearance {ASPHALT}
   pavementAppearance {PAVEMENT}
@@ -796,16 +933,18 @@ def main():
   leftBorderBoundingObject TRUE
 }}"""
 
-    def make_4lane_straight_wbt(r: dict) -> str:
+    def make_north_fan_m_wbt(r: dict) -> str:
         p0, p1 = r["points"]
         angle = math.atan2(p1[1] - p0[1], p1[0] - p0[0])
         length = math.dist(p0, p1)
         fj_w = juncs_s[r["from"]]["world_id"]
         tj_w = juncs_s[r["to"]]["world_id"]
-        tex = "../../../../../../worlds/textures/stop_line.png"
-        rot_line = f"\n  rotation 0 0 1 {fmt(angle)}" if abs(angle) > 1e-8 else ""
+        tex_stop = "../../../../../../worlds/textures/stop_line.png"
+        tex_cross = "../../../../../../worlds/textures/crossing.png"
+        tex_stop_cross = "../../../../../../worlds/textures/stop_crossing.png"
         return f"""StraightRoadSegment {{
-  translation {vec((*p0, 0.048))}{rot_line}
+  translation {vec((*p0, 0.048))}
+  rotation 0 0 1 {fmt(angle)}
   name "{r['name']}"
   id "{r['id']}"
   startJunction "{fj_w}"
@@ -828,14 +967,14 @@ def main():
   endingRoadBorderWidth 0.84
   length {fmt(length)}
   startLine [
-    ""
-    ""
-    "{tex}"
-    "{tex}"
+    "{tex_cross}"
+    "{tex_cross}"
+    "{tex_stop_cross}"
+    "{tex_stop_cross}"
   ]
   endLine [
-    "{tex}"
-    "{tex}"
+    "{tex_stop}"
+    "{tex_stop}"
     ""
     ""
   ]
@@ -854,16 +993,12 @@ def main():
         fwd = r["forward_lanes"]
         tex = "../../../../../../worlds/textures/stop_line.png"
         if fwd == 0:
-            # West outer road (Southbound into startJunction)
             border_off = "rightBorder FALSE"
             bo_on = "leftBorderBoundingObject TRUE"
-            sl = f'[\n    "{tex}"\n    "{tex}"\n  ]'
             el = '[\n    ""\n    ""\n  ]'
         else:
-            # East outer road (Northbound into endJunction)
             border_off = "leftBorder FALSE"
             bo_on = "rightBorderBoundingObject TRUE"
-            sl = '[\n    ""\n    ""\n  ]'
             el = f'[\n    "{tex}"\n    "{tex}"\n  ]'
         return f"""StraightRoadSegment {{
   translation {vec((*p0, 0.048))}
@@ -884,7 +1019,8 @@ def main():
   endingRoadBorderWidth 0.84
   {border_off}
   length {fmt(length)}
-  startLine {sl}
+  startLine [
+  ]
   endLine {el}
   appearance {ASPHALT}
   pavementAppearance {PAVEMENT}
@@ -894,21 +1030,22 @@ def main():
     for n in nodes_s:
         eid = n.get("id")
         name = n.get("name", "")
+        desc = n.get("description", "")
         if eid in ("NORTH_FAN_W", "NORTH_FAN_E"):
             n.text = make_8lane_straight_wbt(roads_s[eid])
-        elif eid in ("N2_CROSS_W", "N2_CROSS_E"):
-            n.text = make_4lane_straight_wbt(roads_s[eid])
+        elif eid == "NORTH_FAN_M":
+            n.text = make_north_fan_m_wbt(roads_s["NORTH_FAN_M"])
+        elif eid in ("N2_CROSS_W", "N2_CROSS_E", "NORTH_OUTLET_M", "J_N2_W", "J_N2_M", "J_N2_E"):
+            n.text = ""
         elif eid == "NORTH_OUTLET_W":
             n.text = make_2lane_outlet_wbt(roads_s["NORTH_OUTLET_W_W"]) + "\n\n" + make_2lane_outlet_wbt(roads_s["NORTH_OUTLET_W_E"])
         elif eid == "NORTH_OUTLET_E":
             n.text = make_2lane_outlet_wbt(roads_s["NORTH_OUTLET_E_W"]) + "\n\n" + make_2lane_outlet_wbt(roads_s["NORTH_OUTLET_E_E"])
-        elif eid in ("NORTH_OUTLET_W_W", "NORTH_OUTLET_W_E", "NORTH_OUTLET_E_W", "NORTH_OUTLET_E_E"):
-            n.text = make_2lane_outlet_wbt(roads_s[eid])
         elif eid in ("OUTER_RING_NW", "NORTH_WINDING_W", "NORTH_WINDING_E", "OUTER_RING_NE"):
             r = roads_s[eid]
             wps_str = "\n    ".join(f"{fmt(p[0])} {fmt(p[1])} {fmt(z)}" for p, z in zip(r["points"], r["elevations"]))
             n.set("wayPoints", f"[\n    {wps_str}\n  ]")
-        elif eid in ("J_NORTH_WEST", "J_N2_W", "J_O_N_W", "J_NORTH_EAST", "J_N2_E", "J_O_N_E"):
+        elif eid in ("J_NORTH_WEST", "J_NORTH_MIDDLE", "J_NORTH_EAST", "J_O_N_W", "J_O_N_M", "J_O_N_E"):
             jkey = eid[2:]
             j = juncs_s[jkey]
             shape_str = "\n    ".join(vec((-y, -x, 0)) for x, y in j["polygon"])
@@ -917,17 +1054,16 @@ def main():
             n.set("connectedRoadIDs", f"[\n    {conn_str}\n  ]")
         elif name.startswith("JunctionCurbs-"):
             jkey = name[len("JunctionCurbs-"):]
-            if jkey in mod_juncs_s:
-                extra = None
-                if jkey == "N2_W":
-                    extra = [{"position": [-96.0, 202.44], "outward": [0.0, 1.0], "width": 14.4}]
-                elif jkey == "N2_E":
-                    extra = [{"position": [144.0, 202.44], "outward": [0.0, 1.0], "width": 14.4}]
-                n.text = build_south_curb_solid(jkey, juncs_s[jkey], extra_caps=extra)
+            if jkey in ("N2_W", "N2_M", "N2_E"):
+                n.text = ""
+            elif jkey in ("NORTH_WEST", "NORTH_MIDDLE", "NORTH_EAST", "O_N_W", "O_N_M", "O_N_E"):
+                n.text = build_south_curb_solid(jkey, juncs_s[jkey])
         elif name in ("CentreMedian-NORTH_FAN_W", "CentreMedian-NORTH_FAN_E"):
             n.text = ""
-        elif n.get("description") == "SIGN_NORTH_EAST":
-            n.set("translation", "120.220145 153.797368 0")
+        elif desc == "SIGN_NORTH_MIDDLE":
+            n.set("translation", "27.090472 154.423332 0")
+        elif desc == "SIGN_NORTH_EAST":
+            n.set("translation", "118.328311 155.120776 0")
 
     # Append the 2 new South median solids before # BEGIN NORTH_DISTRICT
     new_south_medians_wbt = []
@@ -943,32 +1079,32 @@ def main():
     # =========================================================================
     # PART 2: UPDATE NORTH DISTRICT & ADD 2 RIVER-CROSSING BRIDGES
     # =========================================================================
-    pts_bridge_e = river_bridge_profile(
-        y_start=202.44, y_end=480.0,
-        x_south=144.0, x_north=105.0,
-        y_curve_start=248.0, y_curve_end=414.0,
-        y_plat_s=232.0, y_plat_n=442.0,
-        num_pts=85,
+    pts_bridge_w = make_bridge_waypoints(
+        p_start=pt_w_split,
+        u_start=u_w,
+        s_ramp_s=32.0,
+        p_north_ramp_start=[-105.0, 454.0],
+        p_end=[-105.0, 486.0],
+        n_south=8, n_mid=50, n_north=8,
     )
-    pts_bridge_w = river_bridge_profile(
-        y_start=202.44, y_end=486.0,
-        x_south=-96.0, x_north=-105.0,
-        y_curve_start=248.0, y_curve_end=424.0,
-        y_plat_s=232.0, y_plat_n=448.0,
-        num_pts=85,
+    pts_bridge_e = make_bridge_waypoints(
+        p_start=pt_e_split,
+        u_start=u_e,
+        s_ramp_s=32.0,
+        p_north_ramp_start=[105.0, 448.0],
+        p_end=[105.0, 480.0],
+        n_south=8, n_mid=50, n_north=8,
     )
 
     roads_n = {r["id"]: r for r in map_n["roads"]}
     juncs_n = map_n["junctions"]
 
     # 1. Update existing North District roads
-    # ND_MAIN_S: from ND_SPLIT_RIVER_E (105, 480) to ND_SPLIT_S (105, 628.5)
     roads_n["ND_MAIN_S"]["from"] = "ND_SPLIT_RIVER_E"
     roads_n["ND_MAIN_S"]["to"] = "ND_SPLIT_S"
     roads_n["ND_MAIN_S"]["points"] = [[105.0, 480.0], [105.0, 628.5]]
     roads_n["ND_MAIN_S"]["elevations"] = [0.048, 0.048]
 
-    # ND_ROUND_SOUTH_LINK: 8 lanes (28.8m) from ND_J_WS_T (-105, 562.2) to ND_SPLIT_RIVER_W (-105, 486.0)
     roads_n["ND_ROUND_SOUTH_LINK"]["from"] = "ND_J_WS_T"
     roads_n["ND_ROUND_SOUTH_LINK"]["to"] = "ND_SPLIT_RIVER_W"
     roads_n["ND_ROUND_SOUTH_LINK"]["number_of_lanes"] = 8
@@ -977,16 +1113,13 @@ def main():
     roads_n["ND_ROUND_SOUTH_LINK"]["points"] = [[-105.0, 562.2], [-105.0, 486.0]]
     roads_n["ND_ROUND_SOUTH_LINK"]["elevations"] = [0.048, 0.048]
 
-    # ND_LOCAL_W: trim East end at ND_J_WS_T from -115.8 to -120.6
     roads_n["ND_LOCAL_W"]["points"][-1][0] = -120.6
 
-    # ND_OUTER_SW: trim East end at ND_J_SW_T to -120.6
     sw_pts = [p for p in roads_n["ND_OUTER_SW"]["points"] if p[0] < -121.0]
     sw_pts.append([-120.6, 434.9412])
     roads_n["ND_OUTER_SW"]["points"] = sw_pts
     roads_n["ND_OUTER_SW"]["elevations"] = [0.048] * len(sw_pts)
 
-    # ND_SHORE_W: trim West start at ND_J_SW_T to -89.4
     shw_pts = [[-89.4, 434.9412]] + [p for p in roads_n["ND_SHORE_W"]["points"] if p[0] > -88.5]
     roads_n["ND_SHORE_W"]["points"] = shw_pts
     roads_n["ND_SHORE_W"]["elevations"] = [0.048] * len(shw_pts)
@@ -1114,11 +1247,11 @@ def main():
     }
     juncs_n["ND_SPLIT_RIVER_ES"] = {
         "world_id": "ND_SPLIT_RIVER_ES",
-        "position": [144.0, 202.44],
+        "position": pt_e_split,
         "kind": "lane_split",
         "shape": [],
         "ports": [
-            {"edge": "ND_RIVER_BRIDGE_E", "position": [144.0, 202.44], "outward": [0.0, 1.0], "width": 14.4},
+            {"edge": "ND_RIVER_BRIDGE_E", "position": pt_e_split, "outward": [round(u_e[0], 6), round(u_e[1], 6)], "width": 14.4},
         ],
     }
     juncs_n["ND_SPLIT_RIVER_W"] = {
@@ -1135,11 +1268,11 @@ def main():
     }
     juncs_n["ND_SPLIT_RIVER_WS"] = {
         "world_id": "ND_SPLIT_RIVER_WS",
-        "position": [-96.0, 202.44],
+        "position": pt_w_split,
         "kind": "lane_split",
         "shape": [],
         "ports": [
-            {"edge": "ND_RIVER_BRIDGE_W", "position": [-96.0, 202.44], "outward": [0.0, 1.0], "width": 14.4},
+            {"edge": "ND_RIVER_BRIDGE_W", "position": pt_w_split, "outward": [round(u_w[0], 6), round(u_w[1], 6)], "width": 14.4},
         ],
     }
 
@@ -1150,10 +1283,10 @@ def main():
             "width_m": 14.4,
             "parapet_height_m": 1.5,
             "median_type": "columns",
-            "column_count": 41,
+            "column_count": 33,
             "max_elevation_m": 7.5,
-            "max_slope": 0.2368,
-            "south_touchdown": [144.0, 202.44],
+            "max_slope": 0.2188,
+            "south_touchdown": pt_e_split,
             "north_touchdown": [105.0, 480.0],
         },
         "west_bridge": {
@@ -1162,10 +1295,10 @@ def main():
             "width_m": 14.4,
             "parapet_height_m": 1.5,
             "median_type": "columns",
-            "column_count": 41,
+            "column_count": 33,
             "max_elevation_m": 7.5,
-            "max_slope": 0.2368,
-            "south_touchdown": [-96.0, 202.44],
+            "max_slope": 0.2188,
+            "south_touchdown": pt_w_split,
             "north_touchdown": [-105.0, 486.0],
         },
     }
@@ -1174,7 +1307,6 @@ def main():
 
     # 4. Update & Add WBT nodes in nd_str
     nodes_n = read_nodes(nd_str)
-    # Remove any previously added river bridge nodes so re-running is idempotent
     added_nd_ids = {"ND_SPLIT_RIVER_E", "ND_SPLIT_RIVER_ES", "ND_SPLIT_RIVER_W", "ND_SPLIT_RIVER_WS",
                     "ND_RIVER_BRIDGE_E", "ND_RIVER_E_GROUND_W", "ND_RIVER_E_GROUND_E",
                     "ND_RIVER_BRIDGE_W", "ND_RIVER_W_GROUND_W", "ND_RIVER_W_GROUND_E"}
@@ -1366,10 +1498,9 @@ def main():
         elif name == "ND_StopSign-WS_T":
             n.set("translation", "-123.6 567.9 0")
 
-    # Build new North District nodes (split junctions, 2 river bridges, 4 ground branch roads, meshes, columns, piers, medians)
     extra_nd_wbt = []
 
-    # 4 Split Junctions
+    # 4 Split Junctions in North District
     extra_nd_wbt.append(nd_crossroad_wbt("ND_SPLIT_RIVER_E", "ND_Junction-SPLIT_RIVER_E", [], ["ND_MAIN_S", "ND_RIVER_BRIDGE_E", "ND_RIVER_E_GROUND_W", "ND_RIVER_E_GROUND_E"]))
     extra_nd_wbt.append(nd_crossroad_wbt("ND_SPLIT_RIVER_ES", "ND_Junction-SPLIT_RIVER_ES", [], ["ND_RIVER_BRIDGE_E"]))
     extra_nd_wbt.append(nd_crossroad_wbt("ND_SPLIT_RIVER_W", "ND_Junction-SPLIT_RIVER_W", [], ["ND_ROUND_SOUTH_LINK", "ND_RIVER_BRIDGE_W", "ND_RIVER_W_GROUND_W", "ND_RIVER_W_GROUND_E"]))
@@ -1434,13 +1565,11 @@ def main():
         ("ND_RIVER_W_GROUND_E", "ND_J_SW_T", "ND_SPLIT_RIVER_W", [[-94.2, 445.7412], [-94.2, 486.0]], 2, False),
     ]:
         if fwd == 0:
-            # West branch (Southbound into startJunction SC_T / SW_T)
             border_off = "rightBorder FALSE"
             bo_on = "leftBorderBoundingObject TRUE"
             st_paint = tex_stop_cross if is_sc else tex_stop
             sl = f'[\n    "{st_paint}"\n    "{st_paint}"\n  ]'
         else:
-            # East branch (Northbound out of startJunction SC_T / SW_T)
             border_off = "leftBorder FALSE"
             bo_on = "rightBorderBoundingObject TRUE"
             sl = f'[\n    "{tex_cross}"\n    "{tex_cross}"\n  ]' if is_sc else '[\n    ""\n    ""\n  ]'
@@ -1495,8 +1624,8 @@ def main():
 
     # 2-Manifold Decks, Ramp Supports, High Side Parapets, Median Plinths, Median Columns & River Piers for both bridges
     for tag, rid, pts3, pier_spec in [
-        ("E", "RIVER_BRIDGE_E", pts_bridge_e, [(20, -0.10), (32, -1.50), (42, -1.50), (51, -1.50), (60, -0.10)]),
-        ("W", "RIVER_BRIDGE_W", pts_bridge_w, [(20, -0.10), (31, -0.10), (40, -1.50), (50, -1.50), (60, -0.10)]),
+        ("E", "RIVER_BRIDGE_E", pts_bridge_e, [(16, -0.10), (25, -1.50), (33, -1.50), (41, -1.50), (49, -0.10)]),
+        ("W", "RIVER_BRIDGE_W", pts_bridge_w, [(16, -0.10), (24, -0.10), (33, -1.50), (41, -1.50), (49, -0.10)]),
     ]:
         v_dk, f_dk = build_curved_ribbon_mesh(pts3[6:-6], -7.2, 7.2, lambda j, z: z - 0.42, lambda j, z: z - 0.036)
         extra_nd_wbt.append(mesh_to_vrml(f"ND_RiverBridge{tag}-Deck", f"ND_MESH_RIVER_BRIDGE_{tag}_DECK", PAVEMENT, v_dk, f_dk))

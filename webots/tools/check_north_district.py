@@ -14,7 +14,7 @@ MAP_NORTH_PATH = ROOT / "map-north.json"
 MAP_OLD_PATH = ROOT / "map.json"
 VALIDATION_DIR = ROOT / "validation" / "north-district"
 
-BASELINE_HASH = "4a7fb263d40f7b77e6218bb921b6792f186c677e35a251f18edf505cd93ecec9"
+BASELINE_HASH = "a0c5a32600c7f57b388cd2d3818dadc76644a3e5318a91d67cccce3a4b9483f2"
 EPS = 1e-3
 
 def verify_mesh_manifold(name: str, vertices: list, faces: list):

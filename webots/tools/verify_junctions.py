@@ -103,7 +103,7 @@ try:
     expected_roads = {road['id']:road for road in map_data['roads']}
     assert len(expected_roads) == len(map_data['roads']), 'Duplicate map road IDs'
     assert set(roads) == set(expected_roads), 'Loaded/map road IDs differ: '+str(set(roads)^set(expected_roads))
-    expected_junctions = {node['world_id'] for node in map_data['junctions'].values()}
+    expected_junctions = {node['world_id'] for node in map_data['junctions'].values() if not node.get('no_world_node')}
     assert set(junctions) == expected_junctions, 'Loaded/map junction IDs differ: '+str(set(junctions)^expected_junctions)
     for rid,node in roads.items():
         endpoints = [field(node,name).getSFString() for name in ('startJunction','endJunction')]
@@ -118,7 +118,11 @@ try:
         assert abs(width-expected['width']) < 1e-6, rid+' has wrong native road width'
         report['roads'].append({'id':rid,'type':node.getTypeName(),'startJunction':endpoints[0],'endJunction':endpoints[1],
                                 'width':width,'numberOfLanes':lanes,'numberOfForwardLanes':forward_lanes})
-        for jid in endpoints:
+        for key in ('from','to'):
+            jnode = map_data['junctions'][expected[key]]
+            if jnode.get('no_world_node'):
+                continue
+            jid = jnode['world_id']
             assert jid in junctions, rid+' references missing '+jid
             links = field(junctions[jid],'connectedRoadIDs')
             ids = [links.getMFString(i) for i in range(links.getCount())]
