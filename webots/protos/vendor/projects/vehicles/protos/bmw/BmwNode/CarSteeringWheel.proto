@@ -5,7 +5,7 @@
 # keywords: vehicle/steering
 # A generic steering wheel to insert in the 'steeringWheel' field of some vehicles.
 
-EXTERNPROTO "webots://projects/appearances/protos/Leather.proto"
+EXTERNPROTO "../../../../appearances/protos/Leather.proto"
 
 PROTO CarSteeringWheel [
   field SFString name "vehicle steering wheel"

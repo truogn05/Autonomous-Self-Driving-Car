@@ -5,8 +5,8 @@
 # keywords: vehicle/farm
 # A simple tractor.
 
-EXTERNPROTO "webots://projects/vehicles/protos/abstract/Car.proto"
-EXTERNPROTO "webots://projects/appearances/protos/MattePaint.proto"
+EXTERNPROTO "../../../vehicles/protos/abstract/Car.proto"
+EXTERNPROTO "../../../appearances/protos/MattePaint.proto"
 EXTERNPROTO "TractorFrontWheel.proto"
 EXTERNPROTO "TractorRearWheel.proto"
 

@@ -7,9 +7,9 @@
 # This model was sponsored by the [CTI project RO2IVSim](http://transport.epfl.ch/simulator-for-mobile-robots-and-intelligent-vehicles).
 # template language: javascript
 
-EXTERNPROTO "webots://projects/vehicles/protos/abstract/Car.proto"
+EXTERNPROTO "../../../vehicles/protos/abstract/Car.proto"
 EXTERNPROTO "BusShape.proto"
-EXTERNPROTO "webots://projects/vehicles/protos/abstract/VehicleLights.proto"
+EXTERNPROTO "../../../vehicles/protos/abstract/VehicleLights.proto"
 EXTERNPROTO "BusWheel.proto"
 
 PROTO Bus [

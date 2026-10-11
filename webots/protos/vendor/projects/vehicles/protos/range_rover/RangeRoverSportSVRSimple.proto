@@ -5,13 +5,13 @@
 # keywords: vehicle/car
 # Simple kinematic model of the Range Rover Sport SVR 2015 to be moved with a Supervisor.
 
-EXTERNPROTO "webots://projects/vehicles/protos/abstract/VehicleWheel.proto"
+EXTERNPROTO "../../../vehicles/protos/abstract/VehicleWheel.proto"
 EXTERNPROTO "RangeRoverSportSVRFrontLightsMesh.proto"
 EXTERNPROTO "RangeRoverSportSVRRearLightsMesh.proto"
 EXTERNPROTO "RangeRoverSportSVRRightIndicatorMesh.proto"
 EXTERNPROTO "RangeRoverSportSVRLeftIndicatorMesh.proto"
 EXTERNPROTO "RangeRoverSportSVRBrakingLightsMesh.proto"
-EXTERNPROTO "webots://projects/appearances/protos/GlossyPaint.proto"
+EXTERNPROTO "../../../appearances/protos/GlossyPaint.proto"
 EXTERNPROTO "RangeRoverSportSVRCoachworkPrimaryMesh.proto"
 EXTERNPROTO "RangeRoverSportSVRCoachworkSecondaryMesh.proto"
 EXTERNPROTO "RangeRoverSportSVRCoachworkDetailsMesh.proto"
@@ -26,7 +26,7 @@ PROTO RangeRoverSportSVRSimple [
   field       SFColor    color                          0.0 0.25 0.65                                           # Defines the car primary body color.
   field       SFColor    secondaryColor                 0.1 0.1 0.1                                             # Defines the car secondary body color.
   field       MFColor    recognitionColors              [ 0.0 0.25 0.65, 0.1 0.1 0.1 ]                          # Is `Robot.recognitionColors`.
-  field       MFString   plate                          "webots://projects/vehicles/protos/textures/plate.jpg"  # Defines the plate texture.
+  field       MFString   plate                          "../../../vehicles/protos/textures/plate.jpg"  # Defines the plate texture.
   field       SFString   name                           "vehicle"                                               # Is `Robot.name`.
   field       SFString   controller                     "<none>"                                                # Is `Robot.controller`.
   field       MFString   controllerArgs                 [ ]                                                     # Is `Robot.controllerArgs`.

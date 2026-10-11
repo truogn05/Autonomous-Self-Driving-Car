@@ -9,8 +9,8 @@
 # template language: javascript
 
 EXTERNPROTO "RoadLine.proto"
-EXTERNPROTO "webots://projects/appearances/protos/Asphalt.proto"
-EXTERNPROTO "webots://projects/appearances/protos/Pavement.proto"
+EXTERNPROTO "../../../appearances/protos/Asphalt.proto"
+EXTERNPROTO "../../../appearances/protos/Pavement.proto"
 EXTERNPROTO "StraightRoadSegment.proto"
 EXTERNPROTO "CrashBarrier.proto"
 

@@ -6,16 +6,16 @@
 # Model of a Range Rover Sport SVR 2015.
 # template language: javascript
 
-EXTERNPROTO "webots://projects/vehicles/protos/abstract/Car.proto"
-EXTERNPROTO "webots://projects/vehicles/protos/abstract/VehicleWheel.proto"
-EXTERNPROTO "webots://projects/vehicles/protos/abstract/VehicleLights.proto"
+EXTERNPROTO "../../../vehicles/protos/abstract/Car.proto"
+EXTERNPROTO "../../../vehicles/protos/abstract/VehicleWheel.proto"
+EXTERNPROTO "../../../vehicles/protos/abstract/VehicleLights.proto"
 EXTERNPROTO "RangeRoverSportSVRFrontLightsMesh.proto"
 EXTERNPROTO "RangeRoverSportSVRRearLightsMesh.proto"
 EXTERNPROTO "RangeRoverSportSVRRightIndicatorMesh.proto"
 EXTERNPROTO "RangeRoverSportSVRLeftIndicatorMesh.proto"
 EXTERNPROTO "RangeRoverSportSVRBrakingLightsMesh.proto"
 EXTERNPROTO "RangeRoverSportSVRAntifogLightsMesh.proto"
-EXTERNPROTO "webots://projects/appearances/protos/GlossyPaint.proto"
+EXTERNPROTO "../../../appearances/protos/GlossyPaint.proto"
 EXTERNPROTO "RangeRoverSportSVRCoachworkPrimaryMesh.proto"
 EXTERNPROTO "RangeRoverSportSVRCoachworkSecondaryMesh.proto"
 EXTERNPROTO "RangeRoverSportSVRCoachworkDetailsMesh.proto"
@@ -29,7 +29,7 @@ PROTO RangeRoverSportSVR [
   field     SFRotation rotation          0 0 1 0                                                 # Is `Car.rotation`.
   field     SFColor    color             0.0 0.25 0.65                                           # Defines the car primary body color.
   field     SFColor    secondaryColor    0.1 0.1 0.1                                             # Defines the car secondary body color.
-  field     MFString   plate             "webots://projects/vehicles/protos/textures/plate.jpg"  # Defines the plate texture.
+  field     MFString   plate             "../../../vehicles/protos/textures/plate.jpg"  # Defines the plate texture.
   field     SFString   engineSound       "sounds/engine.wav"                                     # Is `Car.engineSound`.
   field     SFString   name              "vehicle"                                               # Is `Car.name`.
   field     SFString   controller        "<generic>"                                             # Is `Car.controller`.

@@ -5,12 +5,12 @@
 # keywords: vehicle/car
 # Simple kinematic model of the Lincoln MKZ 2017 to be moved with a Supervisor.
 
-EXTERNPROTO "webots://projects/vehicles/protos/abstract/VehicleWheel.proto"
+EXTERNPROTO "../../../vehicles/protos/abstract/VehicleWheel.proto"
 EXTERNPROTO "LincolnMKZFrontLightsMesh.proto"
 EXTERNPROTO "LincolnMKZRightTurnSignalMesh.proto"
 EXTERNPROTO "LincolnMKZLeftTurnSignalMesh.proto"
 EXTERNPROTO "LincolnMKZBackLightsMesh.proto"
-EXTERNPROTO "webots://projects/appearances/protos/GlossyPaint.proto"
+EXTERNPROTO "../../../appearances/protos/GlossyPaint.proto"
 EXTERNPROTO "LincolnMKZCoachworkMesh.proto"
 EXTERNPROTO "LincolnMKZWindowsMesh.proto"
 EXTERNPROTO "LincolnMKZDetailsMesh.proto"
@@ -24,7 +24,7 @@ PROTO LincolnMKZSimple [
   field       SFRotation rotation                       0 0 1 0                                                 # Is `Robot.rotation`.
   field       SFColor    color                          0.541 0.541 0.541                                       # Defines the car body color.
   field       MFColor    recognitionColors              [ 0.541 0.541 0.541 ]                                   # Is `Robot.recognitionColors`.
-  field       MFString   plate                          "webots://projects/vehicles/protos/textures/plate.jpg"  # Defines the plate texture.
+  field       MFString   plate                          "../../../vehicles/protos/textures/plate.jpg"  # Defines the plate texture.
   field       SFString   name                           "vehicle"                                               # Is `Robot.name`.
   field       SFString   controller                     "<none>"                                                # Is `Robot.controller`.
   field       MFString   controllerArgs                 [ ]                                                     # Is `Robot.controllerArgs`.

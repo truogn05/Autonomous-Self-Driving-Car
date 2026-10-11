@@ -45,6 +45,32 @@ def set_indicator_safe(driver: Driver, indicator_dir: int, prev_dir: int) -> int
     return indicator_dir
 
 
+def print_console_instructions() -> None:
+    """Print detailed English driving and sensor instructions to the Webots Console."""
+    banner = (
+        "\n"
+        "======================================================================\n"
+        "  BMW X5 AUTONOMOUS & PHYSICS KEYBOARD CONTROLLER (MANUAL DRIVE MODE) \n"
+        "======================================================================\n"
+        "  HOW TO DRIVE:\n"
+        "  1. Click anywhere inside the 3D Scene View to focus the keyboard.\n"
+        "  2. Use the following keys to control the vehicle:\n"
+        "     - [UP ARROW]    : Accelerate forward smoothly (PID up to 60 km/h)\n"
+        "     - [DOWN ARROW]  : Decelerate to 0 km/h; hold at 0 km/h to shift\n"
+        "                       into Reverse (R, up to -18 km/h)\n"
+        "     - [LEFT / RIGHT]: Ackermann steering with speed-sensitive limit;\n"
+        "                       release key to auto self-center wheels to 0 deg\n"
+        "     - [SPACEBAR]    : Hold for progressive smooth braking to 0 km/h\n"
+        "  3. OVERLAYS & SENSORS:\n"
+        "     - Top-Left Camera Overlay : 'front_camera' (640x360 + Recognition)\n"
+        "     - Telemetry HUD Overlay   : 'hud_display'  (Speed, Gear, Steer, Sonar)\n"
+        "     - Active Sensors (15)     : Camera, 16-Layer Lidar, Radar, 6x Sonar,\n"
+        "                                 GPS, IMU, Gyro, Accelerometer, Compass\n"
+        "======================================================================"
+    )
+    print(banner, flush=True)
+
+
 def main() -> int:
     driver = Driver()
     basic_step_ms = int(driver.getBasicTimeStep())
@@ -70,14 +96,13 @@ def main() -> int:
     driver.setBrakeIntensity(0.0)
     driver.setDippedBeams(True)
 
+    # Print English driving guide immediately and after first step
+    print_console_instructions()
+
     # Warm-up one step before reading sensors (per webots-controller-programming skill)
     if driver.step() == -1:
         return 0
 
-    print(
-        "BMW X5 Controller ready: [UP/DOWN] Accel/Decel/Reverse | [LEFT/RIGHT] Ackermann Steer (Auto-Center) | [SPACE] Progressive Brake",
-        flush=True,
-    )
 
     prev_indicator = 0
     step_idx = 0

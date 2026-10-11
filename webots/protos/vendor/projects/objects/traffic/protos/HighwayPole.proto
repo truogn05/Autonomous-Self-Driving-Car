@@ -8,7 +8,7 @@
 # template language: javascript
 
 EXTERNPROTO "HighwaySign.proto"
-EXTERNPROTO "webots://projects/objects/geometries/protos/Extrusion.proto"
+EXTERNPROTO "../../../objects/geometries/protos/Extrusion.proto"
 
 PROTO HighwayPole [
   field SFVec3f       translation           0 0 0

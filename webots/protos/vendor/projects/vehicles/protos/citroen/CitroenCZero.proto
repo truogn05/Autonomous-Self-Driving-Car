@@ -8,10 +8,10 @@
 # This model was sponsored by the [CTI project RO2IVSim](http://transport.epfl.ch/simulator-for-mobile-robots-and-intelligent-vehicles).
 # template language: javascript
 
-EXTERNPROTO "webots://projects/vehicles/protos/abstract/Car.proto"
+EXTERNPROTO "../../../vehicles/protos/abstract/Car.proto"
 EXTERNPROTO "CitroenCZeroFrontWheel.proto"
 EXTERNPROTO "CitroenCZeroRearWheel.proto"
-EXTERNPROTO "webots://projects/vehicles/protos/abstract/VehicleLights.proto"
+EXTERNPROTO "../../../vehicles/protos/abstract/VehicleLights.proto"
 EXTERNPROTO "CitroenCZeroHeadLight.proto"
 EXTERNPROTO "CitroenCZeroRightIndicator.proto"
 EXTERNPROTO "CitroenCZeroLeftIndicator.proto"
@@ -24,7 +24,7 @@ PROTO CitroenCZero [
   field     SFVec3f    translation       0 0 0.4                                                 # Is `Car.translation`.
   field     SFRotation rotation          0 0 1 0                                                 # Is `Car.rotation`.
   field     SFColor    color             0.85 0.85 0.05                                          # Defines the car body color.
-  field     MFString   plate             "webots://projects/vehicles/protos/textures/plate.jpg"  # Defines the plate texture.
+  field     MFString   plate             "../../../vehicles/protos/textures/plate.jpg"  # Defines the plate texture.
   field     SFString   engineSound       ""                                                      # Is `Car.engineSound`.
   field     SFString   name              "vehicle"                                               # Is `Car.name`.
   field     SFString   controller        "<generic>"                                             # Is `Car.controller`.

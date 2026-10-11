@@ -5,10 +5,10 @@
 # keywords: vehicle/car
 # Simple kinematic model of the Mercedes-Benz Sprinter to be moved with a Supervisor.
 
-EXTERNPROTO "webots://projects/appearances/protos/GlossyPaint.proto"
-EXTERNPROTO "webots://projects/appearances/protos/RoughPolymer.proto"
-EXTERNPROTO "webots://projects/appearances/protos/PerforatedMetal.proto"
-EXTERNPROTO "webots://projects/vehicles/protos/abstract/VehicleWheel.proto"
+EXTERNPROTO "../../../appearances/protos/GlossyPaint.proto"
+EXTERNPROTO "../../../appearances/protos/RoughPolymer.proto"
+EXTERNPROTO "../../../appearances/protos/PerforatedMetal.proto"
+EXTERNPROTO "../../../vehicles/protos/abstract/VehicleWheel.proto"
 EXTERNPROTO "MercedesBenzSprinterLights.proto"
 EXTERNPROTO "MercedesBenzSprinterLogos.proto"
 

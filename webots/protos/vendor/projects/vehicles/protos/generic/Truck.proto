@@ -7,7 +7,7 @@
 # template language: javascript
 
 EXTERNPROTO "TruckTrailer.proto"
-EXTERNPROTO "webots://projects/vehicles/protos/abstract/Car.proto"
+EXTERNPROTO "../../../vehicles/protos/abstract/Car.proto"
 EXTERNPROTO "TruckFrontLight.proto"
 EXTERNPROTO "TruckCab.proto"
 EXTERNPROTO "TruckWheel.proto"

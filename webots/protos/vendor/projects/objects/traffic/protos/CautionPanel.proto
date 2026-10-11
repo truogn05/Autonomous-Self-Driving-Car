@@ -5,7 +5,7 @@
 # keywords: traffic/sign
 # Traffic panel: Caution panel.
 
-EXTERNPROTO "webots://projects/objects/geometries/protos/Extrusion.proto"
+EXTERNPROTO "../../../objects/geometries/protos/Extrusion.proto"
 
 PROTO CautionPanel [
   field SFVec3f    translation        0 0 0

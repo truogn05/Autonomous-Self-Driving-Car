@@ -6,10 +6,10 @@
 # Model of a Mercedes-Benz Sprinter.
 # template language: javascript
 
-EXTERNPROTO "webots://projects/appearances/protos/GlossyPaint.proto"
-EXTERNPROTO "webots://projects/appearances/protos/RoughPolymer.proto"
-EXTERNPROTO "webots://projects/appearances/protos/PerforatedMetal.proto"
-EXTERNPROTO "webots://projects/vehicles/protos/abstract/Car.proto"
+EXTERNPROTO "../../../appearances/protos/GlossyPaint.proto"
+EXTERNPROTO "../../../appearances/protos/RoughPolymer.proto"
+EXTERNPROTO "../../../appearances/protos/PerforatedMetal.proto"
+EXTERNPROTO "../../../vehicles/protos/abstract/Car.proto"
 EXTERNPROTO "MercedesBenzSprinterLights.proto"
 EXTERNPROTO "MercedesBenzSprinterLogos.proto"
 EXTERNPROTO "MercedesBenzSprinterInterior.proto"

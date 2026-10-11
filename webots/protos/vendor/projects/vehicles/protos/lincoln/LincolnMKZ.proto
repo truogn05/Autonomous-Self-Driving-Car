@@ -6,16 +6,16 @@
 # Model of a Lincoln MKZ 2017.
 # template language: javascript
 
-EXTERNPROTO "webots://projects/vehicles/protos/abstract/Car.proto"
-EXTERNPROTO "webots://projects/vehicles/protos/abstract/VehicleWheel.proto"
-EXTERNPROTO "webots://projects/vehicles/protos/abstract/VehicleLights.proto"
+EXTERNPROTO "../../../vehicles/protos/abstract/Car.proto"
+EXTERNPROTO "../../../vehicles/protos/abstract/VehicleWheel.proto"
+EXTERNPROTO "../../../vehicles/protos/abstract/VehicleLights.proto"
 EXTERNPROTO "LincolnMKZFrontLightsMesh.proto"
 EXTERNPROTO "LincolnMKZRightTurnSignalMesh.proto"
 EXTERNPROTO "LincolnMKZLeftTurnSignalMesh.proto"
 EXTERNPROTO "LincolnMKZTailLightsMesh.proto"
 EXTERNPROTO "LincolnMKZBrakingLightsMesh.proto"
 EXTERNPROTO "LincolnMKZRearAntifogLightsMesh.proto"
-EXTERNPROTO "webots://projects/appearances/protos/GlossyPaint.proto"
+EXTERNPROTO "../../../appearances/protos/GlossyPaint.proto"
 EXTERNPROTO "LincolnMKZCoachworkMesh.proto"
 EXTERNPROTO "LincolnMKZWindowsMesh.proto"
 EXTERNPROTO "LincolnMKZDetailsMesh.proto"
@@ -28,7 +28,7 @@ PROTO LincolnMKZ [
   field     SFVec3f    translation       0 0 0.4                                                 # Is `Car.translation`.
   field     SFRotation rotation          0 0 1 0                                                 # Is `Car.rotation`.
   field     SFColor    color             0.541 0.541 0.541                                       # Defines the car body color.
-  field     MFString   plate             "webots://projects/vehicles/protos/textures/plate.jpg"  # Defines the plate texture.
+  field     MFString   plate             "../../../vehicles/protos/textures/plate.jpg"  # Defines the plate texture.
   field     SFString   engineSound       "sounds/engine.wav"                                     # Is `Car.engineSound`.
   field     SFString   name              "vehicle"                                               # Is `Car.name`.
   field     SFString   controller        "<generic>"                                             # Is `Car.controller`.

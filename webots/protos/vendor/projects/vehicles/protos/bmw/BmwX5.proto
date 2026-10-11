@@ -9,10 +9,10 @@
 # For the last 6 fields to have any effect, the 'interior' has to be enabled.
 # template language: javascript
 
-EXTERNPROTO "webots://projects/vehicles/protos/abstract/CarSteeringWheel.proto"
-EXTERNPROTO "webots://projects/vehicles/protos/abstract/Car.proto"
+EXTERNPROTO "../abstract/CarSteeringWheel.proto"
+EXTERNPROTO "../abstract/Car.proto"
 EXTERNPROTO "BmwNode/BmwX5Wheel.proto"
-EXTERNPROTO "webots://projects/vehicles/protos/abstract/VehicleLights.proto"
+EXTERNPROTO "../abstract/VehicleLights.proto"
 EXTERNPROTO "BmwNode/BmwX5FrontLight.proto"
 EXTERNPROTO "BmwNode/BmwX5RightIndicator.proto"
 EXTERNPROTO "BmwNode/BmwX5LeftIndicator.proto"
@@ -35,7 +35,7 @@ PROTO BmwX5 [
   field SFVec3f      translation              0 0 0.4              # Is `Car.translation`.
   field SFRotation   rotation                 0 0 1 0              # Is `Car.rotation`.
   field SFColor      color                    0.43 0.11 0.1        # Defines the car body color.
-  field SFString     engineSound              "webots://projects/vehicles/protos/abstract/sounds/engine.wav"  # Is `Car.engineSound`.
+  field SFString     engineSound              "../abstract/sounds/engine.wav"  # Is `Car.engineSound`.
   field SFString     name                     "vehicle"            # Is `Car.name`.
   field SFString     controller               "<generic>"          # Is `Car.controller`.
   field MFString     controllerArgs           []                   # Is `Car.controllerArgs`.
@@ -60,7 +60,7 @@ PROTO BmwX5 [
   field SFFloat      outerWindowTransparency  0.4                  # Defines the transparency level of the windows seen from outside.
   field SFFloat      innerWindowTransparency  0.7                  # Defines the transparency level of the windows seen from inside.
   field SFBool       innerWindowDust          FALSE                # Defines whether there is dust on windows seen from inside.
-  field SFString     window                   "automobile"         # Is `Car.window`.
+  field SFString     window                   "<generic>"          # Is `Car.window`.
 ]
 {
   %<
@@ -401,9 +401,9 @@ PROTO BmwX5 [
                 children [
                   BmwX5Interior {
                     %< if (dynamicSpeedDisplay) { >%
-                      baseColorMap "webots://projects/vehicles/protos/bmw/textures/bmw_interior_speedometer_without_needles.jpg"
+                      baseColorMap "textures/bmw_interior_speedometer_without_needles.jpg"
                     %< } else { >%
-                      baseColorMap "webots://projects/vehicles/protos/bmw/textures/bmw_interior_speedometer.jpg"
+                      baseColorMap "textures/bmw_interior_speedometer.jpg"
                     %< } >%
                     indicatorLevers IS indicatorLevers
                   }

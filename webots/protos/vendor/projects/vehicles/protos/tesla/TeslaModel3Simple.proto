@@ -16,7 +16,7 @@ PROTO TeslaModel3Simple [
   field       SFRotation rotation                       0 0 1 0                                                 # Is `Robot.rotation`.
   field       SFColor    color                          1 0 0                                                   # Defines the car body color.
   field       MFColor    recognitionColors              [ 1 0 0 ]                                               # Is `Robot.recognitionColors`.
-  field       MFString   plate                          "webots://projects/vehicles/protos/textures/plate.jpg"  # Defines the plate texture.
+  field       MFString   plate                          "../../../vehicles/protos/textures/plate.jpg"  # Defines the plate texture.
   field       SFString   name                           "vehicle"                                               # Is `Robot.name`.
   field       SFString   controller                     "<none>"                                                # Is `Robot.controller`.
   field       MFString   controllerArgs                 [ ]                                                     # Is `Robot.controllerArgs`.

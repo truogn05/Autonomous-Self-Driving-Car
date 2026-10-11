@@ -53,6 +53,29 @@ def verify_world_bmwx5() -> dict:
     for dev in required_devices:
         assert f'name "{dev}"' in block, f"Missing required device '{dev}' in BmwX5"
 
+    # Verify 100% local PROTOs & assets (zero webots:// or http:// in BmwX5 dependency tree)
+    vendor_projects = ROOT / "protos" / "vendor" / "projects"
+    proto_dirs = [
+        vendor_projects / "vehicles" / "protos" / "bmw",
+        vendor_projects / "vehicles" / "protos" / "abstract",
+        vendor_projects / "appearances" / "protos",
+    ]
+    checked_protos = 0
+    for pdir in proto_dirs:
+        for pf in sorted(pdir.rglob("*.proto")):
+            checked_protos += 1
+            ptxt = pf.read_text(encoding="utf-8")
+            assert 'EXTERNPROTO "webots://' not in ptxt, f"External webots:// EXTERNPROTO found in {pf}"
+            assert '"webots://' not in ptxt, f"External webots:// asset URL found in {pf}"
+            for ext in re.findall(r'EXTERNPROTO\s+"([^"]+)"', ptxt):
+                resolved = (pf.parent / ext).resolve()
+                assert resolved.exists(), f"Missing local EXTERNPROTO '{ext}' referenced by {pf.name} -> {resolved}"
+
+    # Verify English console instructions in bmw_x5_controller.py
+    ctrl_code = (CTRL_DIR / "bmw_x5_controller.py").read_text(encoding="utf-8")
+    assert "BMW X5 AUTONOMOUS & PHYSICS KEYBOARD CONTROLLER" in ctrl_code, "Missing English console banner"
+    assert "HOW TO DRIVE:" in ctrl_code, "Missing HOW TO DRIVE section in English console banner"
+
     return {
         "ego_vehicle_def": "EGO_VEHICLE",
         "proto": "BmwX5",
@@ -62,6 +85,9 @@ def verify_world_bmwx5() -> dict:
         "spawn_yaw_rad": 3.141593,
         "devices_verified": len(required_devices),
         "device_names": required_devices,
+        "local_protos_verified": checked_protos,
+        "zero_external_urls": True,
+        "english_console_banner": True,
     }
 
 
