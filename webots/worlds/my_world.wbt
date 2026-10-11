@@ -10,14 +10,17 @@ EXTERNPROTO "../protos/vendor/projects/vehicles/protos/bmw/BmwX5.proto"
 
 WorldInfo {
   title "My World - connected traffic practice town"
-  ERP 0.6
-  basicTimeStep 32
+  ERP 0.25
+  CFM 5e-05
+  basicTimeStep 16
   contactProperties [
     ContactProperties {
       coulombFriction [
-        8
+        1
       ]
-      softCFM 1e-05
+      bounce 0
+      softERP 0.25
+      softCFM 0.0001
       bumpSound ""
       rollSound ""
       slideSound ""
@@ -29,9 +32,10 @@ DEF OVERVIEW Viewpoint {
   fieldOfView 0.85
   orientation -0.10977830 0.00000000 0.99395610 3.14159265
   position 282.5 1.8 3.1
-  description "BMW X5 Chase View - East Dead End"
+  description "BMW X5 3rd-Person Game Chase View"
   follow "ego_vehicle"
-  followSmoothness 0.15
+  followType "Mounted Shot"
+  followSmoothness 0.65
 }
 Background {
   skyColor [
@@ -20217,8 +20221,9 @@ DEF EGO_VEHICLE BmwX5 {
   name "ego_vehicle"
   controller "bmw_x5_controller"
   supervisor FALSE
-  windshieldWipers TRUE
+  windshieldWipers FALSE
   frontSpotLights FALSE
+  dynamicSpeedDisplay FALSE
   sensorsSlotFront [
     DEF FRONT_RADAR Radar {
       name "front_radar"
@@ -20298,9 +20303,6 @@ DEF EGO_VEHICLE BmwX5 {
       height 180
       near 0.2
       far 180
-      recognition Recognition {
-        maxRange 100
-      }
     }
     DEF TOP_LIDAR Lidar {
       translation 0 0 0.18
@@ -20331,8 +20333,8 @@ DEF EGO_VEHICLE BmwX5 {
     }
     DEF HUD_DISPLAY Display {
       name "hud_display"
-      width 320
-      height 140
+      width 210
+      height 76
     }
   ]
 }

@@ -1,8 +1,8 @@
-"""Multi-sensor manager for BMW X5: Camera, 3D LiDAR, Radar, GPS, IMU, Gyro, Accel, Compass, and 6x Sonar."""
+"""Multi-sensor manager for BMW X5: Camera, 4-Layer 3D LiDAR, Radar, GPS, IMU, Gyro, Accel, Compass, and 6x Sonar."""
 
 from dataclasses import dataclass, field
 import math
-from config.vehicle_params import MAX_STALE_SENSOR_STEPS
+from config.vehicle_params import DEFAULT_DT_SEC, MAX_STALE_SENSOR_STEPS, STARTUP_GRACE_STEPS
 
 
 @dataclass
@@ -10,6 +10,7 @@ class SensorTelemetry:
     """Consolidated telemetry snapshot read each simulation step."""
     gps_xyz: tuple[float, float, float] = (0.0, 0.0, 0.0)
     gps_speed_ms: float = 0.0
+    signed_gps_speed_ms: float = 0.0
     roll_pitch_yaw_rad: tuple[float, float, float] = (0.0, 0.0, 0.0)
     heading_deg: float = 180.0
     gyro_rad_s: tuple[float, float, float] = (0.0, 0.0, 0.0)
@@ -43,14 +44,14 @@ class SensorManager:
     def __init__(self, robot, timestep: int) -> None:
         self.robot = robot
         self.timestep = max(16, int(timestep))
-        self.lidar_period = self.timestep * 2  # Run 16-layer 3D LiDAR at half rate for high FPS
+        self.dt_sec = self.timestep / 1000.0 if self.timestep > 0 else DEFAULT_DT_SEC
+        self.lidar_period = self.timestep * 2  # Run 4-layer 3D LiDAR at half rate for high FPS
         self.stale_steps = 0
         self.step_count = 0
         self.last_lidar_front_min_m = 100.0
+        self.prev_gps_xyz: tuple[float, float, float] | None = None
 
         self.camera = self._enable_device("front_camera", self.timestep)
-        if self.camera is not None and hasattr(self.camera, "hasRecognition") and self.camera.hasRecognition():
-            self.camera.recognitionEnable(self.timestep)
 
         self.lidar = self._enable_device("top_lidar", self.lidar_period)
         self.radar = self._enable_device("front_radar", self.timestep)
@@ -88,6 +89,8 @@ class SensorManager:
         self.step_count += 1
         telemetry = SensorTelemetry()
         active = 0
+        gps_ok = True
+        imu_ok = True
 
         # 1. GPS
         if self.gps is not None:
@@ -96,9 +99,8 @@ class SensorManager:
             spd = self.gps.getSpeed()
             if len(vals) >= 3 and all(math.isfinite(v) for v in vals):
                 telemetry.gps_xyz = (float(vals[0]), float(vals[1]), float(vals[2]))
-                self.stale_steps = 0
             else:
-                self.stale_steps += 1
+                gps_ok = False
             if math.isfinite(spd):
                 telemetry.gps_speed_ms = float(spd)
 
@@ -110,9 +112,28 @@ class SensorManager:
                 telemetry.roll_pitch_yaw_rad = (float(rpy[0]), float(rpy[1]), float(rpy[2]))
                 telemetry.heading_deg = math.degrees(float(rpy[2]))
             else:
-                self.stale_steps += 1
+                imu_ok = False
 
-        # 3.Compass fallback/validation
+        # Compute signed longitudinal speed along vehicle heading from GPS displacement
+        if gps_ok and self.prev_gps_xyz is not None:
+            dx = telemetry.gps_xyz[0] - self.prev_gps_xyz[0]
+            dy = telemetry.gps_xyz[1] - self.prev_gps_xyz[1]
+            yaw = telemetry.roll_pitch_yaw_rad[2]
+            forward_proj = dx * math.cos(yaw) + dy * math.sin(yaw)
+            sign = -1.0 if forward_proj < -1e-4 else 1.0
+            telemetry.signed_gps_speed_ms = sign * telemetry.gps_speed_ms
+        else:
+            telemetry.signed_gps_speed_ms = telemetry.gps_speed_ms
+        if gps_ok:
+            self.prev_gps_xyz = telemetry.gps_xyz
+
+        # Debounce critical sensor health with startup grace period
+        if gps_ok and imu_ok:
+            self.stale_steps = 0
+        elif self.step_count > STARTUP_GRACE_STEPS:
+            self.stale_steps += 1
+
+        # 3. Compass fallback/validation
         if self.compass is not None:
             active += 1
 
@@ -182,7 +203,7 @@ class SensorManager:
                     pass
             telemetry.lidar_front_min_m = self.last_lidar_front_min_m
 
-        # 8. Front Camera + Recognition
+        # 8. Front Camera
         if self.camera is not None:
             active += 1
             if hasattr(self.camera, "hasRecognition") and self.camera.hasRecognition():
@@ -192,5 +213,8 @@ class SensorManager:
                     pass
 
         telemetry.active_sensor_count = active
-        telemetry.sensors_healthy = self.stale_steps <= MAX_STALE_SENSOR_STEPS
+        telemetry.sensors_healthy = (
+            self.step_count <= STARTUP_GRACE_STEPS or self.stale_steps <= MAX_STALE_SENSOR_STEPS
+        )
         return telemetry
+

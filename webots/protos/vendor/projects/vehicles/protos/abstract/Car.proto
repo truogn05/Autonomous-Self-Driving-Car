@@ -288,7 +288,7 @@ PROTO Car [
         name "right_front_wheel"
         acceleration %<= frontAcceleration >%
         maxVelocity %<= frontMaxVelocity >%
-        maxTorque 100000000
+        maxTorque 4000
         sound ""
       }
     %< } >%
@@ -305,7 +305,7 @@ PROTO Car [
         name "left_front_wheel"
         acceleration %<= frontAcceleration >%
         maxVelocity %<= frontMaxVelocity >%
-        maxTorque 100000000
+        maxTorque 4000
         sound ""
       }
     %< } >%
@@ -322,7 +322,7 @@ PROTO Car [
         name "right_rear_wheel"
         acceleration %<= rearAcceleration >%
         maxVelocity %<= rearMaxVelocity >%
-        maxTorque 100000000
+        maxTorque 4000
         sound ""
       }
     %< } >%
@@ -339,7 +339,7 @@ PROTO Car [
         name "left_rear_wheel"
         acceleration %<= rearAcceleration >%
         maxVelocity %<= rearMaxVelocity >%
-        maxTorque 100000000
+        maxTorque 4000
         sound ""
       }
     %< } >%

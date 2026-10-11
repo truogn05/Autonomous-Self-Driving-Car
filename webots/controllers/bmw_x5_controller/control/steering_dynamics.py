@@ -3,6 +3,8 @@
 from dataclasses import dataclass
 import math
 from config.vehicle_params import (
+    DEFAULT_DT_SEC,
+    INDICATOR_HOLD_SEC,
     MAX_STEER_RATE_RAD_S,
     MAX_STEERING_ANGLE_RAD,
     SELF_CENTER_BASE_RATE_RAD_S,
@@ -34,10 +36,14 @@ class AckermannSteeringController:
     def __init__(self) -> None:
         self.steering_angle_rad: float = 0.0
         self.steering_rate_rad_s: float = 0.0
+        self.latched_indicator: int = 0
+        self.indicator_timer_sec: float = 0.0
 
     def reset(self) -> None:
         self.steering_angle_rad = 0.0
         self.steering_rate_rad_s = 0.0
+        self.latched_indicator = 0
+        self.indicator_timer_sec = 0.0
 
     @staticmethod
     def compute_max_angle(speed_kmh: float) -> float:
@@ -70,7 +76,7 @@ class AckermannSteeringController:
         measured_speed_kmh: float,
     ) -> SteeringOutput:
         if dt_sec <= 0.0:
-            dt_sec = 0.032
+            dt_sec = DEFAULT_DT_SEC
 
         max_angle = self.compute_max_angle(measured_speed_kmh)
         v_ms = abs(measured_speed_kmh) / 3.6
@@ -78,25 +84,31 @@ class AckermannSteeringController:
         # Webots Driver convention: negative = LEFT, positive = RIGHT
         if left_pressed and not right_pressed:
             target_angle = -max_angle
-            indicator = -1
+            self.latched_indicator = -1
+            self.indicator_timer_sec = INDICATOR_HOLD_SEC
         elif right_pressed and not left_pressed:
             target_angle = +max_angle
-            indicator = 1
+            self.latched_indicator = 1
+            self.indicator_timer_sec = INDICATOR_HOLD_SEC
         else:
-            # Keys released -> automatic self-centering to 0.0 rad!
+            # Keys released -> automatic self-centering to 0.0 rad
             target_angle = 0.0
-            indicator = 0
+            if self.indicator_timer_sec > 0.0:
+                self.indicator_timer_sec = max(0.0, self.indicator_timer_sec - dt_sec)
+            if self.indicator_timer_sec <= 0.0 and abs(self.steering_angle_rad) < 0.06:
+                self.latched_indicator = 0
 
         if target_angle != 0.0:
-            # Active steering into turn with smooth proportional rack velocity and rate limit
+            # Active PD steering into turn with derivative damping and rate limit
             error = target_angle - self.steering_angle_rad
-            raw_rate = max(-MAX_STEER_RATE_RAD_S, min(MAX_STEER_RATE_RAD_S, STEER_KP * error))
+            pd_cmd = STEER_KP * error - STEER_KD * self.steering_rate_rad_s
+            raw_rate = max(-MAX_STEER_RATE_RAD_S, min(MAX_STEER_RATE_RAD_S, pd_cmd))
             alpha = min(1.0, dt_sec * 12.0)
             desired_rate = (1.0 - alpha) * self.steering_rate_rad_s + alpha * raw_rate
             next_angle = self.steering_angle_rad + desired_rate * dt_sec
             # Prevent overshooting target_angle in a single step
-            if (target_angle > 0.0 and next_angle > target_angle) or (
-                target_angle < 0.0 and next_angle < target_angle
+            if (target_angle > 0.0 and self.steering_angle_rad <= target_angle and next_angle > target_angle) or (
+                target_angle < 0.0 and self.steering_angle_rad >= target_angle and next_angle < target_angle
             ):
                 next_angle = target_angle
         else:
@@ -115,7 +127,14 @@ class AckermannSteeringController:
                 if self.steering_angle_rad * next_angle <= 0.0:
                     next_angle = 0.0
 
-        next_angle = max(-max_angle, min(max_angle, next_angle))
+        # Smoothly rate-limit reduction if max_angle shrinks as vehicle accelerates (avoid instantaneous snap)
+        max_step_delta = MAX_STEER_RATE_RAD_S * dt_sec
+        if next_angle > max_angle:
+            next_angle = max(max_angle, self.steering_angle_rad - max_step_delta)
+        elif next_angle < -max_angle:
+            next_angle = min(-max_angle, self.steering_angle_rad + max_step_delta)
+
+        next_angle = max(-MAX_STEERING_ANGLE_RAD, min(MAX_STEERING_ANGLE_RAD, next_angle))
         if target_angle == 0.0 and abs(next_angle) <= STEER_DEADBAND_RAD:
             next_angle = 0.0
 
@@ -130,5 +149,6 @@ class AckermannSteeringController:
             left_wheel_angle_rad=left_w,
             right_wheel_angle_rad=right_w,
             turning_radius_m=radius,
-            indicator_dir=indicator,
+            indicator_dir=self.latched_indicator,
         )
+
